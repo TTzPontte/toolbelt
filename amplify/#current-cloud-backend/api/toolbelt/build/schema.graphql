@@ -1,0 +1,254 @@
+enum EntityType {
+  PJ
+  PF
+}
+
+enum ReportStatus {
+  PROCESSING
+  SUCCESS
+  ERROR_SERASA
+  ERROR_PIPEFY
+}
+
+type SerasaReport @aws_iam @aws_api_key {
+  id: ID!
+  type: EntityType
+  documentNumber: String!
+  pipefyId: String
+  status: ReportStatus
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelSerasaReportConnection @aws_api_key @aws_iam {
+  items: [SerasaReport]!
+  nextToken: String
+}
+
+input ModelEntityTypeInput {
+  eq: EntityType
+  ne: EntityType
+}
+
+input ModelReportStatusInput {
+  eq: ReportStatus
+  ne: ReportStatus
+}
+
+input ModelSerasaReportFilterInput {
+  id: ModelIDInput
+  type: ModelEntityTypeInput
+  documentNumber: ModelStringInput
+  pipefyId: ModelStringInput
+  status: ModelReportStatusInput
+  and: [ModelSerasaReportFilterInput]
+  or: [ModelSerasaReportFilterInput]
+  not: ModelSerasaReportFilterInput
+}
+
+type Query {
+  getSerasaReport(id: ID!): SerasaReport @aws_api_key @aws_iam
+  listSerasaReports(filter: ModelSerasaReportFilterInput, limit: Int, nextToken: String): ModelSerasaReportConnection @aws_api_key @aws_iam
+}
+
+input ModelSerasaReportConditionInput {
+  type: ModelEntityTypeInput
+  documentNumber: ModelStringInput
+  pipefyId: ModelStringInput
+  status: ModelReportStatusInput
+  and: [ModelSerasaReportConditionInput]
+  or: [ModelSerasaReportConditionInput]
+  not: ModelSerasaReportConditionInput
+}
+
+input CreateSerasaReportInput {
+  id: ID
+  type: EntityType
+  documentNumber: String!
+  pipefyId: String
+  status: ReportStatus
+}
+
+input UpdateSerasaReportInput {
+  id: ID!
+  type: EntityType
+  documentNumber: String
+  pipefyId: String
+  status: ReportStatus
+}
+
+input DeleteSerasaReportInput {
+  id: ID!
+}
+
+type Mutation {
+  createSerasaReport(input: CreateSerasaReportInput!, condition: ModelSerasaReportConditionInput): SerasaReport @aws_api_key @aws_iam
+  updateSerasaReport(input: UpdateSerasaReportInput!, condition: ModelSerasaReportConditionInput): SerasaReport @aws_api_key @aws_iam
+  deleteSerasaReport(input: DeleteSerasaReportInput!, condition: ModelSerasaReportConditionInput): SerasaReport @aws_api_key @aws_iam
+}
+
+input ModelSubscriptionSerasaReportFilterInput {
+  id: ModelSubscriptionIDInput
+  type: ModelSubscriptionStringInput
+  documentNumber: ModelSubscriptionStringInput
+  pipefyId: ModelSubscriptionStringInput
+  status: ModelSubscriptionStringInput
+  and: [ModelSubscriptionSerasaReportFilterInput]
+  or: [ModelSubscriptionSerasaReportFilterInput]
+}
+
+type Subscription {
+  onCreateSerasaReport(filter: ModelSubscriptionSerasaReportFilterInput): SerasaReport @aws_subscribe(mutations: ["createSerasaReport"]) @aws_api_key @aws_iam
+  onUpdateSerasaReport(filter: ModelSubscriptionSerasaReportFilterInput): SerasaReport @aws_subscribe(mutations: ["updateSerasaReport"]) @aws_api_key @aws_iam
+  onDeleteSerasaReport(filter: ModelSubscriptionSerasaReportFilterInput): SerasaReport @aws_subscribe(mutations: ["deleteSerasaReport"]) @aws_api_key @aws_iam
+}

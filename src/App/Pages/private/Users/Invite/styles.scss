@@ -1,0 +1,20 @@
+.container-user-invite {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 !important;
+
+  height: 40vh;
+  width: 50vw !important;
+
+  .form-user-invite {
+    margin: 0 !important;
+  }
+
+  .btn-user-invite {
+    float: right;
+    color: white;
+    width: 150px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,11 @@
+.table-striped{
+  background: #FFFFFF 0% 0% no-repeat padding-box !important;
+  box-shadow: 6px 0px 18px #0000000f !important;
+  border-radius: 0px 4px 4px 0px;
+}
+
+// EXAMPLE CUSTOM TABLE STRIPE COLORS
+//.table-striped>tbody>tr:nth-child(odd)>td,
+//.table-striped>tbody>tr:nth-child(odd)>th {
+//  background-color: red; /* Choose your own color here */
+//}

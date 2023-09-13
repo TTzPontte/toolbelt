@@ -1,0 +1,93 @@
+@import "../../../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../../../node_modules/bootstrap/scss/mixins/breakpoints";
+
+.simulation {
+  .pp-new-public-form-fields {
+    @include media-breakpoint-up(lg) {
+      //max-width: 60%;
+      max-width: 80%;
+    }
+  }
+  .col{
+    @include media-breakpoint-down(md) {
+      flex: 1 0 auto;
+    }
+  }
+}
+.flow-table {
+  flex-wrap: wrap;
+  overflow-x: scroll;
+
+  &__header,
+  &__row {
+    width: 100%;
+    display: flex;
+    div {
+      //min-width: 130px;
+      //min-height: 40px;
+      width: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11pt;
+      margin: 0.5px;
+      &:last-child {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__header {
+    margin-top: 20px;
+    div {
+      background: #a461a3;
+      color: #ffffff;
+    }
+  }
+
+  &__row {
+    div {
+      color: #070532;
+      background: #e6e6e6;
+    }
+
+    &:nth-child(2n) {
+      div {
+        background: #d4d4d4;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md)  {
+    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    position: relative;
+    overflow-x: clip !important;
+
+    &__header {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    &__header,
+    &__row {
+      width: 140px;
+      flex-direction: column;
+    }
+    &__content {
+      overflow-x: scroll;
+      width: 100%;
+      display: flex;
+      margin-left: 140px;
+      flex-wrap: nowrap;
+    }
+  }
+}

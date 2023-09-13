@@ -10,24 +10,50 @@ import Test from "./Pages/test/Test";
 import New from "./Pages/New";
 import Layout from "./components/Layout";
 import SerasaCreditScoreSearch from "./Pages/Serasa/SerasaCreditScoreSearch";
+import PrivateHome from "./Pages/private/Home";
+import LoginPage from "./Pages/public/LoginPage";
 // import { withAuthenticator } from "@aws-amplify/ui-react";
 
-// import awsExports from "../aws-exports";
-//
-// Amplify.configure(awsExports);
+// Define your routes array
+const routes = [
+    {
+        path: "/",
+        element: <Home />,
+    },
+    {
+        path: "/PrivateHome",
+        element: <PrivateHome />,
+    },
+    {
+        path: "/test",
+        element: <Test />,
+    },
+    {
+        path: "/new",
+        element: <New />,
+    },
+    {
+        path: "/serasa",
+        element: <SerasaCreditScoreSearch />,
+    },
+    {
+        path: "/serasa",
+        element: <SerasaCreditScoreSearch />,
+    },
+    { path: "/login", element: <LoginPage /> },
 
+];
 
 function App(props) {
-  return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path={"/"} element={<Home />} />
-        <Route path={"/test"} element={<Test />} />
-        <Route path={"/new"} element={<New />} />
-        <Route path={"/serasa"} element={<SerasaCreditScoreSearch />} />
-      </Route>
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route element={<Layout />}>
+                {routes.map((route, index) => (
+                    <Route key={index} path={route.path} element={route.element} />
+                ))}
+            </Route>
+        </Routes>
+    );
 }
 
 // export default withAuthenticator(App);

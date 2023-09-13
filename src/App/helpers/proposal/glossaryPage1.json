@@ -1,0 +1,123 @@
+[
+  {
+    "title": "Amortização",
+    "subtitle": "",
+    "text": "É o processo de quitação do valor bruto da dívida, através de pagamentos periódicos.",
+    "borderSize": 40
+  },
+  {
+    "title": "PRICE",
+    "subtitle": "",
+    "text": "Quitar a dívida em amortizações crescentes. As parcelas se mantém fixas e os juros diminuem ao longo do processo.",
+    "borderSize": 53
+  },
+  {
+    "title": "Custo Efetivo Total",
+    "subtitle": "CET",
+    "text": "Taxa que leva em consideração todos os tributos e encargos da operação como um todo.",
+    "borderSize": 53
+  },
+  {
+    "title": "Registro",
+    "subtitle": "",
+    "text": "É o valor cobrado pelos cartórios para a averbação da alienação fiduciária na matrícula.",
+    "borderSize": 40
+  },
+  {
+    "title": "Correção Monetária",
+    "subtitle": "",
+    "text": "Adequação do valor da dívida perante à inflação; ela incide sobre o contrato a partir da data de assinatura até a data do vencimento ou o pagamento da parcela.",
+    "borderSize": 53
+  },
+  {
+    "title": "SAC",
+    "subtitle": "Sistema de Amortização Constante",
+    "text": "Quitar a dívida em parcelas de amortizações iguais, com prestações e juros decrescentes.",
+    "borderSize": 53
+  },
+  {
+    "title": "IGPM",
+    "subtitle": "Índice Geral de Preços do Mercado",
+    "text": "É o principal indicador utilizado para os reajustes e correções de valores no mercado imobiliário.",
+    "borderSize": 53
+  },
+  {
+    "title": "Saldo Devedor",
+    "subtitle": "",
+    "text": "É o valor restante para a quitação do empréstimo, baseado no valor bruto.",
+    "borderSize": 40
+  },
+  {
+    "title": "IOF",
+    "subtitle": "Imposto sobre Operações Financeiras",
+    "text": "Imposto que incide sobre operações financeiras como crédito, câmbio e seguros.",
+    "borderSize": 53
+  },
+  {
+    "title": "Seguro DFI",
+    "subtitle": "Seguro de Danos Físicos do Imóvel",
+    "text": "Garante a cobertura de prejuízos causados ao imóvel por fatores externos.",
+    "borderSize": 53
+  },
+  {
+    "title": "IPCA",
+    "subtitle": "Índice de Preços para o Consumidor Amplo",
+    "text": "É o principal indicador utilizado para os reajustes e correções de valores no mercado imobiliário.",
+    "borderSize": 53
+  },
+  {
+    "title": "Seguro MIP",
+    "subtitle": "Seguro de Morte e Invalidez Permanente",
+    "text": "Garante o pagamento do valor do empréstimo referente à parte do devedor.",
+    "borderSize": 53
+  },
+  {
+    "title": "Juros",
+    "subtitle": "",
+    "text": "É uma % que incide sobre o valor do seu empréstimo mensalmente e que representa a remuneração cobrada pelo empréstimo cedido.",
+    "borderSize": 47
+  },
+  {
+    "title": "Taxa Adm",
+    "subtitle": "Taxa Administrativa",
+    "text": "Se refere ao serviço de administração do contrato de financiamento imobiliário durante sua vigência.",
+    "borderSize": 53
+  },
+  {
+    "title": "LTV",
+    "subtitle": "Loan To Value",
+    "text": "Métrica que observa a relação dos valores de empréstimo e do imóvel. Estipula o limite saudável de crédito para cada cliente.",
+    "borderSize": 57
+  },
+
+  {
+    "title": "Taxa (a.m.)",
+    "subtitle": "",
+    "text": "a.m. é uma abreviação para “ao mês”. Ou seja, são os juros mensais do empréstimo.",
+    "borderSize": 40
+  },
+  {
+    "title": "Parcelas Mensais",
+    "subtitle": "",
+    "text": "É o valor que compõe a soma da amortização com os juros mensais da parcela.",
+    "borderSize": 40
+  },
+  {
+    "title": "TAG",
+    "subtitle": "",
+    "text": "Custo de Estruturação da Operação. Inclui laudo do imóvel, custos de autenticação de assinaturas, emissão do contrato, análise jurídica, transporte e logística.",
+    "borderSize": 47
+  },
+  {
+    "title": "Prestação Mensal *",
+    "subtitle": "",
+    "text": "É o valor da parcela mensal, somado aos seguros obrigatórios e à taxa administrativa.",
+    "borderSize": 40
+  },
+  {
+    "title": "Valor Bruto",
+    "subtitle": "",
+    "text": "Valor que você solicitou de empréstimo, somado aos impostos, custo de registro e custo de estruturação do crédito.",
+    "borderSize": 40
+  }
+]
