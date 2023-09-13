@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/App/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/App.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Containers/Searches/Form/SimpleForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Containers/Searches/GetLambda.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Containers/Searches/Result/Results.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Containers/Searches/Result/Results__.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Containers/Searches/Result/response.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Containers/Searches/Searches.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Containers/Searches/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Containers/Searches/service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/Home/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/MoodalComponent/ModalComponent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/MoodalComponent/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/MoodalComponent/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/New.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/New__.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/ReportForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/Test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/convertToPDF.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/New/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/SerasaCreditScoreSearch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/SerasaCreditScoreSearch.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/test/Form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/test/Test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/test/service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/test/service__.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Bootstrap/Checkbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Bootstrap/InputMask.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Bootstrap/InputMonetary.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Bootstrap/LargeTextInput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Bootstrap/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Bootstrap/tests/Checkbox.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Bootstrap/tests/InputMask.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Bootstrap/tests/InputMonetary.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Bootstrap/tests/LargeTextInput.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Button/Btn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Button/Button.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Input.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Input/Input.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Input/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Radio.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Section/Section.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Section/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/Select/Select.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Form/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Layout/Layout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Layout/Navigation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Layout/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/Layout/styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/SimpleModal/SimpleModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/components/SimpleModal/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/constatnts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/Handler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/convertToPDF.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/gerToken.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/getByCpf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/relatorio.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/report.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/scratch_18.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/test.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/teste.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/contract.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/daterange.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/global-styles.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/index.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_cards.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_charts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_dropdowns.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_error.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_inputs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_login.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_navs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_utilities.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/navs/_global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/navs/_sidebar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/navs/_topbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/sb-admin-2.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/utilities/_animation.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/utilities/_background.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/utilities/_border.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/utilities/_display.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/utilities/_progress.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/utilities/_rotate.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/scss/utilities/_text.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/tabs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/theme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/utils/animations.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/utils/arrow.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/utils/col.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/utils/flex.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/utils/form.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/utils/functions.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/utils/media-queries.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/styles/utils/variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2VIhifJG5UM5GVweuqklf1xCBQI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.13.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.13.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/Users/Mr-i-me/.nvm/versions/node/v18.13.0/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/App" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/App" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="" />
+      <created>1694529629687</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694529629687</updated>
+      <workItem from="1694529631239" duration="4140000" />
+      <workItem from="1694555528679" duration="2929000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
