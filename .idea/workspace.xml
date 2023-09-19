@@ -5,31 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/hepers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/_Create/SerasaReportPage2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/envHelpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Containers/Searches/Result/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Containers/Searches/Result/Results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/test/Form.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/test/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/test/Test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/test/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/test/service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/test/service__.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/components/Layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/components/Layout/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/styles/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/styles/scss/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/styles/scss/navs/_sidebar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/styles/scss/navs/_sidebar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/styles/scss/navs/_topbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/styles/scss/navs/_topbar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/styles/scss/sb-admin-2.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/styles/scss/sb-admin-2.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/styles/scss/utilities/_text.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/styles/scss/utilities/_text.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

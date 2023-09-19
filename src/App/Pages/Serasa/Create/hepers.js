@@ -45,8 +45,9 @@ export const updateReport = async (id, status) => {
   return updatedReport;
 };
 export const uploadToStorage = async (data, reportId, fileName) => {
-  const filePath = `serasa/${fileName}_${reportId}.json`;
-  await Storage.put(filePath, JSON.stringify(data), {
+  const filePath = `serasa/${reportId}.json`;
+  const file =await Storage.put(filePath, JSON.stringify(data), {
     level: "protected" // specify the access level here
   });
+    console.log({file})
 };

@@ -34,57 +34,57 @@ const ReportForm = ({ onSubmit }) => {
     formState: { errors }
   } = methods;
   return (
-      <FormProvider {...methods}>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Radio
-              label="Tipo de Pessoa"
-              name="personType"
-              options={personTypeOptions}
-              inline
-              control={control}
-          />
-          <Row>
-            <Col sm={4}>
-              <FormGroup controlId="documentNumber">
-                <Form.Label>Número do Documento:</Form.Label>
-                <Controller
-                    name="documentNumber"
-                    control={control}
-                    render={({ field }) => (
-                        <Form.Control
-                            type="text"
-                            placeholder="Document number"
-                            {...field}
-                        />
-                    )}
-                    rules={{ required: true }}
-                />
-                {errors.documentNumber && (
-                    <span>{errors.documentNumber.message}</span>
+    <FormProvider {...methods}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Radio
+          label="Tipo de Pessoa"
+          name="personType"
+          options={personTypeOptions}
+          inline
+          control={control}
+        />
+        <Row>
+          <Col sm={4}>
+            <FormGroup controlId="documentNumber">
+              <Form.Label>Número do Documento:</Form.Label>
+              <Controller
+                name="documentNumber"
+                control={control}
+                render={({ field }) => (
+                  <Form.Control
+                    type="text"
+                    placeholder="Document number"
+                    {...field}
+                  />
                 )}
-              </FormGroup>
-              <FormGroup controlId="idPipefy">
-                <Form.Label>Pipefy Card Id:</Form.Label>
-                <Controller
-                    name="idPipefy"
-                    control={control}
-                    render={({ field }) => (
-                        <Form.Control
-                            type="text"
-                            placeholder="Id Pipefy"
-                            {...field}
-                        />
-                    )}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-          <br />
-          <Button type="submit" color="primary">
-            Realizar Consulta
-          </Button>
-        </Form>
-      </FormProvider>
+                rules={{ required: true }}
+              />
+              {errors.documentNumber && (
+                <span>{errors.documentNumber.message}</span>
+              )}
+            </FormGroup>
+            <FormGroup controlId="idPipefy">
+              <Form.Label>Pipefy Card Id:</Form.Label>
+              <Controller
+                name="idPipefy"
+                control={control}
+                render={({ field }) => (
+                  <Form.Control
+                    type="text"
+                    placeholder="Id Pipefy"
+                    {...field}
+                  />
+                )}
+              />
+            </FormGroup>
+          </Col>
+        </Row>
+        <br />
+        <Button type="submit" color="primary">
+          Realizar Consulta
+        </Button>
+      </Form>
+    </FormProvider>
   );
 };
 const CreateReportPage = () => {
@@ -95,7 +95,6 @@ const CreateReportPage = () => {
   const [personType, setPersonType] = useState("");
 
   const onSubmit = async (data) => {
-    console.log({data})
     data.documentNumber = data.documentNumber.replace(/\D/g, "");
     const ambiente = getEnvironment();
     const payload = {
@@ -109,6 +108,7 @@ const CreateReportPage = () => {
 
     const reportItem = await createReport(payload);
 
+
     try {
       // const result = await invokeLambda("ApiSerasa-serasa", payload);
       const result = await invokeLambda("CreateSerasaReport-staging", payload);
@@ -117,46 +117,36 @@ const CreateReportPage = () => {
 
       if (statusRequest === 200) {
         const updateItem = await updateReport(
-            reportItem.id,
-            ReportStatus.SUCCESS
+          reportItem.id,
+          ReportStatus.SUCCESS
         );
         const response = JSON.parse(result.Payload);
-        const getFileName = (response) => {
-          let fileName;
-          if (personType === "PF") {
-            fileName = response.reports[0].registration.consumerName;
-          } else {
-            fileName = response.reports[0].registration.companyName;
-          }
-          return fileName;
-        };
-
-        await uploadToStorage(data, reportItem.id, getFileName(response));
         setResponse(response.response);
+        await uploadToStorage(data,reportItem.reportId, "fileName");
         setReports(response.response.reports);
 
         if (data.personType === "PJ") {
           if (
-              response.response.optionalFeatures?.partner?.PartnerResponse
-                  ?.results !== undefined
+            response.response.optionalFeatures?.partner?.PartnerResponse
+              ?.results !== undefined
           ) {
             const filteredPartners =
-                response.response.optionalFeatures.partner.PartnerResponse.results.filter(
-                    (partner) => partner.participationPercentage > 0
-                );
+              response.response.optionalFeatures.partner.PartnerResponse.results.filter(
+                (partner) => partner.participationPercentage > 0
+              );
             setPartners(filteredPartners);
           } else {
             await updateReport(reportItem.id, ReportStatus.ERROR_SERASA);
           }
         } else if (data.personType === "PF") {
           if (
-              response.response.optionalFeatures?.partner?.partnershipResponse !==
-              undefined
+            response.response.optionalFeatures?.partner?.partnershipResponse !==
+            undefined
           ) {
             const filteredPartners =
-                response.response.optionalFeatures.partner.partnershipResponse.filter(
-                    (partner) => partner.participationPercentage > 0
-                );
+              response.response.optionalFeatures.partner.partnershipResponse.filter(
+                (partner) => partner.participationPercentage > 0
+              );
             setPartners(filteredPartners);
           } else {
             await updateReport(reportItem.id, ReportStatus.ERROR_SERASA);
@@ -165,7 +155,7 @@ const CreateReportPage = () => {
       } else {
         console.log({ requestSerasa });
         alert(
-            "Ocorreu um erro ao consultar o Serasa: \n" +
+          "Ocorreu um erro ao consultar o Serasa: \n" +
             result.Payload.errorMessage +
             "\nCódigo do erro: " +
             String(statusRequest)
@@ -194,23 +184,23 @@ const CreateReportPage = () => {
   };
 
   return (
-      <Container>
-        <h1>Create Serasa Report</h1>
-        <Row>
-          <Col>
-            <Card>
-              <Card.Body>
-                <ReportForm onSubmit={onSubmit} />
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <br />
-          {loading && <h2>Carregando...</h2>}
-          <ReadReportResults {...{ partners, reports, handleDownloadPDF }} />
-        </Row>
-      </Container>
+    <Container>
+      <h1>Create Serasa Report</h1>
+      <Row>
+        <Col>
+          <Card>
+            <Card.Body>
+              <ReportForm onSubmit={onSubmit}/>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <br />
+        {loading && <h2>Carregando...</h2>}
+        <ReadReportResults {...{ partners, reports, handleDownloadPDF }} />
+      </Row>
+    </Container>
   );
 };
 
