@@ -7,6 +7,7 @@
 import * as React from "react";
 import { GridProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { SerasaReport } from "../models";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -36,7 +37,7 @@ export declare type SerasaReportUpdateFormProps = React.PropsWithChildren<{
     overrides?: SerasaReportUpdateFormOverridesProps | undefined | null;
 } & {
     id?: string;
-    serasaReport?: any;
+    serasaReport?: SerasaReport;
     onSubmit?: (fields: SerasaReportUpdateFormInputValues) => SerasaReportUpdateFormInputValues;
     onSuccess?: (fields: SerasaReportUpdateFormInputValues) => void;
     onError?: (fields: SerasaReportUpdateFormInputValues, errorMessage: string) => void;

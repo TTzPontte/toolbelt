@@ -7,14 +7,14 @@ import {
 } from "react-bootstrap";
 import Results from "../../../../Containers/Searches/Result/Results";
 
-const ReadReportResults = ({ response, reports, personType, handleDownloadPDF }) => {
+const ReadReportResults = ({ response, partners, reports, personType, handleDownloadPDF }) => {
     return (
       <Container>
         <h1>Create Serasa Report</h1>
         <Col>
           <Card>
             <Card.Body>
-              {reports?.name &&(<Results list={reports} />)}
+              {reports && reports.length > 0 &&(<Results list={reports} />)}
               <br />
               {reports.length > 0 && (
                 <Button onClick={handleDownloadPDF}>
@@ -22,6 +22,9 @@ const ReadReportResults = ({ response, reports, personType, handleDownloadPDF })
                 </Button>
               )}
             </Card.Body>
+          </Card>
+          <Card>
+              {partners && partners.length > 0 &&(<Results list={partners}  pfOuPj="PJ"  />)}
           </Card>
         </Col>
       </Container>

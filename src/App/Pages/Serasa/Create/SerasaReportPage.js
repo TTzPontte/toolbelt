@@ -107,7 +107,8 @@ const CreateReportPage = () => {
     setLoading(true);
 
     const reportItem = await createReport(payload);
-
+    const reportId = reportItem.id;
+    console.log({reportId})
 
     try {
       // const result = await invokeLambda("ApiSerasa-serasa", payload);
@@ -122,7 +123,7 @@ const CreateReportPage = () => {
         );
         const response = JSON.parse(result.Payload);
         setResponse(response.response);
-        await uploadToStorage(data,reportItem.reportId, "fileName");
+        await uploadToStorage(data,reportId, "fileName");
         setReports(response.response.reports);
 
         if (data.personType === "PJ") {

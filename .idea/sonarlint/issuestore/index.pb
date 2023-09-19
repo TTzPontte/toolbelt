@@ -47,5 +47,3 @@ V
 &src/App/Pages/lambdaTeste/useLambda.js,8/2/828641054e13c188e4f802d221626c282c062467
 ]
 -src/App/Containers/Searches/Result/Results.js,1/8/1841c6ab872b86f1d3d4ced61b1a1519b0a3c877
-W
-'src/App/Pages/Serasa/_Create/Create2.js,d/6/d691bd82789fef7c76b96062deb7fcc7c8ef2af7

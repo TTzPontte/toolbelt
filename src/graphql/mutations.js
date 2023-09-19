@@ -14,6 +14,9 @@ export const createSerasaReport = /* GraphQL */ `
       status
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -31,6 +34,9 @@ export const updateSerasaReport = /* GraphQL */ `
       status
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }
@@ -48,6 +54,9 @@ export const deleteSerasaReport = /* GraphQL */ `
       status
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       __typename
     }
   }

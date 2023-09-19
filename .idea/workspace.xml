@@ -5,7 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d691bd82789fef7c76b96062deb7fcc7c8ef2af7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/api/toolbelt/cli-inputs.json" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/api/toolbelt/cli-inputs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/api/toolbelt/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/api/toolbelt/schema.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/api/toolbelt/transform.conf.json" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/api/toolbelt/transform.conf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReport/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReport/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/hepers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/hepers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/mutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/queries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graphql/subscriptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/subscriptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui-components/NewReport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/NewReport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui-components/SerasaReportCreateForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/SerasaReportCreateForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui-components/SerasaReportUpdateForm.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/SerasaReportUpdateForm.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui-components/SerasaReportUpdateForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/SerasaReportUpdateForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui-components/TokenListCollection.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/TokenListCollection.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui-components/TokenListCollection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/TokenListCollection.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui-components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

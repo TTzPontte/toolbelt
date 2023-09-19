@@ -14,9 +14,9 @@ import {
   TextField,
 } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { SerasaReport } from "../models";
 import { fetchByPath, validateField } from "./utils";
-import { API } from "aws-amplify";
-import { createSerasaReport } from "../graphql/mutations";
+import { DataStore } from "aws-amplify";
 export default function NewReport(props) {
   const {
     clearOnSuccess = true,
@@ -113,14 +113,7 @@ export default function NewReport(props) {
               modelFields[key] = null;
             }
           });
-          await API.graphql({
-            query: createSerasaReport,
-            variables: {
-              input: {
-                ...modelFields,
-              },
-            },
-          });
+          await DataStore.save(new SerasaReport(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
           }
@@ -129,8 +122,7 @@ export default function NewReport(props) {
           }
         } catch (err) {
           if (onError) {
-            const messages = err.errors.map((e) => e.message).join("\n");
-            onError(modelFields, messages);
+            onError(modelFields, err.message);
           }
         }
       }}

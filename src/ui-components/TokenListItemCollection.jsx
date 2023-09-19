@@ -6,34 +6,18 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { SerasaReport } from "../models";
-import {
-  getOverrideProps,
-  useDataStoreBinding,
-} from "@aws-amplify/ui-react/internal";
 import TokenListItem from "./TokenListItem";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Collection } from "@aws-amplify/ui-react";
-export default function TokenListCollection(props) {
-  const { items: itemsProp, overrideItems, overrides, ...rest } = props;
-  const [items, setItems] = React.useState(undefined);
-  const itemsDataStore = useDataStoreBinding({
-    type: "collection",
-    model: SerasaReport,
-  }).items;
-  React.useEffect(() => {
-    if (itemsProp !== undefined) {
-      setItems(itemsProp);
-      return;
-    }
-    setItems(itemsDataStore);
-  }, [itemsProp, itemsDataStore]);
+export default function TokenListItemCollection(props) {
+  const { items, overrideItems, overrides, ...rest } = props;
   return (
     <Collection
       type="list"
       direction="column"
       justifyContent="left"
       items={items || []}
-      {...getOverrideProps(overrides, "TokenListCollection")}
+      {...getOverrideProps(overrides, "TokenListItemCollection")}
       {...rest}
     >
       {(item, index) => (

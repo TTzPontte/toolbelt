@@ -17,3 +17,4 @@ type SerasaReport @model @auth(rules: [{allow: public}]) {
   pipefyId: String
   status: ReportStatus
 }
+ 

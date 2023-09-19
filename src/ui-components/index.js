@@ -40,4 +40,5 @@ export { default as StandardCard } from "./StandardCard";
 export { default as TallCard } from "./TallCard";
 export { default as TokenListCollection } from "./TokenListCollection";
 export { default as TokenListItem } from "./TokenListItem";
+export { default as TokenListItemCollection } from "./TokenListItemCollection";
 export { default as studioTheme } from "./studioTheme";

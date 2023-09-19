@@ -32,6 +32,7 @@ export const createReport = async (payload) => {
       status: ReportStatus.PROCESSING
     })
   );
+    console.log({item})
   return item;
 };
 
