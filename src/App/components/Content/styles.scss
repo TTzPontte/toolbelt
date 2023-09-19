@@ -1,0 +1,50 @@
+.Content {
+  //top: 154px;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 713px;
+  background: #F0F0F7 0% 0% no-repeat padding-box;
+  mix-blend-mode: normal;
+  opacity: 1;
+
+//.watermark{
+//  top: 748px;
+//  left: 79px;
+//  width: 1361px;
+//  height: 119px;
+//  border: 1px solid #C3C3D5;
+//  opacity: 1;
+//}
+
+  .flex {
+    display: flex;
+
+    .w100 {
+      width: 100%;
+    }
+
+    .col {
+      display: flex;
+      flex-flow: column;
+
+      &.wrap {
+        flex-flow: column wrap;
+      }
+
+      .row {
+        display: flex;
+        flex-flow: row;
+        flex: 0 1 auto;
+
+        &.wrap {
+          flex-flow: column wrap;
+        }
+      }
+    }
+  }
+
+}
+
+
+

@@ -1,0 +1,27 @@
+@import "../../styles/scss/variables";
+
+.Layout {
+  &-wrapper {
+    display: flex;
+    background-color: $brand-pontte;
+
+    &-content{
+      flex: 1 0 auto;
+
+      &-wrapper {
+      background-color: $brand-pontte;
+      width: 100%;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+  }
+
+  .f {
+    &-row {
+      display: flex;
+      flex-flow: row;
+      flex: 1 0 auto;
+    }
+  }
+  }
+}

@@ -4,8 +4,8 @@
   height: auto;
   position: relative;
   z-index: 999;
-  background: #ffffff 0% 0% no-repeat padding-box !important;
-  box-shadow: 6px 0px 18px #0000000f !important;
+  background: #FFFFFF 0% 0% no-repeat padding-box !important;
+  box-shadow: 6px 0px 18px #0000000F !important;
   border-radius: 0px 4px 4px 0px;
   opacity: 1;
   top: 0;
@@ -13,25 +13,8 @@
   padding-top: 0;
   left: 0;
 
-  .nav-title {
-    font-weight: 600;
-    color: #a3a5b6;
-    opacity: 0.8;
-    text-align: center;
-    margin: 10px;
-    font-size: 0.7em;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
   @media only screen and (max-height: 590px) {
     height: auto;
-  }
-
-  .nav-container-collapse {
-    background-color: #f1f3f9 !important;
   }
 
   .nav-item {
@@ -171,7 +154,6 @@
     letter-spacing: 0.05rem;
     z-index: 999;
     width: 100%;
-
     .sidebar-brand-icon {
       width: 100%;
       font-size: 2rem;
@@ -206,16 +188,13 @@
     margin-bottom: 1rem;
     padding: 1rem;
     background-color: fade-out($black, 0.9);
-
     .sidebar-card-illustration {
       height: 3rem;
       display: block;
     }
-
     .sidebar-card-title {
       font-weight: bold;
     }
-
     p {
       font-size: 0.75rem;
       color: fade-out($white, 0.5);
@@ -386,7 +365,7 @@
     padding: 0 1rem;
     width: auto;
     //border-top: 1px solid $gray-200;
-    border-top: 1px solid #c3c3d5;
+    border-top: 1px solid  #C3C3D5;
   }
 
   .sidebar-heading {
@@ -511,15 +490,9 @@
   }
 }
 
-@include media-breakpoint-down(sm) {
-  .fixedSidebar {
-    display: none;
-  }
+@include media-breakpoint-down(md) {
   .sidebar {
-    padding: 0px;
-    // height: -webkit-fill-available;
-    position: inherit;
-    z-index: inherit;
+    display: none;
+    width: auto;
   }
-
 }

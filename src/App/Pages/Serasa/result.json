@@ -1,0 +1,109 @@
+{
+    "reports": [
+        {
+            "reportName": "COMBO_CONCESSAO_COM_SCORE_POSITIVO",
+            "registration": {
+                "documentNumber": "00000197041",
+                "consumerName": "VERA RIEMER",
+                "motherName": "ELDA MULLING RIEMER",
+                "birthDate": "1982-03-12",
+                "statusRegistration": "REGULAR",
+                "statusDate": "2023-05-03",
+                "address": {
+                    "addressLine": "ROD MUN AO QUEIXADA KM 11",
+                    "district": "ZONA RURAL",
+                    "zipCode": "75610000",
+                    "country": "BRA",
+                    "city": "JOVIANIA",
+                    "state": "GO"
+                }
+            },
+            "negativeData": {
+                "pefin": {
+                    "pefinResponse": [],
+                    "summary": {
+                        "count": 0,
+                        "balance": 0.0
+                    }
+                },
+                "refin": {
+                    "refinResponse": [],
+                    "summary": {
+                        "count": 0,
+                        "balance": 0.0
+                    }
+                },
+                "notary": {
+                    "notaryResponse": [],
+                    "summary": {
+                        "count": 0,
+                        "balance": 0.0
+                    }
+                },
+                "check": {
+                    "checkResponse": [],
+                    "summary": {
+                        "count": 0,
+                        "balance": 0.0
+                    }
+                }
+            },
+            "score": {
+                "score": 560,
+                "scoreModel": "HSPN",
+                "range": "E",
+                "defaultRate": "9,0",
+                "codeMessage": 99
+            },
+            "facts": {
+                "inquiry": {
+                    "inquiryResponse": [
+                        {
+                            "occurrenceDate": "2023-09-15",
+                            "segmentDescription": "FINANCEIRAS",
+                            "daysQuantity": 6
+                        },
+                        {
+                            "occurrenceDate": "2023-08-07",
+                            "segmentDescription": "FINANCEIRAS",
+                            "daysQuantity": 1
+                        },
+                        {
+                            "occurrenceDate": "2023-07-14",
+                            "segmentDescription": "FINANCEIRAS",
+                            "daysQuantity": 1
+                        },
+                        {
+                            "occurrenceDate": "2023-07-06",
+                            "segmentDescription": "INDUSTRIA DE BENS DURAVEIS",
+                            "daysQuantity": 2
+                        },
+                        {
+                            "occurrenceDate": "2023-07-04",
+                            "segmentDescription": "FINANCEIRAS",
+                            "daysQuantity": 1
+                        }
+                    ],
+                    "summary": {
+                        "count": 5
+                    }
+                },
+                "stolenDocuments": {
+                    "stolenDocumentsResponse": [],
+                    "summary": {
+                        "count": 0,
+                        "balance": 0.0
+                    }
+                }
+            }
+        }
+    ],
+    "optionalFeatures": {
+        "partner": {
+            "summary": {
+                "count": 0,
+                "balance": 0.0
+            }
+        }
+    }
+}

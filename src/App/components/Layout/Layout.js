@@ -1,20 +1,26 @@
-import React from "react";
-import { Container } from "react-bootstrap";
-import Navigation from "./Navigation";
-import { Outlet } from "react-router-dom";
-import './styles.scss';
+import { Outlet, useLocation } from "react-router-dom";
+import * as React from "react";
+import "./style.scss";
+import { PrivateLayout, PublicLayout } from "./Layouts";
 
-const Layout = ({ children }) => {
+const Layout = () => {
+  const location = useLocation();
+  const privateRoutes = ["orgs","internal", "serasa"]
+  const isPrivate =
+    privateRoutes.includes(location.pathname.split("/")[1])
+
   return (
-    <Container fluid>
-      <header className="header header--sticky-default header--unlogged">
-        <Navigation />
-      </header>
-      <div className="wrapper">
-        <Outlet />
-        {children}
-      </div>
-    </Container>
+    <>
+      {!isPrivate ? (
+        <PublicLayout>
+          <Outlet />
+        </PublicLayout>
+      ) : (
+        <PrivateLayout>
+          <Outlet />
+        </PrivateLayout>
+      )}
+    </>
   );
 };
 

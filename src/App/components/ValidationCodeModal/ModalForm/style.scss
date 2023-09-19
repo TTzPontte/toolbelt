@@ -1,0 +1,37 @@
+.form-validation-code {
+  display: flex;
+  flex-direction: column;
+
+  .fields-validation-code {
+    display: flex;
+    width: 600px;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .buttons-validation-code {
+    padding: 10px;
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-evenly;
+    width: 300px;
+  }
+
+  .input-validation-code {
+    height: 60px;
+    width: 60px;
+    margin: 10px;
+
+    -moz-appearance: textfield; /* Firefox */
+
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .input-validation-code::-webkit-outer-spin-button,
+  .input-validation-code::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

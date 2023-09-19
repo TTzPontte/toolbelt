@@ -3,7 +3,7 @@
 
 // Color Variables
 // Bootstrap Color Overrides
-$primary: rgba(92, 59, 107, 1) !default;
+$primary: rgba(157, 137, 166, 1) !default;
 
 $white: #fff !default;
 $gray-100: #f8f9fc !default;
@@ -19,7 +19,7 @@ $black: #000 !default;
 
 $blue: #4e73df !default;
 $indigo: #6610f2 !default;
-$purple: #5c3b6b !default;
+$purple: #6f42c1 !default;
 $pink: #e83e8c !default;
 $red: #e74a3b !default;
 $orange: #fd7e14 !default;
@@ -82,5 +82,3 @@ $dropdown-border-color: $border-color !default;
 $login-image: 'https://source.unsplash.com/K4mSJ7kc0As/600x800' !default;
 $register-image: 'https://source.unsplash.com/Mv9hjnEUHR4/600x800' !default;
 $password-image: 'https://source.unsplash.com/oWTW-jNGl9I/600x800' !default;
-$not-found-image: url('../../../images/ponttilus-pagina-nao-encontrada.svg');
-$profile-cover: url('../../../images/profile-cover.png');

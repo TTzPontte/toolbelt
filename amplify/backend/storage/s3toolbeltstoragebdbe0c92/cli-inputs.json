@@ -1,0 +1,16 @@
+{
+  "resourceName": "s3toolbeltstoragebdbe0c92",
+  "bucketName": "toolbelt-storage-bdbe0c92",
+  "policyUUID": "1618494e",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

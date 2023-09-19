@@ -32,18 +32,18 @@ const TableHeader = ({ header }) => {
     negativeData: "Dados Negativos",
     score: "Score",
     facts: "Fatos",
-    
+
     //Tradução Optional - PARTICIPAÇÃO SOCIETÁRIA
     partner:"Sócio",
     businessDocument:"CNPJ",
     companyName:"Razão Social",
     companyAlias:"Nome Fantasia",
-    sinceDate:"Data Referência",
-    participationPercentage:"% Participação",
-    companyStatusCode:"Código do status",
-    companyState:"Estado",
-    companyStatusDate:"Data do Status",
-    updateDate:"Data da atualização do status",
+    // sinceDate:"Data Referência",
+    // participationPercentage:"% Participação",
+    // companyStatusCode:"Código do status",
+    // companyState:"Estado",
+    // companyStatusDate:"Data do Status",
+    // updateDate:"Data da atualização do status",
 
     //Tradução Optional - SOCIOS
     documentId:"Número de Documento",
@@ -56,7 +56,7 @@ const TableHeader = ({ header }) => {
     companyState:"Estado",
     companyStatusDate:"Data do Status",
     updateDate:"Data da atualização do status",
-  
+
 
   };
 
@@ -126,7 +126,7 @@ const translationMap = {
   companyDocument:"CNPJ",
   companyName:"Razão Social",
   foundationDate:"Data de abertura da empresa",
-  
+
   //Tradução Dados Negativo
   summary:"Resumo",
   count:"Contagem",
@@ -140,7 +140,7 @@ const translationMap = {
   notary:"Proteto Nacional",
   checkResponse:"Ocorrerências Cheque sem fundo",
   collectionRecords:"Registros",
-  
+
   //Tradução Score
   score:"Pontuação Score",
   scoreModel:"Modelo de Score",
@@ -148,7 +148,7 @@ const translationMap = {
   defaultRate:"Probalidade de Não Pagamento",
   codeMessage:"Código de Mensagem",
   message:"Mensagem",
-  
+
   //Tradução Fatos
   inquiry:"Consultas",
   inquiryResponse:"Ocorrências Consultas",
@@ -195,13 +195,14 @@ const TableRow = ({ item, header, hasCheckbox }) => {
 };
 
 const Results = ({ list, pfOuPj}) => {
+  console.log("Results")
   const [firstItem] = list;
   var consultTitle = "";
 
   if (pfOuPj==="PJ"){
-    consultTitle = "Consulta Opcional"; 
+    consultTitle = "Consulta Opcional";
   } else {
-    consultTitle = "Consulta Principal"; 
+    consultTitle = "Consulta Principal";
   }
   if (firstItem.reportName) {
     delete firstItem.reportName;
