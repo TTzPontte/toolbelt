@@ -25,8 +25,6 @@ R
 "src/App/Pages/HomePage/HomePage.js,0/b/0bc27193aa1f369553264d944197fbccad6f1cea
 V
 &src/App/Pages/Serasa/Create/style.scss,f/c/fcd23f62f21300cdc50d4aa24d17c50e674c5e7c
-S
-#src/App/components/Layout/Layout.js,8/9/89c9a5112185b566b510233c26affbae9e0d04fb
 J
 src/App/Pages/Home/Home.js,3/2/326ea7be883e3ba19e85ef273c05ee0329e5899e
 Y

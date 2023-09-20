@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { DataStore } from '@aws-amplify/datastore';
 import { Table, Button } from 'react-bootstrap';
-import {SerasaReport} from "../../../../models";
+import { SerasaReport } from '../../../../models';
+import { useNavigate } from 'react-router-dom';
 
 const List = (props) => {
     const [models, setModels] = useState([]);
@@ -22,6 +23,8 @@ const List = (props) => {
         fetchData(); // Refresh the list
     };
 
+    const navigate  = useNavigate();
+
     return (
         <div>
             <h1>Fetched Serasa Reports</h1>
@@ -33,6 +36,7 @@ const List = (props) => {
                     <th>Type</th>
                     <th>Status</th>
                     <th>Action</th>
+                    <th>View</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,6 +49,11 @@ const List = (props) => {
                         <td>
                             <Button variant="danger" onClick={() => handleDelete(model.id)}>
                                 Delete
+                            </Button>
+                        </td>
+                        <td>
+                            <Button variant="info" onClick={() => navigate(`${model.id}`)}>
+                                View
                             </Button>
                         </td>
                     </tr>
