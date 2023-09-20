@@ -199,7 +199,7 @@ const CreateReportPage = () => {
       <Row>
         <br />
         {loading && <h2>Carregando...</h2>}
-        <ReadReportResults {...{ partners, reports, handleDownloadPDF }} />
+        <ReadReportResults {...{ response, partners, reports, handleDownloadPDF }} />
       </Row>
     </Container>
   );

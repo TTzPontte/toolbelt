@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Button } from '@aws-amplify/ui-react';
 import { Auth } from 'aws-amplify';
 import Lambda from 'aws-sdk/clients/lambda';
-import {DataStore} from "@aws-amplify/datastore";
-import {EntityType, ReportStatus, SerasaReport} from "../../../models";
 
 // Custom Hook to handle Lambda invocation
 const useLambda = () => {
@@ -49,16 +47,7 @@ const LambdaTester = () => {
   const { response, error, loading, triggerFetchApiSerasa } = useLambda();
 
   const handleButtonClick = async () => {
-    // await triggerFetchApiSerasa('00000197041', 'PF');
-    const report = await DataStore.save(
-        new SerasaReport({
-          "type": EntityType.PJ,
-          "documentNumber": "Lorem ipsum dolor sit amet",
-          "pipefyId": "Lorem ipsum dolor sit amet",
-          "status": ReportStatus.PROCESSING
-        })
-    );
-    console.log({report})
+    await triggerFetchApiSerasa('00000197041', 'PF');
   };
 
   if (loading) return <div>Loading...</div>;

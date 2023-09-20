@@ -1,68 +1,68 @@
-import { Controller, useFieldArray, useForm } from "react-hook-form";
+import React, { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { Button, Card, Container, Table } from "react-bootstrap";
-import React from "react";
 import {
-    createPDF,
-    generateDDPF,
-    generateDDPJ
+  createPDF,
+  generateDDPF,
+  generateDDPJ
 } from "../../../../servicer/novoGeradorPDF/main";
 import {getEnvironment, invokeLambda} from "../hepers";
 
 const ReadPartnerReport = ({ partners }) => {
-  const { register, control, handleSubmit } = useForm({
+  const [isLoading, setIsLoading] = useState(false);
+  const { control, handleSubmit } = useForm({
     defaultValues: {
-      partners: partners.map(() => ({ selected: false }))
+      partners: partners.map((partner) => ({ documentNumber:partner.businessDocument,type:"PJ", selected: false }))
     }
   });
 
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "partners"
-  });
-
-  const onSubmit = async () => {
+  const handleGeneratePDF = async (documento, tipoPessoa) => {
     const functionName = "ApiSerasa-serasa";
-    console.log("Consultar Sócios clicado");
+    try {
+      const payload = {
+        numDocument: documento,
+        tipoPessoa,
+        ambiente: getEnvironment()
+      };
+      const responseOpcional = await invokeLambda(functionName, payload);
+      const result = JSON.parse(responseOpcional.Payload);
+      const responseSerasa = result.response;
 
-    const selectedPartners = partners.filter((partner) => partner.selected);
+      if (tipoPessoa === "PF") {
+        const nomeJsonSocioPF =
+          responseSerasa.reports[0].registration.consumerName;
+        const ddSocioPF = generateDDPF(responseSerasa);
+        createPDF(ddSocioPF, nomeJsonSocioPF);
+      } else {
+        const nomeJsonSocioPJ =
+          responseSerasa.reports[0].registration.companyName;
+        const ddSocioPJ = generateDDPJ(responseSerasa);
+        createPDF(ddSocioPJ, nomeJsonSocioPJ);
+      }
+    } catch (error) {
+      console.error("Ocorreu um erro na requisição:", error);
+      alert(
+        `Erro ao gerar relatório para: ${documento}. Detalhes do erro: ${error.message}`
+      );
+    }
+  };
+
+  const onSubmit = async (data) => {
+    console.log({data})
+    setIsLoading(true);
+    const selectedPartners = data.partners.filter(
+      (partner) => partner.selected
+    );
 
     for (const partner of selectedPartners) {
-      const { documento } = partner; // Assuming 'documento' is a property in your partner object
-      try {
-        const payload = {
-          numDocument: documento,
-          tipoPessoa: documento.length <= 12 ? "PF" : "PJ",
-          ambiente: getEnvironment()
-        };
-
-        const responseOpcional = await invokeLambda(functionName, payload);
-        const result = JSON.parse(responseOpcional.Payload);
-        const responseSerasa = result.response;
-
-        if (payload.tipoPessoa === "PF") {
-          handlePFCases(responseSerasa);
-        } else {
-          handlePJCases(responseSerasa);
-        }
-      } catch (error) {
-        console.error("Ocorreu um erro na requisição:", error);
-        alert(
-          `Erro ao gerar relatório para: ${documento}. Detalhes do erro: ${error.message}`
-        );
+      const { documentNumber, type } = partner;
+      console.log({partner})
+      if (documentNumber) {
+        await handleGeneratePDF(documentNumber, type);
       }
     }
-  };
 
-  const handlePFCases = (responseSerasa) => {
-    const nomeJsonSocioPF = responseSerasa.reports[0].registration.consumerName;
-    const ddSocioPF = generateDDPF(responseSerasa);
-    createPDF(ddSocioPF, nomeJsonSocioPF);
-  };
-
-  const handlePJCases = (responseSerasa) => {
-    const nomeJsonSocioPJ = responseSerasa.reports[0].registration.companyName;
-    const ddSocioPJ = generateDDPJ(responseSerasa);
-    createPDF(ddSocioPJ, nomeJsonSocioPJ);
+    setIsLoading(false);
   };
 
   return (
@@ -95,7 +95,7 @@ const ReadPartnerReport = ({ partners }) => {
                         )}
                       />
                     </td>
-                    <td>{partner.CNPJ}</td>
+                    <td>{partner.documentNumber}</td>
                     <td>{partner.participationPercentage}</td>
                     <td>{partner.updateDate}</td>
                     <td>{partner.participationInitialDate}</td>
@@ -103,8 +103,8 @@ const ReadPartnerReport = ({ partners }) => {
                 ))}
               </tbody>
             </Table>
-            <Button variant="primary" type="submit">
-              Consultar Sócios
+            <Button variant="primary" type="submit" disabled={isLoading}>
+              {isLoading ? "Loading..." : "Consultar Sócios"}
             </Button>
           </form>
         </Card.Body>
@@ -112,4 +112,5 @@ const ReadPartnerReport = ({ partners }) => {
     </Container>
   );
 };
+
 export default ReadPartnerReport;

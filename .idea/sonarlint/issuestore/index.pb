@@ -27,12 +27,6 @@ V
 &src/App/Pages/Serasa/Create/style.scss,f/c/fcd23f62f21300cdc50d4aa24d17c50e674c5e7c
 J
 src/App/Pages/Home/Home.js,3/2/326ea7be883e3ba19e85ef273c05ee0329e5899e
-Y
-)src/App/servicer/novoGeradorPDF/backup.js,a/9/a96691ae6c241bfab03e7c87dfba91879e2d3064
-\
-,src/App/servicer/novoGeradorPDF/novoPDFPJ.js,b/b/bb8dc06e0a0a1ca10f9854405f51197b421ada93
-X
-(src/App/servicer/novoGeradorPDF/teste.js,d/1/d120640b61716b42b893ef6a5a397499ca8adde4
 L
 src/App/Pages/New/service.js,8/4/846113a6aaa79866f4fb6d17547f0f9129cdd2aa
 ^

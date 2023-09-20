@@ -5,13 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadPartnerReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/1841c6ab872b86f1d3d4ced61b1a1519b0a3c877" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/hepers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/t.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/tester.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf/helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf/pdfService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/9/a96691ae6c241bfab03e7c87dfba91879e2d3064" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bb8dc06e0a0a1ca10f9854405f51197b421ada93" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d120640b61716b42b893ef6a5a397499ca8adde4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadPartnerReport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/List/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/List/List.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/lambdaTeste/LambdaTeste.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/lambdaTeste/LambdaTeste.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,66 +45,66 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;staging&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.13.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.13.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/src/App/Pages/Serasa/Create&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/Users/Mr-i-me/.nvm/versions/node/v18.13.0/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "staging",
+    "javascript.nodejs.core.library.configured.version": "18.13.0",
+    "javascript.nodejs.core.library.typings.version": "18.13.0",
+    "last_opened_file_path": "/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/src/App/Pages/Serasa/Read",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/Users/Mr-i-me/.nvm/versions/node/v18.13.0/bin/node",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Read" />
+      <recent name="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Create" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Create/services" />
-      <recent name="$PROJECT_DIR$/src/App/Pages" />
-      <recent name="$PROJECT_DIR$/src/App/Pages/lambdaTeste" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/App/servicer/pdf" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/_Create" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new" />
       <recent name="$PROJECT_DIR$/src/App/test_serasa" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Create/services" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.new.js">
-    <configuration name="index.js (1)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/test_serasa/index.js" working-dir="$PROJECT_DIR$/src/App/test_serasa">
+  <component name="RunManager" selected="Node.js.pdfService.js">
+    <configuration name="helpers.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/helpers.js" working-dir="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF">
       <method v="2" />
     </configuration>
-    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/Serasa/index.js" working-dir="$PROJECT_DIR$">
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" working-dir="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF">
       <method v="2" />
     </configuration>
-    <configuration name="index_prod.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/Pages/Serasa/Create/services/index_prod.js" working-dir="$PROJECT_DIR$/src/App/Pages/Serasa/Create/services">
+    <configuration name="pdfService.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/pdf/pdfService.js" working-dir="$PROJECT_DIR$/src/App/servicer/pdf">
       <method v="2" />
     </configuration>
-    <configuration name="new.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/Serasa/new.js" working-dir="$PROJECT_DIR$">
+    <configuration name="teste.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/teste.js" working-dir="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF">
       <method v="2" />
     </configuration>
-    <configuration name="serasa.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$APPLICATION_CONFIG_DIR$/scratches/zzz/serasa.js" working-dir="$PROJECT_DIR$">
+    <configuration name="tester.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/tester.js" working-dir="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.new.js" />
-        <item itemvalue="Node.js.index.js" />
-        <item itemvalue="Node.js.index_prod.js" />
-        <item itemvalue="Node.js.index.js (1)" />
-        <item itemvalue="Node.js.serasa.js" />
+        <item itemvalue="Node.js.pdfService.js" />
+        <item itemvalue="Node.js.helpers.js" />
+        <item itemvalue="Node.js.tester.js" />
+        <item itemvalue="Node.js.teste.js" />
+        <item itemvalue="Node.js.main.js" />
       </list>
     </recent_temporary>
   </component>
@@ -106,7 +119,7 @@
       <workItem from="1694529631239" duration="4140000" />
       <workItem from="1694555528679" duration="2929000" />
       <workItem from="1694784902120" duration="16737000" />
-      <workItem from="1695159576197" duration="16632000" />
+      <workItem from="1695159576197" duration="30289000" />
     </task>
     <servers />
   </component>

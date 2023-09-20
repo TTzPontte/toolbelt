@@ -1,6 +1,5 @@
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const diacritics = require("diacritics");
@@ -8,16 +7,15 @@ const {
   TableFactory,
   TableGenerator,
   createBackground,
-  createRect,
-  createHeaderStack,
   styles,
-  convertToPercentage,
-  formatDateResume,
-  formatCurrency,
   formatDocumentNumber,
   removeAccents,
-  formatDate
+  formatDate,
+  formatDateResume,
+  formatCurrency,
+  convertToPercentage
 } = require("./helpers.js");
+
 
 function generateReportContentPJ(report, optional) {
   //Dados Pai - JSON
@@ -367,21 +365,16 @@ function generateReportContentPJ(report, optional) {
     topo,
     { style: "contentPDF", text: "\nDados de Identificação" },
     registrationTable,
-    {
-      style: "contentPDF",
-      text: "\nDados de Score"
-    },
-    scoreTest, //Mensagem de erro do score
+    { style: "contentPDF", text: "\nDados de Score" },
+    scoreTest,
+    //Mensagem de erro do score
     {
       style: "contentPDF",
       fontSize: "12",
       color: "#b81414",
       text: "\n" + messageScore
     },
-    {
-      style: "contentPDF",
-      text: "\nDados de Negativação"
-    },
+    { style: "contentPDF", text: "\nDados de Negativação" },
     pefinTable,
     pefinInfoTable,
     refinTable,
@@ -607,35 +600,20 @@ function generateReportContentPF(report, optional) {
     }
   };
 
-  const returnArr = [
+  return [
     topo,
     { style: "contentPDF", text: "\nDados de Identificação" },
     registrationTable,
-    {
-      style: "contentPDF",
-      text: "\nDados de Score"
-    },
+    { style: "contentPDF", text: "\nDados de Score" },
     scoreTest,
-    {
-      style: "contentPDF",
-      text: "\nDados de Negativação"
-    },
+    { style: "contentPDF", text: "\nDados de Negativação" },
+    pefinTable,
+    refinTable,
+    checkTable,
+    notaryTable,
     textPartner,
     partnerInfoTable
   ];
-  if (pefins.length > 0) {
-    returnArr.push(pefinTable);
-  }
-  if (refins.length > 0) {
-    returnArr.push(refinTable);
-  }
-  if (checks.length > 0) {
-    returnArr.push(checkTable);
-  }
-  if (notarys.length > 0) {
-    returnArr.push(notaryTable);
-  }
-  return returnArr;
 }
 
 export function generateDDPJ(jsonData) {
