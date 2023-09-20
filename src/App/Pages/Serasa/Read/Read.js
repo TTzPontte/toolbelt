@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { DataStore } from '@aws-amplify/datastore';
-import {ListGroup, Table} from 'react-bootstrap';
+import {Col, ListGroup, Row, Table} from 'react-bootstrap';
 import { SerasaReport } from "../../../../models";
 import { useParams } from "react-router-dom";
 import { Storage } from "@aws-amplify/storage";
@@ -52,7 +52,8 @@ const Read = () => {
   return (
       <div>
         <h1>Fetched Serasa Reports</h1>
-        <ListGroup>
+        <Row>
+        <Col md={3}>
           {model && (
               <Table responsive className="table">
                 <thead>
@@ -71,7 +72,8 @@ const Read = () => {
                 </tbody>
               </Table>
           )}
-        </ListGroup>
+        </Col>
+        </Row>
         {fileContent && (
             <div>
               <h2>Fetched File Content from Storage</h2>

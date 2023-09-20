@@ -41,5 +41,3 @@ U
 %src/App/components/Sidebar/Sidebar.js,a/6/a67a2eb0a5f067a56fc3773e2cac305955057296
 V
 &src/App/Pages/lambdaTeste/useLambda.js,8/2/828641054e13c188e4f802d221626c282c062467
-]
--src/App/Containers/Searches/Result/Results.js,1/8/1841c6ab872b86f1d3d4ced61b1a1519b0a3c877

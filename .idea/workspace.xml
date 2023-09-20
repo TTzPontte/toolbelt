@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89c9a5112185b566b510233c26affbae9e0d04fb" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadPartnerReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/1841c6ab872b86f1d3d4ced61b1a1519b0a3c877" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/List/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/List/List.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
     </list>
@@ -104,7 +106,7 @@
       <workItem from="1694529631239" duration="4140000" />
       <workItem from="1694555528679" duration="2929000" />
       <workItem from="1694784902120" duration="16737000" />
-      <workItem from="1695159576197" duration="14093000" />
+      <workItem from="1695159576197" duration="16632000" />
     </task>
     <servers />
   </component>
