@@ -123,7 +123,7 @@ const CreateReportPage = () => {
         );
         const response = JSON.parse(result.Payload);
         setResponse(response.response);
-        await uploadToStorage(data,reportId, "fileName");
+        await uploadToStorage(response,reportId, "fileName");
         setReports(response.response.reports);
 
         if (data.personType === "PJ") {
