@@ -6,6 +6,7 @@ import Create from "./Pages/Serasa/Create/SerasaReportPage";
 import LambdaTeste from "./Pages/lambdaTeste/LambdaTeste";
 import Home from "./Pages/Home/Home";
 import Read from "./Pages/Serasa/Read/Read";
+import List from "./Pages/Serasa/List/List";
 
 export const routes = [
   {
@@ -26,7 +27,7 @@ export const routes = [
   },
   {
     path: "/serasa",
-    element: <SerasaCreditScoreSearch />
+    element: <List />
   },
   {
     path: "serasa/new",

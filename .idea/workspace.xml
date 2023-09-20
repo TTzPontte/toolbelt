@@ -5,26 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d691bd82789fef7c76b96062deb7fcc7c8ef2af7" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/List/List.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/7/47b6c9eefc412d1fbb95045e38cb63b81ce4ec63" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/api/toolbelt/cli-inputs.json" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/api/toolbelt/cli-inputs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/api/toolbelt/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/api/toolbelt/schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/api/toolbelt/transform.conf.json" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/api/toolbelt/transform.conf.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReport/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReport/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify.sh" beforeDir="false" afterPath="$PROJECT_DIR$/amplify.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/hepers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/hepers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/mutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/queries.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/graphql/subscriptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/graphql/subscriptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui-components/NewReport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/NewReport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui-components/SerasaReportCreateForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/SerasaReportCreateForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui-components/SerasaReportUpdateForm.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/SerasaReportUpdateForm.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui-components/SerasaReportUpdateForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/SerasaReportUpdateForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui-components/TokenListCollection.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/TokenListCollection.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui-components/TokenListCollection.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/TokenListCollection.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui-components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/lambdaTeste/LambdaTeste.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/lambdaTeste/LambdaTeste.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,27 +35,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "staging",
-    "javascript.nodejs.core.library.configured.version": "18.13.0",
-    "javascript.nodejs.core.library.typings.version": "18.13.0",
-    "last_opened_file_path": "/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/src/App/Pages/Serasa/Create",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "/Users/Mr-i-me/.nvm/versions/node/v18.13.0/bin/node",
-    "nodejs_package_manager_path": "yarn",
-    "prettierjs.PrettierConfiguration.Package": "/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;staging&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.13.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.13.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/src/App/Pages/Serasa/Create&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/Users/Mr-i-me/.nvm/versions/node/v18.13.0/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Create" />
@@ -119,6 +109,7 @@
       <workItem from="1694529631239" duration="4140000" />
       <workItem from="1694555528679" duration="2929000" />
       <workItem from="1694784902120" duration="16737000" />
+      <workItem from="1695159576197" duration="6620000" />
     </task>
     <servers />
   </component>

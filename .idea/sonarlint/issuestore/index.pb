@@ -21,8 +21,6 @@ a
 1src/App/Pages/Serasa/SerasaCreditScoreSearch.scss,5/b/5bc481018b314752aeb44a7dd45cf7631420738f
 S
 #src/App/components/Header/Header.js,5/5/5574f1f58c5b9b4ff7938afecf51dfc2c4d422be
-D
-src/models/schema.js,4/7/47b6c9eefc412d1fbb95045e38cb63b81ce4ec63
 R
 "src/App/Pages/HomePage/HomePage.js,0/b/0bc27193aa1f369553264d944197fbccad6f1cea
 V

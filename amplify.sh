@@ -3,4 +3,3 @@ amplify codegen --maxDepth 4
 amplify codegen models
 amplify codegen statements
 amplify codegen types
-
