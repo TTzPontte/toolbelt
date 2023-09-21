@@ -7,43 +7,47 @@
 import * as React from "react";
 import { AutocompleteProps, GridProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { SerasaPartnerReport } from "../models";
+import { SerasaPartnerReport, SerasaReport as SerasaReport0 } from "../models";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
-export declare type NewReportInputValues = {
+export declare type SerasaPartnerReportUpdateFormInputValues = {
     type?: string;
     documentNumber?: string;
     pipefyId?: string;
     status?: string;
-    SerasaPartnerReports?: SerasaPartnerReport[];
+    filePath?: string;
+    SerasaReport?: SerasaReport0;
 };
-export declare type NewReportValidationValues = {
+export declare type SerasaPartnerReportUpdateFormValidationValues = {
     type?: ValidationFunction<string>;
     documentNumber?: ValidationFunction<string>;
     pipefyId?: ValidationFunction<string>;
     status?: ValidationFunction<string>;
-    SerasaPartnerReports?: ValidationFunction<SerasaPartnerReport>;
+    filePath?: ValidationFunction<string>;
+    SerasaReport?: ValidationFunction<SerasaReport0>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type NewReportOverridesProps = {
-    NewReportGrid?: PrimitiveOverrideProps<GridProps>;
+export declare type SerasaPartnerReportUpdateFormOverridesProps = {
+    SerasaPartnerReportUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     type?: PrimitiveOverrideProps<SelectFieldProps>;
     documentNumber?: PrimitiveOverrideProps<TextFieldProps>;
     pipefyId?: PrimitiveOverrideProps<TextFieldProps>;
     status?: PrimitiveOverrideProps<SelectFieldProps>;
-    SerasaPartnerReports?: PrimitiveOverrideProps<AutocompleteProps>;
+    filePath?: PrimitiveOverrideProps<TextFieldProps>;
+    SerasaReport?: PrimitiveOverrideProps<AutocompleteProps>;
 } & EscapeHatchProps;
-export declare type NewReportProps = React.PropsWithChildren<{
-    overrides?: NewReportOverridesProps | undefined | null;
+export declare type SerasaPartnerReportUpdateFormProps = React.PropsWithChildren<{
+    overrides?: SerasaPartnerReportUpdateFormOverridesProps | undefined | null;
 } & {
-    clearOnSuccess?: boolean;
-    onSubmit?: (fields: NewReportInputValues) => NewReportInputValues;
-    onSuccess?: (fields: NewReportInputValues) => void;
-    onError?: (fields: NewReportInputValues, errorMessage: string) => void;
-    onChange?: (fields: NewReportInputValues) => NewReportInputValues;
-    onValidate?: NewReportValidationValues;
+    id?: string;
+    serasaPartnerReport?: SerasaPartnerReport;
+    onSubmit?: (fields: SerasaPartnerReportUpdateFormInputValues) => SerasaPartnerReportUpdateFormInputValues;
+    onSuccess?: (fields: SerasaPartnerReportUpdateFormInputValues) => void;
+    onError?: (fields: SerasaPartnerReportUpdateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: SerasaPartnerReportUpdateFormInputValues) => SerasaPartnerReportUpdateFormInputValues;
+    onValidate?: SerasaPartnerReportUpdateFormValidationValues;
 } & React.CSSProperties>;
-export default function NewReport(props: NewReportProps): React.ReactElement;
+export default function SerasaPartnerReportUpdateForm(props: SerasaPartnerReportUpdateFormProps): React.ReactElement;

@@ -14,8 +14,6 @@ import {
   Flex,
   Grid,
   Icon,
-  Radio,
-  RadioGroupField,
   ScrollView,
   SelectField,
   Text,
@@ -26,7 +24,7 @@ import {
   getOverrideProps,
   useDataStoreBinding,
 } from "@aws-amplify/ui-react/internal";
-import { SerasaReport, SerasaPartnerReport } from "../models";
+import { SerasaPartnerReport, SerasaReport as SerasaReport0 } from "../models";
 import { fetchByPath, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
 function ArrayField({
@@ -184,7 +182,7 @@ function ArrayField({
     </React.Fragment>
   );
 }
-export default function SerasaReportCreateForm(props) {
+export default function SerasaPartnerReportCreateForm(props) {
   const {
     clearOnSuccess = true,
     onSuccess,
@@ -196,11 +194,12 @@ export default function SerasaReportCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    type: undefined,
+    type: "",
     documentNumber: "",
     pipefyId: "",
     status: "",
-    SerasaPartnerReports: [],
+    filePath: "",
+    SerasaReport: undefined,
   };
   const [type, setType] = React.useState(initialValues.type);
   const [documentNumber, setDocumentNumber] = React.useState(
@@ -208,8 +207,9 @@ export default function SerasaReportCreateForm(props) {
   );
   const [pipefyId, setPipefyId] = React.useState(initialValues.pipefyId);
   const [status, setStatus] = React.useState(initialValues.status);
-  const [SerasaPartnerReports, setSerasaPartnerReports] = React.useState(
-    initialValues.SerasaPartnerReports
+  const [filePath, setFilePath] = React.useState(initialValues.filePath);
+  const [SerasaReport, setSerasaReport] = React.useState(
+    initialValues.SerasaReport
   );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -217,41 +217,39 @@ export default function SerasaReportCreateForm(props) {
     setDocumentNumber(initialValues.documentNumber);
     setPipefyId(initialValues.pipefyId);
     setStatus(initialValues.status);
-    setSerasaPartnerReports(initialValues.SerasaPartnerReports);
-    setCurrentSerasaPartnerReportsValue(undefined);
-    setCurrentSerasaPartnerReportsDisplayValue("");
+    setFilePath(initialValues.filePath);
+    setSerasaReport(initialValues.SerasaReport);
+    setCurrentSerasaReportValue(undefined);
+    setCurrentSerasaReportDisplayValue("");
     setErrors({});
   };
-  const [
-    currentSerasaPartnerReportsDisplayValue,
-    setCurrentSerasaPartnerReportsDisplayValue,
-  ] = React.useState("");
-  const [
-    currentSerasaPartnerReportsValue,
-    setCurrentSerasaPartnerReportsValue,
-  ] = React.useState(undefined);
-  const SerasaPartnerReportsRef = React.createRef();
+  const [currentSerasaReportDisplayValue, setCurrentSerasaReportDisplayValue] =
+    React.useState("");
+  const [currentSerasaReportValue, setCurrentSerasaReportValue] =
+    React.useState(undefined);
+  const SerasaReportRef = React.createRef();
   const getIDValue = {
-    SerasaPartnerReports: (r) => JSON.stringify({ id: r?.id }),
+    SerasaReport: (r) => JSON.stringify({ id: r?.id }),
   };
-  const SerasaPartnerReportsIdSet = new Set(
-    Array.isArray(SerasaPartnerReports)
-      ? SerasaPartnerReports.map((r) => getIDValue.SerasaPartnerReports?.(r))
-      : getIDValue.SerasaPartnerReports?.(SerasaPartnerReports)
+  const SerasaReportIdSet = new Set(
+    Array.isArray(SerasaReport)
+      ? SerasaReport.map((r) => getIDValue.SerasaReport?.(r))
+      : getIDValue.SerasaReport?.(SerasaReport)
   );
-  const serasaPartnerReportRecords = useDataStoreBinding({
+  const serasaReportRecords = useDataStoreBinding({
     type: "collection",
-    model: SerasaPartnerReport,
+    model: SerasaReport0,
   }).items;
   const getDisplayValue = {
-    SerasaPartnerReports: (r) => `${r?.type ? r?.type + " - " : ""}${r?.id}`,
+    SerasaReport: (r) => `${r?.type ? r?.type + " - " : ""}${r?.id}`,
   };
   const validations = {
     type: [],
-    documentNumber: [{ type: "Required" }],
+    documentNumber: [],
     pipefyId: [],
     status: [],
-    SerasaPartnerReports: [],
+    filePath: [],
+    SerasaReport: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -283,7 +281,8 @@ export default function SerasaReportCreateForm(props) {
           documentNumber,
           pipefyId,
           status,
-          SerasaPartnerReports,
+          filePath,
+          SerasaReport,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -321,29 +320,7 @@ export default function SerasaReportCreateForm(props) {
               modelFields[key] = null;
             }
           });
-          const modelFieldsToSave = {
-            type: modelFields.type,
-            documentNumber: modelFields.documentNumber,
-            pipefyId: modelFields.pipefyId,
-            status: modelFields.status,
-          };
-          const serasaReport = await DataStore.save(
-            new SerasaReport(modelFieldsToSave)
-          );
-          const promises = [];
-          promises.push(
-            ...SerasaPartnerReports.reduce((promises, original) => {
-              promises.push(
-                DataStore.save(
-                  SerasaPartnerReport.copyOf(original, (updated) => {
-                    updated.SerasaReport = serasaReport;
-                  })
-                )
-              );
-              return promises;
-            }, [])
-          );
-          await Promise.all(promises);
+          await DataStore.save(new SerasaPartnerReport(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
           }
@@ -356,14 +333,14 @@ export default function SerasaReportCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "SerasaReportCreateForm")}
+      {...getOverrideProps(overrides, "SerasaPartnerReportCreateForm")}
       {...rest}
     >
-      <RadioGroupField
+      <SelectField
         label="Type"
-        name="type"
-        isReadOnly={false}
-        isRequired={false}
+        placeholder="Please select an option"
+        isDisabled={false}
+        value={type}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -372,7 +349,8 @@ export default function SerasaReportCreateForm(props) {
               documentNumber,
               pipefyId,
               status,
-              SerasaPartnerReports,
+              filePath,
+              SerasaReport,
             };
             const result = onChange(modelFields);
             value = result?.type ?? value;
@@ -387,20 +365,20 @@ export default function SerasaReportCreateForm(props) {
         hasError={errors.type?.hasError}
         {...getOverrideProps(overrides, "type")}
       >
-        <Radio
+        <option
           children="Pj"
           value="PJ"
-          {...getOverrideProps(overrides, "typeRadio0")}
-        ></Radio>
-        <Radio
+          {...getOverrideProps(overrides, "typeoption0")}
+        ></option>
+        <option
           children="Pf"
           value="PF"
-          {...getOverrideProps(overrides, "typeRadio1")}
-        ></Radio>
-      </RadioGroupField>
+          {...getOverrideProps(overrides, "typeoption1")}
+        ></option>
+      </SelectField>
       <TextField
         label="Document number"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={documentNumber}
         onChange={(e) => {
@@ -411,7 +389,8 @@ export default function SerasaReportCreateForm(props) {
               documentNumber: value,
               pipefyId,
               status,
-              SerasaPartnerReports,
+              filePath,
+              SerasaReport,
             };
             const result = onChange(modelFields);
             value = result?.documentNumber ?? value;
@@ -439,7 +418,8 @@ export default function SerasaReportCreateForm(props) {
               documentNumber,
               pipefyId: value,
               status,
-              SerasaPartnerReports,
+              filePath,
+              SerasaReport,
             };
             const result = onChange(modelFields);
             value = result?.pipefyId ?? value;
@@ -456,7 +436,7 @@ export default function SerasaReportCreateForm(props) {
       ></TextField>
       <SelectField
         label="Status"
-        placeholder="Processing"
+        placeholder="Please select an option"
         isDisabled={false}
         value={status}
         onChange={(e) => {
@@ -467,7 +447,8 @@ export default function SerasaReportCreateForm(props) {
               documentNumber,
               pipefyId,
               status: value,
-              SerasaPartnerReports,
+              filePath,
+              SerasaReport,
             };
             const result = onChange(modelFields);
             value = result?.status ?? value;
@@ -483,115 +464,125 @@ export default function SerasaReportCreateForm(props) {
         {...getOverrideProps(overrides, "status")}
       >
         <option
-          children="Processing"
-          value="PROCESSING"
+          children="Pj"
+          value="PJ"
           {...getOverrideProps(overrides, "statusoption0")}
         ></option>
         <option
-          children="Success"
-          value="SUCCESS"
+          children="Pf"
+          value="PF"
           {...getOverrideProps(overrides, "statusoption1")}
         ></option>
-        <option
-          children="Error serasa"
-          value="ERROR_SERASA"
-          {...getOverrideProps(overrides, "statusoption2")}
-        ></option>
-        <option
-          children="Error pipefy"
-          value="ERROR_PIPEFY"
-          {...getOverrideProps(overrides, "statusoption3")}
-        ></option>
       </SelectField>
-      <ArrayField
-        onChange={async (items) => {
-          let values = items;
+      <TextField
+        label="File path"
+        isRequired={false}
+        isReadOnly={false}
+        value={filePath}
+        onChange={(e) => {
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
               type,
               documentNumber,
               pipefyId,
               status,
-              SerasaPartnerReports: values,
+              filePath: value,
+              SerasaReport,
             };
             const result = onChange(modelFields);
-            values = result?.SerasaPartnerReports ?? values;
+            value = result?.filePath ?? value;
           }
-          setSerasaPartnerReports(values);
-          setCurrentSerasaPartnerReportsValue(undefined);
-          setCurrentSerasaPartnerReportsDisplayValue("");
+          if (errors.filePath?.hasError) {
+            runValidationTasks("filePath", value);
+          }
+          setFilePath(value);
         }}
-        currentFieldValue={currentSerasaPartnerReportsValue}
-        label={"Serasa partner reports"}
-        items={SerasaPartnerReports}
-        hasError={errors?.SerasaPartnerReports?.hasError}
+        onBlur={() => runValidationTasks("filePath", filePath)}
+        errorMessage={errors.filePath?.errorMessage}
+        hasError={errors.filePath?.hasError}
+        {...getOverrideProps(overrides, "filePath")}
+      ></TextField>
+      <ArrayField
+        lengthLimit={1}
+        onChange={async (items) => {
+          let value = items[0];
+          if (onChange) {
+            const modelFields = {
+              type,
+              documentNumber,
+              pipefyId,
+              status,
+              filePath,
+              SerasaReport: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.SerasaReport ?? value;
+          }
+          setSerasaReport(value);
+          setCurrentSerasaReportValue(undefined);
+          setCurrentSerasaReportDisplayValue("");
+        }}
+        currentFieldValue={currentSerasaReportValue}
+        label={"Serasa report"}
+        items={SerasaReport ? [SerasaReport] : []}
+        hasError={errors?.SerasaReport?.hasError}
         runValidationTasks={async () =>
-          await runValidationTasks(
-            "SerasaPartnerReports",
-            currentSerasaPartnerReportsValue
-          )
+          await runValidationTasks("SerasaReport", currentSerasaReportValue)
         }
-        errorMessage={errors?.SerasaPartnerReports?.errorMessage}
-        getBadgeText={getDisplayValue.SerasaPartnerReports}
+        errorMessage={errors?.SerasaReport?.errorMessage}
+        getBadgeText={getDisplayValue.SerasaReport}
         setFieldValue={(model) => {
-          setCurrentSerasaPartnerReportsDisplayValue(
-            model ? getDisplayValue.SerasaPartnerReports(model) : ""
+          setCurrentSerasaReportDisplayValue(
+            model ? getDisplayValue.SerasaReport(model) : ""
           );
-          setCurrentSerasaPartnerReportsValue(model);
+          setCurrentSerasaReportValue(model);
         }}
-        inputFieldRef={SerasaPartnerReportsRef}
+        inputFieldRef={SerasaReportRef}
         defaultFieldValue={""}
       >
         <Autocomplete
-          label="Serasa partner reports"
+          label="Serasa report"
           isRequired={false}
           isReadOnly={false}
-          placeholder="Search SerasaPartnerReport"
-          value={currentSerasaPartnerReportsDisplayValue}
-          options={serasaPartnerReportRecords
-            .filter(
-              (r) =>
-                !SerasaPartnerReportsIdSet.has(
-                  getIDValue.SerasaPartnerReports?.(r)
-                )
-            )
+          placeholder="Search SerasaReport"
+          value={currentSerasaReportDisplayValue}
+          options={serasaReportRecords
+            .filter((r) => !SerasaReportIdSet.has(getIDValue.SerasaReport?.(r)))
             .map((r) => ({
-              id: getIDValue.SerasaPartnerReports?.(r),
-              label: getDisplayValue.SerasaPartnerReports?.(r),
+              id: getIDValue.SerasaReport?.(r),
+              label: getDisplayValue.SerasaReport?.(r),
             }))}
           onSelect={({ id, label }) => {
-            setCurrentSerasaPartnerReportsValue(
-              serasaPartnerReportRecords.find((r) =>
+            setCurrentSerasaReportValue(
+              serasaReportRecords.find((r) =>
                 Object.entries(JSON.parse(id)).every(
                   ([key, value]) => r[key] === value
                 )
               )
             );
-            setCurrentSerasaPartnerReportsDisplayValue(label);
-            runValidationTasks("SerasaPartnerReports", label);
+            setCurrentSerasaReportDisplayValue(label);
+            runValidationTasks("SerasaReport", label);
           }}
           onClear={() => {
-            setCurrentSerasaPartnerReportsDisplayValue("");
+            setCurrentSerasaReportDisplayValue("");
           }}
           onChange={(e) => {
             let { value } = e.target;
-            if (errors.SerasaPartnerReports?.hasError) {
-              runValidationTasks("SerasaPartnerReports", value);
+            if (errors.SerasaReport?.hasError) {
+              runValidationTasks("SerasaReport", value);
             }
-            setCurrentSerasaPartnerReportsDisplayValue(value);
-            setCurrentSerasaPartnerReportsValue(undefined);
+            setCurrentSerasaReportDisplayValue(value);
+            setCurrentSerasaReportValue(undefined);
           }}
           onBlur={() =>
-            runValidationTasks(
-              "SerasaPartnerReports",
-              currentSerasaPartnerReportsDisplayValue
-            )
+            runValidationTasks("SerasaReport", currentSerasaReportDisplayValue)
           }
-          errorMessage={errors.SerasaPartnerReports?.errorMessage}
-          hasError={errors.SerasaPartnerReports?.hasError}
-          ref={SerasaPartnerReportsRef}
+          errorMessage={errors.SerasaReport?.errorMessage}
+          hasError={errors.SerasaReport?.hasError}
+          ref={SerasaReportRef}
           labelHidden={true}
-          {...getOverrideProps(overrides, "SerasaPartnerReports")}
+          {...getOverrideProps(overrides, "SerasaReport")}
         ></Autocomplete>
       </ArrayField>
       <Flex

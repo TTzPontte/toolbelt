@@ -4,6 +4,7 @@ import useWindowSize from "../Hooks/usewindowSize";
 import { Col, Offcanvas, Row } from "react-bootstrap";
 import Logo from "../Logo/Logo";
 import { Link } from "react-router-dom";
+import navItemLink from "../NavItemLink";
 
 const Info = ({ name, fa }) => (
   <>
@@ -18,7 +19,7 @@ function getPartnerFromUrl() {
   return urlParams.get("organizationId") || "";
 }
 
-const NavItemLink = ({ name, link, fa = "", active = "" }) => {
+const NavItemLink = ({  name, link, fa = "", active = "" }) => {
   const isthirdPartyLink = link.includes("https://");
   // console.log({ isthirdPartyLink });
 
@@ -80,7 +81,7 @@ const navlinks = [
         fa: "hand-holding-usd"
       }
     ]
-  },
+  }
 ];
 
 const Menu = () => {
@@ -103,7 +104,7 @@ const Menu = () => {
     <>
       <div className="sidebar-heading  my-0">{title}</div>
       {links.map((i) => (
-        <NavItemLink {...i} />
+        <NavItemLink key={i?.name} {...i} />
       ))}
       <Divider />
     </>
@@ -111,8 +112,8 @@ const Menu = () => {
 
   return (
     <>
-      {navlinks.map((navlink) => (
-        <Menu.Section {...navlink} />
+      {navlinks.map((navlink, index) => (
+        <Menu.Section key={`$link${index}`} {...navlink} />
       ))}
     </>
   );

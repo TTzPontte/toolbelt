@@ -1,12 +1,26 @@
 {
   "api": {
     "toolbelt": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "toolbelt"
+        }
+      ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authtoolbelt"
+              }
             }
           ],
           "defaultAuthentication": {
@@ -55,6 +69,11 @@
   },
   "function": {
     "CreateSerasaReport": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "CreateSerasaReportPython": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"

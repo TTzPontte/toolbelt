@@ -5,9 +5,9 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { AutocompleteProps, GridProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { SerasaReport } from "../models";
+import { SerasaReport, SerasaPartnerReport } from "../models";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -18,12 +18,14 @@ export declare type SerasaReportUpdateFormInputValues = {
     documentNumber?: string;
     pipefyId?: string;
     status?: string;
+    SerasaPartnerReports?: SerasaPartnerReport[];
 };
 export declare type SerasaReportUpdateFormValidationValues = {
     type?: ValidationFunction<string>;
     documentNumber?: ValidationFunction<string>;
     pipefyId?: ValidationFunction<string>;
     status?: ValidationFunction<string>;
+    SerasaPartnerReports?: ValidationFunction<SerasaPartnerReport>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type SerasaReportUpdateFormOverridesProps = {
@@ -32,6 +34,7 @@ export declare type SerasaReportUpdateFormOverridesProps = {
     documentNumber?: PrimitiveOverrideProps<TextFieldProps>;
     pipefyId?: PrimitiveOverrideProps<TextFieldProps>;
     status?: PrimitiveOverrideProps<SelectFieldProps>;
+    SerasaPartnerReports?: PrimitiveOverrideProps<AutocompleteProps>;
 } & EscapeHatchProps;
 export declare type SerasaReportUpdateFormProps = React.PropsWithChildren<{
     overrides?: SerasaReportUpdateFormOverridesProps | undefined | null;

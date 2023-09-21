@@ -1,6 +1,177 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateSerasaPartnerReport = /* GraphQL */ `
+  subscription OnCreateSerasaPartnerReport(
+    $filter: ModelSubscriptionSerasaPartnerReportFilterInput
+    $owner: String
+  ) {
+    onCreateSerasaPartnerReport(filter: $filter, owner: $owner) {
+      id
+      type
+      documentNumber
+      pipefyId
+      status
+      filePath
+      serasareportID
+      SerasaReport {
+        id
+        type
+        documentNumber
+        pipefyId
+        status
+        SerasaPartnerReports {
+          items {
+            id
+            type
+            documentNumber
+            pipefyId
+            status
+            filePath
+            serasareportID
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            owner
+            __typename
+          }
+          nextToken
+          startedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateSerasaPartnerReport = /* GraphQL */ `
+  subscription OnUpdateSerasaPartnerReport(
+    $filter: ModelSubscriptionSerasaPartnerReportFilterInput
+    $owner: String
+  ) {
+    onUpdateSerasaPartnerReport(filter: $filter, owner: $owner) {
+      id
+      type
+      documentNumber
+      pipefyId
+      status
+      filePath
+      serasareportID
+      SerasaReport {
+        id
+        type
+        documentNumber
+        pipefyId
+        status
+        SerasaPartnerReports {
+          items {
+            id
+            type
+            documentNumber
+            pipefyId
+            status
+            filePath
+            serasareportID
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            owner
+            __typename
+          }
+          nextToken
+          startedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteSerasaPartnerReport = /* GraphQL */ `
+  subscription OnDeleteSerasaPartnerReport(
+    $filter: ModelSubscriptionSerasaPartnerReportFilterInput
+    $owner: String
+  ) {
+    onDeleteSerasaPartnerReport(filter: $filter, owner: $owner) {
+      id
+      type
+      documentNumber
+      pipefyId
+      status
+      filePath
+      serasareportID
+      SerasaReport {
+        id
+        type
+        documentNumber
+        pipefyId
+        status
+        SerasaPartnerReports {
+          items {
+            id
+            type
+            documentNumber
+            pipefyId
+            status
+            filePath
+            serasareportID
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            owner
+            __typename
+          }
+          nextToken
+          startedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
 export const onCreateSerasaReport = /* GraphQL */ `
   subscription OnCreateSerasaReport(
     $filter: ModelSubscriptionSerasaReportFilterInput
@@ -11,6 +182,40 @@ export const onCreateSerasaReport = /* GraphQL */ `
       documentNumber
       pipefyId
       status
+      SerasaPartnerReports {
+        items {
+          id
+          type
+          documentNumber
+          pipefyId
+          status
+          filePath
+          serasareportID
+          SerasaReport {
+            id
+            type
+            documentNumber
+            pipefyId
+            status
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+          __typename
+        }
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -30,6 +235,40 @@ export const onUpdateSerasaReport = /* GraphQL */ `
       documentNumber
       pipefyId
       status
+      SerasaPartnerReports {
+        items {
+          id
+          type
+          documentNumber
+          pipefyId
+          status
+          filePath
+          serasareportID
+          SerasaReport {
+            id
+            type
+            documentNumber
+            pipefyId
+            status
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+          __typename
+        }
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -49,6 +288,40 @@ export const onDeleteSerasaReport = /* GraphQL */ `
       documentNumber
       pipefyId
       status
+      SerasaPartnerReports {
+        items {
+          id
+          type
+          documentNumber
+          pipefyId
+          status
+          filePath
+          serasareportID
+          SerasaReport {
+            id
+            type
+            documentNumber
+            pipefyId
+            status
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          owner
+          __typename
+        }
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version

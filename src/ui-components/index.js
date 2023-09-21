@@ -32,6 +32,8 @@ export { default as ProductCard } from "./ProductCard";
 export { default as ProductDetail } from "./ProductDetail";
 export { default as ProfileCard } from "./ProfileCard";
 export { default as ReviewCard } from "./ReviewCard";
+export { default as SerasaPartnerReportCreateForm } from "./SerasaPartnerReportCreateForm";
+export { default as SerasaPartnerReportUpdateForm } from "./SerasaPartnerReportUpdateForm";
 export { default as SerasaReportCreateForm } from "./SerasaReportCreateForm";
 export { default as SerasaReportUpdateForm } from "./SerasaReportUpdateForm";
 export { default as SideBar } from "./SideBar";

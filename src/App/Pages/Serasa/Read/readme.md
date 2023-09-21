@@ -1,3 +1,43 @@
+
+# schema.graphql
+```graphql
+type SerasaPartnerReport @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  type: EntityType
+  documentNumber: String
+  pipefyId: String
+  status: EntityType
+  filePath: String
+  serasareportID: ID! @index(name: "bySerasaReport")
+  SerasaReport: SerasaReport @belongsTo(fields: ["serasareportID"])
+}
+
+enum EntityType {
+  PJ
+  PF
+}
+
+enum ReportStatus {
+  PROCESSING
+  SUCCESS
+  ERROR_SERASA
+  ERROR_PIPEFY
+}
+
+type SerasaReport @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  type: EntityType
+  documentNumber: String!
+  pipefyId: String
+  status: ReportStatus
+  SerasaPartnerReports: [SerasaPartnerReport] @hasMany(indexName: "bySerasaReport", fields: ["id"])
+}
+ 
+```
+
+# ReadPartnerReport.jsx
+
+```jsx
 import React, { useState } from "react";
 import { useForm, Controller, useFieldArray } from "react-hook-form";
 import { Button, Card, Container, Table } from "react-bootstrap";
@@ -6,8 +46,8 @@ import {
   updateReport,
   uploadToStorage,
   getEnvironment, invokeLambda
-} from "../hepers";
-import { ReportStatus } from "../../../../../models";
+} from "../Create/hepers";
+import { ReportStatus } from "../../../../models";
 
 const PartnerRow = ({ partner, control, index }) => {
   return (
@@ -92,44 +132,46 @@ const ReadPartnerReport = ({ partners }) => {
   };
 
   return (
-      <Container>
-        {
-            partners && partners.length >0 &&( <Card>
-              <Card.Header>
-                <h2>Partner Report</h2>
-              </Card.Header>
-              <Card.Body>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <Table responsive striped bordered hover>
-                    <thead>
-                    <tr>
-                      <th>Gerar Serasa</th>
-                      <th>CNPJ</th>
-                      <th>% Participação</th>
-                      <th>Data da atualização do status</th>
-                      <th>participationInitialDate</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {fields.map((partner, index) => (
-                        <PartnerRow
-                            key={partner.id}
-                            partner={partner}
-                            control={control}
-                            index={index}
-                        />
-                    ))}
-                    </tbody>
-                  </Table>
-                  <Button variant="primary" type="submit" disabled={isLoading}>
-                    {isLoading ? "Loading..." : "Consultar Sócios"}
-                  </Button>
-                </form>
-              </Card.Body>
-            </Card>)
-        }
-      </Container>
+    <Container>
+      {
+       partners && partners.length >0 &&( <Card>
+          <Card.Header>
+            <h2>Partner Report</h2>
+          </Card.Header>
+          <Card.Body>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Table responsive striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Gerar Serasa</th>
+                    <th>CNPJ</th>
+                    <th>% Participação</th>
+                    <th>Data da atualização do status</th>
+                    <th>participationInitialDate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {fields.map((partner, index) => (
+                    <PartnerRow
+                      key={partner.id}
+                      partner={partner}
+                      control={control}
+                      index={index}
+                    />
+                  ))}
+                </tbody>
+              </Table>
+              <Button variant="primary" type="submit" disabled={isLoading}>
+                {isLoading ? "Loading..." : "Consultar Sócios"}
+              </Button>
+            </form>
+          </Card.Body>
+        </Card>)
+      }
+    </Container>
   );
 };
 
 export default ReadPartnerReport;
+
+```
