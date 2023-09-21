@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card, Col, Container } from "react-bootstrap";
 import Results from "../../../../Containers/Searches/Result/Results";
-import ReadPartnerReport from "./ReadPartnerReport";
+import ReadPartnerReport from "../../Read/ReadPartnerReport";
 
 const ReadReportResults = ({
   response,

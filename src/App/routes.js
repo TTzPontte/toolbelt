@@ -1,7 +1,5 @@
 import HomePage from "./Pages/HomePage/HomePage";
 import Test from "./Pages/test/Test";
-import New from "./Pages/New/New";
-import SerasaCreditScoreSearch from "./Pages/Serasa/SerasaCreditScoreSearch";
 import Create from "./Pages/Serasa/Create/SerasaReportPage";
 import LambdaTeste from "./Pages/lambdaTeste/LambdaTeste";
 import Home from "./Pages/Home/Home";
@@ -11,7 +9,7 @@ import List from "./Pages/Serasa/List/List";
 export const routes = [
   {
     path: "/",
-    element: <Home />,
+    element: <HomePage />,
     name: "Home",
     fa: "home"
   },
@@ -20,10 +18,6 @@ export const routes = [
   {
     path: "/test",
     element: <Test />
-  },
-  {
-    path: "/new",
-    element: <New />
   },
   {
     path: "/serasa",
