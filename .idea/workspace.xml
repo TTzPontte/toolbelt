@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/MoodalComponent/ModalComponent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/MoodalComponent/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/MoodalComponent/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/New.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/New__.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/ReportForm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/Test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/convertToPDF.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/New/styles.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/SerasaReportForm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
