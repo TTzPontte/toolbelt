@@ -25,9 +25,9 @@ const ReadReportResults = ({
         </Card>
         <Card>
           {/*<Results list={partners} pfOuPj="PJ" />*/}
-          {partners && partners.length > 0 && (
-            <ReadPartnerReport partners={partners} pfOuPj="PJ" />
-          )}
+          {/*{partners && partners.length > 0 && (*/}
+          {/*  <ReadPartnerReport partners={partners} pfOuPj="PJ" />*/}
+          {/*)}*/}
         </Card>
       </Col>
     </Container>

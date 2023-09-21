@@ -14,7 +14,7 @@ import {
   generateDDPF,
   generateDDPJ
 } from "../../../servicer/novoGeradorPDF/main";
-import { ReportStatus,EntityType, SerasaPartnerReport } from "../../../../models";
+import { ReportStatus } from "../../../../models";
 import Radio from "../../../components/Form/Radio";
 import ReadReportResults from "./new/ReadReportResults";
 import {
@@ -25,7 +25,6 @@ import {
   updateReport,
   uploadToStorage
 } from "./hepers";
-import { DataStore } from "aws-amplify";
 
 const ReportForm = ({ onSubmit }) => {
   const methods = useForm();
@@ -89,84 +88,6 @@ const ReportForm = ({ onSubmit }) => {
     </FormProvider>
   );
 };
-const createPayload = (data) => {
-  return {
-    documentNumber: data.documentNumber,
-    type: data.type,
-    pipefyId: data.pipefyId,
-    ambiente: getEnvironment()
-  };
-};
-const formatDocumentNumber = (documentNumber) => {
-  return documentNumber.replace(/\D/g, "");
-};
-const fetchSerasa = async (payload) => {
-  const result = await invokeLambda("CreateSerasaReport-staging", payload);
-  return JSON.parse(result.Payload);
-};
-
-const handleSerasaSuccess = async (
-  response,
-  reportId,
-    pipefyId,
-  personType,
-  setReports,
-  setResponse,
-  setPartners
-) => {
-  if (response.statusCode === 200) {
-    await updateReport(reportId, ReportStatus.SUCCESS);
-    setResponse(response.response);
-    await uploadToStorage(response.response, reportId, "fileName");
-    setReports(response.response.reports);
-    handlePartners(response, personType, setPartners,  pipefyId,);
-  } else {
-    throw new Error(`Serasa Error: ${response.errorMessage}`);
-  }
-};
-
-const handlePartners = async (response, personType, setPartners, reportId,  pipefyId,) => {
-  let partnersList = [];
-
-  if (
-    personType === "PJ" &&
-    response.response.optionalFeatures?.partner?.PartnerResponse?.results
-  ) {
-    partnersList =
-      response.response.optionalFeatures.partner.PartnerResponse.results.filter(
-        (partner) => partner.participationPercentage > 0
-      );
-  } else if (
-    personType === "PF" &&
-    response.response.optionalFeatures?.partner?.partnershipResponse
-  ) {
-    partnersList =
-      response.response.optionalFeatures.partner.partnershipResponse.filter(
-        (partner) => partner.participationPercentage > 0
-      );
-  }
-
-  // Create a SerasaPartnerReport for each partner
-  for (const partner of partnersList) {
-    try {
-      await DataStore.save(
-        new SerasaPartnerReport({
-          type: personType,
-          documentNumber: partner.documentNumber, // Assuming partner has a documentNumber
-          pipefyId: pipefyId, // Assuming partner has a pipefyId
-          status: EntityType.PJ, // Update this based on your logic
-          // filePath: "path-to-file", // Update this based on your logic
-          serasareportID: reportId // SerasaReport: /* Provide a SerasaReport instance here if needed */
-        })
-      );
-    } catch (error) {
-      console.error("Error creating SerasaPartnerReport:", error);
-    }
-  }
-
-  setPartners(partnersList);
-};
-
 const CreateReportPage = () => {
   const [loading, setLoading] = useState(false);
   const [reports, setReports] = useState([]);
@@ -175,35 +96,77 @@ const CreateReportPage = () => {
   const [personType, setPersonType] = useState("");
 
   const onSubmit = async (data) => {
-    data.documentNumber = formatDocumentNumber(data.documentNumber);
-    const payload = createPayload(data);
+    data.documentNumber = data.documentNumber.replace(/\D/g, "");
+    const ambiente = getEnvironment();
+    const payload = {
+      documentNumber: data.documentNumber,
+      type: data.type,
+      pipefyId: data.pipefyId,
+      ambiente
+    };
 
     setLoading(true);
 
+    //  create a new report
     const reportItem = await createReport(payload);
+    const reportId = reportItem.id;
 
     try {
-      const requestSerasa = await fetchSerasa(payload);
-      handleSerasaSuccess(
-        requestSerasa,
-        reportItem.id,
-          reportItem.pipefyId,
-        data.personType,
-        setReports,
-        setResponse,
-        setPartners
-      );
+      const result = await invokeLambda("CreateSerasaReport-staging", payload);
+      const requestSerasa = JSON.parse(result.Payload);
+      const statusRequest = requestSerasa.statusCode;
+
+      if (statusRequest === 200) {
+        const updateItem = await updateReport(reportItem.id, ReportStatus.SUCCESS);
+        const response = JSON.parse(result.Payload);
+        setResponse(response.response);
+        await uploadToStorage(response, reportId, "fileName");
+        setReports(response.response.reports);
+
+        if (data.personType === "PJ") {
+          if (
+            response.response.optionalFeatures?.partner?.PartnerResponse
+              ?.results !== undefined
+          ) {
+            const filteredPartners =
+              response.response.optionalFeatures.partner.PartnerResponse.results.filter(
+                (partner) => partner.participationPercentage > 0
+              );
+            setPartners(filteredPartners);
+          } else {
+            await updateReport(reportItem.id, ReportStatus.ERROR_SERASA);
+          }
+        } else if (data.personType === "PF") {
+          if (
+            response.response.optionalFeatures?.partner?.partnershipResponse !==
+            undefined
+          ) {
+            const filteredPartners =
+              response.response.optionalFeatures.partner.partnershipResponse.filter(
+                (partner) => partner.participationPercentage > 0
+              );
+            setPartners(filteredPartners);
+          } else {
+            await updateReport(reportItem.id, ReportStatus.ERROR_SERASA);
+          }
+        }
+      } else {
+        console.log({ requestSerasa });
+        alert(
+          "Ocorreu um erro ao consultar o Serasa: \n" +
+            result.Payload.errorMessage +
+            "\nCódigo do erro: " +
+            String(statusRequest)
+        );
+        await updateReport(reportItem.id, ReportStatus.ERROR_SERASA);
+      }
+      setPersonType(data.personType);
     } catch (error) {
-      await handleSerasaError(reportItem.id, error);
+      await updateReport(reportItem.id, ReportStatus.ERROR_SERASA);
+      console.log("Ocorreu um erro na requisição:", error);
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleSerasaError = async (reportId, error) => {
-    await updateReport(reportId, ReportStatus.ERROR_SERASA);
-    console.error("Error during Serasa request:", error);
-    alert(`Error during Serasa request: ${error.message}`);
   };
 
   const handleDownloadPDF = () => {

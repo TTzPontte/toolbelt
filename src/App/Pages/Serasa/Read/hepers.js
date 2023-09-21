@@ -1,7 +1,7 @@
 import { Auth, Storage } from "aws-amplify";
 import Lambda from "aws-sdk/clients/lambda";
 import { DataStore } from "@aws-amplify/datastore";
-import { EntityType, ReportStatus, SerasaReport } from "../../../../models";
+import {EntityType, ReportStatus, SerasaPartnerReport, SerasaReport} from "../../../../models";
 
 export const personTypeOptions = [
   { label: "PF", value: "PF" },
@@ -30,6 +30,19 @@ export const createReport = async (payload) => {
       pipefyId: payload.idPipefy,
       type: EntityType.PF,
       status: ReportStatus.PROCESSING
+    })
+  );
+  console.log({ item });
+  return item;
+};
+export const createPartnerReport = async (payload) => {
+  const item = await DataStore.save(
+    new SerasaPartnerReport({
+      documentNumber: payload.numDocument,
+      pipefyId: payload.idPipefy,
+      type: EntityType.PF,
+      status: ReportStatus.PROCESSING,
+        SerasaReportId:payload.hoastId
     })
   );
   console.log({ item });

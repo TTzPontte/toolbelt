@@ -112,7 +112,7 @@ const Read = () => {
               </Card>
               <Card>
                 {reports.length > 0 && (
-                  <ReadPartnerReport id={id} partners={partners} pfOuPj="PJ" />
+                  <ReadPartnerReport id={id} model={model} partners={partners} pfOuPj="PJ" />
                 )}
               </Card>
             </Col>
