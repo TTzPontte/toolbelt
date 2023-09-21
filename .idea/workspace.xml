@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a67a2eb0a5f067a56fc3773e2cac305955057296" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport2.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +101,7 @@
       <workItem from="1694529631239" duration="4140000" />
       <workItem from="1694555528679" duration="2929000" />
       <workItem from="1694784902120" duration="16737000" />
-      <workItem from="1695159576197" duration="37100000" />
+      <workItem from="1695159576197" duration="37457000" />
     </task>
     <servers />
   </component>

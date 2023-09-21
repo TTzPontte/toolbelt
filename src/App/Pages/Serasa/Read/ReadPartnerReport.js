@@ -45,7 +45,7 @@ const ReadPartnerReport = ({ partners }) => {
     control,
     name: "partners",
   });
-
+  console.log({partners})
   const onSubmit = async (data) => {
     setIsLoading(true);
     const selectedPartners = data.partners.filter(
@@ -92,8 +92,9 @@ const ReadPartnerReport = ({ partners }) => {
   };
 
   return (
-      <Container>
-        <Card>
+    <Container>
+      {
+       partners && partners.length >0 &&( <Card>
           <Card.Header>
             <h2>Partner Report</h2>
           </Card.Header>
@@ -101,23 +102,23 @@ const ReadPartnerReport = ({ partners }) => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <Table responsive striped bordered hover>
                 <thead>
-                <tr>
-                  <th>Gerar Serasa</th>
-                  <th>CNPJ</th>
-                  <th>% Participação</th>
-                  <th>Data da atualização do status</th>
-                  <th>participationInitialDate</th>
-                </tr>
+                  <tr>
+                    <th>Gerar Serasa</th>
+                    <th>CNPJ</th>
+                    <th>% Participação</th>
+                    <th>Data da atualização do status</th>
+                    <th>participationInitialDate</th>
+                  </tr>
                 </thead>
                 <tbody>
-                {fields.map((partner, index) => (
+                  {fields.map((partner, index) => (
                     <PartnerRow
-                        key={partner.id}
-                        partner={partner}
-                        control={control}
-                        index={index}
+                      key={partner.id}
+                      partner={partner}
+                      control={control}
+                      index={index}
                     />
-                ))}
+                  ))}
                 </tbody>
               </Table>
               <Button variant="primary" type="submit" disabled={isLoading}>
@@ -125,8 +126,9 @@ const ReadPartnerReport = ({ partners }) => {
               </Button>
             </form>
           </Card.Body>
-        </Card>
-      </Container>
+        </Card>)
+      }
+    </Container>
   );
 };
 
