@@ -607,6 +607,12 @@ function generateReportContentPF(report, optional) {
     }
   };
 
+
+  const hasNegativeData = [ {
+    style: "contentPDF",
+    text: "\nDados de Negativação"
+  }]
+
   const returnArr = [
     topo,
     { style: "contentPDF", text: "\nDados de Identificação" },
@@ -616,10 +622,7 @@ function generateReportContentPF(report, optional) {
       text: "\nDados de Score"
     },
     scoreTest,
-    {
-      style: "contentPDF",
-      text: "\nDados de Negativação"
-    },
+
     textPartner,
     partnerInfoTable
   ];

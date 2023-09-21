@@ -44,7 +44,8 @@ const ReportForm = ({ onSubmit }) => {
           control={control}
         />
         <Row>
-          <Col sm={4}>
+          {/*<Col sm={4}>*/}
+          <Col>
             <FormGroup controlId="documentNumber">
               <Form.Label>Número do Documento:</Form.Label>
               <Controller
@@ -186,9 +187,9 @@ const CreateReportPage = () => {
 
   return (
     <Container>
-      <h1>Create Serasa Report</h1>
-      <Row>
-        <Col>
+      <h1>Consulta Serasa</h1>
+      <Row className={"d-flex justify-content-center"}>
+        <Col sm={6}>
           <Card>
             <Card.Body>
               <ReportForm onSubmit={onSubmit}/>

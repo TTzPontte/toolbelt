@@ -66,53 +66,21 @@ const navlinks = [
     ]
   },
   {
-    title: "Simulação",
+    title: "Serasa",
     links: [
       {
-        link: "/orgs/simulation/HE",
-        name: "Simulação H.E.",
+        link: "/serasa/new",
+        name: "Nova Consulta",
         fa: "landmark",
         clsx: "my-0"
       },
       {
-        link: "/orgs/simulation/FI",
-        name: "Simulação Finan.",
+        link: "/serasa",
+        name: "Relatórios",
         fa: "hand-holding-usd"
       }
     ]
   },
-  {
-    title: "Cadastro",
-    links: [
-      {
-        link: "/orgs/leads/HomeEquity",
-        name: "Home Equity",
-        fa: "landmark",
-        clsx: "my-0"
-      },
-      {
-        link: "/orgs/leads/Financing",
-        name: "Financiamento",
-        fa: "hand-holding-usd"
-      }
-    ]
-  },
-  {
-    title: "Biblioteca",
-    links: [
-      {
-        link: "/orgs/blog/material-apoio",
-        name: "Materiais de Apoio",
-        fa: "building",
-        clsx: "my-0"
-      },
-      {
-        link: "https://app.pipefy.com/request-tracker/",
-        name: "Status das operações",
-        fa: "address-card"
-      }
-    ]
-  }
 ];
 
 const Menu = () => {

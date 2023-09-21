@@ -31,7 +31,5 @@ L
 src/App/Pages/New/service.js,8/4/846113a6aaa79866f4fb6d17547f0f9129cdd2aa
 ^
 .src/App/components/Sidebar/OffcanvasSidebar.js,e/f/ef12143dbc2f814157bc7024ee7e832f102b1158
-U
-%src/App/components/Sidebar/Sidebar.js,a/6/a67a2eb0a5f067a56fc3773e2cac305955057296
 V
 &src/App/Pages/lambdaTeste/useLambda.js,8/2/828641054e13c188e4f802d221626c282c062467

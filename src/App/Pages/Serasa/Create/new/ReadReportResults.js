@@ -12,8 +12,8 @@ const ReadReportResults = ({
 }) => {
   return (
     <Container>
-      <h1>Create Serasa Report</h1>
-      <Col>
+      {reports && reports.length >0&&(
+          <Col>
         <Card>
           <Card.Body>
             {reports && reports.length > 0 && <Results list={reports} />}
@@ -29,7 +29,7 @@ const ReadReportResults = ({
             <ReadPartnerReport partners={partners} pfOuPj="PJ" />
           )}
         </Card>
-      </Col>
+      </Col>)}
     </Container>
   );
 };

@@ -5,25 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/hepers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/t.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/tester.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf/helpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf/pdfService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/9/a96691ae6c241bfab03e7c87dfba91879e2d3064" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bb8dc06e0a0a1ca10f9854405f51197b421ada93" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d120640b61716b42b893ef6a5a397499ca8adde4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a67a2eb0a5f067a56fc3773e2cac305955057296" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadPartnerReport.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/lambdaTeste/LambdaTeste.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/lambdaTeste/LambdaTeste.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/components/Sidebar/Sidebar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +107,7 @@
       <workItem from="1694529631239" duration="4140000" />
       <workItem from="1694555528679" duration="2929000" />
       <workItem from="1694784902120" duration="16737000" />
-      <workItem from="1695159576197" duration="30289000" />
+      <workItem from="1695159576197" duration="37100000" />
     </task>
     <servers />
   </component>
