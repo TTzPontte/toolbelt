@@ -25,7 +25,7 @@ type EagerSerasaPartnerReport = {
   readonly type?: EntityType | keyof typeof EntityType | null;
   readonly documentNumber?: string | null;
   readonly pipefyId?: string | null;
-  readonly status?: EntityType | keyof typeof EntityType | null;
+  readonly status?: ReportStatus | keyof typeof ReportStatus | null;
   readonly filePath?: string | null;
   readonly serasareportID: string;
   readonly SerasaReport?: SerasaReport | null;
@@ -42,7 +42,7 @@ type LazySerasaPartnerReport = {
   readonly type?: EntityType | keyof typeof EntityType | null;
   readonly documentNumber?: string | null;
   readonly pipefyId?: string | null;
-  readonly status?: EntityType | keyof typeof EntityType | null;
+  readonly status?: ReportStatus | keyof typeof ReportStatus | null;
   readonly filePath?: string | null;
   readonly serasareportID: string;
   readonly SerasaReport: AsyncItem<SerasaReport | undefined>;

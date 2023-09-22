@@ -5,15 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/CreatePartnerButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/readme2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/api/toolbelt/parameters.json" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/api/toolbelt/parameters.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/api/toolbelt/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/api/toolbelt/schema.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/backend-config.json" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/backend-config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReport/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReport/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReport/src/index2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReportPython/CreateSerasaReportPython-cloudformation-template.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReportPython/Pipfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReportPython/amplify.state" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReportPython/custom-policies.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReportPython/function-parameters.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReportPython/src/event.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReportPython/src/index.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReportPython/src/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/backend/types/amplify-dependent-resources-ref.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/backend/types/amplify-dependent-resources-ref.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplify/team-provider-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/amplify/team-provider-info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadReportResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/hepers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/hepers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui-components/SerasaPartnerReportCreateForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/SerasaPartnerReportCreateForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui-components/SerasaPartnerReportUpdateForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui-components/SerasaPartnerReportUpdateForm.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +54,7 @@
     "git-widget-placeholder": "staging",
     "javascript.nodejs.core.library.configured.version": "18.13.0",
     "javascript.nodejs.core.library.typings.version": "18.13.0",
-    "last_opened_file_path": "/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/src/App/Pages/Serasa/Read",
+    "last_opened_file_path": "/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/amplify/backend/function/CreateReport/src",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -57,11 +69,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/amplify/backend/function/CreateReport/src" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Read" />
       <recent name="$PROJECT_DIR$/amplify/backend/function/CreateSerasaReport/src" />
       <recent name="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Create" />
-      <recent name="$PROJECT_DIR$/src/App/Pages/Serasa" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Read" />
@@ -121,7 +133,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js</url>
           <line>48</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

@@ -37,7 +37,7 @@ export const schema = {
                     "name": "status",
                     "isArray": false,
                     "type": {
-                        "enum": "EntityType"
+                        "enum": "ReportStatus"
                     },
                     "isRequired": false,
                     "attributes": []
@@ -255,5 +255,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "bf08c8a8184518fbb84a223d9cd20f66"
+    "version": "d82681abf410ff70d3c57f768ba6e40c"
 };

@@ -464,14 +464,24 @@ export default function SerasaPartnerReportCreateForm(props) {
         {...getOverrideProps(overrides, "status")}
       >
         <option
-          children="Pj"
-          value="PJ"
+          children="Processing"
+          value="PROCESSING"
           {...getOverrideProps(overrides, "statusoption0")}
         ></option>
         <option
-          children="Pf"
-          value="PF"
+          children="Success"
+          value="SUCCESS"
           {...getOverrideProps(overrides, "statusoption1")}
+        ></option>
+        <option
+          children="Error serasa"
+          value="ERROR_SERASA"
+          {...getOverrideProps(overrides, "statusoption2")}
+        ></option>
+        <option
+          children="Error pipefy"
+          value="ERROR_PIPEFY"
+          {...getOverrideProps(overrides, "statusoption3")}
         ></option>
       </SelectField>
       <TextField

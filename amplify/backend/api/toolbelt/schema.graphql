@@ -3,7 +3,7 @@ type SerasaPartnerReport @model @auth(rules: [{allow: public}, {allow: owner}]) 
   type: EntityType
   documentNumber: String
   pipefyId: String
-  status: EntityType
+  status: ReportStatus
   filePath: String
   serasareportID: ID! @index(name: "bySerasaReport")
   SerasaReport: SerasaReport @belongsTo(fields: ["serasareportID"])
