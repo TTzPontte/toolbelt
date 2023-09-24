@@ -23,32 +23,6 @@ export const invokeLambda = async (functionName, payload) => {
     .promise();
 };
 
-export const createReport = async (payload) => {
-  const item = await DataStore.save(
-    new SerasaReport({
-      documentNumber: payload.numDocument,
-      pipefyId: payload.idPipefy,
-      type: EntityType.PF,
-      status: ReportStatus.PROCESSING
-    })
-  );
-  console.log({ item });
-  return item;
-};
-export const createPartnerReport = async (payload) => {
-  const item = await DataStore.save(
-    new SerasaPartnerReport({
-      documentNumber: payload.numDocument,
-      pipefyId: payload.idPipefy,
-      type: EntityType.PF,
-      status: ReportStatus.PROCESSING,
-        SerasaReportId:payload.hoastId
-    })
-  );
-  console.log({ item });
-  return item;
-};
-
 export const updateReport = async (id, status) => {
   const original = await DataStore.query(SerasaReport, id);
   const updatedReport = await DataStore.save(

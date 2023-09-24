@@ -13,21 +13,6 @@ import ReadPartnerReport from "./ReadPartnerReport";
 import Results from "../../../Containers/Searches/Result/Results";
 import {getReportById} from "./hepers";
 
-const getItem = async (id) => {
-  try {
-    const serasaReport = await DataStore.query(SerasaReport, id);
-
-    // Use async/await to await the Promise returned by values.then()
-    const partnerReports = await serasaReport?.SerasaPartnerReports.values;
-
-
-    // Return an object that includes both serasaReport and serasaPartnerReports
-    return { ...serasaReport, serasaPartnerReports: partnerReports };
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
-};
 const Read = () => {
   const { id } = useParams();
   const [model, setModel] = useState(null);
@@ -39,12 +24,10 @@ const Read = () => {
 
   const fetchData = async () => {
     try {
-      // const fetchedModel = await getReportById(id);
-      const fetchedModel = await getItem(id)
-      console.log({fetchedModel}); // Log the data
-
+      // const fetchedModel = await DataStore.query(SerasaReport, id);
+      const fetchedModel = await getReportById(id);
       setModel(fetchedModel);
-      setPartners(fetchedModel.serasaPartnerReports)
+      console.log(fetchedModel?.SerasaPartnerReports)
       // debugger;
       const result = await Storage.get(`serasa/${id}.json`, {
         download: true,
@@ -107,7 +90,7 @@ const Read = () => {
               <Card>
                 {/*<Card.Body>*/}
                 {reports.length > 0 && <Results list={reports} />}
-                {/*{model?.SerasaPartnerReports?.map(i=><span>{i.type}</span>)}*/}
+                {model?.SerasaPartnerReports?.map(i=><span>{i.type}</span>)}
                 {/*  <br />*/}
                 {/*  {reports.length > 0 && (*/}
                 {/*    <Button onClick={handleDownloadPDF}>*/}
@@ -117,9 +100,9 @@ const Read = () => {
                 {/*</Card.Body>*/}
               </Card>
               <Card>
-                {reports.length > 0 && (
-                  <ReadPartnerReport fileContent={fileContent} partners={partners} pfOuPj="PJ" />
-                )}
+                {/*{reports.length > 0 && (*/}
+                {/*  <ReadPartnerReport partners={partners} pfOuPj="PJ" />*/}
+                {/*)}*/}
               </Card>
             </Col>
           </Container>{" "}

@@ -18,9 +18,9 @@ const ReadReportResults = ({
           <Card.Body>
             {reports && reports.length > 0 && <Results list={reports} />}
             <br />
-            {reports.length > 0 && (
-              <Button onClick={handleDownloadPDF}>Baixar Relatório PDF</Button>
-            )}
+            {/*{reports.length > 0 && (*/}
+            {/*  <Button onClick={handleDownloadPDF}>Baixar Relatório PDF</Button>*/}
+            {/*)}*/}
           </Card.Body>
         </Card>
         <Card>

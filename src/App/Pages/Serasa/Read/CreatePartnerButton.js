@@ -1,89 +1,80 @@
-import React, { useState, useCallback } from "react";
-import {
-  EntityType,
-  ReportStatus,
-  SerasaPartnerReport
-} from "../../../../models";
-import {
-  getEnvironment,
-  invokeLambda,
-  updateReport,
-  uploadToStorage
-} from "./hepers";
-import { DataStore } from "@aws-amplify/datastore";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import { invokeLambda } from "./hepers";
+import { Storage } from "@aws-amplify/storage";
 
-const formatDocumentNumber = documentNumber => documentNumber.replace(/\D/g, "");
+const CreatePartnerButton = ({ partner, setLoading }) => {
+  const [loading, setLoadingState] = useState(false);
 
-const createPayload = ({ documentNumber, type, pipefyId }) => ({
-  documentNumber: formatDocumentNumber(documentNumber),
-  type,
-  pipefyId,
-  ambiente: getEnvironment()
-});
+  const { filePath } = partner;
 
-const CreatePartnerReportButton = ({ data, model }) => {
-  const [status, setStatus] = useState('idle');
+  const handleCreateReport = async () => {
+    if (loading) return;
 
-  const handleCreateClick = useCallback(async () => {
-    setStatus('loading');
+    setLoadingState(true);
+
     try {
-      const payload = createPayload(data);
-      const reportItem = await createPartnerReport(payload, model);
-      const serasaResponse = await fetchSerasaDataAndHandleResponse(payload, reportItem.id);
-      await uploadToStorage(serasaResponse, reportItem.id, "fileName");
-      setStatus('success');
+      await invokeLambda(
+          "toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi",
+          partner
+      );
     } catch (error) {
-      setStatus('error');
-      console.error("Error:", error);
-      alert(`Error: ${error.message}`);
+      console.error("Error invoking Lambda:", error);
+    } finally {
+      setLoadingState(false);
+      setLoading(false);
     }
-  }, [data, model]);
+  };
 
-  const buttonText = {
-    idle: "Create Partner Report",
-    loading: "...loading",
-    success: "Download Report",
-    error: "Error. Try Again"
+  const handleViewReport = async () => {
+    if (loading) return;
+
+    setLoadingState(true);
+
+    try {
+      const fileKey = `serasa/${partner?.id}.json`;
+
+      const response = await Storage.get(fileKey, {
+        download: true,
+        level: "public",
+        validateObjectExistence: true,
+      });
+
+      // Create a blob from the file data
+      const blob = new Blob([response.Body]);
+
+      // Create a temporary URL for the blob
+      const url = URL.createObjectURL(blob);
+
+      // Create a hidden anchor element to trigger the download
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = url;
+      a.download = `${partner?.id}.json`;
+
+      // Trigger the click event to start the download
+      document.body.appendChild(a);
+      a.click();
+
+      // Clean up by revoking the temporary URL
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading report:", error);
+    } finally {
+      setLoadingState(false);
+    }
   };
 
   return (
-      <div>
-        <button onClick={handleCreateClick} disabled={status === 'loading'}>
-          {buttonText[status]}
-        </button>
-      </div>
+      <Button
+          className="btn-sm"
+          onClick={filePath ? handleViewReport : handleCreateReport}
+          variant="primary"
+          disabled={loading}
+      >
+        {filePath ? "View Report" : "Create Report"}
+      </Button>
   );
 };
 
-export default CreatePartnerReportButton;
-
-const createPartnerReport = async (payload, model) => {
-  try {
-    return await DataStore.save(
-        new SerasaPartnerReport({
-          ...payload,
-          type: EntityType.PF,
-          status: ReportStatus.PROCESSING,
-          SerasaReportId: model.id
-        })
-    );
-  } catch (error) {
-    throw new Error(`Error creating partner report: ${error.message}`);
-  }
-}
-
-const fetchSerasaDataAndHandleResponse = async (payload, reportId) => {
-  try {
-    const result = await invokeLambda("CreateSerasaReport-staging", payload);
-    const response = JSON.parse(result.Payload);
-    if (response.statusCode === 200) {
-      await updateReport(reportId, ReportStatus.SUCCESS);
-      return response.response;
-    } else {
-      throw new Error(`Serasa Error: ${response.errorMessage}`);
-    }
-  } catch (error) {
-    await updateReport(reportId, ReportStatus.ERROR_SERASA);
-    throw error;
-  }
-}
+export default CreatePartnerButton;
