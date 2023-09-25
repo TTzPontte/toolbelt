@@ -53,7 +53,7 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
 
     // Combine partner data
     const combinePartners = () => {
-        return partners.map((partner) => {
+        return partners?.map((partner) => {
             const document_key = partner.type === 'PF' ? "businessDocument" : "documentId";
             const response = partnerList.find(
                 (r) => r[document_key] === partner.documentNumber

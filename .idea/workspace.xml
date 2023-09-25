@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +103,7 @@
       <workItem from="1695159576197" duration="37457000" />
       <workItem from="1695417786180" duration="10183000" />
       <workItem from="1695571981138" duration="32148000" />
-      <workItem from="1695648918893" duration="7937000" />
+      <workItem from="1695648918893" duration="8965000" />
     </task>
     <servers />
   </component>
