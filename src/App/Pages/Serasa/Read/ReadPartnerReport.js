@@ -5,7 +5,7 @@ const Partner=({combinedPartners})=>{
     console.log({combinedPartners})
     return(
         <>
-            {combinedPartners.length > 0 && (
+            {combinedPartners?.length > 0 && (
                 <Card>
                     <Card.Header>
                         <h2>Partner Report</h2>
