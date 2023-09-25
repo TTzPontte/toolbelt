@@ -641,13 +641,13 @@ function generateReportContentPF(report, optional) {
   return returnArr;
 }
 
-export function generateDDPJ(jsonData) {
-  console.log("Dentro da função:\n", jsonData);
+export function generateDDPJ({reports, optionalFeatures}) {
+  console.log("Dentro da função:\n", {reports, optionalFeatures});
   return {
     background: createBackground,
     content: generateReportContentPJ(
-      jsonData.reports[0],
-      jsonData.optionalFeatures
+      reports[0],
+      optionalFeatures
     ),
     styles,
     pageSize: { width: 595.276, height: 841.89 },
@@ -655,14 +655,14 @@ export function generateDDPJ(jsonData) {
   };
 }
 
-export function generateDDPF(jsonData) {
-  console.log("Dentro da função:\n", jsonData);
+export function generateDDPF({reports, optionalFeatures}) {
+  console.log("Dentro da função:\n", {reports, optionalFeatures});
 
   return {
     background: createBackground,
     content: generateReportContentPF(
-      jsonData.reports[0],
-      jsonData.optionalFeatures
+      reports[0],
+      optionalFeatures
     ),
     styles,
     pageSize: { width: 595.276, height: 841.89 },

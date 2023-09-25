@@ -55,20 +55,22 @@ const Read = () => {
       const jsonContent = JSON.parse(text);
       setFileContent(jsonContent);
       setReports(jsonContent.reports);
-      setResponse(response);
+      setResponse(jsonContent);
       console.log({ jsonContent });
+      console.log({ response });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  // const handleDownloadPDF = () => {
-  //   const reportType = model.type === "PF" ? "individual" : "company";
-  //   const ddData =
-  //     model.type === "PF" ? generateDDPF(response) : generateDDPJ(response);
-  //   const reportName = response.reports[0].registration[reportType + "Name"];
-  //   createPDF(ddData, reportName);
-  // };
+  const handleDownloadPDF = () => {
+    const reportType = model.type === "PF" ? "consumer" : "company";
+    console.log({fileContent})
+    const ddData =
+      model.type === "PF" ? generateDDPF(fileContent) : generateDDPJ(fileContent);
+    const reportName = fileContent.reports[0].registration[reportType + "Name"];
+    createPDF(ddData, reportName);
+  };
 
   useEffect(() => {
     fetchData();
@@ -105,16 +107,16 @@ const Read = () => {
             <h1>Create Serasa Report</h1>
             <Col>
               <Card>
-                {/*<Card.Body>*/}
+                <Card.Body>
                 {reports.length > 0 && <Results list={reports} />}
-                {/*{model?.SerasaPartnerReports?.map(i=><span>{i.type}</span>)}*/}
-                {/*  <br />*/}
-                {/*  {reports.length > 0 && (*/}
-                {/*    <Button onClick={handleDownloadPDF}>*/}
-                {/*      Baixar Relatório PDF*/}
-                {/*    </Button>*/}
-                {/*  )}*/}
-                {/*</Card.Body>*/}
+                {model?.SerasaPartnerReports?.map(i=><span>{i.type}</span>)}
+                  <br />
+                  {reports.length > 0 && (
+                    <Button onClick={handleDownloadPDF}>
+                      Baixar Relatório PDF
+                    </Button>
+                  )}
+                </Card.Body>
               </Card>
               <Card>
                 {reports.length > 0 && (

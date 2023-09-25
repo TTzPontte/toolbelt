@@ -1,4 +1,4 @@
-import diacritics from "diacritics";
+const diacritics =require( "diacritics");
 
 const styles = {
   centeredText: { alignment: "center", verticalAlignment: "middle" },
@@ -138,10 +138,7 @@ function formatDocumentNumber(documentNumber) {
   if (cleanNumber?.length === 11) {
     return cleanNumber.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   } else if (cleanNumber?.length === 14) {
-    return cleanNumber.replace(
-      /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
-      "$1.$2.$3/$4-$5"
-    );
+    return cleanNumber.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
   } else {
     return "Número de documento inválido";
   }
@@ -184,8 +181,7 @@ function formatCurrency(inputValue) {
   });
   return formattedValue;
 }
-
-export {
+module.exports= {
   TableFactory,
   TableGenerator,
   createBackground,

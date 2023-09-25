@@ -23,17 +23,43 @@
             },
             "negativeData": {
                 "pefin": {
-                    "pefinResponse": [],
+                    "pefinResponse": [
+                        {
+                            "occurrenceDate": "2023-01-01",
+                            "legalNatureId": "001",
+                            "legalNature": "Loan Default",
+                            "contractId": "CON12345",
+                            "creditorName": "ABC Bank",
+                            "amount": 3000,
+                            "city": "SAO PAULO",
+                            "federalUnit": "SP",
+                            "publicAgency": false,
+                            "principal": true
+                        }
+                    ],
                     "summary": {
-                        "count": 0,
-                        "balance": 0
+                        "count": 1,
+                        "balance": 3000
                     }
                 },
                 "refin": {
-                    "refinResponse": [],
+                    "refinResponse": [
+                        {
+                            "occurrenceDate": "2023-02-15",
+                            "legalNatureId": "002",
+                            "legalNature": "Credit Card Debt",
+                            "contractId": "CON67890",
+                            "creditorName": "DEF Credit",
+                            "amount": 1500,
+                            "city": "RIO DE JANEIRO",
+                            "federalUnit": "RJ",
+                            "publicAgency": false,
+                            "principal": false
+                        }
+                    ],
                     "summary": {
-                        "count": 0,
-                        "balance": 0
+                        "count": 1,
+                        "balance": 1500
                     }
                 },
                 "notary": {
@@ -57,14 +83,14 @@
                 "range": "C",
                 "defaultRate": "9,0",
                 "codeMessage": 99,
-                "message": "ESPACO RESERVADO PARA MENSAGEM DA INSTITUICAO                                   "
+                "message": "ESPACO RESERVADO PARA MENSAGEM DA INSTITUICAO"
             },
             "facts": {
                 "inquiry": {
                     "inquiryResponse": [
                         {
                             "occurrenceDate": "2023-05-05",
-                            "segmentDescription": "INDUSTRIA DE INSUMOS                                                            ",
+                            "segmentDescription": "INDUSTRIA DE INSUMOS",
                             "daysQuantity": 1
                         }
                     ],

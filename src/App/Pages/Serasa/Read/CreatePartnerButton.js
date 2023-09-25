@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { invokeLambda } from "./hepers";
 import { Storage } from "@aws-amplify/storage";
+import {createPDF, generateDDPJ} from "../../../servicer/novoGeradorPDF/main";
 
 const CreatePartnerButton = ({ partner, setLoading }) => {
   const [loading, setLoadingState] = useState(false);
@@ -39,25 +40,16 @@ const CreatePartnerButton = ({ partner, setLoading }) => {
         level: "public",
         validateObjectExistence: true,
       });
-
+      const blob = response.Body;
+      const text = await blob.text();
+      const jsonContent = JSON.parse(text);
+      const reportType = partner.type === "PF" ? "consumer" : "company";
+      console.log({jsonContent})
+      const ddData = generateDDPJ(jsonContent.data);
+      const reportName = jsonContent.data.reports[0].registration[reportType + "Name"];
+      createPDF(ddData, reportName);
       // Create a blob from the file data
-      const blob = new Blob([response.Body]);
 
-      // Create a temporary URL for the blob
-      const url = URL.createObjectURL(blob);
-
-      // Create a hidden anchor element to trigger the download
-      const a = document.createElement("a");
-      a.style.display = "none";
-      a.href = url;
-      a.download = `${partner?.id}.json`;
-
-      // Trigger the click event to start the download
-      document.body.appendChild(a);
-      a.click();
-
-      // Clean up by revoking the temporary URL
-      URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Error downloading report:", error);
     } finally {

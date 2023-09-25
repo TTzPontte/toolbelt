@@ -61,7 +61,7 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
                     <td>{partner.status}</td>
                     <td>{partner.filePath}</td>
                     <td>
-                      {console.log({partner})}
+                      {/*{console.log({partner})}*/}
                       <CreatePartnerButton partner={partner} />
                     </td>
                   </tr>

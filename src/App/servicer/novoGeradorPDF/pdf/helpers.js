@@ -133,15 +133,22 @@ const createHeaderStack = (text) => {
 };
 
 function formatDocumentNumber(documentNumber) {
-  const cleanNumber = documentNumber?.replace(/\D/g, ""); // Remove non-numeric characters
+  const cleanNumber = documentNumber.replace(/\D/g, ""); // Remove caracteres não numéricos
 
-  if (cleanNumber?.length === 11) {
-    return cleanNumber.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-  } else if (cleanNumber?.length === 14) {
-    return cleanNumber.replace(
+  if (cleanNumber.length === 11) {
+    // CPF tem 11 dígitos
+    const formattedCPF = cleanNumber.replace(
+      /(\d{3})(\d{3})(\d{3})(\d{2})/,
+      "$1.$2.$3-$4"
+    );
+    return formattedCPF;
+  } else if (cleanNumber.length === 14) {
+    // CNPJ tem 14 dígitos
+    const formattedCNPJ = cleanNumber.replace(
       /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
       "$1.$2.$3/$4-$5"
     );
+    return formattedCNPJ;
   } else {
     return "Número de documento inválido";
   }
@@ -184,7 +191,6 @@ function formatCurrency(inputValue) {
   });
   return formattedValue;
 }
-
 export {
   TableFactory,
   TableGenerator,
