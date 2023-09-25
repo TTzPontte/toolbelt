@@ -4,32 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/data.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/old/Table.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/old/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/old/index2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/old/index3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/old/makeDd.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/old/n.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/old/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/old/tableUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/pdf/helpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/test2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/CreatePartnerButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/CreatePartnerButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/data/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/data/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/test/pontte.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/test/pontte.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/backup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/backup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/t.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/t.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/pdf/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/newePdf/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/pdf/pdfService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/pdf/pdfService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/teste.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/teste.json" afterDir="false" />
-    </list>
+    <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -125,7 +100,7 @@
       <workItem from="1694784902120" duration="16737000" />
       <workItem from="1695159576197" duration="37457000" />
       <workItem from="1695417786180" duration="10183000" />
-      <workItem from="1695571981138" duration="29777000" />
+      <workItem from="1695571981138" duration="30081000" />
     </task>
     <servers />
   </component>

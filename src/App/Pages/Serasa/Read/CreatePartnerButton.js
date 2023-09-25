@@ -23,7 +23,7 @@ const CreatePartnerButton = ({ partner, setLoading }) => {
       console.error("Error invoking Lambda:", error);
     } finally {
       setLoadingState(false);
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
