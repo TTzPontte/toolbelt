@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/3/3321ad0cd7b94a3cd7fa5abab77decda99bb4327" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/3/33fcafda67a8b5e05a0ce23ad69c22a6f290f8c9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/6456082fbf2adc1b8c091bd24964d3008fcca951" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/SerasaReportPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/t.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/t.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +104,7 @@
       <workItem from="1695159576197" duration="37457000" />
       <workItem from="1695417786180" duration="10183000" />
       <workItem from="1695571981138" duration="32148000" />
-      <workItem from="1695648918893" duration="7298000" />
+      <workItem from="1695648918893" duration="7937000" />
     </task>
     <servers />
   </component>

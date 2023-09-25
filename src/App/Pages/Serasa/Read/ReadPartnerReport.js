@@ -63,8 +63,6 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
                 ? {
                     ...partner,
                     participationPercentage: response.participationPercentage,
-                    updateDate: response.updateDate,
-                    participationInitialDate: response.participationInitialDate,
                 }
                 : partner;
         });
