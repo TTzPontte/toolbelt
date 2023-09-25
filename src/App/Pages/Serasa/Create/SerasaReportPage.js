@@ -102,7 +102,8 @@ const CreateReportPage = () => {
       documentNumber: data.documentNumber,
       type: data.type,
       pipefyId: data.pipefyId,
-      ambiente
+      ambiente: 'prod',
+      environment:'prod'
     };
 
     setLoading(true);

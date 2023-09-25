@@ -67,7 +67,78 @@ const data = {
         },
     ],
 };
-
+const dataPJ = {
+    "partnerList": [
+        {
+            "documentId": "07724736847",
+            "name": "KATIA HIROMI SASSAQUI",
+            "participationPercentage": 33.4,
+            "inconsistent": false,
+            "hasNegative": false
+        },
+        {
+            "documentId": "15520984867",
+            "name": "EDUARDO DIAS",
+            "participationPercentage": 33.3,
+            "inconsistent": false,
+            "hasNegative": true
+        },
+        {
+            "documentId": "27027468883",
+            "name": "TONY INACIO DE BARROS",
+            "participationPercentage": 33.3,
+            "inconsistent": false,
+            "hasNegative": true
+        }
+    ],
+    "partners": [
+        {
+            "id": "c5889a73-25fe-454a-b9fd-0472ef322af2",
+            "type": "PJ",
+            "documentNumber": "",
+            "pipefyId": "66654322",
+            "status": null,
+            "filePath": null,
+            "serasareportID": "6568c645-31f1-4ccd-b371-f11c800cf2c8",
+            "createdAt": "2023-09-25T18:38:49.144Z",
+            "updatedAt": "2023-09-25T18:38:49.144Z",
+            "owner": null,
+            "_version": 1,
+            "_lastChangedAt": 1695667129171,
+            "_deleted": null
+        },
+        {
+            "id": "2ab19e3b-166a-41dd-af32-0684e7df5d42",
+            "type": "PJ",
+            "documentNumber": "",
+            "pipefyId": "66654322",
+            "status": null,
+            "filePath": null,
+            "serasareportID": "6568c645-31f1-4ccd-b371-f11c800cf2c8",
+            "createdAt": "2023-09-25T18:38:49.389Z",
+            "updatedAt": "2023-09-25T18:38:49.389Z",
+            "owner": null,
+            "_version": 1,
+            "_lastChangedAt": 1695667129414,
+            "_deleted": null
+        },
+        {
+            "id": "012db2e3-9e3c-4d1a-ba99-45f27f62598e",
+            "type": "PJ",
+            "documentNumber": "",
+            "pipefyId": "66654322",
+            "status": null,
+            "filePath": null,
+            "serasareportID": "6568c645-31f1-4ccd-b371-f11c800cf2c8",
+            "createdAt": "2023-09-25T18:38:49.622Z",
+            "updatedAt": "2023-09-25T18:38:49.622Z",
+            "owner": null,
+            "_version": 1,
+            "_lastChangedAt": 1695667129626,
+            "_deleted": null
+        }
+    ]
+}
 // Create an object to store the combined information
 const combinedInfo = {};
 

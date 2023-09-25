@@ -11,7 +11,7 @@ import {
 } from "../../../servicer/novoGeradorPDF/main";
 import ReadPartnerReport from "./ReadPartnerReport";
 import Results from "../../../Containers/Searches/Result/Results";
-import {getReportById} from "./hepers";
+import { getReportById } from "./hepers";
 
 const getItem = async (id) => {
   try {
@@ -20,11 +20,10 @@ const getItem = async (id) => {
     // Use async/await to await the Promise returned by values.then()
     const partnerReports = await serasaReport?.SerasaPartnerReports.values;
 
-
     // Return an object that includes both serasaReport and serasaPartnerReports
     return { ...serasaReport, serasaPartnerReports: partnerReports };
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     throw error;
   }
 };
@@ -40,11 +39,11 @@ const Read = () => {
   const fetchData = async () => {
     try {
       // const fetchedModel = await getReportById(id);
-      const fetchedModel = await getItem(id)
-      console.log({fetchedModel}); // Log the data
+      const fetchedModel = await getItem(id);
+      console.log({ fetchedModel }); // Log the data
 
       setModel(fetchedModel);
-      setPartners(fetchedModel.serasaPartnerReports)
+      setPartners(fetchedModel.serasaPartnerReports);
       // debugger;
       const result = await Storage.get(`serasa/${id}.json`, {
         download: true,
@@ -57,7 +56,7 @@ const Read = () => {
       setReports(jsonContent.reports);
       setResponse(jsonContent);
       console.log({ jsonContent });
-      console.log({ response });
+      console.log({ reports });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -65,9 +64,11 @@ const Read = () => {
 
   const handleDownloadPDF = () => {
     const reportType = model.type === "PF" ? "consumer" : "company";
-    console.log({fileContent})
+    console.log({ fileContent });
     const ddData =
-      model.type === "PF" ? generateDDPF(fileContent) : generateDDPJ(fileContent);
+      model.type === "PF"
+        ? generateDDPF(fileContent)
+        : generateDDPJ(fileContent);
     const reportName = fileContent.reports[0].registration[reportType + "Name"];
     createPDF(ddData, reportName);
   };
@@ -108,8 +109,10 @@ const Read = () => {
             <Col>
               <Card>
                 <Card.Body>
-                {reports.length > 0 && <Results list={reports} />}
-                {model?.SerasaPartnerReports?.map(i=><span>{i.type}</span>)}
+                  {reports?.length > 0 && <Results list={reports} />}
+                  {model?.SerasaPartnerReports?.map((i) => (
+                    <span>{i.type}</span>
+                  ))}
                   <br />
                   {reports.length > 0 && (
                     <Button onClick={handleDownloadPDF}>
@@ -120,11 +123,15 @@ const Read = () => {
               </Card>
               <Card>
                 {reports.length > 0 && (
-                  <ReadPartnerReport fileContent={fileContent} partners={partners} pfOuPj="PJ" />
+                  <ReadPartnerReport
+                    fileContent={fileContent}
+                    partners={partners}
+                    pfOuPj="PJ"
+                  />
                 )}
               </Card>
             </Col>
-          </Container>{" "}
+          </Container>
         </Row>
       )}
     </div>
