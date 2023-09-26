@@ -2,6 +2,33 @@ import { Auth, Storage } from "aws-amplify";
 import Lambda from "aws-sdk/clients/lambda";
 import { DataStore } from "@aws-amplify/datastore";
 import {EntityType, ReportStatus, SerasaPartnerReport, SerasaReport} from "../../../../models";
+export const getItem = async (id) => {
+  const getAssociatedPartnerReports = async (serasaReportId) => {
+    try {
+      return await DataStore.query(SerasaPartnerReport, (report) =>
+          report.serasareportID.eq(serasaReportId)
+      );
+    } catch (error) {
+      console.error("Error fetching associated SerasaPartnerReports:", error);
+      throw error;
+    }
+  };
+
+  try {
+    const serasaReport = await DataStore.query(SerasaReport, id);
+    if (!serasaReport) {
+      console.error("SerasaReport not found for ID:", id);
+      return null; // Return null if not found
+    }
+
+    const partnerReports = await getAssociatedPartnerReports(id);
+
+    return { ...serasaReport, serasaPartnerReports: partnerReports };
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+};
 
 export const personTypeOptions = [
   { label: "PF", value: "PF" },

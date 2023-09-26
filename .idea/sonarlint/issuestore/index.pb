@@ -5,16 +5,8 @@
 src/App/auth.js,9/b/9b3c87676401f4fc11fa33b84b87f15b3ada97cd
 T
 $src/App/components/Layout/Layouts.js,1/d/1def853cd1b68dfbdbd88acbe5d3cd6fe33ce461
-R
-"src/App/components/Auth/useAuth.js,0/5/05aeeda985af601937357b3bddeb4ae85c7a9de7
-P
- src/App/components/Auth/index.js,6/a/6aefb79c8f7fdd981af76b3bc81ba8038432827e
-W
-'src/App/components/Auth/AuthProvider.js,4/c/4c08f341582071c030a4025726467196bd70f91a
 O
 src/App/components/Auth/auth.js,e/c/ecc01238984ce180309dac77276b661276c6d48b
-R
-"src/App/components/Auth/helpers.js,a/2/a2520c6413b3fb29d386a8879a49618945da263c
 Y
 )src/App/components/TopNavbar/TopNavbar.js,2/0/20303e25467948a7540c06fd39f2eb769dd05dc2
 S
@@ -41,17 +33,12 @@ Q
 !src/App/Pages/Serasa/List/List.js,3/d/3d6fe9b24518e00fec834839d0d811f74fee195a
 >
 src/amplify.sh,a/8/a8c2711961cdbdd83533024b2ed910c8ec0f2306
-:
-
-amplify.sh,5/9/595298df9725eb4236d0de3735b63dfade8613ef
 W
 'src/App/Pages/Serasa/Read/hepers_gql.js,3/d/3dd23b3afa29634a040748e81dae519210630be7
 F
 src/graphql/queries.js,3/7/3724c7b1ee7617cac659ec8b9cc52880fc29eca0
 j
 :amplify/#current-cloud-backend/api/toolbelt/schema.graphql,8/7/8740fdb5158147c8e62b11d0e0871a2652d9e99e
-S
-#src/App/Pages/Serasa/Read/hepers.js,b/6/b6678f9a99564cf7c04ea64beeaed123d57ea7f1
 e
 5src/App/Pages/Serasa/Read/data/CreatePartnerButton.js,c/a/ca9a23a65b2a5d185fb7d1193c7566c678cb32f3
 Z

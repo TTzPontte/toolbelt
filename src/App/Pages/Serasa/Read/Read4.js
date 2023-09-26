@@ -9,36 +9,127 @@ import {
   generateDDPF,
   generateDDPJ
 } from "../../../servicer/novoGeradorPDF/main";
-import ReadPartnerReport from "./ReadPartnerReport";
 import Results from "../../../Containers/Searches/Result/Results";
+import CreatePartnerButton from "./CreatePartnerButton";
+
+const getAssociatedPartnerReports = async (serasaReportId) => {
+  try {
+    return await DataStore.query(SerasaPartnerReport, (report) =>
+      report.serasareportID.eq(serasaReportId)
+    );
+  } catch (error) {
+    console.error("Error fetching associated SerasaPartnerReports:", error);
+    throw error;
+  }
+};
 
 const getItem = async (id) => {
-  const getAssociatedPartnerReports = async (serasaReportId) => {
-    try {
-      // Use the eq method to construct the predicate
-      return await DataStore.query(SerasaPartnerReport, (report) =>
-        report.serasareportID.eq(serasaReportId)
-      );
-    } catch (error) {
-      console.error("Error fetching associated SerasaPartnerReports:", error);
-      throw error;
-    }
-  };
-
   try {
     const serasaReport = await DataStore.query(SerasaReport, id);
     if (!serasaReport) {
       console.error("SerasaReport not found for ID:", id);
-      return null; // Return null if not found
+      return null;
     }
-
     const partnerReports = await getAssociatedPartnerReports(id);
-
     return { ...serasaReport, serasaPartnerReports: partnerReports };
   } catch (error) {
     console.error("Error:", error);
     throw error;
   }
+};
+
+let subscription;
+
+const subscribeToPartnerReports = (serasaReportId, onUpdate) => {
+  subscription = DataStore.observe(SerasaPartnerReport).subscribe((msg) => {
+    if (msg.element.serasareportID === serasaReportId) {
+      onUpdate(msg.element);
+    }
+  });
+};
+
+const unsubscribeFromPartnerReports = () => {
+  if (subscription) {
+    subscription.unsubscribe();
+  }
+};
+
+const Partner = ({ combinedPartners }) => {
+  console.log({ combinedPartners });
+  return (
+    <>
+      {combinedPartners?.length > 0 && (
+        <Card>
+          <Card.Header>
+            <h2>Partner Report</h2>
+          </Card.Header>
+          <Card.Body>
+            <Table responsive striped bordered hover>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>CNPJ</th>
+                  <th>% Participação</th>
+                  <th>Status</th>
+                  <th>Arquivo</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                {combinedPartners.map((partner) => (
+                  <tr key={partner.id}>
+                    <td>{partner.id}</td>
+                    <td>{partner.documentNumber}</td>
+                    <td>{partner.participationPercentage}</td>
+                    <td>{partner?.status || "-"}</td>
+                    <td>{partner?.filePath || "-"}</td>
+                    <td>
+                      <CreatePartnerButton partner={partner} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Card.Body>
+        </Card>
+      )}
+    </>
+  );
+};
+const ReadPartnerReport = ({ partners, fileContent }) => {
+  const {
+    optionalFeatures: {
+      partner: { PartnerResponse = { results: [] }, partnershipResponse = [] }
+    }
+  } = fileContent;
+
+  const partnerList = [...PartnerResponse.results, ...partnershipResponse];
+
+  // Combine partner data
+  const combinePartners = () => {
+    return partners?.map((partner) => {
+      const document_key =
+        partner.type === "PF" ? "businessDocument" : "documentId";
+      const response = partnerList.find(
+        (r) => r[document_key] === partner.documentNumber
+      );
+
+      return response
+        ? {
+            ...partner,
+            participationPercentage: response.participationPercentage
+          }
+        : partner;
+    });
+  };
+
+  const combinedPartners = combinePartners();
+
+  return (
+    <Container>
+      <Partner combinedPartners={combinedPartners} />
+    </Container>
+  );
 };
 
 const Read = () => {
@@ -49,21 +140,27 @@ const Read = () => {
   const [response, setResponse] = useState([]);
   const [personType, setPersonType] = useState("");
   const [fileContent, setFileContent] = useState(null);
-  // Fetch the SerasaReport and associated SerasaPartnerReports from DataStore
-  const fetchReportData = async () => {
+
+  useEffect(() => {
+    getItem(id).then((data) => {
+      setModel(data);
+      setPartners(data.serasaPartnerReports);
+    });
+
+    subscribeToPartnerReports(id, (newPartnerReport) => {
+      setPartners((prevReports) => [...prevReports, newPartnerReport]);
+    });
+
+    return () => {
+      unsubscribeFromPartnerReports();
+    };
+  }, [id]);
+
+  const fetchData = async () => {
     try {
       const fetchedModel = await getItem(id);
-      console.log({ fetchedModel });
       setModel(fetchedModel);
       setPartners(fetchedModel.serasaPartnerReports);
-    } catch (error) {
-      console.error("Error fetching report data:", error);
-    }
-  };
-
-  // Fetch the JSON content from S3
-  const fetchJSONData = async () => {
-    try {
       const result = await Storage.get(`serasa/${id}.json`, {
         download: true,
         level: "public"
@@ -74,35 +171,13 @@ const Read = () => {
       setFileContent(jsonContent);
       setReports(jsonContent.reports);
       setResponse(jsonContent);
-      console.log({ jsonContent });
     } catch (error) {
-      console.error("Error fetching JSON data:", error);
+      console.error("Error fetching data:", error);
     }
   };
 
-  useEffect(() => {
-    fetchReportData(); // Fetch model data
-
-    // Set up the subscription
-    const subscription = DataStore.observe(SerasaPartnerReport).subscribe(
-      (msg) => {
-        if (msg.element.serasareportID === id) {
-          fetchReportData(); // Re-fetch the report data if there are updates
-        }
-      }
-    );
-
-    // Cleanup the subscription when the component is unmounted
-    return () => subscription.unsubscribe();
-  }, [id]);
-
-  useEffect(() => {
-    fetchJSONData(); // Fetch JSON data from S3
-  }, [id]);
-
   const handleDownloadPDF = () => {
     const reportType = model.type === "PF" ? "consumer" : "company";
-    console.log({ fileContent });
     const ddData =
       model.type === "PF"
         ? generateDDPF(fileContent)
@@ -110,6 +185,10 @@ const Read = () => {
     const reportName = fileContent.reports[0].registration[reportType + "Name"];
     createPDF(ddData, reportName);
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -156,7 +235,7 @@ const Read = () => {
                 </Card.Body>
               </Card>
               <Card>
-                {partners && reports.length > 0 && (
+                {reports.length > 0 && (
                   <ReadPartnerReport
                     fileContent={fileContent}
                     partners={partners}

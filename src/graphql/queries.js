@@ -32,18 +32,15 @@ export const getSerasaPartnerReport = /* GraphQL */ `
             _deleted
             _lastChangedAt
             owner
-            __typename
           }
           nextToken
           startedAt
-          __typename
         }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        __typename
       }
       createdAt
       updatedAt
@@ -51,7 +48,6 @@ export const getSerasaPartnerReport = /* GraphQL */ `
       _deleted
       _lastChangedAt
       owner
-      __typename
     }
   }
 `;
@@ -83,14 +79,12 @@ export const listSerasaPartnerReports = /* GraphQL */ `
           SerasaPartnerReports {
             nextToken
             startedAt
-            __typename
           }
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          __typename
         }
         createdAt
         updatedAt
@@ -98,11 +92,9 @@ export const listSerasaPartnerReports = /* GraphQL */ `
         _deleted
         _lastChangedAt
         owner
-        __typename
       }
       nextToken
       startedAt
-      __typename
     }
   }
 `;
@@ -136,14 +128,12 @@ export const syncSerasaPartnerReports = /* GraphQL */ `
           SerasaPartnerReports {
             nextToken
             startedAt
-            __typename
           }
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          __typename
         }
         createdAt
         updatedAt
@@ -151,11 +141,9 @@ export const syncSerasaPartnerReports = /* GraphQL */ `
         _deleted
         _lastChangedAt
         owner
-        __typename
       }
       nextToken
       startedAt
-      __typename
     }
   }
 `;
@@ -191,14 +179,12 @@ export const serasaPartnerReportsBySerasareportID = /* GraphQL */ `
           SerasaPartnerReports {
             nextToken
             startedAt
-            __typename
           }
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          __typename
         }
         createdAt
         updatedAt
@@ -206,11 +192,9 @@ export const serasaPartnerReportsBySerasareportID = /* GraphQL */ `
         _deleted
         _lastChangedAt
         owner
-        __typename
       }
       nextToken
       startedAt
-      __typename
     }
   }
 `;
@@ -242,7 +226,6 @@ export const getSerasaReport = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
-            __typename
           }
           createdAt
           updatedAt
@@ -250,18 +233,15 @@ export const getSerasaReport = /* GraphQL */ `
           _deleted
           _lastChangedAt
           owner
-          __typename
         }
         nextToken
         startedAt
-        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      __typename
     }
   }
 `;
@@ -293,22 +273,18 @@ export const listSerasaReports = /* GraphQL */ `
             _deleted
             _lastChangedAt
             owner
-            __typename
           }
           nextToken
           startedAt
-          __typename
         }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        __typename
       }
       nextToken
       startedAt
-      __typename
     }
   }
 `;
@@ -346,22 +322,18 @@ export const syncSerasaReports = /* GraphQL */ `
             _deleted
             _lastChangedAt
             owner
-            __typename
           }
           nextToken
           startedAt
-          __typename
         }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        __typename
       }
       nextToken
       startedAt
-      __typename
     }
   }
 `;

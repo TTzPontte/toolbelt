@@ -9,23 +9,9 @@ import {
   FormGroup,
   Row
 } from "react-bootstrap";
-import {
-  createPDF,
-  generateDDPF,
-  generateDDPJ
-} from "../../../servicer/novoGeradorPDF/main";
-import { ReportStatus } from "../../../../models";
 import Radio from "../../../components/Form/Radio";
-import ReadReportResults from "./new/ReadReportResults";
-import {
-  createReport,
-  getEnvironment,
-  invokeLambda,
-  personTypeOptions,
-  updateReport,
-  uploadToStorage
-} from "./hepers";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { getEnvironment, invokeLambda, personTypeOptions } from "./hepers";
+import { useNavigate } from "react-router-dom";
 
 const ReportForm = ({ onSubmit }) => {
   const methods = useForm();
@@ -102,8 +88,8 @@ const CreateReportPage = () => {
       documentNumber: data.documentNumber,
       type: data.type,
       pipefyId: data.pipefyId,
-      ambiente: 'prod',
-      environment:'prod'
+      ambiente: "prod",
+      environment: "prod"
     };
 
     setLoading(true);
@@ -113,10 +99,9 @@ const CreateReportPage = () => {
         "toolbelt3-CreateToolbeltReport-mKsSY1JGNPES",
         payload
       );
-      debugger;
       const { reportId } = JSON.parse(result.Payload);
       setLoading(false);
-      navigate('/serasa/' + reportId, { replace: true });
+      navigate("/serasa/" + reportId, { replace: true });
     } catch (error) {
       setLoading(false);
     }
