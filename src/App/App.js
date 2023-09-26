@@ -1,13 +1,22 @@
 import "./App.scss";
-import {Route, Routes} from "react-router-dom";
-// import { Amplify } from "aws-amplify";
+import { Route, Routes } from "react-router-dom";
 import "@aws-amplify/ui-react/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./components/Layout";
-import {withAuthenticator} from "@aws-amplify/ui-react";
-import {routes} from "./routes";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import { routes } from "./routes";
+import { DataStore } from "aws-amplify";
+import { useCallback, useEffect } from "react"; // Import useEffect to trigger the function
 
 function App(props) {
+  const startDataStore = useCallback(async () => {
+    await DataStore.start();
+  }, []);
+
+  // Use useEffect to trigger the function when the component mounts
+  useEffect(() => {
+    startDataStore();
+  }, [startDataStore]);
 
   return (
     <Routes>
@@ -21,4 +30,3 @@ function App(props) {
 }
 
 export default withAuthenticator(App);
-// export default App;

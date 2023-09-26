@@ -41,8 +41,6 @@ Q
 !src/App/Pages/Serasa/List/List.js,3/d/3d6fe9b24518e00fec834839d0d811f74fee195a
 >
 src/amplify.sh,a/8/a8c2711961cdbdd83533024b2ed910c8ec0f2306
->
-src/App/App.js,1/6/16f334a3c8fb6428975aa262d9a70dc313ddfb81
 :
 
 amplify.sh,5/9/595298df9725eb4236d0de3735b63dfade8613ef
@@ -50,8 +48,6 @@ W
 'src/App/Pages/Serasa/Read/hepers_gql.js,3/d/3dd23b3afa29634a040748e81dae519210630be7
 F
 src/graphql/queries.js,3/7/3724c7b1ee7617cac659ec8b9cc52880fc29eca0
-<
-src/index.js,f/9/f900edc44cb929c2267a16100a32851f6d5b477d
 j
 :amplify/#current-cloud-backend/api/toolbelt/schema.graphql,8/7/8740fdb5158147c8e62b11d0e0871a2652d9e99e
 S
