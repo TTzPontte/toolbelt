@@ -225,7 +225,7 @@ const Read = () => {
     try {
       const fetchedModel = await getItem(id);
       setModel(fetchedModel);
-      setPartners(fetchedModel.serasaPartnerReports);
+      setPartners(fetchedModel?.serasaPartnerReports);
       const result = await Storage.get(`serasa/${id}.json`, {
         download: true,
         level: "public"

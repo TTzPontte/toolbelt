@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
