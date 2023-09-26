@@ -209,7 +209,7 @@ const Read = () => {
   useEffect(() => {
     getItem(id).then((data) => {
       setModel(data);
-      setPartners(data.serasaPartnerReports);
+      setPartners(data?.serasaPartnerReports);
     });
 
     subscribeToPartnerReports(id, (newPartnerReport) => {
