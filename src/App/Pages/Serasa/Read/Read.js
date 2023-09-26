@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
-import { SerasaReport } from "../../../../models";
+import { SerasaPartnerReport, SerasaReport } from "../../../../models";
 import { useParams } from "react-router-dom";
 import { Storage } from "@aws-amplify/storage";
 import {
@@ -9,24 +9,194 @@ import {
   generateDDPF,
   generateDDPJ
 } from "../../../servicer/novoGeradorPDF/main";
-import ReadPartnerReport from "./ReadPartnerReport";
 import Results from "../../../Containers/Searches/Result/Results";
-import { getReportById } from "./hepers";
+import { invokeLambda } from "./hepers";
+
+const getAssociatedPartnerReports = async (serasaReportId) => {
+  try {
+    return await DataStore.query(SerasaPartnerReport, (report) =>
+      report.serasareportID.eq(serasaReportId)
+    );
+  } catch (error) {
+    console.error("Error fetching associated SerasaPartnerReports:", error);
+    throw error;
+  }
+};
 
 const getItem = async (id) => {
   try {
     const serasaReport = await DataStore.query(SerasaReport, id);
-
-    // Use async/await to await the Promise returned by values.then()
-    const partnerReports = await serasaReport?.SerasaPartnerReports.values;
-
-    // Return an object that includes both serasaReport and serasaPartnerReports
+    if (!serasaReport) {
+      console.error("SerasaReport not found for ID:", id);
+      return null;
+    }
+    const partnerReports = await getAssociatedPartnerReports(id);
     return { ...serasaReport, serasaPartnerReports: partnerReports };
   } catch (error) {
     console.error("Error:", error);
     throw error;
   }
 };
+
+let subscription;
+
+const subscribeToPartnerReports = (serasaReportId, onUpdate) => {
+  subscription = DataStore.observe(SerasaPartnerReport).subscribe((msg) => {
+    if (msg.element.serasareportID === serasaReportId) {
+      onUpdate(msg.element);
+    }
+  });
+};
+
+const unsubscribeFromPartnerReports = () => {
+  if (subscription) {
+    subscription.unsubscribe();
+  }
+};
+
+const CreatePartnerButton = ({ partner, setLoading }) => {
+  const [loading, setLoadingState] = useState(false);
+
+  const { filePath } = partner;
+
+  const handleCreateReport = async () => {
+    if (loading) return;
+
+    setLoadingState(true);
+
+    try {
+      await invokeLambda(
+        "toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi",
+        partner
+      );
+    } catch (error) {
+      console.error("Error invoking Lambda:", error);
+    } finally {
+      setLoadingState(false);
+      // setLoading(false);
+    }
+  };
+
+  const handleViewReport = async () => {
+    if (loading) return;
+
+    setLoadingState(true);
+
+    try {
+      const fileKey = `serasa/${partner?.id}.json`;
+
+      const response = await Storage.get(fileKey, {
+        download: true,
+        level: "public",
+        validateObjectExistence: true
+      });
+      const blob = response.Body;
+      const text = await blob.text();
+      const jsonContent = JSON.parse(text);
+      const reportType = partner.type === "PF" ? "consumer" : "company";
+      console.log({ jsonContent });
+      const ddData = generateDDPJ(jsonContent.data);
+      const reportName =
+        jsonContent.data.reports[0].registration[reportType + "Name"];
+      createPDF(ddData, reportName);
+      // Create a blob from the file data
+    } catch (error) {
+      console.error("Error downloading report:", error);
+    } finally {
+      setLoadingState(false);
+    }
+  };
+
+  return (
+    <Button
+      className="btn-sm"
+      onClick={filePath ? handleViewReport : handleCreateReport}
+      variant="primary"
+      disabled={loading}
+    >
+      {filePath ? "View Report" : "Create Report"}
+    </Button>
+  );
+};
+
+const Partner = ({ combinedPartners }) => {
+  console.log({ combinedPartners });
+  return (
+    <>
+      {combinedPartners?.length > 0 && (
+        <Card>
+          <Card.Header>
+            <h2>Partner Report</h2>
+          </Card.Header>
+          <Card.Body>
+            <Table responsive striped bordered hover>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>CNPJ</th>
+                  <th>% Participação</th>
+                  <th>Status</th>
+                  <th>Arquivo</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                {combinedPartners.map((partner) => (
+                  <tr key={partner.id}>
+                    <td>{partner.id}</td>
+                    <td>{partner.documentNumber}</td>
+                    <td>{partner.participationPercentage}</td>
+                    <td>{partner?.status || "-"}</td>
+                    <td>{partner?.filePath || "-"}</td>
+                    <td>
+                      <CreatePartnerButton partner={partner} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Card.Body>
+        </Card>
+      )}
+    </>
+  );
+};
+const ReadPartnerReport = ({ partners, fileContent }) => {
+  const {
+    optionalFeatures: {
+      partner: { PartnerResponse = { results: [] }, partnershipResponse = [] }
+    }
+  } = fileContent;
+
+  const partnerList = [...PartnerResponse.results, ...partnershipResponse];
+
+  // Combine partner data
+  const combinePartners = () => {
+    return partners?.map((partner) => {
+      const document_key =
+        partner.type === "PF" ? "businessDocument" : "documentId";
+      const response = partnerList.find(
+        (r) => r[document_key] === partner.documentNumber
+      );
+
+      return response
+        ? {
+            ...partner,
+            participationPercentage: response.participationPercentage
+          }
+        : partner;
+    });
+  };
+
+  const combinedPartners = combinePartners();
+
+  return (
+    <Container>
+      <Partner combinedPartners={combinedPartners} />
+    </Container>
+  );
+};
+
 const Read = () => {
   const { id } = useParams();
   const [model, setModel] = useState(null);
@@ -36,15 +206,26 @@ const Read = () => {
   const [personType, setPersonType] = useState("");
   const [fileContent, setFileContent] = useState(null);
 
+  useEffect(() => {
+    getItem(id).then((data) => {
+      setModel(data);
+      setPartners(data.serasaPartnerReports);
+    });
+
+    subscribeToPartnerReports(id, (newPartnerReport) => {
+      setPartners((prevReports) => [...prevReports, newPartnerReport]);
+    });
+
+    return () => {
+      unsubscribeFromPartnerReports();
+    };
+  }, [id]);
+
   const fetchData = async () => {
     try {
-      // const fetchedModel = await getReportById(id);
       const fetchedModel = await getItem(id);
-      console.log({ fetchedModel }); // Log the data
-
       setModel(fetchedModel);
       setPartners(fetchedModel.serasaPartnerReports);
-      // debugger;
       const result = await Storage.get(`serasa/${id}.json`, {
         download: true,
         level: "public"
@@ -55,8 +236,6 @@ const Read = () => {
       setFileContent(jsonContent);
       setReports(jsonContent.reports);
       setResponse(jsonContent);
-      console.log({ jsonContent });
-      console.log({ reports });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -64,7 +243,6 @@ const Read = () => {
 
   const handleDownloadPDF = () => {
     const reportType = model.type === "PF" ? "consumer" : "company";
-    console.log({ fileContent });
     const ddData =
       model.type === "PF"
         ? generateDDPF(fileContent)

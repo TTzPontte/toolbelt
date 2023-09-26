@@ -43,8 +43,6 @@ Q
 src/amplify.sh,a/8/a8c2711961cdbdd83533024b2ed910c8ec0f2306
 >
 src/App/App.js,1/6/16f334a3c8fb6428975aa262d9a70dc313ddfb81
-^
-.src/App/Pages/Serasa/Read/ReadReportResults.js,9/3/93ebba26eca5e6bea70c21933ccb17a4f562002b
 :
 
 amplify.sh,5/9/595298df9725eb4236d0de3735b63dfade8613ef
@@ -130,5 +128,3 @@ M
 src/App/servicer/pdf/index.js,8/8/887ffda80cb97e1e8f7781042c67ea603617d23c
 W
 'src/App/servicer/novoGeradorPDF/main.js,4/a/4a9a8dca73eb324a820315473ba58bff96183a7c
-`
-0src/App/Pages/Serasa/Read/CreatePartnerButton.js,b/5/b5ed831bf0888009cf8422acbc5893019be78c0d
