@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
-import { SerasaPartnerReport, SerasaReport } from "../../../../models";
+import { SerasaPartnerReport, SerasaReport } from "../../../../../models";
 import { useParams } from "react-router-dom";
 import { Storage } from "@aws-amplify/storage";
-import { createPDF, generateDDPF, generateDDPJ } from "../../../servicer/novoGeradorPDF/main";
-import Results from "../../../Containers/Searches/Result/Results";
-import { invokeLambda } from "./hepers";
+import { createPDF, generateDDPF, generateDDPJ } from "../../../../servicer/novoGeradorPDF/main";
+import Results from "../../../../Containers/Searches/Result/Results";
+import { invokeLambda } from "../hepers";
 
 import { from, throwError } from 'rxjs';
 import { filter, mergeMap } from 'rxjs/operators';

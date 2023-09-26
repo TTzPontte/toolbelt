@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
-import { SerasaReport } from "../../../../models";
+import { SerasaReport } from "../../../../../models";
 import { useParams } from "react-router-dom";
 import { Storage } from "@aws-amplify/storage";
 import {
   createPDF,
   generateDDPF,
   generateDDPJ
-} from "../../../servicer/novoGeradorPDF/main";
-import ReadPartnerReport from "./ReadPartnerReport";
-import Results from "../../../Containers/Searches/Result/Results";
-import {getReportById} from "./hepers";
+} from "../../../../servicer/novoGeradorPDF/main";
+import ReadPartnerReport from "../ReadPartnerReport";
+import Results from "../../../../Containers/Searches/Result/Results";
+import {getReportById} from "../hepers";
 
 const Read = () => {
   const { id } = useParams();

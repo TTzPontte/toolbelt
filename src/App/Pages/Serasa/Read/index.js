@@ -1,1 +1,1 @@
-export {default} from './SerasaReportPage';
+export {default} from './Read';

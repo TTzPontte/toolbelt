@@ -35,15 +35,18 @@ export const onCreateSerasaPartnerReport = /* GraphQL */ `
             _deleted
             _lastChangedAt
             owner
+            __typename
           }
           nextToken
           startedAt
+          __typename
         }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       createdAt
       updatedAt
@@ -51,6 +54,7 @@ export const onCreateSerasaPartnerReport = /* GraphQL */ `
       _deleted
       _lastChangedAt
       owner
+      __typename
     }
   }
 `;
@@ -88,15 +92,18 @@ export const onUpdateSerasaPartnerReport = /* GraphQL */ `
             _deleted
             _lastChangedAt
             owner
+            __typename
           }
           nextToken
           startedAt
+          __typename
         }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       createdAt
       updatedAt
@@ -104,6 +111,7 @@ export const onUpdateSerasaPartnerReport = /* GraphQL */ `
       _deleted
       _lastChangedAt
       owner
+      __typename
     }
   }
 `;
@@ -141,15 +149,18 @@ export const onDeleteSerasaPartnerReport = /* GraphQL */ `
             _deleted
             _lastChangedAt
             owner
+            __typename
           }
           nextToken
           startedAt
+          __typename
         }
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
+        __typename
       }
       createdAt
       updatedAt
@@ -157,6 +168,7 @@ export const onDeleteSerasaPartnerReport = /* GraphQL */ `
       _deleted
       _lastChangedAt
       owner
+      __typename
     }
   }
 `;
@@ -190,6 +202,7 @@ export const onCreateSerasaReport = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+            __typename
           }
           createdAt
           updatedAt
@@ -197,15 +210,18 @@ export const onCreateSerasaReport = /* GraphQL */ `
           _deleted
           _lastChangedAt
           owner
+          __typename
         }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -239,6 +255,7 @@ export const onUpdateSerasaReport = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+            __typename
           }
           createdAt
           updatedAt
@@ -246,15 +263,18 @@ export const onUpdateSerasaReport = /* GraphQL */ `
           _deleted
           _lastChangedAt
           owner
+          __typename
         }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
@@ -288,6 +308,7 @@ export const onDeleteSerasaReport = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+            __typename
           }
           createdAt
           updatedAt
@@ -295,15 +316,18 @@ export const onDeleteSerasaReport = /* GraphQL */ `
           _deleted
           _lastChangedAt
           owner
+          __typename
         }
         nextToken
         startedAt
+        __typename
       }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
+      __typename
     }
   }
 `;
