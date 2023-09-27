@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/useToast.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/useToast.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3dd23b3afa29634a040748e81dae519210630be7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/new/ReadReportResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/CreatePartnerButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/CreatePartnerButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Partner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/Partner.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/ReadPartnerReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/ReadReportResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/ReadReportResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/readme2.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/readme2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/t.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/t.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/ReadPartnerReport.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

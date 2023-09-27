@@ -10,7 +10,7 @@ import {
   generateDDPJ
 } from "../../../../servicer/novoGeradorPDF/main";
 import Results from "../../../../Containers/Searches/Result/Results";
-import CreatePartnerButton from "../components/CreatePartnerButton";
+import CreateOrViewPartnerButton from "../components/CreateOrViewPartnerButton";
 
 const getAssociatedPartnerReports = async (serasaReportId) => {
   try {
@@ -84,7 +84,7 @@ const Partner = ({ combinedPartners }) => {
                     <td>{partner?.status || "-"}</td>
                     <td>{partner?.filePath || "-"}</td>
                     <td>
-                      <CreatePartnerButton partner={partner} />
+                      <CreateOrViewPartnerButton partner={partner} />
                     </td>
                   </tr>
                 ))}

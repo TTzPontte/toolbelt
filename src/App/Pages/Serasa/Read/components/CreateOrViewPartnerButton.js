@@ -4,7 +4,7 @@ import { invokeLambda } from "../hepers";
 import { Storage } from "@aws-amplify/storage";
 import {createPDF, generateDDPJ} from "../../../../servicer/novoGeradorPDF/main";
 
-const CreatePartnerButton = ({ partner, setLoading }) => {
+const CreateOrViewPartnerButton = ({ partner, setLoading }) => {
   const [loading, setLoadingState] = useState(false);
 
   const { filePath } = partner;
@@ -69,4 +69,4 @@ const CreatePartnerButton = ({ partner, setLoading }) => {
   );
 };
 
-export default CreatePartnerButton;
+export default CreateOrViewPartnerButton;
