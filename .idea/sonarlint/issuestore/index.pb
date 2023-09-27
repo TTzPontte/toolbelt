@@ -45,26 +45,18 @@ N
 src/App/Pages/test/pontte.json,a/1/a1c44f64b36458b035b503aa87097f837b319959
 V
 &src/App/Pages/Serasa/Read/data/data.js,7/5/758ba302ed143d4f9e073a1caa7009448184c68e
-X
-(src/App/Pages/Serasa/Read/data/data.json,4/e/4ef2f0db9bd79615b569d84b2fac2651633d6bf1
 K
 src/App/servicer/Handler.js,a/9/a955fcd90744b1fde7a5f1b0351ea82683f9152a
 Y
 )src/App/servicer/novoGeradorPDF/tester.js,5/4/54e613de2b431c116a545d9f3cc7fe339417f2fa
 X
 (src/App/servicer/novoGeradorPDF/teste.js,d/1/d120640b61716b42b893ef6a5a397499ca8adde4
-P
- src/App/servicer/convertToPDF.js,1/3/135424d43e199994c454e274fd877041fa08e529
 N
 src/App/servicer/scratch_18.js,1/3/1373b8f4e78faa8c7b4d46975b2a3903b3f64566
-K
-src/App/servicer/service.js,e/6/e6e0fc949929b62995388a46996e3fb7a79a04fc
 T
 $src/App/servicer/novoGeradorPDF/t.md,2/a/2a336779cb2b0907281f3cfaf2ce1211aa79393b
 V
 &src/App/servicer/newePdf/old/index2.js,5/7/5752a74034d8026be452450e2d7022ca93e71452
-K
-src/App/servicer/teste.json,d/2/d21cb2a79ce146c7a779b05afeef7a5df7abf064
 V
 &src/App/servicer/newePdf/old/index3.js,a/9/a9890bc1081afc91ed29b89ca4f48fd47f19ed03
 X
@@ -81,8 +73,6 @@ Q
 !src/App/servicer/newePdf/old/n.js,c/3/c374e79fce1cf0741d7220cab81979f8a7c03fb5
 U
 %src/App/servicer/newePdf/old/Table.js,d/2/d286615b8a039f382eefd318ff6e8c39f75035ac
-Z
-*src/App/servicer/novoGeradorPDF/helpers.js,a/0/a0ee9a77862e61a64773faa0d81917e582921cac
 S
 #src/App/servicer/newePdf/helpers.js,4/e/4e32c8674995c1e10f3d1b4dff690f5636b1ccb8
 U
@@ -107,5 +97,3 @@ O
 src/App/servicer/pdf/helpers.js,c/1/c1aac1d902144e8b16102c4adbc957a9b7c3b5e0
 M
 src/App/servicer/pdf/index.js,8/8/887ffda80cb97e1e8f7781042c67ea603617d23c
-W
-'src/App/servicer/novoGeradorPDF/main.js,4/a/4a9a8dca73eb324a820315473ba58bff96183a7c

@@ -1,4 +1,4 @@
-import { createPDF, createPDFPJ } from "../../servicer/convertToPDF";
+import { createPDF, createPDFPJ } from "../../servicer/old/convertToPDF";
 
 export const handlePDFCreation = (personType, responseSerasa) => {
     const reportData = JSON.stringify(responseSerasa);
