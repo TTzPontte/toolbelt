@@ -85,8 +85,6 @@ Q
 !src/App/servicer/newePdf/index.js,9/8/98891850930a2e9837aa7ce2c3834db6769f97cc
 V
 &src/App/servicer/newePdf/old/readme.md,d/2/d27671dedfcb776af859b9f9c3160509dd4eadbd
-X
-(src/App/servicer/novoGeradorPDF/main2.js,8/d/8d5570b8694064824b347457f45952a488334f25
 Y
 )src/App/servicer/novoGeradorPDF/backup.js,a/9/a96691ae6c241bfab03e7c87dfba91879e2d3064
 ^

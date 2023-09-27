@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/data/t.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a9a8dca73eb324a820315473ba58bff96183a7c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/e/4ef2f0db9bd79615b569d84b2fac2651633d6bf1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/services/ReportService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/services/ReportService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/CreateOrViewPartnerButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/CreateOrViewPartnerButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/ReadPartnerReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/test/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/test/Test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/old/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/test.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/teste.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,24 +70,24 @@
       <recent name="$PROJECT_DIR$/src/App/servicer/newePdf/old" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/App/servicer" />
+      <recent name="$PROJECT_DIR$/src/App/servicer/old" />
+      <recent name="$PROJECT_DIR$/src/App/servicer/" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF" />
-      <recent name="$PROJECT_DIR$/src/App/servicer/newePdf/old" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.t.js">
     <configuration name="backup.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/backup.js" working-dir="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF">
       <method v="2" />
     </configuration>
-    <configuration name="helpers.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/pdf/helpers.js" working-dir="$PROJECT_DIR$/src/App/servicer/pdf">
+    <configuration name="helpers.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/old/pdf/helpers.js" working-dir="$PROJECT_DIR$/src/App/servicer/old/pdf">
       <method v="2" />
     </configuration>
-    <configuration name="index.js (1)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/pdf/index.js" working-dir="$PROJECT_DIR$/src/App/servicer/pdf">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/old/newePdf/index.js" working-dir="$PROJECT_DIR$/src/App/servicer/old/newePdf">
       <method v="2" />
     </configuration>
-    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/newePdf/index.js" working-dir="$PROJECT_DIR$/src/App/servicer/newePdf">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/old/pdf/index.js" working-dir="$PROJECT_DIR$/src/App/servicer/old/pdf">
       <method v="2" />
     </configuration>
     <configuration name="t.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/t.js" working-dir="$PROJECT_DIR$/src/App/Pages/Serasa/Read">

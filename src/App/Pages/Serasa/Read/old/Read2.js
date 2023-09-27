@@ -8,7 +8,7 @@ import {
   createPDF,
   generateDDPF,
   generateDDPJ
-} from "../../../../servicer/novoGeradorPDF/main";
+} from "../../../../servicer/pdf_helpers/main";
 import ReadPartnerReport from "../components/ReadPartnerReport";
 import Results from "../../../../Containers/Searches/Result/Results";
 import {getReportById} from "../hepers";

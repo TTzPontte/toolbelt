@@ -3,7 +3,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const diacritics = require('diacritics');
-const { TableFactory, TableGenerator, createBackground, styles } = require("./helpers.js");
+const { TableFactory, TableGenerator, createBackground, styles } = require("../pdf_helpers/helpers.js");
 
 
 const reportDataPJ = {

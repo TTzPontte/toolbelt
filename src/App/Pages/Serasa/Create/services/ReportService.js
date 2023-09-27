@@ -2,7 +2,7 @@ import { Auth } from 'aws-amplify';
 import Lambda from 'aws-sdk/clients/lambda';
 import { DataStore } from '@aws-amplify/datastore';
 import { EntityType, ReportStatus, SerasaReport } from '../../../../../models';
-import { createPDF, generateDDPF, generateDDPJ } from '../../../../servicer/novoGeradorPDF/main';
+import { createPDF, generateDDPF, generateDDPJ } from '../../../../servicer/pdf_helpers/main';
 
 const getEnvironment = async () => {
     return window.location.hostname === 'localhost' ? 'dev' : 'prod';
