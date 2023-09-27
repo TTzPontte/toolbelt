@@ -8,7 +8,7 @@ import {
   createPDF,
   generateDDPF,
   generateDDPJ
-} from "../../../../servicer/pdf_helpers/main";
+} from "../../../../servicer/pdf_helpers/Pdf/main";
 import ReadPartnerReport from "../components/ReadPartnerReport";
 import Results from "../../../../Containers/Searches/Result/Results";
 const LoadingSpinner = ()=>(<h1>...Loading</h1>)

@@ -1,4 +1,9 @@
-export const data = {
+const fs = require('fs');
+const {generateTaxReturnPdf} = require('./PDF/index');
+
+// module.exports = { handler };
+
+const payload = {
   reports: [
     {
       registration: {
@@ -181,4 +186,52 @@ export const data = {
       }
     }
   }
+}
+
+const makeFile = pdf => {
+  fs.writeFile('helloworld.pdf', pdf, function (err) {
+    if (err) return console.log(err);
+    console.log('Hello World > helloworld.txt');
+  });
 };
+
+const lambda_handler = async event => {
+  const {
+    data: {contractInfo, participants, receiverInfo, installments}
+  } = event.body;
+  console.log({contractInfo});
+  try {
+    const pdfBuffer = await generateTaxReturnPdf({
+      contractInfo,
+      proposal: {
+        installment: installments,
+        participants,
+        receiverInfo
+      }
+    });
+    console.log('---------------');
+    console.log('pdfBuffer', pdfBuffer);
+    // .then((r) => {
+    //   console.log({ r });
+    //   return r;
+    // })
+    // .catch((err) => console.log({ ERROR: err }));
+    return pdfBuffer;
+  } catch (pdfBufferError) {
+    console.log({pdfBufferError});
+  }
+};
+
+const run = () => {
+  return Promise.resolve(
+    lambda_handler(payload)
+      .then(resp => {
+        console.log({resp});
+        makeFile(resp);
+        return resp;
+      })
+      .catch(err => console.log({err}))
+  );
+};
+const pdf = run();
+console.log({pdf});

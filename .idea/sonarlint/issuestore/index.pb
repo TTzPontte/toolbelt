@@ -37,14 +37,10 @@ F
 src/graphql/queries.js,3/7/3724c7b1ee7617cac659ec8b9cc52880fc29eca0
 j
 :amplify/#current-cloud-backend/api/toolbelt/schema.graphql,8/7/8740fdb5158147c8e62b11d0e0871a2652d9e99e
-e
-5src/App/Pages/Serasa/Read/data/CreatePartnerButton.js,c/a/ca9a23a65b2a5d185fb7d1193c7566c678cb32f3
 Z
 *src/App/Pages/Serasa/Read/data/result.json,f/a/fabedb1a30f06101897fabb75785388becb2b090
 N
 src/App/Pages/test/pontte.json,a/1/a1c44f64b36458b035b503aa87097f837b319959
-V
-&src/App/Pages/Serasa/Read/data/data.js,7/5/758ba302ed143d4f9e073a1caa7009448184c68e
 K
 src/App/servicer/Handler.js,a/9/a955fcd90744b1fde7a5f1b0351ea82683f9152a
 Y

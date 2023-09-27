@@ -8,7 +8,7 @@ import {
   createPDF,
   generateDDPF,
   generateDDPJ
-} from "../../../../servicer/pdf_helpers/main";
+} from "../../../../servicer/pdf_helpers/Pdf/main";
 import Results from "../../../../Containers/Searches/Result/Results";
 import CreateOrViewPartnerButton from "../components/CreateOrViewPartnerButton";
 

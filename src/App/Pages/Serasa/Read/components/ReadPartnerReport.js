@@ -4,7 +4,7 @@ import { Storage } from "@aws-amplify/storage";
 import {
   createPDF,
   generateDDPJ
-} from "../../../../servicer/pdf_helpers/main";
+} from "../../../../servicer/pdf_helpers/Pdf/main";
 import { Button, Card, Container, Table } from "react-bootstrap";
 
 const ReadPartnerReport = ({ partners, fileContent }) => {

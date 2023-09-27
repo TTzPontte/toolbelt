@@ -6,7 +6,7 @@ import {
   createPDF,
   generateDDPF,
   generateDDPJ
-} from "../../servicer/pdf_helpers/main";
+} from "../../servicer/pdf_helpers/Pdf/main";
 import { Auth } from "aws-amplify";
 import Lambda from "aws-sdk/clients/lambda";
 import { DataStore } from "@aws-amplify/datastore";

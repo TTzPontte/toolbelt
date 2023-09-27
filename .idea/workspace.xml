@@ -5,21 +5,181 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f188f7-5b7f-470d-b4b4-a3760b20fb3c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/065572d3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/Pages/introductionPage/introduction.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/Pages/introductionPage/props.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/assets/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/assets/fonts/muli-bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/assets/fonts/muli-bolditalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/assets/fonts/muli-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/assets/fonts/muli-regularitalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/assets/svg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/header-footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/headline.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/helpers/date.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/helpers/number.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/installments.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/PDF/proposal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/helloworld.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/ir/test_index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf/helpers/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf/helpers/helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf/helpers/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf_helpers/data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf_helpers/example.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/servicer/pdf_helpers/test_index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/5/758ba302ed143d4f9e073a1caa7009448184c68e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/a/ca9a23a65b2a5d185fb7d1193c7566c678cb32f3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/services/ReportService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Create/services/ReportService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/Read.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/CreateOrViewPartnerButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/CreateOrViewPartnerButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/ReadPartnerReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components/ReadPartnerReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/data/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/data/data.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read3.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/Read4.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pages/test/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pages/test/Test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/servicer/old/service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/test.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/servicer/teste.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/backup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/main2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/novoPDFPJ.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/pdf.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/pdf/helpers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/pdf/pdfService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/t.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/t.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/test2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/teste.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/tester.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/Handler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/convertToPDF.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/gerToken.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/getByCpf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/fonts/muli-bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/fonts/muli-bolditalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/fonts/muli-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/fonts/muli-regularitalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/helpers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/old/Table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/old/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/old/index2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/old/index3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/old/makeDd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/old/n.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/old/output.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/old/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/newePdf/old/tableUtils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/fonts/muli-bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/fonts/muli-bolditalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/fonts/muli-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/fonts/muli-regularitalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/helpers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/old/Table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/old/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/old/index2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/old/index3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/old/makeDd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/old/n.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/old/output.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/old/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/pdf/old/tableUtils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/relatorio.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/report.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/scratch_18.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/servicer/old/service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ActionCard.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ActionCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Ampligram.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Ampligram.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/CommentCard.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/CommentCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ContactUs.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ContactUs.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/EditProfile.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/EditProfile.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/FAQItem.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/FAQItem.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Features2x2.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Features2x2.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Features2x3.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Features2x3.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Features4x1.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Features4x1.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/FeaturesText2x2.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/FeaturesText2x2.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/FormCheckout.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/FormCheckout.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Frame133535.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Frame133535.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Frame334.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/Frame334.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/HeroLayout1.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/HeroLayout1.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/HeroLayout2.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/HeroLayout2.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/HeroLayout3.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/HeroLayout3.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/HeroLayout4.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/HeroLayout4.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ItemCard.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ItemCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/MarketingFooter.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/MarketingFooter.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/MarketingPricing.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/MarketingPricing.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/MyIcon.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/MyIcon.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/NavBar.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/NavBar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/NewForm1.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/NewForm1.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/NewReport.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/NewReport.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ProductCard.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ProductCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ProductDetail.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ProductDetail.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ProfileCard.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ProfileCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ReviewCard.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/ReviewCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SerasaPartnerReportCreateForm.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SerasaPartnerReportCreateForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SerasaPartnerReportUpdateForm.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SerasaPartnerReportUpdateForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SerasaReportCreateForm.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SerasaReportCreateForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SerasaReportUpdateForm.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SerasaReportUpdateForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SideBar.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SideBar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SocialPost.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/SocialPost.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/StandardCard.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/StandardCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/TallCard.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/TallCard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/TokenListCollection.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/TokenListCollection.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/TokenListItem.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/TokenListItem.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/TokenListItemCollection.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/TokenListItemCollection.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/studioTheme.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/studioTheme.js.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/ui-components/utils.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,66 +200,66 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;staging&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.13.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.13.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/src/App/Pages/Serasa/Read&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/Users/Mr-i-me/.nvm/versions/node/v18.13.0/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/node_modules/prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "staging",
+    "javascript.nodejs.core.library.configured.version": "18.13.0",
+    "javascript.nodejs.core.library.typings.version": "18.13.0",
+    "last_opened_file_path": "/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/src/App/servicer",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/Users/Mr-i-me/.nvm/versions/node/v18.13.0/bin/node",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "/Users/Mr-i-me/code/Mr-i-me-pontte/Pontte/toolbelt/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/App/servicer" />
+      <recent name="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf" />
+      <recent name="$PROJECT_DIR$/src/App/servicer/pdf_helpers" />
       <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Read" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/App/servicer" />
-      <recent name="$APPLICATION_CONFIG_DIR$/scratches" />
-      <recent name="$PROJECT_DIR$/src/App/servicer/newePdf/old" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/App/servicer/pdf_helpers" />
+      <recent name="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf/helpers" />
+      <recent name="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf" />
       <recent name="$PROJECT_DIR$/src/App/servicer" />
       <recent name="$PROJECT_DIR$/src/App/servicer/old" />
-      <recent name="$PROJECT_DIR$/src/App/servicer/" />
-      <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Read/components" />
-      <recent name="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.t.js">
-    <configuration name="backup.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF/backup.js" working-dir="$PROJECT_DIR$/src/App/servicer/novoGeradorPDF">
+  <component name="RunManager" selected="Node.js.test_index.js (1)">
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf/main.js" working-dir="$PROJECT_DIR$/src/App/servicer/pdf_helpers">
       <method v="2" />
     </configuration>
-    <configuration name="helpers.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/old/pdf/helpers.js" working-dir="$PROJECT_DIR$/src/App/servicer/old/pdf">
-      <method v="2" />
-    </configuration>
-    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/old/newePdf/index.js" working-dir="$PROJECT_DIR$/src/App/servicer/old/newePdf">
-      <method v="2" />
-    </configuration>
-    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/old/pdf/index.js" working-dir="$PROJECT_DIR$/src/App/servicer/old/pdf">
+    <configuration name="pj_content.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf/pj_content.js" working-dir="$PROJECT_DIR$/src/App/servicer/pdf_helpers/Pdf">
       <method v="2" />
     </configuration>
     <configuration name="t.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/Pages/Serasa/Read/old/t.js" working-dir="$PROJECT_DIR$/src/App/Pages/Serasa/Read">
       <method v="2" />
     </configuration>
+    <configuration name="test_index.js (1)" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/pdf_helpers/test_index.js" working-dir="$PROJECT_DIR$/src/App/servicer/pdf_helpers">
+      <method v="2" />
+    </configuration>
+    <configuration name="test_index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/App/servicer/ir/test_index.js" working-dir="$PROJECT_DIR$/src/App/servicer/ir">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.test_index.js (1)" />
+        <item itemvalue="Node.js.main.js" />
+        <item itemvalue="Node.js.pj_content.js" />
+        <item itemvalue="Node.js.test_index.js" />
         <item itemvalue="Node.js.t.js" />
-        <item itemvalue="Node.js.helpers.js" />
-        <item itemvalue="Node.js.index.js (1)" />
-        <item itemvalue="Node.js.index.js" />
-        <item itemvalue="Node.js.backup.js" />
       </list>
     </recent_temporary>
   </component>

@@ -4,7 +4,7 @@ import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
 import { SerasaPartnerReport, SerasaReport } from "../../../../../models";
 import { useParams } from "react-router-dom";
 import { Storage } from "@aws-amplify/storage";
-import { createPDF, generateDDPF, generateDDPJ } from "../../../../servicer/pdf_helpers/main";
+import { createPDF, generateDDPF, generateDDPJ } from "../../../../servicer/pdf_helpers/Pdf/main";
 import Results from "../../../../Containers/Searches/Result/Results";
 import { invokeLambda } from "../hepers";
 
