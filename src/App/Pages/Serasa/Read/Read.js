@@ -10,6 +10,7 @@ import {
 import Results from "../../../Containers/Searches/Result/Results";
 import { invokeLambda } from "./hepers";
 import { getReportById } from "./hepers_gql";
+import useToast from "./useToast";
 
 const getItem = async (id) => {
   try {
@@ -194,6 +195,7 @@ const Read = () => {
     const jsonContent = JSON.parse(text);
     return jsonContent;
   };
+  const showToast = useToast();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -204,8 +206,10 @@ const Read = () => {
         const jsonContent = await fetchJson();
         setFileContent(jsonContent);
         setReports(jsonContent.reports);
+        showToast("Successfully Loaded")
       } catch (error) {
         console.error("Error fetching data:", error);
+        showToast("Error fetching data:")
       }
     };
 

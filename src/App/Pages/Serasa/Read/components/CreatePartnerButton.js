@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { invokeLambda } from "./hepers";
+import { invokeLambda } from "../hepers";
 import { Storage } from "@aws-amplify/storage";
-import {createPDF, generateDDPJ} from "../../../servicer/novoGeradorPDF/main";
+import {createPDF, generateDDPJ} from "../../../../servicer/novoGeradorPDF/main";
 
 const CreatePartnerButton = ({ partner, setLoading }) => {
   const [loading, setLoadingState] = useState(false);

@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 import { DataStore } from "@aws-amplify/datastore";
 import { Storage } from "@aws-amplify/storage";
 import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
-import { SerasaPartnerReport, SerasaReport } from "../../../../models";
+import { SerasaPartnerReport, SerasaReport } from "../../../../../models";
 import {
   createPDF,
   generateDDPF,
   generateDDPJ
-} from "../../../servicer/novoGeradorPDF/main";
-import ReadPartnerReport from "./ReadPartnerReport";
-import Results from "../../../Containers/Searches/Result/Results";
+} from "../../../../servicer/novoGeradorPDF/main";
+import ReadPartnerReport from "../components/ReadPartnerReport";
+import Results from "../../../../Containers/Searches/Result/Results";
 const LoadingSpinner = ()=>(<h1>...Loading</h1>)
 const ErrorMessage = (error)=>(<h1>...error{JSON.stringify(error)}</h1>)
 const ReadReport = ({reports}) => {

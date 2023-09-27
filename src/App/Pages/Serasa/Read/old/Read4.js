@@ -10,7 +10,7 @@ import {
   generateDDPJ
 } from "../../../../servicer/novoGeradorPDF/main";
 import Results from "../../../../Containers/Searches/Result/Results";
-import CreatePartnerButton from "../CreatePartnerButton";
+import CreatePartnerButton from "../components/CreatePartnerButton";
 
 const getAssociatedPartnerReports = async (serasaReportId) => {
   try {

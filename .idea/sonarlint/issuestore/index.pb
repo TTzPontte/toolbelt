@@ -33,8 +33,6 @@ Q
 !src/App/Pages/Serasa/List/List.js,3/d/3d6fe9b24518e00fec834839d0d811f74fee195a
 >
 src/amplify.sh,a/8/a8c2711961cdbdd83533024b2ed910c8ec0f2306
-W
-'src/App/Pages/Serasa/Read/hepers_gql.js,3/d/3dd23b3afa29634a040748e81dae519210630be7
 F
 src/graphql/queries.js,3/7/3724c7b1ee7617cac659ec8b9cc52880fc29eca0
 j

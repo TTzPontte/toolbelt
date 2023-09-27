@@ -9,7 +9,7 @@ import {
   generateDDPF,
   generateDDPJ
 } from "../../../../servicer/novoGeradorPDF/main";
-import ReadPartnerReport from "../ReadPartnerReport";
+import ReadPartnerReport from "../components/ReadPartnerReport";
 import Results from "../../../../Containers/Searches/Result/Results";
 import {getReportById} from "../hepers";
 
