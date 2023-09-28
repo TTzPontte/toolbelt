@@ -50,7 +50,7 @@ const PartnerReportTable = ({ combinedPartners }) => (
 
 const combinePartners = (partners, partnerList) => {
   return partners?.map((partner) => {
-    const documentKey = partner.type === "PF" ? "businessDocument" : "documentId";
+    const documentKey = partner.type === "PJ" ? "businessDocument" : "documentId";
     const response = partnerList.find((r) => r[documentKey] === partner.documentNumber);
 
     return response
