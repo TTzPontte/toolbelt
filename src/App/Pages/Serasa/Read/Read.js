@@ -36,6 +36,17 @@ const getItem = async (id) => {
     throw error;
   }
 };
+const fetchJson = async (id) => {
+  const result = await Storage.get(`serasa/${id}.json`, {
+    download: true,
+    level: "public"
+  });
+
+  const blob = result.Body;
+  const text = await blob.text();
+  const jsonContent = JSON.parse(text);
+  return jsonContent;
+};
 
 const Read = () => {
   const { id } = useParams();
@@ -43,17 +54,6 @@ const Read = () => {
   const [reports, setReports] = useState([]);
   const [partners, setPartners] = useState([]);
   const [fileContent, setFileContent] = useState(null);
-  const fetchJson = async () => {
-    const result = await Storage.get(`serasa/${id}.json`, {
-      download: true,
-      level: "public"
-    });
-
-    const blob = result.Body;
-    const text = await blob.text();
-    const jsonContent = JSON.parse(text);
-    return jsonContent;
-  };
   const showToast = useToast();
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const Read = () => {
         const fetchedModel = await getItem(id);
         setModel(fetchedModel);
         setPartners(fetchedModel?.serasaPartnerReports);
-        const jsonContent = await fetchJson();
+        const jsonContent = await fetchJson(id);
         setFileContent(jsonContent);
         setReports(jsonContent.reports);
         showToast("Successfully Loaded")

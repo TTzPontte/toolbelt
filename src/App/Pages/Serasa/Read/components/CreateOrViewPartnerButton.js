@@ -2,69 +2,61 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { invokeLambda } from "../hepers";
 import { Storage } from "@aws-amplify/storage";
-import {createPDF, generateDDPJ} from "../../../../servicer/pdf_helpers/Pdf/main";
+import {generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/main";
+const CreateReport = async (partner, setLoadingState) => {
+  try {
+    await invokeLambda("toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi", partner);
+  } catch (error) {
+    console.error("Error invoking Lambda:", error);
+  } finally {
+    setLoadingState(false);
+  }
+};
+
+const ViewReport = async (partner, setLoadingState) => {
+  try {
+    const fileKey = `serasa/${partner?.id}.json`;
+    const response = await Storage.get(fileKey, {
+      download: true,
+      level: "public",
+      validateObjectExistence: true,
+    });
+
+    const jsonContent = JSON.parse(await response.text());
+    const reportType = partner.type === "PF" ? "consumer" : "company";
+    const ddData = generateDDPJ(jsonContent.data);
+    const reportName = jsonContent.data.reports[0].registration[`${reportType}Name`];
+    createPDF(ddData, reportName);
+  } catch (error) {
+    console.error("Error downloading report:", error);
+  } finally {
+    setLoadingState(false);
+  }
+};
 
 const CreateOrViewPartnerButton = ({ partner, setLoading }) => {
   const [loading, setLoadingState] = useState(false);
 
-  const { filePath } = partner;
-
-  const handleCreateReport = async () => {
+  const handleClick = async () => {
     if (loading) return;
 
     setLoadingState(true);
 
-    try {
-      await invokeLambda(
-          "toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi",
-          partner
-      );
-    } catch (error) {
-      console.error("Error invoking Lambda:", error);
-    } finally {
-      setLoadingState(false);
-      // setLoading(false);
-    }
-  };
-
-  const handleViewReport = async () => {
-    if (loading) return;
-
-    setLoadingState(true);
-
-    try {
-      const fileKey = `serasa/${partner?.id}.json`;
-
-      const response = await Storage.get(fileKey, {
-        download: true,
-        level: "public",
-        validateObjectExistence: true,
-      });
-      const blob = response.Body;
-      const text = await blob.text();
-      const jsonContent = JSON.parse(text);
-      const reportType = partner.type === "PF" ? "consumer" : "company";
-      console.log({jsonContent})
-      const ddData = generateDDPJ(jsonContent.data);
-      const reportName = jsonContent.data.reports[0].registration[reportType + "Name"];
-      createPDF(ddData, reportName);
-      // Create a blob from the file data
-
-    } catch (error) {
-      console.error("Error downloading report:", error);
-    } finally {
-      setLoadingState(false);
+    if (partner.filePath) {
+      await ViewReport(partner, setLoadingState);
+    } else {
+      await CreateReport(partner, setLoadingState);
     }
   };
 
   return (
       <Button
           className="btn-sm"
-          onClick={filePath ? handleViewReport : handleCreateReport}
+          onClick={handleClick}
           variant="primary"
           disabled={loading}
       >
-        {filePath ? "View Report" : "Create Report"}
+        {partner.filePath ? "View Report" : "Create Report"}
       </Button>
   );
 };

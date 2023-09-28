@@ -1,10 +1,27 @@
 import React from "react";
-import {Card, Container, Table} from "react-bootstrap";
+import { Card, Container, Table } from "react-bootstrap";
 import CreateOrViewPartnerButton from "./CreateOrViewPartnerButton";
 
-// Component to render partner reports in a table
-const PartnerReportTable = ({ combinedPartners }) => {
+// Component to render partner reports in a table row
+const PartnerTableRow = ({ partner }) => {
+  const { id, documentNumber, participationPercentage, status, filePath } = partner;
+
   return (
+      <tr key={id}>
+        <td>{id}</td>
+        <td>{documentNumber}</td>
+        <td>{participationPercentage}</td>
+        <td>{status || "-"}</td>
+        <td>{filePath || "-"}</td>
+        <td>
+          <CreateOrViewPartnerButton partner={partner} />
+        </td>
+      </tr>
+  );
+};
+
+// Component to render partner reports in a table
+const PartnerReportTable = ({ combinedPartners }) => (
     <Card>
       <Card.Header>
         <h2>Partner Report</h2>
@@ -12,68 +29,51 @@ const PartnerReportTable = ({ combinedPartners }) => {
       <Card.Body>
         <Table responsive striped bordered hover>
           <thead>
-            <tr>
-              <th>ID</th>
-              <th>CNPJ</th>
-              <th>% Participação</th>
-              <th>Status</th>
-              <th>Arquivo</th>
-              <th>Ações</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>CNPJ</th>
+            <th>% Participação</th>
+            <th>Status</th>
+            <th>Arquivo</th>
+            <th>Ações</th>
+          </tr>
           </thead>
           <tbody>
-            {combinedPartners.map((partner) => (
-              <tr key={partner.id}>
-                <td>{partner.id}</td>
-                <td>{partner.documentNumber}</td>
-                <td>{partner.participationPercentage}</td>
-                <td>{partner?.status || "-"}</td>
-                <td>{partner?.filePath || "-"}</td>
-                <td>
-                  <CreateOrViewPartnerButton partner={partner} />
-                </td>
-              </tr>
-            ))}
+          {combinedPartners.map((partner) => (
+              <PartnerTableRow key={partner.id} partner={partner} />
+          ))}
           </tbody>
         </Table>
       </Card.Body>
     </Card>
-  );
+);
+
+const combinePartners = (partners, partnerList) => {
+  return partners?.map((partner) => {
+    const documentKey = partner.type === "PF" ? "businessDocument" : "documentId";
+    const response = partnerList.find((r) => r[documentKey] === partner.documentNumber);
+
+    return response
+        ? { ...partner, participationPercentage: response.participationPercentage }
+        : partner;
+  });
 };
 
 const ReadPartnerReport = ({ partners, fileContent }) => {
   const {
     optionalFeatures: {
-      partner: { PartnerResponse = { results: [] }, partnershipResponse = [] }
-    }
+      partner: { PartnerResponse = { results: [] }, partnershipResponse = [] },
+    },
   } = fileContent;
 
   const partnerList = [...PartnerResponse.results, ...partnershipResponse];
 
-  // Combine partner data
-  const combinePartners = () => {
-    return partners?.map((partner) => {
-      const document_key =
-        partner.type === "PF" ? "businessDocument" : "documentId";
-      const response = partnerList.find(
-        (r) => r[document_key] === partner.documentNumber
-      );
-
-      return response
-        ? {
-            ...partner,
-            participationPercentage: response.participationPercentage
-          }
-        : partner;
-    });
-  };
-
-  const combinedPartners = combinePartners();
+  const combinedPartners = combinePartners(partners, partnerList);
 
   return (
-    <Container>
-      <PartnerReportTable combinedPartners={combinedPartners} />
-    </Container>
+      <Container>
+        <PartnerReportTable combinedPartners={combinedPartners} />
+      </Container>
   );
 };
 
