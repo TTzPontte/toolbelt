@@ -1,19 +1,18 @@
-const pdfMake = require("pdfmake/build/pdfmake");
-const pdfFonts = require("pdfmake/build/vfs_fonts");
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-const diacritics = require("diacritics");
-const {
+import {
   convertToPercentage,
   createBackground,
-  styles,
-  formatDateResume,
   formatCurrency,
+  formatDate,
+  formatDateResume,
   formatDocumentNumber,
   removeAccents,
-  formatDate
-} = require("./helpers/utils");
+  styles
+} from "./helpers/utils";
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class TableFactory {
   constructor(style) {
@@ -146,12 +145,17 @@ const createNotaryTable = (data, title) =>
           item?.amount || 0
         )} - ${formatDateResume(item?.occurrenceDate || 0)}]`
     ],
-      data.summary.count > 0?["OfficeNumber", "Valor", "Data", "Cidade", "Estado", "Resumo"]:[]
+    data.summary.count > 0
+      ? ["OfficeNumber", "Valor", "Data", "Cidade", "Estado", "Resumo"]
+      : []
   );
 
 const createNegativeTable = (data, title) => {
-  const headers = data.summary.count > 0?["Natureza", "Credor", "Valor", "Data", "Cidade", "Estado", "Resumo"]:[]
-  console.log({data})
+  const headers =
+    data.summary.count > 0
+      ? ["Natureza", "Credor", "Valor", "Data", "Cidade", "Estado", "Resumo"]
+      : [];
+  console.log({ data });
 
   return createTable(
     data,
@@ -170,20 +174,20 @@ const createNegativeTable = (data, title) => {
     ],
     headers
   );
-}
+};
 
 const makeRegistrationTable = (registration, tableGenerator) => {
   function getStatus(text) {
-    const words = text.split(' ');
-    if (text.includes(':')) {
+    const words = text.split(" ");
+    if (text.includes(":")) {
       return words[words.length - 1];
     } else {
       return text;
     }
   }
 
-  const {statusRegistration} = registration
-  console.log({statusRegistration})
+  const { statusRegistration } = registration;
+  console.log({ statusRegistration });
   // Define the headers for the registration table
   const headers = [
     "Nome / Razão Social",
@@ -199,7 +203,7 @@ const makeRegistrationTable = (registration, tableGenerator) => {
     registration.companyName,
     formatDocumentNumber(registration.companyDocument),
     registration.foundationDate,
-      getStatus(registration.statusRegistration),
+    getStatus(registration.statusRegistration),
     registration.address.city,
     registration.address.state
   ];
@@ -365,7 +369,7 @@ const makePartners = (partners, tableGenerator) => {
 
   // Check if any partner has a companyName or name
   const hasName = partners.some(
-      partner => partner.companyName || partner.name
+    (partner) => partner.companyName || partner.name
   );
 
   // Adjust header row based on presence of companyName or name
@@ -377,22 +381,22 @@ const makePartners = (partners, tableGenerator) => {
 
   // Adjust body rows based on presence of companyName or name
   const bodyRows = partners.map((partner) => {
-
-    console.log(partner.businessDocument || partner.documentId)
-    console.log(formatDocumentNumber(partner.businessDocument || partner.documentId))
-    return[
+    console.log(partner.businessDocument || partner.documentId);
+    console.log(
+      formatDocumentNumber(partner.businessDocument || partner.documentId)
+    );
+    return [
       formatDocumentNumber(partner.businessDocument || partner.documentId),
       ...(hasName ? [partner.companyName || partner.name] : []),
       partner.participationPercentage
-    ].map((value) => tableGenerator.tableFactory.createCell(value, "content"))
-  }
-  )
+    ].map((value) => tableGenerator.tableFactory.createCell(value, "content"));
+  });
 
   const tableBody = [headerRow, ...bodyRows];
 
   const table = tableGenerator.tableFactory.createTable(
-      Array(headerRow.length).fill("*"),
-      tableBody
+    Array(headerRow.length).fill("*"),
+    tableBody
   );
 
   return [
@@ -524,7 +528,7 @@ const generateReportContentPF = (report, optional) => {
     ...createNegativeTable(refin, "REFIN"),
     ...createNegativeTable(check, "Cheque sem fundo"),
     ...createNotaryTable(notary, "Notary"),
-      ...makePartners(partners, tableGenerator)
+    ...makePartners(partners, tableGenerator)
   ].filter(Boolean);
 };
 
@@ -560,8 +564,4 @@ function createPDF(dd, nomeCliente) {
   pdfDocGenerator.download(nomeCliente + ".pdf");
 }
 
-module.exports = {
-  generateDDPJ,
-  generateDDPF,
-  createPDF
-};
+export { generateDDPJ, generateDDPF, createPDF };

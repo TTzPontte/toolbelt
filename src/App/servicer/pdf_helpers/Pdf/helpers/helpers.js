@@ -59,7 +59,7 @@ class TableGenerator {
 }
 
 
-module.exports = {
+export {
     TableFactory, TableGenerator
 };
 
