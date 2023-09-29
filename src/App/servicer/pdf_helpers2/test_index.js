@@ -23,4 +23,4 @@ function createLocalPDF(pdfDefinition, fileName) {
   });
 }
 
-createLocalPDF(ddPJ, "example.pdf");
+createLocalPDF(ddPF, "example.pdf");
