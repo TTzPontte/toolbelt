@@ -1,76 +1,97 @@
 import React, { useEffect, useState } from "react";
 import { DataStore } from "@aws-amplify/datastore";
-import {Table, Button, Container, Row} from "react-bootstrap";
+import { Container, Button, Row, Col, Card, Badge } from "react-bootstrap";
 import { SerasaReport } from "../../../../models";
 import { useNavigate } from "react-router-dom";
+import { Collection } from "@aws-amplify/ui-react";
+import { FaTrash, FaEye } from "react-icons/fa"; // Importing icons
+
+const ListHeader = () => {
+  return (
+      <Row className="border-top border-bottom py-3 bg-light text-uppercase font-weight-bold">
+        <Col>#</Col>
+        <Col>Document Number</Col>
+        <Col>Type</Col>
+        <Col>Status</Col>
+        <Col>Actions</Col>
+      </Row>
+  );
+};
+
+const ListItem = ({ model, index, handleDelete, navigate }) => {
+  return (
+      <Row className="border-bottom py-2 hover:bg-light">
+        <Col>{index + 1}</Col>
+        <Col>{model.documentNumber}</Col>
+        <Col>{model.type}</Col>
+        <Col><Badge variant={model.status === 'Active' ? 'success' : 'danger'}>{model.status}</Badge></Col>
+        <Col>
+          <Button variant="danger" onClick={() => handleDelete(model.id)} className="mr-2">
+            <FaTrash /> Delete
+          </Button>
+          <Button variant="info" onClick={() => navigate(`${model.id}`)}>
+            <FaEye /> View
+          </Button>
+        </Col>
+      </Row>
+  );
+};
 
 const List = (props) => {
   const [models, setModels] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
-  }, []); // Empty dependency array means this useEffect runs once when the component mounts
+  }, []);
 
   const fetchData = async () => {
-    const fetchedModels = await DataStore.query(SerasaReport);
-    console.log(fetchedModels);
-    setModels(fetchedModels);
+    try {
+      const fetchedModels = await DataStore.query(SerasaReport);
+      setModels(fetchedModels);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const handleDelete = async (id) => {
-    const modelToDelete = await DataStore.query(SerasaReport, id);
-    await DataStore.delete(modelToDelete);
-    fetchData(); // Refresh the list
+    try {
+      const modelToDelete = await DataStore.query(SerasaReport, id);
+      await DataStore.delete(modelToDelete);
+      fetchData(); // Refresh the list
+    } catch (error) {
+      console.error("Error deleting data:", error);
+    }
   };
 
-  const navigate = useNavigate();
-
   return (
-    <Container>
-      <Row>
-        <h1>Fetched Serasa Reports</h1>
-      </Row>
-      <Row>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Document Number</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Action</th>
-              <th>View</th>
-            </tr>
-          </thead>
-          <tbody>
-            {models.map((model, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{model.documentNumber}</td>
-                <td>{model.type}</td>
-                <td>{model.status}</td>
-                <td>
-                  <Button
-                    variant="danger"
-                    onClick={() => handleDelete(model.id)}
-                  >
-                    Delete
-                  </Button>
-                </td>
-                <td>
-                  <Button
-                    variant="info"
-                    onClick={() => navigate(`${model.id}`)}
-                  >
-                    View
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </Row>
-    </Container>
+      <Container>
+        <Row className="mb-4">
+          <Col>
+            <h1>Fetched Serasa Reports</h1>
+          </Col>
+        </Row>
+        <Card>
+          <Card.Body>
+            <Collection
+                isPaginated
+                isSearchable
+                items={models}
+                type="list"
+                direction="column"
+                gap="20px"
+                wrap="nowrap"
+            >
+              {(model, index) => (
+                  <>
+                    {index === 0 && (<ListHeader />)}
+                    <ListItem {...{ model, index, handleDelete, navigate }} />
+                  </>
+              )}
+            </Collection>
+          </Card.Body>
+        </Card>
+      </Container>
   );
 };
 
