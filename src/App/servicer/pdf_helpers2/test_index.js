@@ -1,17 +1,15 @@
 const { writeFileSync } = require("fs");
-// const { ReportGenerator } = require("./Pdf/pj_content");
+const { generateDDPJ, generateDDPF } = require("./Pdf/main");
 const pdfMake = require("pdfmake/build/pdfmake");
 const pdfFonts = require("pdfmake/build/vfs_fonts");
 const {data}= require("./data")
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const diacritics = require("diacritics");
-const {generateDDPJ} = require("./Pdf/pj_content");
-// const _rg = new ReportGenerator(data['PJ'].reports, data['PJ'].optionalFeatures)
-const ddPJ = generateDDPJ(data["PJ"]);
-// const ddPF = generateDDPF(data);
+const ddPJ = generateDDPJ(data['PJ']);
+const ddPF = generateDDPF(data['PF']);
 
-console.log(JSON.stringify(ddPJ, null, 2).replace("null,", ""));
+// console.log(JSON.stringify(ddPJ, null, 2).replace("null,", ""));
 
 function createLocalPDF(pdfDefinition, fileName) {
   // Create a PDF document generator

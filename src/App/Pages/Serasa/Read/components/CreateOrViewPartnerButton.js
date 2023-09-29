@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { invokeLambda } from "../hepers";
 import { Storage } from "@aws-amplify/storage";
 import {generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/main";
+import {generateDDPF} from "../../../../servicer/pdf_helpers/Pdf/main";
 const CreateReport = async (partner, setLoadingState) => {
   try {
     await invokeLambda("toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi", partner);
@@ -13,7 +14,7 @@ const CreateReport = async (partner, setLoadingState) => {
   }
 };
 
-const ViewReport = async (partner, setLoadingState) => {
+const viewReport = async (partner, setLoadingState) => {
   try {
     const fileKey = `serasa/${partner?.id}.json`;
     const response = await Storage.get(fileKey, {
@@ -24,8 +25,8 @@ const ViewReport = async (partner, setLoadingState) => {
 
     const jsonContent = JSON.parse(await response.text());
     const reportType = partner.type === "PF" ? "consumer" : "company";
-    const ddData = generateDDPJ(jsonContent.data);
-    const reportName = jsonContent.data.reports[0].registration[`${reportType}Name`];
+    const ddData = generateDDPJ(jsonContent);
+    const reportName = jsonContent.reports[0].registration[`${reportType}Name`];
     createPDF(ddData, reportName);
   } catch (error) {
     console.error("Error downloading report:", error);
@@ -34,16 +35,50 @@ const ViewReport = async (partner, setLoadingState) => {
   }
 };
 
+
 const CreateOrViewPartnerButton = ({ partner, setLoading }) => {
   const [loading, setLoadingState] = useState(false);
+  const handleViewReport = async () => {
+    if (loading) return;
 
+    setLoadingState(true);
+
+    try {
+      const fileKey = `serasa/${partner?.id}.json`;
+
+      const response = await Storage.get(fileKey, {
+        download: true,
+        level: "public",
+        validateObjectExistence: true,
+      });
+      const blob = response.Body;
+      const text = await blob.text();
+      const jsonContent = JSON.parse(text);
+      const reportType = partner.type === "PF" ? "consumer" : "company";
+      console.log({jsonContent})
+      const ddData =
+          partner.type === "PF"
+              ? generateDDPF(jsonContent)
+              : generateDDPJ(jsonContent);
+      const reportName = jsonContent.reports[0].registration[reportType + "Name"];
+      createPDF(ddData, reportName);
+      // Create a blob from the file data
+
+    } catch (error) {
+      console.error("Error downloading report:", error);
+    } finally {
+      setLoadingState(false);
+    }
+  };
   const handleClick = async () => {
     if (loading) return;
 
     setLoadingState(true);
 
     if (partner.filePath) {
-      await ViewReport(partner, setLoadingState);
+      // await handleViewReport(partner, setLoadingState);
+      await handleViewReport()
+
     } else {
       await CreateReport(partner, setLoadingState);
     }

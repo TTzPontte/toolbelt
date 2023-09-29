@@ -1,5 +1,5 @@
-const pdfMake = require("pdfmake/build/pdfmake");
-const pdfFonts = require("pdfmake/build/vfs_fonts");
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -8,61 +8,16 @@ const {
   TableFactory,
   TableGenerator,
   createBackground,
-  styles
-} = require("./helpers/helpers.js");
-const {
+  createRect,
+  createHeaderStack,
+  styles,
   convertToPercentage,
   formatDateResume,
   formatCurrency,
   formatDocumentNumber,
   removeAccents,
   formatDate
-} = require("./helpers/utils");
-const { writeFileSync } = require("fs");
-// Extract Negative Data
-function extractNegativeData(negativeType, data) {
-  const tableData = [];
-
-  if (data) {
-    for (let i = 0; i < data.length; i++) {
-      const info = [
-        removeAccents(data[i].legalNature),
-        data[i].creditorName,
-        formatCurrency(data[i].amount),
-        formatDate(data[i].occurrenceDate),
-        data[i].city,
-        data[i].federalUnit,
-        `${negativeType} [${data[i].legalNature} - ${formatCurrency(data[i].amount)} - ${formatDateResume(data[i].occurrenceDate)}]`
-      ];
-      tableData.push(info);
-    }
-  }
-
-  return tableData;
-}
-// Generate Negative Table
-function generateNegativeTable( negativeType, summary, data) {
-  const tableFactory = new TableFactory("tableInfos");
-  const tableGenerator = new TableGenerator(tableFactory);
-  const header = tableGenerator.createHeaderNegativeTable([
-    negativeType,
-    summary.count,
-    "Valor Total",
-    formatCurrency(summary.balance)
-  ]);
-
-  const content = extractNegativeData(negativeType, data);
-
-  if (content.length > 0) {
-    return [header].concat(
-        tableGenerator.createAuxTable(
-            ["Natureza", "Credor", "Valor", "Data", "Cidade", "Estado", "Resumo"],
-            content
-        )
-    );
-  }
-  return [header];
-}
+} = require("./helpers.js");
 
 function generateReportContentPJ(report, optional) {
   //Dados Pai - JSON
@@ -441,22 +396,12 @@ function generateReportContentPJ(report, optional) {
     directorInfoTable
   ];
 }
-function generateDDPJ({ reports, optionalFeatures }) {
-  console.log("Dentro da função:\n", { reports, optionalFeatures });
-  return {
-    background: createBackground,
-    content: generateReportContentPJ(reports[0], optionalFeatures),
-    styles,
-    pageSize: { width: 595.276, height: 841.89 },
-    pageMargins: [0, 0, 0, 0]
-  };
-}
 
 function generateReportContentPF(report, optional) {
   // Dados Pai - JSON
   const registration = report.registration;
   const negativeData = report.negativeData;
-  const facts = report.facts.inquiry?.inquiryResponse;
+  const facts = report.facts.inquiry.inquiryResponse;
 
   // Dados de negativação
   const pefins = negativeData.pefin.pefinResponse;
@@ -485,7 +430,7 @@ function generateReportContentPF(report, optional) {
     [
       [
         registration.consumerName,
-        formatDocumentNumber(registration?.documentNumber),
+        formatDocumentNumber(registration.documentNumber),
         registration.motherName,
         formatDate(registration.birthDate),
         registration.statusRegistration,
@@ -662,12 +607,11 @@ function generateReportContentPF(report, optional) {
     }
   };
 
-  const hasNegativeData = [
-    {
-      style: "contentPDF",
-      text: "\nDados de Negativação"
-    }
-  ];
+
+  const hasNegativeData = [ {
+    style: "contentPDF",
+    text: "\nDados de Negativação"
+  }]
 
   const returnArr = [
     topo,
@@ -697,20 +641,36 @@ function generateReportContentPF(report, optional) {
   return returnArr;
 }
 
-
-function generateDDPF({ reports, optionalFeatures }) {
-  console.log("Dentro da função:\n", { reports, optionalFeatures });
-
+export function generateDDPJ({reports, optionalFeatures}) {
+  console.log("Dentro da função:\n", {reports, optionalFeatures});
   return {
     background: createBackground,
-    content: generateReportContentPF(reports[0], optionalFeatures),
+    content: generateReportContentPJ(
+      reports[0],
+      optionalFeatures
+    ),
     styles,
     pageSize: { width: 595.276, height: 841.89 },
     pageMargins: [0, 0, 0, 0]
   };
 }
 
-function createPDF(dd, nomeCliente) {
+export function generateDDPF({reports, optionalFeatures}) {
+  console.log("Dentro da função:\n", {reports, optionalFeatures});
+
+  return {
+    background: createBackground,
+    content: generateReportContentPF(
+      reports[0],
+      optionalFeatures
+    ),
+    styles,
+    pageSize: { width: 595.276, height: 841.89 },
+    pageMargins: [0, 0, 0, 0]
+  };
+}
+
+export function createPDF(dd, nomeCliente) {
   console.log("createPDF");
   // Create a new PDF document
   const pdfDocGenerator = pdfMake.createPdf(dd);
@@ -719,9 +679,11 @@ function createPDF(dd, nomeCliente) {
   pdfDocGenerator.download(nomeCliente + ".pdf");
 }
 
-// Export the functions you want to use elsewhere
-// module.exports = {
-//   generateDDPJ,
-//   generateDDPF,
-//   createPDF
-// };
+/*
+// Teste pra exibir resultados das funções
+const ddPJ = generateDDPJ(reportDataPJ);
+const ddPF = generateDDPF(reportDataPF);
+
+console.log(JSON.stringify(ddPJ, null, 2).replace("null,",""));
+
+*/
