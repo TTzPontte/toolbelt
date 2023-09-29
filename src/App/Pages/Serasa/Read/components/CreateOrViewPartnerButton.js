@@ -2,31 +2,42 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { invokeLambda } from "../hepers";
 import { Storage } from "@aws-amplify/storage";
-import {createPDF, generateDDPJ} from "../../../../servicer/pdf_helpers/Pdf/main";
+import {generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/main";
+import {generateDDPF} from "../../../../servicer/pdf_helpers/Pdf/main";
+const CreateReport = async (partner, setLoadingState) => {
+  try {
+    await invokeLambda("toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi", partner);
+  } catch (error) {
+    console.error("Error invoking Lambda:", error);
+  } finally {
+    setLoadingState(false);
+  }
+};
+
+const viewReport = async (partner, setLoadingState) => {
+  try {
+    const fileKey = `serasa/${partner?.id}.json`;
+    const response = await Storage.get(fileKey, {
+      download: true,
+      level: "public",
+      validateObjectExistence: true,
+    });
+
+    const jsonContent = JSON.parse(await response.text());
+    const reportType = partner.type === "PF" ? "consumer" : "company";
+    const ddData = generateDDPJ(jsonContent);
+    const reportName = jsonContent.reports[0].registration[`${reportType}Name`];
+    createPDF(ddData, reportName);
+  } catch (error) {
+    console.error("Error downloading report:", error);
+  } finally {
+    setLoadingState(false);
+  }
+};
+
 
 const CreateOrViewPartnerButton = ({ partner, setLoading }) => {
   const [loading, setLoadingState] = useState(false);
-
-  const { filePath } = partner;
-
-  const handleCreateReport = async () => {
-    if (loading) return;
-
-    setLoadingState(true);
-
-    try {
-      await invokeLambda(
-          "toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi",
-          partner
-      );
-    } catch (error) {
-      console.error("Error invoking Lambda:", error);
-    } finally {
-      setLoadingState(false);
-      // setLoading(false);
-    }
-  };
-
   const handleViewReport = async () => {
     if (loading) return;
 
@@ -45,8 +56,11 @@ const CreateOrViewPartnerButton = ({ partner, setLoading }) => {
       const jsonContent = JSON.parse(text);
       const reportType = partner.type === "PF" ? "consumer" : "company";
       console.log({jsonContent})
-      const ddData = generateDDPJ(jsonContent.data);
-      const reportName = jsonContent.data.reports[0].registration[reportType + "Name"];
+      const ddData =
+          partner.type === "PF"
+              ? generateDDPF(jsonContent)
+              : generateDDPJ(jsonContent);
+      const reportName = jsonContent.reports[0].registration[reportType + "Name"];
       createPDF(ddData, reportName);
       // Create a blob from the file data
 
@@ -56,15 +70,28 @@ const CreateOrViewPartnerButton = ({ partner, setLoading }) => {
       setLoadingState(false);
     }
   };
+  const handleClick = async () => {
+    if (loading) return;
+
+    setLoadingState(true);
+
+    if (partner.filePath) {
+      // await handleViewReport(partner, setLoadingState);
+      await handleViewReport()
+
+    } else {
+      await CreateReport(partner, setLoadingState);
+    }
+  };
 
   return (
       <Button
           className="btn-sm"
-          onClick={filePath ? handleViewReport : handleCreateReport}
+          onClick={handleClick}
           variant="primary"
           disabled={loading}
       >
-        {filePath ? "View Report" : "Create Report"}
+        {partner.filePath ? "View Report" : "Create Report"}
       </Button>
   );
 };

@@ -1,44 +1,25 @@
 import HomePage from "./Pages/HomePage/HomePage";
-import Test from "./Pages/test/Test";
 import Create from "./Pages/Serasa/Create/SerasaReportPage";
 import LambdaTeste from "./Pages/lambdaTeste/LambdaTeste";
-import Home from "./Pages/Home/Home";
 import Read from "./Pages/Serasa/Read/Read";
 import List from "./Pages/Serasa/List/List";
+import PdfPage from "./Pages/PdfPage";
 
-export const routes = [
-  {
-    path: "/",
-    element: <HomePage />,
-    name: "Home",
-    fa: "home"
-  },
-  { path: "orgs/home", element: <HomePage />, name: "Home", fa: "home" },
+export const routes = [{
+    path: "/", element: <HomePage/>, name: "Home", fa: "home"
+},
+    {path: "orgs/home", element: <HomePage/>, name: "Home", fa: "home"},
+    {path: "pdf", element: <PdfPage/>, name: "Home", fa: "home"},
 
-  {
-    path: "/test",
-    element: <Test />
-  },
-  {
-    path: "/serasa",
-    element: <List />
-  },
-  {
-    path: "serasa/new",
-    element: <Create />,
-    fa: "hand-holding-usd",
-    clsx: "my-0"
-  },  {
-    path: "serasa/:id",
-    element: <Read />,
-    fa: "hand-holding-usd",
-    clsx: "my-0"
-  },
-  {
-    path: "lambdateste",
-    element: <LambdaTeste />
-  }
-];
+    {
+        path: "/serasa", element: <List/>
+    }, {
+        path: "serasa/new", element: <Create/>, fa: "hand-holding-usd", clsx: "my-0"
+    }, {
+        path: "serasa/:id", element: <Read/>, fa: "hand-holding-usd", clsx: "my-0"
+    }, {
+        path: "lambdateste", element: <LambdaTeste/>
+    }];
 // const navlinks = [];
 // routes.map((i) => {
 //   const paths = i.path.split("/");
