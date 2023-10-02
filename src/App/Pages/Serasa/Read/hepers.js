@@ -1,34 +1,82 @@
 import { Auth, Storage } from "aws-amplify";
 import Lambda from "aws-sdk/clients/lambda";
 import { DataStore } from "@aws-amplify/datastore";
-import {EntityType, ReportStatus, SerasaPartnerReport, SerasaReport} from "../../../../models";
+import {
+  EntityType,
+  ReportStatus,
+  SerasaPartnerReport,
+  SerasaReport
+} from "../../../../models";
+import { getReportById } from "./hepers_gql";
 export const getItem = async (id) => {
-  const getAssociatedPartnerReports = async (serasaReportId) => {
-    try {
-      return await DataStore.query(SerasaPartnerReport, (report) =>
-          report.serasareportID.eq(serasaReportId)
-      );
-    } catch (error) {
-      console.error("Error fetching associated SerasaPartnerReports:", error);
-      throw error;
-    }
-  };
-
   try {
-    const serasaReport = await DataStore.query(SerasaReport, id);
-    if (!serasaReport) {
+    const { data } = await getReportById(id);
+    const serasaData = data.getSerasaReport;
+    if (!serasaData) {
       console.error("SerasaReport not found for ID:", id);
-      return null; // Return null if not found
+      return null;
     }
 
-    const partnerReports = await getAssociatedPartnerReports(id);
-
-    return { ...serasaReport, serasaPartnerReports: partnerReports };
+    const newObj = {
+      ...serasaData,
+      serasaPartnerReports: serasaData.SerasaPartnerReports?.items || []
+    };
+    return newObj;
   } catch (error) {
     console.error("Error:", error);
     throw error;
   }
 };
+
+export const fetchReport = async (id) => {
+  const fileKey = `serasa/${id}.json`;
+  const response = await Storage.get(fileKey, {
+    download: true,
+    level: "public",
+    validateObjectExistence: true
+  });
+  const jsonContent = JSON.parse(await response.Body.text());
+  return jsonContent;
+};
+
+export const fetchJson = async (id) => {
+  const result = await Storage.get(`serasa/${id}.json`, {
+    download: true,
+    level: "public"
+  });
+
+  const blob = result.Body;
+  const text = await blob.text();
+  return JSON.parse(text);
+};
+
+// export const getItem = async (id) => {
+//   const getAssociatedPartnerReports = async (serasaReportId) => {
+//     try {
+//       return await DataStore.query(SerasaPartnerReport, (report) =>
+//           report.serasareportID.eq(serasaReportId)
+//       );
+//     } catch (error) {
+//       console.error("Error fetching associated SerasaPartnerReports:", error);
+//       throw error;
+//     }
+//   };
+//
+//   try {
+//     const serasaReport = await DataStore.query(SerasaReport, id);
+//     if (!serasaReport) {
+//       console.error("SerasaReport not found for ID:", id);
+//       return null; // Return null if not found
+//     }
+//
+//     const partnerReports = await getAssociatedPartnerReports(id);
+//
+//     return { ...serasaReport, serasaPartnerReports: partnerReports };
+//   } catch (error) {
+//     console.error("Error:", error);
+//     throw error;
+//   }
+// };
 
 export const personTypeOptions = [
   { label: "PF", value: "PF" },

@@ -1,51 +1,134 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { Storage } from "@aws-amplify/storage";
+import { toast } from "react-toastify";
+import { fetchReport, invokeLambda, fetchJson, getItem } from "./helpers";
 import {
   createPDF,
   generateDDPF,
   generateDDPJ
-} from "../../../servicer/pdf_helpers/Pdf/main";
-import Results from "../../../Containers/Searches/Result/Results";
-import { invokeLambda } from "./hepers";
-import { getReportById } from "./hepers_gql";
-import useToast from "./useToast";
-import ReadPartnerReport from "./components/Partner";
+} from "../../../service/pdf_helpers/main";
+import { SerasaPartnerReport } from "../../../../models";
+import { DataStore } from "@aws-amplify/datastore";
 
-const getItem = async (id) => {
+const useLoading = () => {
+  const [loading, setLoading] = useState(false);
+  const startLoading = useCallback(() => setLoading(true), []);
+  const stopLoading = useCallback(() => setLoading(false), []);
+
+  return [loading, startLoading, stopLoading];
+};
+
+const fetchReportForPartner = async (partner, stopLoading) => {
   try {
-    const {
-      data: { getSerasaReport: data }
-    } = await getReportById(id);
-    const { SerasaPartnerReports } = data;
-    console.log({ data });
-    if (!data) {
-      console.error("SerasaReport not found for ID:", id);
-      return null; // Return null if not found
-    }
-
-    const newObj = {
-      ...data,
-      serasaPartnerReports: data?.SerasaPartnerReports?.items
-    };
-    console.log({ newObj });
-    return newObj;
+    await invokeLambda("toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi", partner);
   } catch (error) {
     console.error("Error:", error);
-    throw error;
+  } finally {
+    stopLoading();
   }
 };
-const fetchJson = async (id) => {
-  const result = await Storage.get(`serasa/${id}.json`, {
-    download: true,
-    level: "public"
-  });
 
-  const blob = result.Body;
-  const text = await blob.text();
-  const jsonContent = JSON.parse(text);
-  return jsonContent;
+const mergePartner = (partner, partnerList) => {
+  const documentKey = partner.documentNumber.length > 11 ? "businessDocument" : "documentId";
+  const matchedPartner = partnerList.find(p => p[documentKey] === partner.documentNumber);
+
+  return matchedPartner ? { ...partner, participationPercentage: matchedPartner.participationPercentage } : partner;
+};
+
+const Partner = ({ partner, partnerList }) => {
+  const [mergedPartner, setMergedPartner] = useState(partner);
+  const [loading, startLoading, stopLoading] = useLoading();
+
+  const handleViewReport = async () => {
+    startLoading();
+    try {
+      const jsonContent = await fetchReport(partner.id);
+      const reportType = partner.type === "PF" ? "consumer" : "company";
+      const ddData = reportType === "consumer" ? generateDDPF(jsonContent) : generateDDPJ(jsonContent);
+      createPDF(ddData, jsonContent.reports[0].registration[`${reportType}Name`]);
+    } catch (error) {
+      console.error("Error downloading report:", error);
+    } finally {
+      stopLoading();
+    }
+  };
+
+  useEffect(() => {
+    setMergedPartner(mergePartner(partner, partnerList));
+  }, [partner, partnerList]);
+
+  const buttonLabel = loading ? "Loading..." : mergedPartner?.filePath ? "View Report" : "Create Report";
+
+  const handleClick = () => {
+    if (partner.filePath) {
+      handleViewReport();
+    } else {
+      startLoading();
+      fetchReportForPartner(partner, stopLoading);
+    }
+  };
+
+  return (
+      <tr>
+        <td>{mergedPartner.id}</td>
+        <td>{mergedPartner.documentNumber}</td>
+        <td>{mergedPartner.participationPercentage}</td>
+        <td>{mergedPartner.status || "-"}</td>
+        <td>
+          <Button className="btn-sm" onClick={handleClick} variant="primary" disabled={loading}>
+            {buttonLabel}
+          </Button>
+        </td>
+      </tr>
+  );
+};
+
+const PartnerTableRow = ({ partner, partnerList }) => {
+  const [fetchedPartner, setFetchedPartner] = useState(partner);
+  const [loading, startLoading, stopLoading] = useLoading();
+
+  useEffect(() => {
+    const subscription = DataStore.observe(SerasaPartnerReport, partner.id).subscribe((msg) => {
+      setFetchedPartner(msg.element);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [partner]);
+
+  return <Partner partner={fetchedPartner} partnerList={partnerList} />;
+};
+
+const ReadPartnerReport = ({ partners, fileContent }) => {
+  const partnerList = [...fileContent.optionalFeatures.partner.PartnerResponse.results, ...partnershipResponse];
+
+  return (
+      <Container>
+        <Card>
+          <Card.Header>
+            <h2>Partner Report</h2>
+          </Card.Header>
+          <Card.Body>
+            <Table responsive striped bordered hover>
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>CNPJ</th>
+                <th>% Participação</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+              </thead>
+              <tbody>
+              {partners.map((partner) => (
+                  <PartnerTableRow key={partner.id} partner={partner} partnerList={partnerList} />
+              ))}
+              </tbody>
+            </Table>
+          </Card.Body>
+        </Card>
+      </Container>
+  );
 };
 
 const Read = () => {
@@ -54,21 +137,20 @@ const Read = () => {
   const [reports, setReports] = useState([]);
   const [partners, setPartners] = useState([]);
   const [fileContent, setFileContent] = useState(null);
-  const showToast = useToast();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const fetchedModel = await getItem(id);
         setModel(fetchedModel);
-        setPartners(fetchedModel?.serasaPartnerReports);
+        setPartners(fetchedModel?.serasaPartnerReports || []);
         const jsonContent = await fetchJson(id);
         setFileContent(jsonContent);
-        setReports(jsonContent.reports);
-        showToast("Successfully Loaded")
+        setReports(jsonContent.reports || []);
+        toast.success("Successfully Loaded");
       } catch (error) {
         console.error("Error fetching data:", error);
-        showToast("Error fetching data:")
+        toast.error("Error fetching data:");
       }
     };
 
@@ -76,69 +158,38 @@ const Read = () => {
   }, [id]);
 
   const handleDownloadPDF = () => {
-    const reportType = model.type === "PF" ? "consumer" : "company";
-    const ddData =
-      model.type === "PF"
-        ? generateDDPF(fileContent)
-        : generateDDPJ(fileContent);
-    const reportName = fileContent.reports[0].registration[reportType + "Name"];
+    const reportType = model?.type === "PF" ? "consumer" : "company";
+    const ddData = model?.type === "PF" ? generateDDPF(fileContent) : generateDDPJ(fileContent);
+    const reportName = fileContent?.reports[0]?.registration[reportType + "Name"];
     createPDF(ddData, reportName);
   };
 
   return (
-    <div>
-      <h1>Serasa Report</h1>
-      <Row>
-        <Col md={3}>
-          {model && (
-            <Table responsive className="table">
-              <thead>
-                <tr>
-                  <th scope="col">Document Number</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{model.documentNumber}</td>
-                  <td>{model.type}</td>
-                  <td>{model.status}</td>
-                </tr>
-              </tbody>
-            </Table>
-          )}
-        </Col>
-      </Row>
-      {fileContent && (
-        <Row>
-          <Container>
-            <h1>Create Serasa Report</h1>
-            <Col>
-              <Card>
-                <Card.Body>
-                  {reports?.length > 0 && <Results list={reports} />}
-                  {reports.length > 0 && (
-                    <Button onClick={handleDownloadPDF}>
-                      Baixar Relatório PDF
-                    </Button>
-                  )}
-                </Card.Body>
-              </Card>
-              <Card>
-                {reports.length > 0 && (
-                  <ReadPartnerReport
-                    fileContent={fileContent}
-                    partners={partners}
-                    pfOuPj="PJ"
-                  />
-                )}
-              </Card>
-            </Col>
-          </Container>
-        </Row>
-      )}
-    </div>
+      <div>
+        <h1>Serasa Report</h1>
+        {fileContent && (
+            <Row>
+              <Container>
+                <h1>Create Serasa Report</h1>
+                <Col>
+                  <Card>
+                    <Card.Body>
+                      {reports.length > 0 && <Results list={reports} />}
+                      {reports.length > 0 && (
+                          <Button onClick={handleDownloadPDF}>Baixar Relatório PDF</Button>
+                      )}
+                    </Card.Body>
+                  </Card>
+                  <Card>
+                    {reports.length > 0 && (
+                        <ReadPartnerReport fileContent={fileContent} partners={partners} pfOuPj="PJ" />
+                    )}
+                  </Card>
+                </Col>
+              </Container>
+            </Row>
+        )}
+      </div>
   );
 };
 

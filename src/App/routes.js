@@ -1,7 +1,7 @@
 import HomePage from "./Pages/HomePage/HomePage";
 import Create from "./Pages/Serasa/Create/SerasaReportPage";
 import LambdaTeste from "./Pages/lambdaTeste/LambdaTeste";
-import Read from "./Pages/Serasa/Read/Read";
+import Read from "./Pages/Serasa/Read";
 import List from "./Pages/Serasa/List";
 import PdfPage from "./Pages/PdfPage";
 
