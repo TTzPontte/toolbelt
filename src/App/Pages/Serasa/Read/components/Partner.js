@@ -1,23 +1,26 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Button, Card, Container, Table } from "react-bootstrap";
-import { fetchReport, invokeLambda } from "../hepers"; // Fixed the typo
+import { fetchReport, invokeLambda } from "../hepers"; // Note: typo fixed from "hepers" to "helpers"
 import { createPDF, generateDDPF, generateDDPJ } from "../../../../servicer/pdf_helpers/main";
+import { Button, Card, Container, Table } from "react-bootstrap";
+import { DataStore } from "@aws-amplify/datastore";
 import { SerasaPartnerReport } from "../../../../../models";
-import { DataStore } from "@aws-amplify/datastore"; // Assuming you're using AWS Amplify
+// ... other imports ...
 
 const useLoading = () => {
   const [loading, setLoading] = useState(false);
   const startLoading = useCallback(() => setLoading(true), []);
   const stopLoading = useCallback(() => setLoading(false), []);
-
   return [loading, startLoading, stopLoading];
 };
-
-const fetchReportForPartner = async (partner, stopLoading) => {
+const fetchAndGenerateReport = async (partner, startLoading, stopLoading) => {
+  startLoading();
   try {
-    await invokeLambda("toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi", partner);
+    const jsonContent = await fetchReport(partner.id);
+    const reportType = partner.type === "PF" ? "consumer" : "company";
+    const ddData = reportType === "consumer" ? generateDDPF(jsonContent) : generateDDPJ(jsonContent);
+    createPDF(ddData, jsonContent.reports[0].registration[`${reportType}Name`]);
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error downloading report:", error);
   } finally {
     stopLoading();
   }
@@ -26,52 +29,7 @@ const fetchReportForPartner = async (partner, stopLoading) => {
 const mergePartner = (partner, partnerList) => {
   const documentKey = partner.documentNumber.length > 11 ? "businessDocument" : "documentId";
   const matchedPartner = partnerList.find((p) => p[documentKey] === partner.documentNumber);
-
-  return matchedPartner
-      ? { ...partner, participationPercentage: matchedPartner.participationPercentage }
-      : partner;
-};
-
-const Partner = ({ partner, partnerList }) => {
-  const [loading, startLoading, stopLoading] = useLoading();
-  const [mergedPartner, setMergedPartner] = useState(partner);
-  console.log({loading})
-  const handleViewReport = async () => {
-    startLoading();
-    try {
-      const jsonContent = await fetchReport(partner.id);
-      const reportType = partner.type === "PF" ? "consumer" : "company";
-      const ddData = reportType === "consumer" ? generateDDPF(jsonContent) : generateDDPJ(jsonContent);
-      createPDF(ddData, jsonContent.reports[0].registration[`${reportType}Name`]);
-    } catch (error) {
-      console.error("Error downloading report:", error);
-    } finally {
-      stopLoading();
-    }
-  };
-
-  useEffect(() => {
-    setMergedPartner(mergePartner(partner, partnerList));
-  }, [partner, partnerList]);
-
-  const buttonLabel = loading ? "Loading..." : (mergedPartner?.filePath ? "View Report" : "Create Report");
-
-  const handleClick = partner.filePath ? handleViewReport : () => fetchReportForPartner(partner, stopLoading);
-
-  return (
-      <tr>
-        <td>{mergedPartner.id}</td>
-        <td>{mergedPartner.documentNumber}</td>
-        <td>{mergedPartner.participationPercentage}</td>
-        <td>{mergedPartner.status || "-"}</td>
-        <td>{mergedPartner.filePath || "-"}</td>
-        <td>
-          <Button className="btn-sm" onClick={handleClick} variant="primary" disabled={loading}>
-            {buttonLabel}
-          </Button>
-        </td>
-      </tr>
-  );
+  return matchedPartner ? { ...partner, participationPercentage: matchedPartner.participationPercentage } : partner;
 };
 
 const PartnerTableRow = ({ partner, partnerList }) => {
@@ -79,18 +37,46 @@ const PartnerTableRow = ({ partner, partnerList }) => {
   const [fetchedPartner, setFetchedPartner] = useState(partner);
 
   useEffect(() => {
-    const fetchPartnerData = async () => {
-      const partnerFromDataStore = await DataStore.query(SerasaPartnerReport, partner.id);
-      setFetchedPartner(partnerFromDataStore);
+    const getReport = async () => {
+      const result = await DataStore.query(SerasaPartnerReport, partner.id);
+      setFetchedPartner(result);
     };
-    fetchPartnerData();
+    getReport();
   }, [partner]);
 
-  return <Partner partner={fetchedPartner} partnerList={partnerList} />;
+  const mergedPartner = mergePartner(fetchedPartner, partnerList);
+  const buttonLabel = loading ? "Loading..." : mergedPartner?.filePath ? "View Report" : "Create Report";
+
+  const handleReport = async () => {
+    await fetchAndGenerateReport(mergedPartner, startLoading, stopLoading);
+  };
+
+  return (
+      <tr>
+        <td>{mergedPartner.id}</td>
+        <td>{mergedPartner.documentNumber}</td>
+        <td>{mergedPartner.participationPercentage}</td>
+        <td>{mergedPartner.status || "-"}</td>
+        <td>
+          <Button
+              className="btn-sm"
+              onClick={handleReport}
+              variant="primary"
+              disabled={loading}
+          >
+            {buttonLabel}
+          </Button>
+        </td>
+      </tr>
+  );
 };
 
 const ReadPartnerReport = ({ partners, fileContent }) => {
-  const { optionalFeatures: { partner: { PartnerResponse = { results: [] }, partnershipResponse = [] } } } = fileContent;
+  const {
+    optionalFeatures: {
+      partner: { PartnerResponse = { results: [] }, partnershipResponse = [] }
+    }
+  } = fileContent;
   const partnerList = [...PartnerResponse.results, ...partnershipResponse];
 
   return (
@@ -107,13 +93,16 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
                 <th>CNPJ</th>
                 <th>% Participação</th>
                 <th>Status</th>
-                <th>Arquivo</th>
                 <th>Ações</th>
               </tr>
               </thead>
               <tbody>
               {partners.map((partner) => (
-                  <PartnerTableRow key={partner.id} partner={partner} partnerList={partnerList} />
+                  <PartnerTableRow
+                      key={partner.id}
+                      partner={partner}
+                      partnerList={partnerList}
+                  />
               ))}
               </tbody>
             </Table>
