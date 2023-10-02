@@ -1,0 +1,93 @@
+// Variables
+$primary-color: #007bff;
+$danger-color: #dc3545;
+$success-color: #28a745;
+$light-color: #f8f9fa;
+$hover-color: #e9ecef;
+$breakpoint-md: 768px;
+
+// Global styles
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: $light-color;
+}
+
+.container {
+  padding: 10px;
+}
+
+// ListHeader styles
+.border-top {
+  border-top: 1px solid $hover-color;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $hover-color;
+}
+
+.bg-light {
+  background-color: $light-color !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+// ListItem styles
+.hover\:bg-light:hover {
+  background-color: $hover-color;
+}
+
+// Badge styles
+.badge {
+  &.badge-success {
+    background-color: $success-color;
+  }
+
+  &.badge-danger {
+    background-color: $danger-color;
+  }
+}
+
+// Button styles
+button {
+  margin: 5px 0; // Stacking buttons vertically for mobile
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &.btn-danger {
+    background-color: $danger-color;
+    border-color: darken($danger-color, 10%);
+
+    &:hover {
+      background-color: darken($danger-color, 5%);
+    }
+  }
+
+  &.btn-info {
+    background-color: $primary-color;
+    border-color: darken($primary-color, 10%);
+
+    &:hover {
+      background-color: darken($primary-color, 5%);
+    }
+  }
+}
+
+// Media queries for larger screens
+@media (min-width: $breakpoint-md) {
+  .container {
+    padding: 20px;
+  }
+
+  button {
+    margin: 5px; // Resetting button margin for larger screens
+  }
+}

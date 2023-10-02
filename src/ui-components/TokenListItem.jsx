@@ -36,7 +36,7 @@ export default function TokenListItem(props) {
         position="relative"
         padding="10px 10px 10px 10px"
         backgroundColor="rgba(71,71,71,1)"
-        {...getOverrideProps(overrides, "Frame 3344055299")}
+        {...getOverrideProps(overrides, "Frame 33438463270")}
       >
         <Flex
           gap="10px"
@@ -82,7 +82,7 @@ export default function TokenListItem(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children={token}
+              children="Token"
               {...getOverrideProps(overrides, "Token")}
             ></Text>
           </Flex>
@@ -119,7 +119,7 @@ export default function TokenListItem(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={value}
+            children="Value"
             {...getOverrideProps(overrides, "Value")}
           ></Text>
         </Flex>
@@ -135,7 +135,7 @@ export default function TokenListItem(props) {
           basis="0"
           position="relative"
           padding="10px 10px 10px 10px"
-          {...getOverrideProps(overrides, "Frame 3344055305")}
+          {...getOverrideProps(overrides, "Frame 33438463276")}
         >
           <Text
             fontFamily="Inter"
@@ -155,7 +155,7 @@ export default function TokenListItem(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={variation}
+            children="Variation"
             {...getOverrideProps(overrides, "Variation")}
           ></Text>
         </Flex>

@@ -91,7 +91,7 @@ class TableGenerator {
     ]);
   }
 
-  createAuxTable(headers, values) {
+  createAuxTable(headers, values, widths=[]) {
     const headerRow = headers.map((header) =>
       this.tableFactory.createCell(header, "header")
     );
@@ -100,7 +100,7 @@ class TableGenerator {
     );
 
     return this.tableFactory.createTableNegative(
-      Array(headers.length).fill("*"),
+        widths?.length>0 ? widths: Array(headers.length).fill("*"),
       [headerRow, ...valueRows]
     );
   }
@@ -109,21 +109,25 @@ class TableGenerator {
 const createTable = (data, title, itemKeys, headers) => {
   const tableFactory = new TableFactory("tableInfos");
   const tableGenerator = new TableGenerator(tableFactory);
-
+  let newTitle = title
+  let widths=[];
   const headerTable = tableGenerator.createHeaderNegativeTable([
     title,
     data.summary.count,
     "Valor Total",
     formatCurrency(data.summary.balance)
   ]);
-
-  const itemKey = `${title.toLowerCase()}Response`;
+  if (title === 'Protestos'){
+    newTitle="Notary"
+    widths =['*','*','*','*','*','30%']
+  }
+  const itemKey = `${newTitle.toLowerCase()}Response`;
 
   if (data[itemKey] !== undefined) {
     const auxTable = data[itemKey].map((item) =>
       itemKeys.map((key) => key(item))
     );
-    const infoTable = tableGenerator.createAuxTable(headers, auxTable);
+    const infoTable = tableGenerator.createAuxTable(headers, auxTable, widths);
     return [headerTable, infoTable];
   }
 
@@ -141,22 +145,20 @@ const createNotaryTable = (data, title) =>
       (item) => item?.city,
       (item) => item?.federalUnit,
       (item) =>
-        `${title} [${item?.federalUnit} - ${formatCurrency(
-          item?.amount || 0
-        )} - ${formatDateResume(item?.occurrenceDate || 0)}]`
+        `Protestos (${item?.city} - ${formatDateResume(item?.occurrenceDate || 0)})`
     ],
     data.summary.count > 0
-      ? ["OfficeNumber", "Valor", "Data", "Cidade", "Estado", "Resumo"]
+      ? ["UF", "Valor", "Data", "Cidade", "Estado", "Resumo"]
       : []
   );
 
 const createNegativeTable = (data, title) => {
   const headers =
     data.summary.count > 0
-      ? ["Natureza", "Credor", "Valor", "Data", "Cidade", "Estado", "Resumo"]
+      ? ["Natureza", "Credor", "Valor", "Data", "Resumo"]
       : [];
   console.log({ data });
-
+    console.log({title})
   return createTable(
     data,
     title,
@@ -165,16 +167,27 @@ const createNegativeTable = (data, title) => {
       (item) => item?.creditorName || "-",
       (item) => formatCurrency(item?.amount || 0),
       (item) => formatDate(item?.occurrenceDate || ""),
-      (item) => item?.city,
-      (item) => item?.federalUnit,
       (item) =>
-        `${title} [${item?.legalNature} - ${formatCurrency(
-          item?.amount || 0
-        )} - ${formatDateResume(item?.occurrenceDate || 0)}]`
+        `${title} (${item?.creditorName} - ${getYear(item)})`
     ],
     headers
   );
 };
+function getYear({ occurrenceDate }) {
+  // Split the date string by the hyphen character to get an array of date parts
+  const dateParts = occurrenceDate.split("-");
+
+  // The year is the first element (index 0) in the dateParts array
+  const year = parseInt(dateParts[0]);
+
+  // Check if the year is a valid number
+  if (!isNaN(year)) {
+    return year;
+  } else {
+    // Handle the case where the year is not a valid number
+    throw new Error("Invalid date format: " + occurrenceDate);
+  }
+}
 
 const makeRegistrationTable = (registration, tableGenerator) => {
   function getStatus(text) {
@@ -335,7 +348,7 @@ const generateReportContentPJ = (report, optional) => {
     ...createNegativeTable(pefin, "PEFIN"),
     ...createNegativeTable(refin, "REFIN"),
     ...createNegativeTable(check, "Cheque sem fundo"),
-    ...createNotaryTable(notary, "Notary"),
+    ...createNotaryTable(notary, "Protestos"),
     partners && {
       style: "contentPDF",
       text: "\nInformações Societárias"
@@ -407,6 +420,73 @@ const makePartners = (partners, tableGenerator) => {
     table
   ];
 };
+
+const makeScore = (score, probInadimplencia) => [
+  {
+    style: "contentPDF",
+    text: "\nDados de Score",
+  },
+  {
+    columns: [
+      {
+        style: "tableScore",
+        table: {
+          widths: ["25%"],
+          body: [
+            [
+              {
+                text: "Score",
+                alignment: "center",
+                color: "#FFFFFF",
+                bold: true,
+                fontSize: 14,
+              },
+            ],
+            [
+              {
+                text: score,
+                alignment: "center",
+                color: "#FFFFFF",
+                bold: true,
+                fontSize: 26,
+              },
+            ],
+          ],
+        },
+        margin: [10, 15, 0, 0],
+      },
+      {
+        text: [
+          "\n\nProbabilidade de inadimplência\n---------------------------------------->",
+        ],
+        alignment: "center",
+        color: "#F",
+        bold: true,
+        fontSize: 14,
+        margin: [-250, 0, 0, 0],
+      },
+      {
+        style: "tableScore",
+        table: {
+          heights: [20],
+          widths: ["35%"],
+          body: [
+            [
+              {
+                text: probInadimplencia,
+                style: "centeredText",
+                color: "#FFFFFF",
+                bold: true,
+                fontSize: 26,
+              },
+            ],
+          ],
+        },
+        margin: [-95, 30, 0, 0],
+      },
+    ],
+  },
+];
 const generateReportContentPF = (report, optional) => {
   const { registration, negativeData } = report;
   const { pefin, refin, check, notary } = negativeData;
@@ -418,6 +498,7 @@ const generateReportContentPF = (report, optional) => {
   const score = report.score.score || 0;
   const probInadimplencia = convertToPercentage(report.score.defaultRate || 0);
   const messageScore = report.score.message || "";
+
   console.log({ registration, partners });
   return [
     {
@@ -443,77 +524,14 @@ const generateReportContentPF = (report, optional) => {
         [
           registration.consumerName,
           formatDocumentNumber(registration.documentNumber),
-          registration.birthDate,
+          formatDate(registration.birthDate),
           registration.statusRegistration,
           registration.address.city,
           registration.address.state
         ]
       ]
     ),
-    {
-      style: "contentPDF",
-      text: "\nDados de Score"
-    },
-    {
-      columns: [
-        {
-          style: "tableScore",
-          table: {
-            widths: ["25%"],
-            body: [
-              [
-                {
-                  text: "Score",
-                  alignment: "center",
-                  color: "#FFFFFF",
-                  bold: "true",
-                  fontSize: 14
-                }
-              ],
-              [
-                {
-                  text: score,
-                  alignment: "center",
-                  color: "#FFFFFF",
-                  bold: "true",
-                  fontSize: 26
-                }
-              ]
-            ]
-          },
-          margin: [10, 15, 0, 0]
-        },
-        {
-          text: [
-            "\n\nProbabilidade de inadimplência\n---------------------------------------->"
-          ],
-          alignment: "center",
-          color: "#F",
-          bold: true,
-          fontSize: 14,
-          margin: [-250, 0, 0, 0]
-        },
-        {
-          style: "tableScore",
-          table: {
-            heights: [20],
-            widths: ["35%"],
-            body: [
-              [
-                {
-                  text: probInadimplencia,
-                  style: "centeredText",
-                  color: "#FFFFFF",
-                  bold: "true",
-                  fontSize: 26
-                }
-              ]
-            ]
-          },
-          margin: [-95, 30, 0, 0]
-        }
-      ]
-    },
+      ...makeScore(score, probInadimplencia),
     {
       style: "contentPDF",
       fontSize: "12",
@@ -527,7 +545,7 @@ const generateReportContentPF = (report, optional) => {
     ...createNegativeTable(pefin, "PEFIN"),
     ...createNegativeTable(refin, "REFIN"),
     ...createNegativeTable(check, "Cheque sem fundo"),
-    ...createNotaryTable(notary, "Notary"),
+    ...createNotaryTable(notary, "Protestos"),
     ...makePartners(partners, tableGenerator)
   ].filter(Boolean);
 };

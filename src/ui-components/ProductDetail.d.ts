@@ -24,14 +24,14 @@ export declare type ProductDetailOverridesProps = {
     "Frame 729766962"?: PrimitiveOverrideProps<FlexProps>;
     Details?: PrimitiveOverrideProps<TextProps>;
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor."?: PrimitiveOverrideProps<TextProps>;
-    Divider29766965?: PrimitiveOverrideProps<DividerProps>;
     "Frame 402"?: PrimitiveOverrideProps<FlexProps>;
     $192?: PrimitiveOverrideProps<TextProps>;
-    "Frame 27"?: PrimitiveOverrideProps<FlexProps>;
+    "Frame 2729766968"?: PrimitiveOverrideProps<FlexProps>;
     Rating?: PrimitiveOverrideProps<RatingProps>;
     "12 reviews"?: PrimitiveOverrideProps<TextProps>;
-    "Group 27"?: PrimitiveOverrideProps<FlexProps>;
-    Button29766972?: PrimitiveOverrideProps<ButtonProps>;
+    "Frame 2729766971"?: PrimitiveOverrideProps<FlexProps>;
+    "Size Guide"?: PrimitiveOverrideProps<TextProps>;
+    Size?: PrimitiveOverrideProps<TextProps>;
     "Frame 2829766973"?: PrimitiveOverrideProps<FlexProps>;
     Button29766974?: PrimitiveOverrideProps<ButtonProps>;
     Button29766975?: PrimitiveOverrideProps<ButtonProps>;
@@ -42,8 +42,7 @@ export declare type ProductDetailOverridesProps = {
     Button29766980?: PrimitiveOverrideProps<ButtonProps>;
     Button29766981?: PrimitiveOverrideProps<ButtonProps>;
     Button29766982?: PrimitiveOverrideProps<ButtonProps>;
-    "Size Guide"?: PrimitiveOverrideProps<TextProps>;
-    Size?: PrimitiveOverrideProps<TextProps>;
+    Button29766972?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type ProductDetailProps = React.PropsWithChildren<Partial<FlexProps> & {
     overrides?: ProductDetailOverridesProps | undefined | null;

@@ -1,0 +1,113 @@
+{
+  "reports": [
+    {
+      "reportName": "COMBO_CONCESSAO_COM_SCORE_POSITIVO",
+      "registration": {
+        "documentNumber": "03006892682",
+        "consumerName": "VILMAR VIEIRA DE CARVALHO",
+        "motherName": "MARIA ONORIA VIEIRA",
+        "birthDate": "1977-10-13",
+        "statusRegistration": "REGULAR",
+        "statusDate": "2023-06-21",
+        "address": {
+          "addressLine": "R REORON DE MATOS 232 C 1",
+          "district": "CONJUNTO ALVORADA",
+          "zipCode": "38407081",
+          "country": "BRA",
+          "city": "UBERLANDIA",
+          "state": "MG"
+        }
+      },
+      "negativeData": {
+        "pefin": {
+          "pefinResponse": [],
+          "summary": { "count": 0, "balance": 0.0 }
+        },
+        "refin": {
+          "refinResponse": [],
+          "summary": { "count": 0, "balance": 0.0 }
+        },
+        "notary": {
+          "notaryResponse": [],
+          "summary": { "count": 0, "balance": 0.0 }
+        },
+        "check": {
+          "checkResponse": [],
+          "summary": { "count": 0, "balance": 0.0 }
+        }
+      },
+      "score": {
+        "score": 879,
+        "scoreModel": "HSPN",
+        "range": "B",
+        "defaultRate": "3,7",
+        "codeMessage": 99
+      },
+      "facts": {
+        "inquiry": {
+          "inquiryResponse": [
+            {
+              "occurrenceDate": "2023-09-21",
+              "segmentDescription": "BANCOS",
+              "daysQuantity": 2
+            },
+            {
+              "occurrenceDate": "2023-09-20",
+              "segmentDescription": "FINANCEIRAS",
+              "daysQuantity": 2
+            },
+            {
+              "occurrenceDate": "2023-09-19",
+              "segmentDescription": "BANCOS",
+              "daysQuantity": 4
+            },
+            {
+              "occurrenceDate": "2023-06-19",
+              "segmentDescription": "BANCOS",
+              "daysQuantity": 2
+            },
+            {
+              "occurrenceDate": "2023-04-19",
+              "segmentDescription": "SERVICOS IMOBILIARIOS",
+              "daysQuantity": 1
+            }
+          ],
+          "summary": { "count": 5 }
+        },
+        "stolenDocuments": {
+          "stolenDocumentsResponse": [],
+          "summary": { "count": 0, "balance": 0.0 }
+        }
+      }
+    }
+  ],
+  "optionalFeatures": {
+    "partner": {
+      "partnershipResponse": [
+        {
+          "businessDocument": "44090279000117",
+          "companyName": "VILMAR VIEIRA DE CARVALHO 03006892682",
+          "participationPercentage": 100.0,
+          "companyStatus": "SITUACAO DO CNPJ EM 16/07/2023: ATIVA",
+          "companyStatusCode": "ATIVA",
+          "companyState": "MG",
+          "companyStatusDate": "16/07/2023",
+          "updateDate": "2021-11-04",
+          "participationInitialDate": "2021-11-01"
+        },
+        {
+          "businessDocument": "40628487000176",
+          "companyName": "VC IMPERIO TRANSPORTES LTDA - ME",
+          "participationPercentage": 100.0,
+          "companyStatus": "SITUACAO DO CNPJ EM 12/08/2023: ATIVA",
+          "companyStatusCode": "ATIVA",
+          "companyState": "MG",
+          "companyStatusDate": "12/08/2023",
+          "updateDate": "2023-09-28",
+          "participationInitialDate": "2023-05-15"
+        }
+      ],
+      "summary": { "count": 2, "balance": 0.0 }
+    }
+  }
+}

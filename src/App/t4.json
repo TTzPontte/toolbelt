@@ -1,0 +1,240 @@
+{
+  "statusCode": 200,
+  "reportId": "51811a28-d76e-46c7-8933-b7da2ce7c8ec",
+  "environment": "prod",
+  "tipoPessoa": "PJ",
+  "numeroDocumento": "12128360000152",
+  "tipoDeDocumento": "CNPJ",
+  "response": {
+    "reports": [
+      {
+        "reportName": "PACOTE_BASICO_FINTECH",
+        "registration": {
+          "companyDocument": "12128360000152",
+          "companyName": "PORTAL TELEMEDICINA EQUIPAMENTOS LTDA - ME",
+          "foundationDate": "2010-06-02",
+          "statusRegistration": "SITUA\u00c7\u00c3O DO CNPJ EM 07/08/2023 : ATIVA",
+          "address": {
+            "city": "SAO PAULO",
+            "state": "SP"
+          }
+        },
+        "negativeData": {
+          "pefin": {
+            "pefinResponse": [
+              {
+                "occurrenceDate": "2023-02-21",
+                "legalNatureId": "DP",
+                "legalNature": "DUPLICATA",
+                "contractId": "0000000084063-05",
+                "creditorName": "MICROMED BIOTECNOLOGIA LTDA",
+                "amount": 5276.86,
+                "principal": true
+              },
+              {
+                "occurrenceDate": "2023-01-21",
+                "legalNatureId": "DP",
+                "legalNature": "DUPLICATA",
+                "contractId": "0000000084063-04",
+                "creditorName": "MICROMED BIOTECNOLOGIA LTDA",
+                "amount": 5276.88,
+                "principal": true
+              },
+              {
+                "occurrenceDate": "2023-01-08",
+                "legalNatureId": "DP",
+                "legalNature": "DUPLICATA",
+                "contractId": "0000000083020-05",
+                "creditorName": "MICROMED BIOTECNOLOGIA LTDA",
+                "amount": 1041.06,
+                "principal": true
+              },
+              {
+                "occurrenceDate": "2022-12-21",
+                "legalNatureId": "DP",
+                "legalNature": "DUPLICATA",
+                "contractId": "0000000084063-03",
+                "creditorName": "MICROMED BIOTECNOLOGIA LTDA",
+                "amount": 5276.88,
+                "principal": true
+              }
+            ],
+            "summary": {
+              "firstOccurrence": "2022-12-21",
+              "lastOccurrence": "2023-02-21",
+              "count": 4,
+              "balance": 16871.68
+            }
+          },
+          "refin": {
+            "refinResponse": [
+              {
+                "occurrenceDate": "2023-09-01",
+                "legalNatureId": "EC",
+                "legalNature": "EMPRES CONTA",
+                "contractId": "00000000000038620357",
+                "creditorName": "BANCO DO BRASIL S/A",
+                "amount": 181676.4,
+                "principal": true
+              }
+            ],
+            "summary": {
+              "firstOccurrence": "2023-09-01",
+              "lastOccurrence": "2023-09-01",
+              "count": 1,
+              "balance": 181676.4
+            }
+          },
+          "collectionRecords": {
+            "collectionRecordsResponse": [
+              {
+                "occurrenceDate": "2023-08-11",
+                "legalNatureId": "DM",
+                "legalNature": "DUPLIC DE VENDA MERCANTIL",
+                "contractId": "NF 15230/0",
+                "creditorName": "BANCO DO BRASIL S/A",
+                "amount": 600.0,
+                "city": "SAO PAULO",
+                "federalUnit": "SP",
+                "principal": false
+              },
+              {
+                "occurrenceDate": "2023-04-25",
+                "legalNatureId": "DM",
+                "legalNature": "DUPLIC DE VENDA MERCANTIL",
+                "contractId": "NF 14013/0",
+                "creditorName": "BANCO DO BRASIL S/A",
+                "amount": 328.0,
+                "city": "SAO PAULO",
+                "federalUnit": "SP",
+                "principal": false
+              }
+            ],
+            "summary": {
+              "firstOccurrence": "2023-04-25",
+              "lastOccurrence": "2023-08-11",
+              "count": 2,
+              "balance": 928.0
+            }
+          },
+          "check": {
+            "summary": {
+              "count": 0,
+              "balance": 0.0
+            }
+          },
+          "notary": {
+            "notaryResponse": [
+              {
+                "occurrenceDate": "2023-08-25",
+                "amount": 1467.62,
+                "officeNumber": "03",
+                "city": "SAO PAULO",
+                "federalUnit": "SP"
+              },
+              {
+                "occurrenceDate": "2023-08-18",
+                "amount": 1400.0,
+                "officeNumber": "08",
+                "city": "SAO PAULO",
+                "federalUnit": "SP"
+              },
+              {
+                "occurrenceDate": "2023-07-25",
+                "amount": 1467.62,
+                "officeNumber": "10",
+                "city": "SAO PAULO",
+                "federalUnit": "SP"
+              },
+              {
+                "occurrenceDate": "2023-06-23",
+                "amount": 11000.0,
+                "officeNumber": "03",
+                "city": "SAO PAULO",
+                "federalUnit": "SP"
+              },
+              {
+                "occurrenceDate": "2023-06-14",
+                "amount": 623.0,
+                "officeNumber": "01",
+                "city": "SAO PAULO",
+                "federalUnit": "SP"
+              }
+            ],
+            "summary": {
+              "firstOccurrence": "2022-12-25",
+              "lastOccurrence": "2023-08-25",
+              "count": 17,
+              "balance": 117704.24
+            }
+          }
+        },
+        "facts": {
+          "judgementFilings": {
+            "summary": {
+              "count": 0,
+              "balance": 0.0
+            }
+          },
+          "bankrupts": {
+            "summary": {
+              "count": 0,
+              "balance": 0.0
+            }
+          }
+        },
+        "score": {
+          "score": 2,
+          "defaultRate": "10000",
+          "message": "DEFAULT - CESTA DE EVENTOS RELEVANTES"
+        }
+      }
+    ],
+    "optionalFeatures": {
+      "partner": {
+        "PartnerResponse": {
+          "results": [
+            {
+              "documentId": "05267636800",
+              "name": "CLAUDIA DE CASTRO",
+              "participationPercentage": 99.0,
+              "inconsistent": false,
+              "hasNegative": true
+            },
+            {
+              "documentId": "45328662865",
+              "name": "ROBERTO DE CASTRO FIGUEROA",
+              "participationPercentage": 1.0,
+              "inconsistent": false,
+              "hasNegative": false
+            }
+          ]
+        }
+      },
+      "director": {
+        "DirectorResponse": {
+          "results": [
+            {
+              "documentId": "05267636800",
+              "name": "CLAUDIA DE CASTRO",
+              "role": "ADMINISTRADOR",
+              "hasNegative": true
+            },
+            {
+              "documentId": "39784787814",
+              "name": "RENATA DE CASTRO FIGUEROA TRONCOSO",
+              "role": "ADMINISTRADOR",
+              "hasNegative": true
+            },
+            {
+              "documentId": "35853722875",
+              "name": "RAFAEL DE CASTRO FIGUEROA",
+              "role": "ADMINISTRADOR",
+              "hasNegative": true
+            }
+          ]
+        }
+      }
+    }
+  }
+}

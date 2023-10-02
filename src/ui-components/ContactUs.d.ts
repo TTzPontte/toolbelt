@@ -6,31 +6,24 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { ButtonProps, FlexProps, IconProps, SelectFieldProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { ButtonProps, CheckboxFieldProps, FlexProps, TextAreaFieldProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
+import { MyIconProps } from "./MyIcon";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ContactUsOverridesProps = {
     ContactUs?: PrimitiveOverrideProps<FlexProps>;
-    "Frame 31"?: PrimitiveOverrideProps<FlexProps>;
-    "Need assistance?"?: PrimitiveOverrideProps<TextProps>;
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea."?: PrimitiveOverrideProps<TextProps>;
-    "Frame 24"?: PrimitiveOverrideProps<FlexProps>;
-    "US HELP CENTER"?: PrimitiveOverrideProps<TextProps>;
-    "/"?: PrimitiveOverrideProps<TextProps>;
-    "SUBMIT A REQUEST"?: PrimitiveOverrideProps<TextProps>;
-    SelectField29766935?: PrimitiveOverrideProps<SelectFieldProps>;
+    "Frame 428"?: PrimitiveOverrideProps<FlexProps>;
     TextField29766936?: PrimitiveOverrideProps<TextFieldProps>;
-    SelectField29766937?: PrimitiveOverrideProps<SelectFieldProps>;
     TextField29766938?: PrimitiveOverrideProps<TextFieldProps>;
     TextField29766939?: PrimitiveOverrideProps<TextFieldProps>;
+    TextAreaField?: PrimitiveOverrideProps<TextAreaFieldProps>;
+    CheckboxField?: PrimitiveOverrideProps<CheckboxFieldProps>;
     Button?: PrimitiveOverrideProps<ButtonProps>;
     "Frame 2829766941"?: PrimitiveOverrideProps<FlexProps>;
     "Frame 2829766942"?: PrimitiveOverrideProps<FlexProps>;
-    Icon29766943?: PrimitiveOverrideProps<ViewProps>;
-    Vector29766944?: PrimitiveOverrideProps<IconProps>;
+    MyIcon39193120?: MyIconProps;
     Instagram?: PrimitiveOverrideProps<TextProps>;
     "Frame 30"?: PrimitiveOverrideProps<FlexProps>;
-    Icon29766947?: PrimitiveOverrideProps<ViewProps>;
-    Vector29766948?: PrimitiveOverrideProps<IconProps>;
+    MyIcon39193123?: MyIconProps;
     Twitter?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type ContactUsProps = React.PropsWithChildren<Partial<FlexProps> & {

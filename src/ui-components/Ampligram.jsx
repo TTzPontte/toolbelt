@@ -7,7 +7,7 @@
 /* eslint-disable */
 import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Divider, Flex, Icon, Image, Text, View } from "@aws-amplify/ui-react";
+import { Flex, Icon, Image, Text, View } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function Ampligram(props) {
   const { overrides, ...rest } = props;
@@ -286,15 +286,6 @@ export default function Ampligram(props) {
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Body")}
       >
-        <Divider
-          width="unset"
-          height="1px"
-          shrink="0"
-          alignSelf="stretch"
-          size="small"
-          orientation="horizontal"
-          {...getOverrideProps(overrides, "Divider")}
-        ></Divider>
         <Flex
           gap="8px"
           direction="column"

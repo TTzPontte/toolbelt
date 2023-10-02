@@ -20,9 +20,7 @@ export declare type CommentCardOverridesProps = {
     Frame29766879?: PrimitiveOverrideProps<FlexProps>;
     Frame29766880?: PrimitiveOverrideProps<FlexProps>;
     Frame29766881?: PrimitiveOverrideProps<FlexProps>;
-    Author?: PrimitiveOverrideProps<TextProps>;
-    Timestamp?: PrimitiveOverrideProps<TextProps>;
-    "Lorem ipsum"?: PrimitiveOverrideProps<TextProps>;
+    Scott?: PrimitiveOverrideProps<TextProps>;
     Frame29766885?: PrimitiveOverrideProps<FlexProps>;
     MyIcon29766886?: MyIconProps;
     "\u201CLorem ipsum dolor sit amet, consectetur adipiscing elit. \u201D"?: PrimitiveOverrideProps<TextProps>;

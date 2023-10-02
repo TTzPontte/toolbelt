@@ -6,16 +6,15 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { ButtonProps, DividerProps, FlexProps, IconProps, ImageProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { MyIconProps } from "./MyIcon";
+import { ButtonProps, FlexProps, ImageProps, TextFieldProps, TextProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type EditProfileOverridesProps = {
     EditProfile?: PrimitiveOverrideProps<FlexProps>;
     Content?: PrimitiveOverrideProps<FlexProps>;
     "Edit Profile29766913"?: PrimitiveOverrideProps<FlexProps>;
-    Icon?: PrimitiveOverrideProps<ViewProps>;
-    Vector?: PrimitiveOverrideProps<IconProps>;
+    MyIcon?: MyIconProps;
     "Edit Profile29766916"?: PrimitiveOverrideProps<TextProps>;
-    Divider29766917?: PrimitiveOverrideProps<DividerProps>;
     Profile?: PrimitiveOverrideProps<FlexProps>;
     image?: PrimitiveOverrideProps<ImageProps>;
     "Upload New Image"?: PrimitiveOverrideProps<TextProps>;
@@ -23,7 +22,6 @@ export declare type EditProfileOverridesProps = {
     TextField29766922?: PrimitiveOverrideProps<TextFieldProps>;
     TextField29766923?: PrimitiveOverrideProps<TextFieldProps>;
     TextField29766924?: PrimitiveOverrideProps<TextFieldProps>;
-    Divider29766925?: PrimitiveOverrideProps<DividerProps>;
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type EditProfileProps = React.PropsWithChildren<Partial<FlexProps> & {

@@ -10,15 +10,15 @@ import { FlexProps, TextProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type Frame133535OverridesProps = {
     Frame133535?: PrimitiveOverrideProps<FlexProps>;
-    TableCell4055277?: PrimitiveOverrideProps<FlexProps>;
-    Typography4055278?: PrimitiveOverrideProps<FlexProps>;
-    "Table cell4055279"?: PrimitiveOverrideProps<TextProps>;
-    TableCell4055280?: PrimitiveOverrideProps<FlexProps>;
-    Typography4055281?: PrimitiveOverrideProps<FlexProps>;
-    "Table cell4055282"?: PrimitiveOverrideProps<TextProps>;
-    TableCell4055283?: PrimitiveOverrideProps<FlexProps>;
-    Typography4055284?: PrimitiveOverrideProps<FlexProps>;
-    "Table cell4055285"?: PrimitiveOverrideProps<TextProps>;
+    TableCell38463248?: PrimitiveOverrideProps<FlexProps>;
+    Typography38463249?: PrimitiveOverrideProps<FlexProps>;
+    "Table cell38463250"?: PrimitiveOverrideProps<TextProps>;
+    TableCell38463251?: PrimitiveOverrideProps<FlexProps>;
+    Typography38463252?: PrimitiveOverrideProps<FlexProps>;
+    "Table cell38463253"?: PrimitiveOverrideProps<TextProps>;
+    TableCell38463254?: PrimitiveOverrideProps<FlexProps>;
+    Typography38463255?: PrimitiveOverrideProps<FlexProps>;
+    "Table cell38463256"?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type Frame133535Props = React.PropsWithChildren<Partial<FlexProps> & {
     overrides?: Frame133535OverridesProps | undefined | null;

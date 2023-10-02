@@ -30,8 +30,8 @@ export default function ItemCard(props) {
         gap="0"
         shrink="0"
         size="small"
-        variation="default"
-        children="New"
+        variation="success"
+        children="New!"
         {...getOverrideProps(overrides, "Badge")}
       ></Badge>
       <Flex

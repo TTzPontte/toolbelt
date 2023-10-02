@@ -19,16 +19,9 @@
         "CreateSerasaReport": {
           "deploymentBucketName": "amplify-amplifyb9bc844502ed4-staging-143228-deployment",
           "s3Key": "amplify-builds/CreateSerasaReport-52464f6b61524a785247-build.zip"
-        },
-        "CreateSerasaReportPython": {},
-        "CreateReport": {},
-        "test": {}
-      },
-      "api": {
-        "toolbelt": {}
+        }
       },
       "storage": {
-        "s3toolbeltstorage": {},
         "s3toolbeltstoragebdbe0c92": {}
       }
     }

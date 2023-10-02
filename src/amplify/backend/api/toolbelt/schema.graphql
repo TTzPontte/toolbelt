@@ -1,0 +1,32 @@
+type SerasaPartnerReport @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  type: EntityType
+  documentNumber: String
+  pipefyId: String
+  status: ReportStatus
+  filePath: String
+  serasareportID: ID! @index(name: "bySerasaReport")
+  SerasaReport: SerasaReport @belongsTo(fields: ["serasareportID"])
+}
+
+enum EntityType {
+  PJ
+  PF
+}
+
+enum ReportStatus {
+  PROCESSING
+  SUCCESS
+  ERROR_SERASA
+  ERROR_PIPEFY
+}
+
+type SerasaReport @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  type: EntityType
+  documentNumber: String!
+  pipefyId: String
+  status: ReportStatus
+  SerasaPartnerReports: [SerasaPartnerReport] @hasMany(indexName: "bySerasaReport", fields: ["id"])
+}
+ 

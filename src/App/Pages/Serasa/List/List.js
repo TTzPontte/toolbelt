@@ -1,43 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { DataStore } from "@aws-amplify/datastore";
-import { Container, Button, Row, Col, Card, Badge } from "react-bootstrap";
+import { Badge, Button, Card, Col, Container, Row } from "react-bootstrap";
 import { SerasaReport } from "../../../../models";
 import { useNavigate } from "react-router-dom";
 import { Collection } from "@aws-amplify/ui-react";
-import { FaTrash, FaEye } from "react-icons/fa"; // Importing icons
+import { FaEye, FaTrash } from "react-icons/fa"; // Importing icons
+import "./styles.scss";
 
-const ListHeader = () => {
-  return (
-      <Row className="border-top border-bottom py-3 bg-light text-uppercase font-weight-bold">
-        <Col>#</Col>
-        <Col>Document Number</Col>
-        <Col>Type</Col>
-        <Col>Status</Col>
-        <Col>Actions</Col>
-      </Row>
-  );
-};
+const ListHeader = () => (
+  <Row className="border-top border-bottom py-3 bg-light text-uppercase font-weight-bold">
+    <Col xs={1}>#</Col>
+    <Col xs={4}>Document Number</Col>
+    <Col xs={2}>Type</Col>
+    <Col xs={2}>Status</Col>
+    <Col xs={3}>Actions</Col>
+  </Row>
+);
 
-const ListItem = ({ model, index, handleDelete, navigate }) => {
-  return (
-      <Row className="border-bottom py-2 hover:bg-light">
-        <Col>{index + 1}</Col>
-        <Col>{model.documentNumber}</Col>
-        <Col>{model.type}</Col>
-        <Col><Badge variant={model.status === 'Active' ? 'success' : 'danger'}>{model.status}</Badge></Col>
-        <Col>
-          <Button variant="danger" onClick={() => handleDelete(model.id)} className="mr-2">
+const ListItem = ({ model, index, handleDelete, navigate }) => (
+  <Row className="border-bottom py-2 hover:bg-light">
+    <Col xs={1}>{index + 1}</Col>
+    <Col xs={4}>{model.documentNumber}</Col>
+    <Col xs={2}>{model.type}</Col>
+    <Col xs={2}>
+      <Badge variant={model.status === "Active" ? "success" : "danger"}>
+        {model.status}
+      </Badge>
+    </Col>
+    <Col xs={3}>
+      <div className={" d-flex "} style={{display: 'flex', flexFlow: "row", flexWrap: 'nowrap'}}>
+        <Col className={"flex-fill"}>
+          <Button
+            variant="outline-danger"
+            onClick={() => handleDelete(model.id)}
+            className="btn btn-sm  mr-2"
+          >
             <FaTrash /> Delete
           </Button>
-          <Button variant="info" onClick={() => navigate(`${model.id}`)}>
-            <FaEye /> View
-          </Button>
         </Col>
-      </Row>
-  );
-};
+        <Col >
+            <Button
+              variant="outline-primary"
+              onClick={() => navigate(`${model.id}`)}
+            >
+              <FaEye /> View
+            </Button>
+        </Col>
+      </div>
+    </Col>
+  </Row>
+);
 
-const List = (props) => {
+const List = () => {
   const [models, setModels] = useState([]);
   const navigate = useNavigate();
 
@@ -65,33 +79,36 @@ const List = (props) => {
   };
 
   return (
-      <Container>
-        <Row className="mb-4">
-          <Col>
-            <h1>Fetched Serasa Reports</h1>
-          </Col>
-        </Row>
+    <Container fluid>
+      <Row className="mb-4">
+        <Col>
+          <h1>Relatórios Serasa</h1>
+          <hr />
+        </Col>
+      </Row>
+      <Row>
         <Card>
           <Card.Body>
             <Collection
-                isPaginated
-                isSearchable
-                items={models}
-                type="list"
-                direction="column"
-                gap="20px"
-                wrap="nowrap"
+              isPaginated
+              isSearchable
+              items={models}
+              type="list"
+              direction="column"
+              gap="20px"
+              wrap="nowrap"
             >
               {(model, index) => (
-                  <>
-                    {index === 0 && (<ListHeader />)}
-                    <ListItem {...{ model, index, handleDelete, navigate }} />
-                  </>
+                <>
+                  {index === 0 && <ListHeader />}
+                  <ListItem {...{ model, index, handleDelete, navigate }} />
+                </>
               )}
             </Collection>
           </Card.Body>
         </Card>
-      </Container>
+      </Row>
+    </Container>
   );
 };
 

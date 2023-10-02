@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { DividerProps, FlexProps, IconProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { FlexProps, IconProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 import { MyIconProps } from "./MyIcon";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type AmpligramOverridesProps = {
@@ -28,7 +28,6 @@ export declare type AmpligramOverridesProps = {
     Icon29766776?: PrimitiveOverrideProps<ViewProps>;
     Vector29766777?: PrimitiveOverrideProps<IconProps>;
     Body?: PrimitiveOverrideProps<FlexProps>;
-    Divider?: PrimitiveOverrideProps<DividerProps>;
     Area?: PrimitiveOverrideProps<FlexProps>;
     "Firstname Lastname"?: PrimitiveOverrideProps<TextProps>;
     "\u201CLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.\u201D"?: PrimitiveOverrideProps<TextProps>;

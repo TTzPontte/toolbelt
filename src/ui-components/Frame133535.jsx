@@ -36,7 +36,7 @@ export default function Frame133535(props) {
         alignSelf="stretch"
         position="relative"
         padding="16px 16px 16px 16px"
-        {...getOverrideProps(overrides, "TableCell4055277")}
+        {...getOverrideProps(overrides, "TableCell38463248")}
       >
         <Flex
           gap="0"
@@ -48,7 +48,7 @@ export default function Frame133535(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Typography4055278")}
+          {...getOverrideProps(overrides, "Typography38463249")}
         >
           <Text
             fontFamily="Inter"
@@ -70,7 +70,7 @@ export default function Frame133535(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="CDD1049"
-            {...getOverrideProps(overrides, "Table cell4055279")}
+            {...getOverrideProps(overrides, "Table cell38463250")}
           ></Text>
         </Flex>
       </Flex>
@@ -85,7 +85,7 @@ export default function Frame133535(props) {
         alignSelf="stretch"
         position="relative"
         padding="16px 16px 16px 16px"
-        {...getOverrideProps(overrides, "TableCell4055280")}
+        {...getOverrideProps(overrides, "TableCell38463251")}
       >
         <Flex
           gap="0"
@@ -97,7 +97,7 @@ export default function Frame133535(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Typography4055281")}
+          {...getOverrideProps(overrides, "Typography38463252")}
         >
           <Text
             fontFamily="Inter"
@@ -119,7 +119,7 @@ export default function Frame133535(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="CDD1049"
-            {...getOverrideProps(overrides, "Table cell4055282")}
+            {...getOverrideProps(overrides, "Table cell38463253")}
           ></Text>
         </Flex>
       </Flex>
@@ -134,7 +134,7 @@ export default function Frame133535(props) {
         alignSelf="stretch"
         position="relative"
         padding="16px 16px 16px 16px"
-        {...getOverrideProps(overrides, "TableCell4055283")}
+        {...getOverrideProps(overrides, "TableCell38463254")}
       >
         <Flex
           gap="0"
@@ -146,7 +146,7 @@ export default function Frame133535(props) {
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Typography4055284")}
+          {...getOverrideProps(overrides, "Typography38463255")}
         >
           <Text
             fontFamily="Inter"
@@ -168,7 +168,7 @@ export default function Frame133535(props) {
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="CDD1049"
-            {...getOverrideProps(overrides, "Table cell4055285")}
+            {...getOverrideProps(overrides, "Table cell38463256")}
           ></Text>
         </Flex>
       </Flex>
