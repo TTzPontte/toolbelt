@@ -1,127 +1,122 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { formatCurrency, formatDate, removeAccents } from './utils';
-import {Container, Table} from "react-bootstrap";
+import React from "react";
+import { formatCurrency, formatDate, removeAccents } from "./utils";
+import { Col, Container, Row, Table } from "react-bootstrap";
 
 const TableHeader = ({ headers }) => (
-    <thead>
+  <thead>
     <tr>
       {headers.map((header, idx) => (
-          <th key={header + idx}>{header}</th>
+        <th key={idx}>{header}</th>
       ))}
     </tr>
-    </thead>
+  </thead>
 );
 
-TableHeader.propTypes = {
-  headers: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
 const NegativeTable = ({ data, title }) => {
-  if (!data || data.summary.count <= 0) return null;
-
-  const headers = ["Natureza", "Credor", "Valor", "Data", "Resumo"];
+  const headers =
+    data.summary.count > 0
+      ? ["Natureza", "Credor", "Valor", "Data", "Resumo"]
+      : [];
   const itemKey = `${title.toLowerCase()}Response`;
 
   return (
-      <Table>
-        <TableHeader headers={headers} />
-        <tbody>
-        {data[itemKey]?.map((item) => (
-            <tr key={item.contractId || item.occurrenceDate}>
-              <td>{removeAccents(item?.legalNature || "-")}</td>
-              <td>{item?.creditorName || "-"}</td>
-              <td>{formatCurrency(item?.amount || 0)}</td>
-              <td>{formatDate(item?.occurrenceDate || "")}</td>
-              <td>{`${title} (${item?.creditorName} - ${
+    <Col>
+      <Row className={"mt-0"}>
+        <Col>
+        <Table striped bordered hover>
+          <TableHeader headers={[title, data.summary.count, "Valor Total", "0"]} />
+
+          <TableHeader headers={headers} />
+          <tbody>
+            {data[itemKey]?.map((item, idx) => (
+              <tr key={item.contractId || idx}>
+                <td>{removeAccents(item?.legalNature || "-")}</td>
+                <td>{item?.creditorName || "-"}</td>
+                <td>{formatCurrency(item?.amount || 0)}</td>
+                <td>{formatDate(item?.occurrenceDate || "")}</td>
+                <td>{`${title} (${item?.creditorName} - ${
                   item?.occurrenceDate.split("-")[0]
-              })`}</td>
-            </tr>
-        ))}
-        </tbody>
-      </Table>
+                })`}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        </Col>
+      </Row>
+    </Col>
   );
 };
 
-NegativeTable.propTypes = {
-  data: PropTypes.object,
-  title: PropTypes.string,
-};
-
-NegativeTable.defaultProps = {
-  data: {},
-  title: '',
-};
-
 const IdentificationTable = ({ registration }) => {
+  const {
+    consumerName,
+    documentNumber,
+    foundationDate,
+    statusRegistration,
+    address
+  } = registration;
   const headers = [
     "Nome / Razão Social",
     "Documento",
     "Fundada em",
     "Status",
     "Cidade",
-    "UF",
+    "UF"
   ];
   const dataRow = [
-    registration.consumerName,
-    registration.documentNumber,
-    registration.foundationDate,
-    registration.statusRegistration,
-    registration.address.city,
-    registration.address.state,
+    consumerName,
+    documentNumber,
+    foundationDate,
+    statusRegistration,
+    address.city,
+    address.state
   ];
 
   return (
-      <Table>
-        <TableHeader headers={headers} />
-        <tbody>
+    <Table striped bordered hover>
+      <TableHeader headers={headers} />
+      <tbody>
         <tr>
           {dataRow.map((data, idx) => (
-              <td key={idx}>{data}</td>
+            <td key={idx}>{data}</td>
           ))}
         </tr>
-        </tbody>
-      </Table>
+      </tbody>
+    </Table>
   );
 };
 
-IdentificationTable.propTypes = {
-  registration: PropTypes.object.isRequired,
-};
-
 const ScoreSection = ({ score }) => (
-    <div>
-      <h2>Score</h2>
-      <p>Score: {score.score}</p>
-      <p>Probabilidade de inadimplência: {score.defaultRate}</p>
-      <p>Mensagem: {score.message}</p>
-    </div>
+  <div>
+    <h2>Score</h2>
+    <p>Score: {score.score}</p>
+    <p>Probabilidade de inadimplência: {score.defaultRate}</p>
+    <p>Mensagem: {score.message}</p>
+  </div>
 );
 
-ScoreSection.propTypes = {
-  score: PropTypes.object.isRequired,
-};
+const NegativeTables = ({ negativeData }) => (
+  <div>
+    <h2>Dados de Negativação</h2>
+    <NegativeTable data={negativeData.pefin} title="PEFIN" />
+    <NegativeTable data={negativeData.refin} title="REFIN" />
+    <NegativeTable data={negativeData.check} title="Cheque sem fundo" />
+    <NegativeTable data={negativeData.notary} title="Protestos" />
+  </div>
+);
 
 const Report = ({ report }) => {
   const { registration, negativeData, score } = report;
 
   return (
-      <div>
-        <h1>Serasa Report</h1>
-        <IdentificationTable registration={registration} />
-        <ScoreSection score={score} />
-        <NegativeTable data={negativeData.pefin} title="PEFIN" />
-        <NegativeTable data={negativeData.refin} title="REFIN" />
-        <NegativeTable data={negativeData.check} title="Cheque sem fundo" />
-        <NegativeTable data={negativeData.notary} title="Protestos" />
-      </div>
+    <Container className={"h-100"}>
+      <h1>Serasa Report</h1>
+      <IdentificationTable registration={registration} />
+      <ScoreSection score={score} />
+      <NegativeTables negativeData={negativeData} />
+    </Container>
   );
 };
-
-Report.propTypes = {
-  report: PropTypes.object.isRequired,
-};
-
 
 const ReportPage = () => {
   const data = {
@@ -318,12 +313,7 @@ const ReportPage = () => {
     }
   };
 
-  return (
-      <Container>
-
-      <Report report={data.reports[0]} />
-      </Container>
-);
+  return <Report report={data.reports[0]} />;
 };
 
 export default ReportPage;
