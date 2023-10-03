@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Accordion,
-  Button,
-  Card,
-  Col,
-  Container,
-  Row,
-  Table
-} from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Storage } from "@aws-amplify/storage";
 import {
@@ -73,10 +65,10 @@ const Read = () => {
         const jsonContent = await fetchJson(id);
         setFileContent(jsonContent);
         setReports(jsonContent.reports);
-        showToast("Successfully Loaded");
+        showToast("Successfully Loaded")
       } catch (error) {
         console.error("Error fetching data:", error);
-        showToast("Error fetching data:");
+        showToast("Error fetching data:")
       }
     };
 
@@ -95,40 +87,54 @@ const Read = () => {
 
   return (
     <div>
+      <h1>Serasa Report</h1>
+      <Row>
+        <Col md={3}>
+          {model && (
+            <Table responsive className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Document Number</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{model.documentNumber}</td>
+                  <td>{model.type}</td>
+                  <td>{model.status}</td>
+                </tr>
+              </tbody>
+            </Table>
+          )}
+        </Col>
+      </Row>
       {fileContent && (
         <Row>
           <Container>
-            <Accordion defaultActiveKey="0">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header> Relatório Serasa</Accordion.Header>
-                <Accordion.Body>
-                  <Col>
-                    <Card>
-                      <Card.Body>
-                        {reports?.length > 0 && <Results list={reports} />}
-                      </Card.Body>
-                    </Card>
-
-                  </Col>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-            {reports.length > 0 && (
-                <Card>
-                  <Row>
-                    <Col>
-                      <Button onClick={handleDownloadPDF}>
-                        Baixar Relatório PDF
-                      </Button>
-                    </Col>
-                  </Row>
+            <h1>Create Serasa Report</h1>
+            <Col>
+              <Card>
+                <Card.Body>
+                  {reports?.length > 0 && <Results list={reports} />}
+                  {reports.length > 0 && (
+                    <Button onClick={handleDownloadPDF}>
+                      Baixar Relatório PDF
+                    </Button>
+                  )}
+                </Card.Body>
+              </Card>
+              <Card>
+                {reports.length > 0 && (
                   <ReadPartnerReport
-                      fileContent={fileContent}
-                      partners={partners}
-                      pfOuPj="PJ"
+                    fileContent={fileContent}
+                    partners={partners}
+                    pfOuPj="PJ"
                   />
-                </Card>
-            )}
+                )}
+              </Card>
+            </Col>
           </Container>
         </Row>
       )}
