@@ -47,14 +47,9 @@ const Partner = ({ partner, onReportDownload }) => {
   const [loading, startLoading, stopLoading] = useLoading();
   const [partnerData, setPartnerData] = useState(partner);
   const [result, setResult] = useState();
-  const handleViewReport = async (data) => {
+  const handleViewReport = async () => {
     // startLoading();
-    let jsonContent;
-    if (data?.reports.length > 0) {
-      jsonContent = result;
-    } else {
-      jsonContent = await fetchReport(partner.id);
-    }
+      const jsonContent = await fetchReport(partner.id);
     try {
       // const jsonContent = await fetchReport(partner.id);
       const reportType = partner.type === "PF" ? "consumer" : "company";

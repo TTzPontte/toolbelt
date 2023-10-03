@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Accordion, Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Results from "../../../Containers/Searches/Result/Results";
 import { toast } from "react-toastify";
@@ -50,32 +50,41 @@ const Read = () => {
 
   return (
     <div>
-      <h1>Serasa Report</h1>
       {fileContent && (
         <Row>
           <Container>
-            <h1>Create Serasa Report</h1>
-            <Col>
-              <Card>
-                <Card.Body>
-                  {reports.length > 0 && <Results list={reports} />}
+            <Accordion defaultActiveKey="0">
+              <Accordion.Item eventKey="0">
+                <Accordion.Header> Relatório Serasa</Accordion.Header>
+                <Accordion.Body>
+                  <Col>
+                    <Card>
+                      <Card.Body>
+                        {reports.length > 0 && <Results list={reports} />}
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+            <Card>
+              <Row>
+                <Col>
                   {reports.length > 0 && (
                     <Button onClick={handleDownloadPDF}>
                       Baixar Relatório PDF
                     </Button>
                   )}
-                </Card.Body>
-              </Card>
-              <Card>
-                {reports.length > 0 && (
-                  <ReadPartnerReport
-                    fileContent={fileContent}
-                    partners={partners}
-                    pfOuPj="PJ"
-                  />
-                )}
-              </Card>
-            </Col>
+                </Col>
+              </Row>
+              {reports.length > 0 && (
+                <ReadPartnerReport
+                  fileContent={fileContent}
+                  partners={partners}
+                  pfOuPj="PJ"
+                />
+              )}
+            </Card>
           </Container>
         </Row>
       )}
