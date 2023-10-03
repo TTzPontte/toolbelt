@@ -148,7 +148,7 @@ const createNotaryTable = (data, title) =>
         `Protestos (${item?.city} - ${formatDateResume(item?.occurrenceDate || 0)})`
     ],
     data.summary.count > 0
-      ? ["UF", "Valor", "Data", "Cidade", "Estado", "Resumo"]
+      ? ["Cartório", "Valor", "Data", "Cidade", "Estado", "Resumo"]
       : []
   );
 

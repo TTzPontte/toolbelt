@@ -3,7 +3,7 @@ import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Results from "../../../Containers/Searches/Result/Results";
 import { toast } from "react-toastify";
-import { fetchJson, fetchReport, getItem, invokeLambda } from "./hepers"; // Fixed the typo
+import { fetchJson, fetchReport, getItem, invokeLambda } from "./helpers"; // Fixed the typo
 import {
   createPDF,
   generateDDPF,
