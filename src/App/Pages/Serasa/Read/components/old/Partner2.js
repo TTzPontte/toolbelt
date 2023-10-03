@@ -1,8 +1,14 @@
+// Custom hook for loading state
 import React, { useCallback, useEffect, useState } from "react";
 import { fetchReport, invokeLambda } from "../hepers";
-import {generateDDPF, generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/Pdf/main";
-
+import {
+  createPDF,
+  generateDDPF,
+  generateDDPJ
+} from "../../../../../servicer/pdf_helpers/main";
 import { Button, Card, Container, Table } from "react-bootstrap";
+import { DataStore } from "@aws-amplify/datastore";
+import { SerasaPartnerReport } from "../../../../../../models";
 
 const useLoading = () => {
   const [loading, setLoading] = useState(false);
@@ -12,19 +18,37 @@ const useLoading = () => {
   return [loading, startLoading, stopLoading];
 };
 
-const fetchReportForPartner = async (partner) => {
+// Fetch report for a given partner
+const fetchReportForPartner = async (
+  partner,
+  stopLoading,
+  setResponse,
+  setPartnersList
+) => {
   try {
     const { Payload } = await invokeLambda(
       "toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi",
       partner
     );
     const { response } = JSON.parse(Payload);
+    const {
+      optionalFeatures: {
+        partner: { PartnerResponse = { results: [] }, partnershipResponse = [] }
+      }
+    } = response;
+
+    console.log({ response });
+    setResponse(response);
+    setPartnersList([...PartnerResponse.results, ...partnershipResponse]);
     return response;
   } catch (error) {
     console.error("Error:", error);
+  } finally {
+    stopLoading();
   }
 };
 
+// Merge partner data with partner list
 const mergePartner = (partner, partnerList) => {
   const documentKey =
     partner.documentNumber.length > 11 ? "businessDocument" : "documentId";
@@ -40,21 +64,26 @@ const mergePartner = (partner, partnerList) => {
     : partner;
 };
 
-const Partner = ({ partner, onReportDownload }) => {
-  const [loading, startLoading, stopLoading] = useLoading();
-  const [partnerData, setPartnerData] = useState(partner);
-  const [result, setResult] = useState();
+// Component for rendering a partner row
+const Partner = ({
+  partner,
+  partnerList,
+  loading,
+  startLoading,
+  stopLoading
+}) => {
+  const [partnersList, setPartnersList] = useState(partnerList);
+  const [mergedPartner, setMergedPartner] = useState(partner);
+  const [response, setResponse] = useState();
   const handleViewReport = async () => {
-    // startLoading();
-      const jsonContent = await fetchReport(partner.id);
+    startLoading();
     try {
-      // const jsonContent = await fetchReport(partner.id);
+      const jsonContent = await fetchReport(partner.id);
       const reportType = partner.type === "PF" ? "consumer" : "company";
       const ddData =
         reportType === "consumer"
           ? generateDDPF(jsonContent)
           : generateDDPJ(jsonContent);
-
       createPDF(
         ddData,
         jsonContent.reports[0].registration[`${reportType}Name`]
@@ -62,47 +91,40 @@ const Partner = ({ partner, onReportDownload }) => {
     } catch (error) {
       console.error("Error downloading report:", error);
     } finally {
-      // stopLoading();
+      stopLoading();
     }
   };
 
-  const handleClick = async () => {
-    console.log("handleClick");
-    console.log({ result });
-    if (partner?.filePath || result?.reports?.length > 0) {
-      console.log("partner.filePath || result?.report?.length>0");
-      handleViewReport(result);
-    } else {
-      startLoading();
-      const response = await fetchReportForPartner(partner, onReportDownload);
-      setResult(response);
-
-      if (response.reports.length > 0) {
-        setPartnerData({
-          ...partnerData,
-          status: "SUCCESS",
-          filePath: `serasa/${partner.id}`
-        });
-      }
-    }
-    stopLoading();
-  };
+  useEffect(() => {
+    setMergedPartner(mergePartner(partner, partnersList));
+  }, [partner, partnerList]);
 
   const buttonLabel = loading
     ? "Loading..."
-    : partnerData?.filePath
+    : mergedPartner?.filePath
     ? "View Report"
     : "Create Report";
 
+  const handleClick = () => {
+    if (partner.filePath) {
+      // If there's a filePath, handleViewReport
+      handleViewReport();
+    } else {
+      // Otherwise, fetchReportForPartner and set loading state
+      startLoading();
+      fetchReportForPartner(partner, stopLoading, setResponse, setPartnersList);
+    }
+  };
+
   return (
     <tr>
-      <td>{partnerData.id}</td>
-      <td>{partnerData.documentNumber}</td>
-      <td>{partnerData.participationPercentage}</td>
-      <td>{partnerData.status || "-"}</td>
+      <td>{mergedPartner.id}</td>
+      <td>{mergedPartner.documentNumber}</td>
+      <td>{mergedPartner.participationPercentage}</td>
+      <td>{mergedPartner.status || "-"}</td>
       <td>
         <Button
-        className={"btn-primary btn pp-btn-md btn-outline-light"}
+          className="btn-sm"
           onClick={handleClick}
           variant="primary"
           disabled={loading}
@@ -114,20 +136,29 @@ const Partner = ({ partner, onReportDownload }) => {
   );
 };
 
-const PartnerTableRow = ({ partner, partnerList, onReportDownload }) => {
-  const [mergedPartner, setMergedPartner] = useState(partner);
+// Component for rendering a partner row from DataStore
+const PartnerTableRow = ({ partner, partnerList }) => {
+  const [fetchedPartner, setFetchedPartner] = useState(partner);
+  const [loading, startLoading, stopLoading] = useLoading();
 
   useEffect(() => {
-    setMergedPartner(mergePartner(partner, partnerList));
-  }, [partner, partnerList]);
+    const subscription = DataStore.observe(
+      SerasaPartnerReport,
+      partner.id
+    ).subscribe((msg) => {
+      setFetchedPartner(msg.element);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [partner]);
 
   return (
-    <Partner partner={mergedPartner} onReportDownload={onReportDownload} />
+    <Partner
+      partner={fetchedPartner}
+      partnerList={partnerList}
+      {...{ loading, startLoading, stopLoading }}
+    />
   );
-};
-
-const mergeAllPartners = (partners, partnerList) => {
-  return partners.map((partner) => mergePartner(partner, partnerList));
 };
 
 const ReadPartnerReport = ({ partners, fileContent }) => {
@@ -137,12 +168,6 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
     }
   } = fileContent;
   const partnerList = [...PartnerResponse.results, ...partnershipResponse];
-
-  const onReportDownload = () => {
-    // Handle report download
-  };
-
-  const mergedPartners = mergeAllPartners(partners, partnerList);
 
   return (
     <Container>
@@ -162,12 +187,11 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
               </tr>
             </thead>
             <tbody>
-              {mergedPartners.map((partner) => (
+              {partners.map((partner) => (
                 <PartnerTableRow
                   key={partner.id}
                   partner={partner}
                   partnerList={partnerList}
-                  onReportDownload={onReportDownload}
                 />
               ))}
             </tbody>
@@ -177,5 +201,4 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
     </Container>
   );
 };
-
 export default ReadPartnerReport;

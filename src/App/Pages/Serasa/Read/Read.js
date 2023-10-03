@@ -11,7 +11,7 @@ import Results from "../../../Containers/Searches/Result/Results";
 import { invokeLambda } from "./hepers";
 import { getReportById } from "./hepers_gql";
 import useToast from "./useToast";
-import ReadPartnerReport from "./components/Partner";
+import ReadPartnerReport from "./components/ReadPartnerReport";
 
 const getItem = async (id) => {
   try {

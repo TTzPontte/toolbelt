@@ -2,6 +2,17 @@ import { Auth, Storage } from "aws-amplify";
 import Lambda from "aws-sdk/clients/lambda";
 import { DataStore } from "@aws-amplify/datastore";
 import {EntityType, ReportStatus, SerasaPartnerReport, SerasaReport} from "../../../../models";
+export const fetchReport = async (id) => {
+  const fileKey = `serasa/${id}.json`;
+  const response = await Storage.get(fileKey, {
+    download: true,
+    level: "public",
+    validateObjectExistence: true
+  });
+  const jsonContent = JSON.parse(await response.Body.text());
+  return jsonContent;
+};
+
 export const getItem = async (id) => {
   const getAssociatedPartnerReports = async (serasaReportId) => {
     try {
