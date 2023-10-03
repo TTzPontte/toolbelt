@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { invokeLambda } from "../hepers";
 import { Storage } from "@aws-amplify/storage";
-import {generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/main";
-import {generateDDPF} from "../../../../servicer/pdf_helpers/Pdf/main";
+import {generateDDPF, generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/Pdf/main";
 const CreateReport = async (partner, setLoadingState) => {
   try {
     await invokeLambda("toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi", partner);

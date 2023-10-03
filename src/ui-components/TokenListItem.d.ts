@@ -10,13 +10,13 @@ import { FlexProps, TextProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type TokenListItemOverridesProps = {
     TokenListItem?: PrimitiveOverrideProps<FlexProps>;
-    "Frame 3344055299"?: PrimitiveOverrideProps<FlexProps>;
+    "Frame 33438463270"?: PrimitiveOverrideProps<FlexProps>;
     "Frame 332"?: PrimitiveOverrideProps<FlexProps>;
     "Frame 1"?: PrimitiveOverrideProps<FlexProps>;
     Token?: PrimitiveOverrideProps<TextProps>;
     "Frame 333"?: PrimitiveOverrideProps<FlexProps>;
     Value?: PrimitiveOverrideProps<TextProps>;
-    "Frame 3344055305"?: PrimitiveOverrideProps<FlexProps>;
+    "Frame 33438463276"?: PrimitiveOverrideProps<FlexProps>;
     Variation?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type TokenListItemProps = React.PropsWithChildren<Partial<FlexProps> & {

@@ -147,7 +147,7 @@ export default function ActionCard(props) {
           size="large"
           isDisabled={false}
           variation="primary"
-          children="Primary Button"
+          children="Button"
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>

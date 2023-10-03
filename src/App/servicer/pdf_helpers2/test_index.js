@@ -2,12 +2,12 @@ const { writeFileSync } = require("fs");
 const { generateDDPJ, generateDDPF } = require("./Pdf/main");
 const pdfMake = require("pdfmake/build/pdfmake");
 const pdfFonts = require("pdfmake/build/vfs_fonts");
-const {data}= require("./data")
+const { data } = require("./data");
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const diacritics = require("diacritics");
-const ddPJ = generateDDPJ(data['PJ']);
-const ddPF = generateDDPF(data['PF']);
+const ddPJ = generateDDPJ(data["PJ"]);
+const ddPF = generateDDPF(data["PF"]);
 
 // console.log(JSON.stringify(ddPJ, null, 2).replace("null,", ""));
 
@@ -24,3 +24,4 @@ function createLocalPDF(pdfDefinition, fileName) {
 }
 
 createLocalPDF(ddPF, "example.pdf");
+createLocalPDF(ddPJ, "example_PJ.pdf");

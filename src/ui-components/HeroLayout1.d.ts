@@ -12,10 +12,10 @@ export declare type HeroLayout1OverridesProps = {
     HeroLayout1?: PrimitiveOverrideProps<FlexProps>;
     Left?: PrimitiveOverrideProps<FlexProps>;
     HeroMessage?: PrimitiveOverrideProps<FlexProps>;
-    "LOREM IPSUM"?: PrimitiveOverrideProps<TextProps>;
     Message?: PrimitiveOverrideProps<FlexProps>;
-    "Ut enim ad minim veniam quis nostrud"?: PrimitiveOverrideProps<TextProps>;
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."?: PrimitiveOverrideProps<TextProps>;
+    Eyebrow?: PrimitiveOverrideProps<TextProps>;
+    Heading?: PrimitiveOverrideProps<TextProps>;
+    Body?: PrimitiveOverrideProps<TextProps>;
     Button?: PrimitiveOverrideProps<ButtonProps>;
     Right?: PrimitiveOverrideProps<FlexProps>;
     image?: PrimitiveOverrideProps<ImageProps>;

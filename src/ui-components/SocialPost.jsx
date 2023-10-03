@@ -292,7 +292,7 @@ export default function SocialPost(props) {
           position="relative"
           borderRadius="16px"
           padding="0px 0px 0px 0px"
-          objectFit="cover"
+          objectFit="unset"
           {...getOverrideProps(overrides, "image")}
         ></Image>
       </Flex>
