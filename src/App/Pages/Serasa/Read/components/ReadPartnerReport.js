@@ -1,152 +1,189 @@
-import React, { useState } from "react";
-import { invokeLambda } from "../hepers";
-import { Storage } from "@aws-amplify/storage";
+import React, { useCallback, useEffect, useState } from "react";
+import { fetchReport, invokeLambda } from "../helpers";
 import {
   createPDF,
+  generateDDPF,
   generateDDPJ
-} from "../../../../servicer/pdf_helpers/Pdf/main";
+} from "../../../../servicer/pdf_helpers/main";
 import { Button, Card, Container, Table } from "react-bootstrap";
 
-const ReadPartnerReport = ({ partners, fileContent }) => {
-  const Partner = ({ combinedPartners }) => {
-    const CreatePartnerButton = ({ partner, setLoading }) => {
-      const [loading, setLoadingState] = useState(false);
+const useLoading = () => {
+  const [loading, setLoading] = useState(false);
+  const startLoading = useCallback(() => setLoading(true), []);
+  const stopLoading = useCallback(() => setLoading(false), []);
 
-      const { filePath } = partner;
+  return [loading, startLoading, stopLoading];
+};
 
-      const handleCreateReport = async () => {
-        if (loading) return;
+const fetchReportForPartner = async (partner) => {
+  try {
+    const { Payload } = await invokeLambda(
+      "toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi",
+      partner
+    );
+    const { response } = JSON.parse(Payload);
+    return response;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
 
-        setLoadingState(true);
+const mergePartner = (partner, partnerList) => {
+  const documentKey =
+    partner.documentNumber.length > 11 ? "businessDocument" : "documentId";
+  const matchedPartner = partnerList.find(
+    (p) => p[documentKey] === partner.documentNumber
+  );
 
-        try {
-          await invokeLambda(
-            "toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi",
-            partner
-          );
-        } catch (error) {
-          console.error("Error invoking Lambda:", error);
-        } finally {
-          setLoadingState(false);
-          // setLoading(false);
-        }
-      };
+  return matchedPartner
+    ? {
+        ...partner,
+        participationPercentage: matchedPartner.participationPercentage
+      }
+    : partner;
+};
 
-      const handleViewReport = async () => {
-        if (loading) return;
+const Partner = ({ partner, onReportDownload }) => {
+  const [loading, startLoading, stopLoading] = useLoading();
+  const [partnerData, setPartnerData] = useState(partner);
+  const [result, setResult] = useState();
+  const handleViewReport = async (data) => {
+    // startLoading();
+    let jsonContent;
+    if (data?.reports.length > 0) {
+      jsonContent = result;
+    } else {
+      jsonContent = await fetchReport(partner.id);
+    }
+    try {
+      // const jsonContent = await fetchReport(partner.id);
+      const reportType = partner.type === "PF" ? "consumer" : "company";
+      const ddData =
+        reportType === "consumer"
+          ? generateDDPF(jsonContent)
+          : generateDDPJ(jsonContent);
 
-        setLoadingState(true);
+      createPDF(
+        ddData,
+        jsonContent.reports[0].registration[`${reportType}Name`]
+      );
+    } catch (error) {
+      console.error("Error downloading report:", error);
+    } finally {
+      // stopLoading();
+    }
+  };
 
-        try {
-          const fileKey = `serasa/${partner?.id}.json`;
+  const handleClick = async () => {
+    console.log("handleClick");
+    console.log({ result });
+    if (partner?.filePath || result?.reports?.length > 0) {
+      console.log("partner.filePath || result?.report?.length>0");
+      handleViewReport(result);
+    } else {
+      startLoading();
+      const response = await fetchReportForPartner(partner, onReportDownload);
+      setResult(response);
 
-          const response = await Storage.get(fileKey, {
-            download: true,
-            level: "public",
-            validateObjectExistence: true
-          });
-          const blob = response.Body;
-          const text = await blob.text();
-          const jsonContent = JSON.parse(text);
-          const reportType = partner.type === "PF" ? "consumer" : "company";
-          console.log({ jsonContent });
-          const ddData = generateDDPJ(jsonContent.data);
-          const reportName =
-            jsonContent.data.reports[0].registration[reportType + "Name"];
-          createPDF(ddData, reportName);
-          // Create a blob from the file data
-        } catch (error) {
-          console.error("Error downloading report:", error);
-        } finally {
-          setLoadingState(false);
-        }
-      };
+      if (response.reports.length > 0) {
+        setPartnerData({
+          ...partnerData,
+          status: "SUCCESS",
+          filePath: `serasa/${partner.id}`
+        });
+      }
+    }
+    stopLoading();
+  };
 
-      return (
+  const buttonLabel = loading
+    ? "Loading..."
+    : partnerData?.filePath
+    ? "View Report"
+    : "Create Report";
+
+  return (
+    <tr>
+      <td>{partnerData.id}</td>
+      <td>{partnerData.documentNumber}</td>
+      <td>{partnerData.participationPercentage}</td>
+      <td>{partnerData.status || "-"}</td>
+      <td>
         <Button
           className="btn-sm"
-          onClick={filePath ? handleViewReport : handleCreateReport}
+          onClick={handleClick}
           variant="primary"
           disabled={loading}
         >
-          {filePath ? "View Report" : "Create Report"}
+          {buttonLabel}
         </Button>
-      );
-    };
+      </td>
+    </tr>
+  );
+};
 
-    return (
-      <>
-        {combinedPartners?.length > 0 && (
-          <Card>
-            <Card.Header>
-              <h2>Partner Report</h2>
-            </Card.Header>
-            <Card.Body>
-              <Table responsive striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>CNPJ</th>
-                    <th>% Participação</th>
-                    <th>Status</th>
-                    <th>Arquivo</th>
-                    <th>Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {combinedPartners.map((partner) => (
-                    <tr key={partner.id}>
-                      <td>{partner.id}</td>
-                      <td>{partner.documentNumber}</td>
-                      <td>{partner.participationPercentage}</td>
-                      <td>{partner?.status || "-"}</td>
-                      <td>{partner?.filePath || "-"}</td>
-                      <td>
-                        <CreatePartnerButton partner={partner} />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </Card.Body>
-          </Card>
-        )}
-      </>
-    );
-  };
+const PartnerTableRow = ({ partner, partnerList, onReportDownload }) => {
+  const [mergedPartner, setMergedPartner] = useState(partner);
 
+  useEffect(() => {
+    setMergedPartner(mergePartner(partner, partnerList));
+  }, [partner, partnerList]);
+
+  return (
+    <Partner partner={mergedPartner} onReportDownload={onReportDownload} />
+  );
+};
+
+const mergeAllPartners = (partners, partnerList) => {
+  return partners.map((partner) => mergePartner(partner, partnerList));
+};
+
+const ReadPartnerReport = ({ partners, fileContent }) => {
   const {
     optionalFeatures: {
       partner: { PartnerResponse = { results: [] }, partnershipResponse = [] }
     }
   } = fileContent;
-
   const partnerList = [...PartnerResponse.results, ...partnershipResponse];
 
-  // Combine partner data
-  const combinePartners = () => {
-    return partners?.map((partner) => {
-      const document_key =
-        partner.type === "PF" ? "businessDocument" : "documentId";
-      const response = partnerList.find(
-        (r) => r[document_key] === partner.documentNumber
-      );
-
-      return response
-        ? {
-            ...partner,
-            participationPercentage: response.participationPercentage
-          }
-        : partner;
-    });
+  const onReportDownload = () => {
+    // Handle report download
   };
 
-  const combinedPartners = combinePartners();
+  const mergedPartners = mergeAllPartners(partners, partnerList);
 
   return (
     <Container>
-      <Partner combinedPartners={combinedPartners} />
+      <Card>
+        <Card.Header>
+          <h2>Partner Report</h2>
+        </Card.Header>
+        <Card.Body>
+          <Table responsive striped bordered hover>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>CNPJ</th>
+                <th>% Participação</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              {mergedPartners.map((partner) => (
+                <PartnerTableRow
+                  key={partner.id}
+                  partner={partner}
+                  partnerList={partnerList}
+                  onReportDownload={onReportDownload}
+                />
+              ))}
+            </tbody>
+          </Table>
+        </Card.Body>
+      </Card>
     </Container>
   );
 };
+
 export default ReadPartnerReport;

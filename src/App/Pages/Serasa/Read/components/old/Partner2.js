@@ -5,10 +5,10 @@ import {
   createPDF,
   generateDDPF,
   generateDDPJ
-} from "../../../../servicer/pdf_helpers/main";
+} from "../../../../../servicer/pdf_helpers/main";
 import { Button, Card, Container, Table } from "react-bootstrap";
 import { DataStore } from "@aws-amplify/datastore";
-import { SerasaPartnerReport } from "../../../../../models";
+import { SerasaPartnerReport } from "../../../../../../models";
 
 const useLoading = () => {
   const [loading, setLoading] = useState(false);

@@ -1,17 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Results from "../../../Containers/Searches/Result/Results";
 import { toast } from "react-toastify";
-import { fetchJson, fetchReport, getItem, invokeLambda } from "./helpers"; // Fixed the typo
+import { fetchJson, getItem } from "./helpers"; // Fixed the typo
 import {
   createPDF,
   generateDDPF,
   generateDDPJ
 } from "../../../servicer/pdf_helpers/main";
-import { SerasaPartnerReport } from "../../../../models";
-import { DataStore } from "@aws-amplify/datastore";
-import ReadPartnerReport from "./components/Partner"; // Assuming you're using AWS Amplify
+import ReadPartnerReport from "./components/ReadPartnerReport"; // Assuming you're using AWS Amplify
 
 const Read = () => {
   const { id } = useParams();
@@ -37,7 +35,7 @@ const Read = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, []);
 
   const handleDownloadPDF = () => {
     const reportType = model?.type === "PF" ? "consumer" : "company";
