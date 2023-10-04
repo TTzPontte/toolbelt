@@ -12,13 +12,14 @@ const useLoading = () => {
   return [loading, startLoading, stopLoading];
 };
 
-const fetchReportForPartner = async (partner) => {
+const fetchReportForPartner = async (partner, handleViewReport) => {
   try {
     const { Payload } = await invokeLambda(
       "toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi",
       partner
     );
     const { response } = JSON.parse(Payload);
+    handleViewReport(response)
     return response;
   } catch (error) {
     console.error("Error:", error);
@@ -74,7 +75,7 @@ const Partner = ({ partner, onReportDownload }) => {
       handleViewReport(result);
     } else {
       startLoading();
-      const response = await fetchReportForPartner(partner, onReportDownload);
+      const response = await fetchReportForPartner(partner, handleViewReport);
       setResult(response);
 
       if (response.reports.length > 0) {
