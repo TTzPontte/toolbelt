@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Accordion,
-  Button,
-  Card,
-  Col,
-  Container,
-  Row,
-  Table
-} from "react-bootstrap";
+import { Accordion, Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Storage } from "@aws-amplify/storage";
 import {
@@ -16,10 +8,9 @@ import {
   generateDDPJ
 } from "../../../servicer/pdf_helpers/Pdf/main";
 import Results from "../../../Containers/Searches/Result/Results";
-import { invokeLambda } from "./hepers";
 import { getReportById } from "./hepers_gql";
-import useToast from "./useToast";
 import ReadPartnerReport from "./components/ReadPartnerReport";
+import { toast } from "react-toastify";
 
 const getItem = async (id) => {
   try {
@@ -62,7 +53,6 @@ const Read = () => {
   const [reports, setReports] = useState([]);
   const [partners, setPartners] = useState([]);
   const [fileContent, setFileContent] = useState(null);
-  const showToast = useToast();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,10 +63,10 @@ const Read = () => {
         const jsonContent = await fetchJson(id);
         setFileContent(jsonContent);
         setReports(jsonContent.reports);
-        showToast("Successfully Loaded");
+        toast.success("Successfully Loaded");
       } catch (error) {
         console.error("Error fetching data:", error);
-        showToast("Error fetching data:");
+        toast.error("Error fetching data:");
       }
     };
 
@@ -98,7 +88,7 @@ const Read = () => {
       {fileContent && (
         <Row>
           <Container>
-            <Accordion defaultActiveKey="0">
+            <Accordion defaultActiveKey="" defaultChecked>
               <Accordion.Item eventKey="0">
                 <Accordion.Header> Relatório Serasa</Accordion.Header>
                 <Accordion.Body>
@@ -108,26 +98,37 @@ const Read = () => {
                         {reports?.length > 0 && <Results list={reports} />}
                       </Card.Body>
                     </Card>
-
                   </Col>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
             {reports.length > 0 && (
-                <Card>
-                  <Row>
-                    <Col>
-                      <Button onClick={handleDownloadPDF}>
-                        Baixar Relatório PDF
-                      </Button>
-                    </Col>
-                  </Row>
+              <Card>
+                <Card.Body>
+
+                <Row>
+                  <Col>
+                    <Button onClick={handleDownloadPDF}>
+                      Baixar Relatório PDF
+                    </Button>
+                  </Col>
+                </Row>
+                {partners?.length > 0 ?(
                   <ReadPartnerReport
-                      fileContent={fileContent}
-                      partners={partners}
-                      pfOuPj="PJ"
+                    fileContent={fileContent}
+                    partners={partners}
+                    pfOuPj="PJ"
                   />
-                </Card>
+                ):(
+                <Row className={"btn btn-outline-danger"}>
+                  <Col>
+                    <h3>{"Não Possui Informações Societárias"}</h3>
+                  </Col>
+                </Row>
+                )}
+                </Card.Body>
+
+              </Card>
             )}
           </Container>
         </Row>
