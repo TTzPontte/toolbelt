@@ -134,11 +134,14 @@ const mergeAllPartners = (partners, partnerList) => {
 const ReadPartnerReport = ({ partners, fileContent }) => {
   const {
     optionalFeatures: {
-      partner: { PartnerResponse = { results: [] }, partnershipResponse = [] }
-    }
+      partner: {
+        PartnerResponse = { results: [] },
+        partnershipResponse = []
+      } = {}
+    } = {}
   } = fileContent;
-  const partnerList = [...PartnerResponse.results, ...partnershipResponse];
 
+  const partnerList = [...(PartnerResponse?.results || []), ...(partnershipResponse || [])];
   const onReportDownload = () => {
     // Handle report download
   };

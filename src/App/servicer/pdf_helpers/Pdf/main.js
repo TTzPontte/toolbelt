@@ -67,23 +67,23 @@ class TableGenerator {
     return this.tableFactory.createTable(widths, body);
   }
 
-  createInfoTable(headers, values, widths=[]) {
+  createInfoTable(headers, values, widths = []) {
     const headerRow = headers?.map((header) =>
-        this.tableFactory.createCell(header, "header")
+      this.tableFactory.createCell(header, "header")
     );
     const valueRows = values.map((item) =>
-        item.map((value) => this.tableFactory.createCell(value, "content"))
+      item.map((value) => this.tableFactory.createCell(value, "content"))
     );
 
     return this.tableFactory.createTable(
-        widths?.length > 0 ? widths : Array(headers.length).fill("*"),
-        [headerRow, ...valueRows]
+      widths?.length > 0 ? widths : Array(headers.length).fill("*"),
+      [headerRow, ...valueRows]
     );
   }
 
   createHeaderNegativeTable(headers) {
     const headerRow = headers.map((header) =>
-        this.tableFactory.createCell(header, "header")
+      this.tableFactory.createCell(header, "header")
     );
 
     return this.tableFactory.createTable(Array(headers.length).fill("16%"), [
@@ -93,15 +93,15 @@ class TableGenerator {
 
   createAuxTable(headers, values, widths = []) {
     const headerRow = headers.map((header) =>
-        this.tableFactory.createCell(header, "header")
+      this.tableFactory.createCell(header, "header")
     );
     const valueRows = values.map((item) =>
-        item.map((value) => this.tableFactory.createCell(value, "content"))
+      item.map((value) => this.tableFactory.createCell(value, "content"))
     );
 
     return this.tableFactory.createTableNegative(
-        widths?.length > 0 ? widths : Array(headers.length).fill("*"),
-        [headerRow, ...valueRows]
+      widths?.length > 0 ? widths : Array(headers.length).fill("*"),
+      [headerRow, ...valueRows]
     );
   }
 }
@@ -125,7 +125,7 @@ const createTable = (data, title, itemKeys, headers) => {
 
   if (data[itemKey] !== undefined) {
     const auxTable = data[itemKey].map((item) =>
-        itemKeys.map((key) => key(item))
+      itemKeys.map((key) => key(item))
     );
     const infoTable = tableGenerator.createAuxTable(headers, auxTable, widths);
     return [headerTable, infoTable];
@@ -135,40 +135,40 @@ const createTable = (data, title, itemKeys, headers) => {
 };
 
 const createNotaryTable = (data, title) =>
-    createTable(
-        data,
-        title,
-        [
-          (item) => removeAccents(item?.officeNumber || "-"),
-          (item) => formatCurrency(item?.amount || 0),
-          (item) => formatDate(item?.occurrenceDate || ""),
-          (item) => item?.city,
-          (item) => item?.federalUnit,
-          (item) => `Protestos (${item?.city} - ${getYear(item)})`
-        ],
-        data.summary.count > 0
-            ? ["Cartório", "Valor", "Data", "Cidade", "Estado", "Resumo"]
-            : []
-    );
+  createTable(
+    data,
+    title,
+    [
+      (item) => removeAccents(item?.officeNumber || "-"),
+      (item) => formatCurrency(item?.amount || 0),
+      (item) => formatDate(item?.occurrenceDate || ""),
+      (item) => item?.city,
+      (item) => item?.federalUnit,
+      (item) => `Protestos (${item?.city} - ${getYear(item)})`
+    ],
+    data.summary.count > 0
+      ? ["Cartório", "Valor", "Data", "Cidade", "Estado", "Resumo"]
+      : []
+  );
 
 const createNegativeTable = (data, title) => {
   const headers =
-      data.summary.count > 0
-          ? ["Natureza", "Credor", "Valor", "Data", "Resumo"]
-          : [];
+    data.summary.count > 0
+      ? ["Natureza", "Credor", "Valor", "Data", "Resumo"]
+      : [];
   console.log({ data });
   console.log({ title });
   return createTable(
-      data,
-      title,
-      [
-        (item) => removeAccents(item?.legalNature || "-"),
-        (item) => item?.creditorName || "-",
-        (item) => formatCurrency(item?.amount || 0),
-        (item) => formatDate(item?.occurrenceDate || ""),
-        (item) => `${title} (${item?.creditorName} - ${getYear(item)})`
-      ],
-      headers
+    data,
+    title,
+    [
+      (item) => removeAccents(item?.legalNature || "-"),
+      (item) => item?.creditorName || "-",
+      (item) => formatCurrency(item?.amount || 0),
+      (item) => formatDate(item?.occurrenceDate || ""),
+      (item) => `${title} (${item?.creditorName} - ${getYear(item)})`
+    ],
+    headers
   );
 };
 function getYear({ occurrenceDate }) {
@@ -220,7 +220,11 @@ const makeRegistrationTable = (registration, tableGenerator) => {
   ];
 
   // Utilize the createInfoTable method to generate the table
-  const table = tableGenerator.createInfoTable(headers, [dataRow], ['30%', '20%', '16%', '8%','16%', '8%'],);
+  const table = tableGenerator.createInfoTable(
+    headers,
+    [dataRow],
+    ["30%", "20%", "16%", "8%", "16%", "8%"]
+  );
 
   return table;
 };
@@ -230,7 +234,7 @@ const makeRegistrationTable = (registration, tableGenerator) => {
 const generateReportContentPJ = (report, optional) => {
   const { registration, negativeData, facts } = report;
   const { pefin, refin, check, notary } = negativeData;
-  const partners = optional.partner.PartnerResponse.results;
+  const partners = optional?.partner?.PartnerResponse?.results;
 
   const getDirectors = () => {
     try {
@@ -351,25 +355,35 @@ const generateReportContentPJ = (report, optional) => {
       style: "contentPDF",
       text: "\nInformações Societárias"
     },
-    tableGenerator.createInfoTable(
-        ["Número de Documento", "Nome ou Razão Social", "% Participação"],
-        partners.map((partner) => [
-          formatDocumentNumber(partner.businessDocument || partner.documentId),
-          partner.companyName || partner.name,
-          partner.participationPercentage
-        ])
-    ),
+    !!partners
+      ? tableGenerator.createInfoTable(
+          ["Número de Documento", "Nome ou Razão Social", "% Participação"],
+          partners.map((partner) => [
+            formatDocumentNumber(
+              partner.businessDocument || partner.documentId
+            ),
+            partner.companyName || partner.name,
+            partner.participationPercentage
+          ])
+        )
+      : {
+          style: "contentPDF",
+          text: "\nNão Possui Informações Societárias",
+          fontSize: "12",
+          color: "#b81414",
+
+        },
     directors && {
       style: "contentPDF",
       text: "\nInformações de Diretoria"
     },
     tableGenerator.createInfoTable(
-        ["Número de Documento", "Nome", "Tem negativo?"],
-        directors.map((director) => [
-          formatDocumentNumber(director.documentId),
-          director.name,
-          director.hasNegative
-        ])
+      ["Número de Documento", "Nome", "Tem negativo?"],
+      directors.map((director) => [
+        formatDocumentNumber(director.documentId),
+        director.name,
+        director.hasNegative
+      ])
     )
   ].filter(Boolean);
 };
@@ -380,7 +394,7 @@ const makePartners = (partners, tableGenerator) => {
 
   // Check if any partner has a companyName or name
   const hasName = partners.some(
-      (partner) => partner.companyName || partner.name
+    (partner) => partner.companyName || partner.name
   );
 
   // Adjust header row based on presence of companyName or name
@@ -394,7 +408,7 @@ const makePartners = (partners, tableGenerator) => {
   const bodyRows = partners.map((partner) => {
     console.log(partner.businessDocument || partner.documentId);
     console.log(
-        formatDocumentNumber(partner.businessDocument || partner.documentId)
+      formatDocumentNumber(partner.businessDocument || partner.documentId)
     );
     return [
       formatDocumentNumber(partner.businessDocument || partner.documentId),
@@ -406,8 +420,8 @@ const makePartners = (partners, tableGenerator) => {
   const tableBody = [headerRow, ...bodyRows];
 
   const table = tableGenerator.tableFactory.createTable(
-      Array(headerRow.length).fill("*"),
-      tableBody
+    Array(headerRow.length).fill("*"),
+    tableBody
   );
 
   return [
@@ -517,17 +531,17 @@ const generateReportContentPF = (report, optional) => {
       text: "\nDados de Identificação"
     },
     tableGenerator.createInfoTable(
-        ["Nome", "Documento", "Nascimento", "Status", "Cidade", "UF"],
+      ["Nome", "Documento", "Nascimento", "Status", "Cidade", "UF"],
+      [
         [
-          [
-            registration.consumerName,
-            formatDocumentNumber(registration.documentNumber),
-            formatDate(registration.birthDate),
-            registration.statusRegistration,
-            registration.address.city,
-            registration.address.state
-          ]
+          registration.consumerName,
+          formatDocumentNumber(registration.documentNumber),
+          formatDate(registration.birthDate),
+          registration.statusRegistration,
+          registration.address.city,
+          registration.address.state
         ]
+      ]
     ),
     ...makeScore(score, probInadimplencia),
     {

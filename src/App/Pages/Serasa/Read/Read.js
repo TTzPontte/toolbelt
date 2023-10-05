@@ -16,10 +16,9 @@ import {
   generateDDPJ
 } from "../../../servicer/pdf_helpers/Pdf/main";
 import Results from "../../../Containers/Searches/Result/Results";
-import { invokeLambda } from "./hepers";
 import { getReportById } from "./hepers_gql";
-import useToast from "./useToast";
 import ReadPartnerReport from "./components/ReadPartnerReport";
+import {toast} from "react-toastify";
 
 const getItem = async (id) => {
   try {
@@ -62,7 +61,6 @@ const Read = () => {
   const [reports, setReports] = useState([]);
   const [partners, setPartners] = useState([]);
   const [fileContent, setFileContent] = useState(null);
-  const showToast = useToast();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,10 +71,11 @@ const Read = () => {
         const jsonContent = await fetchJson(id);
         setFileContent(jsonContent);
         setReports(jsonContent.reports);
-        showToast("Successfully Loaded");
+        toast.success("Successfully Loaded");
+
       } catch (error) {
         console.error("Error fetching data:", error);
-        showToast("Error fetching data:");
+        toast.error("Error fetching data:");
       }
     };
 
