@@ -97,7 +97,7 @@ const Read = () => {
       {fileContent && (
         <Row>
           <Container>
-            <Accordion defaultActiveKey="0">
+            <Accordion defaultActiveKey="" defaultChecked>
               <Accordion.Item eventKey="0">
                 <Accordion.Header> Relatório Serasa</Accordion.Header>
                 <Accordion.Body>
@@ -107,26 +107,27 @@ const Read = () => {
                         {reports?.length > 0 && <Results list={reports} />}
                       </Card.Body>
                     </Card>
-
                   </Col>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
             {reports.length > 0 && (
-                <Card>
-                  <Row>
-                    <Col>
-                      <Button onClick={handleDownloadPDF}>
-                        Baixar Relatório PDF
-                      </Button>
-                    </Col>
-                  </Row>
+              <Card>
+                <Row>
+                  <Col>
+                    <Button onClick={handleDownloadPDF}>
+                      Baixar Relatório PDF
+                    </Button>
+                  </Col>
+                </Row>
+                {partners?.length > 0 &&
                   <ReadPartnerReport
-                      fileContent={fileContent}
-                      partners={partners}
-                      pfOuPj="PJ"
+                    fileContent={fileContent}
+                    partners={partners}
+                    pfOuPj="PJ"
                   />
-                </Card>
+                }
+              </Card>
             )}
           </Container>
         </Row>
