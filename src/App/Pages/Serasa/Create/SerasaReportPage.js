@@ -12,69 +12,8 @@ import {
 import Radio from "../../../components/Form/Radio";
 import { getEnvironment, invokeLambda, personTypeOptions } from "./hepers";
 import { useNavigate } from "react-router-dom";
+import ReportForm from "./ReportForm";
 
-const ReportForm = ({ onSubmit }) => {
-  const methods = useForm();
-  const {
-    control,
-    handleSubmit,
-    formState: { errors }
-  } = methods;
-  return (
-    <FormProvider {...methods}>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Radio
-          label="Tipo de Pessoa"
-          name="type"
-          options={personTypeOptions}
-          inline
-          control={control}
-        />
-        <Row>
-          {/*<Col sm={4}>*/}
-          <Col>
-            <FormGroup controlId="documentNumber">
-              <Form.Label>Número do Documento:</Form.Label>
-              <Controller
-                name="documentNumber"
-                control={control}
-                render={({ field }) => (
-                  <Form.Control
-                    type="text"
-                    placeholder="Document number"
-                    {...field}
-                  />
-                )}
-                rules={{ required: true }}
-              />
-              {errors.documentNumber && (
-                <span>{errors.documentNumber.message}</span>
-              )}
-            </FormGroup>
-            <FormGroup controlId="pipefyId">
-              <Form.Label>Pipefy Card Id:</Form.Label>
-              <Controller
-                name="pipefyId"
-                control={control}
-                render={({ field }) => (
-                  <Form.Control
-                    type="text"
-                    placeholder="Id Pipefy"
-                    {...field}
-                  />
-                )}
-              />
-            </FormGroup>
-          </Col>
-        </Row>
-        <br />
-        <Button type="submit" color="primary">
-          Realizar Consulta
-        </Button>
-      </Form>
-    </FormProvider>
-  );
-};
 const CreateReportPage = () => {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState([]);
