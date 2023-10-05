@@ -351,7 +351,7 @@ const generateReportContentPJ = (report, optional) => {
     ...createNegativeTable(refin, "REFIN"),
     ...createNegativeTable(check, "Cheque sem fundo"),
     ...createNotaryTable(notary, "Protestos"),
-    partners && {
+    {
       style: "contentPDF",
       text: "\nInformações Societárias"
     },

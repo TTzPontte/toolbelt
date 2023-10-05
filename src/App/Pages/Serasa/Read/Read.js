@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Accordion,
-  Button,
-  Card,
-  Col,
-  Container,
-  Row,
-  Table
-} from "react-bootstrap";
+import { Accordion, Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Storage } from "@aws-amplify/storage";
 import {
@@ -18,7 +10,7 @@ import {
 import Results from "../../../Containers/Searches/Result/Results";
 import { getReportById } from "./hepers_gql";
 import ReadPartnerReport from "./components/ReadPartnerReport";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const getItem = async (id) => {
   try {
@@ -72,7 +64,6 @@ const Read = () => {
         setFileContent(jsonContent);
         setReports(jsonContent.reports);
         toast.success("Successfully Loaded");
-
       } catch (error) {
         console.error("Error fetching data:", error);
         toast.error("Error fetching data:");
@@ -113,6 +104,8 @@ const Read = () => {
             </Accordion>
             {reports.length > 0 && (
               <Card>
+                <Card.Body>
+
                 <Row>
                   <Col>
                     <Button onClick={handleDownloadPDF}>
@@ -120,13 +113,21 @@ const Read = () => {
                     </Button>
                   </Col>
                 </Row>
-                {partners?.length > 0 &&
+                {partners?.length > 0 ?(
                   <ReadPartnerReport
                     fileContent={fileContent}
                     partners={partners}
                     pfOuPj="PJ"
                   />
-                }
+                ):(
+                <Row className={"btn btn-outline-danger"}>
+                  <Col>
+                    <h3>{"Não Possui Informações Societárias"}</h3>
+                  </Col>
+                </Row>
+                )}
+                </Card.Body>
+
               </Card>
             )}
           </Container>
