@@ -188,6 +188,7 @@ function getYear({ occurrenceDate }) {
 }
 
 const makeRegistrationTable = (registration, tableGenerator) => {
+  console.log({registration})
   function getStatus(text) {
     const words = text.split(" ");
     if (text.includes(":")) {
@@ -215,8 +216,8 @@ const makeRegistrationTable = (registration, tableGenerator) => {
     formatDocumentNumber(registration.companyDocument),
     formatDate(registration.foundationDate),
     getStatus(registration.statusRegistration),
-    registration.address.city,
-    registration.address.state
+    registration.address?.city,
+    registration.address?.state
   ];
 
   // Utilize the createInfoTable method to generate the table
@@ -389,7 +390,16 @@ const generateReportContentPJ = (report, optional) => {
 };
 const makePartners = (partners, tableGenerator) => {
   if (!partners) {
-    return [];
+    return [{
+      style: "contentPDF",
+      text: "\nParticipações Societárias"
+    },  {
+      style: "contentPDF",
+      text: "\nNão Possui Informações Societárias",
+      fontSize: "12",
+      color: "#b81414",
+
+    }];
   }
 
   // Check if any partner has a companyName or name
@@ -502,7 +512,7 @@ const makeScore = (score, probInadimplencia) => [
 const generateReportContentPF = (report, optional) => {
   const { registration, negativeData } = report;
   const { pefin, refin, check, notary } = negativeData;
-  const partners = optional.partner.partnershipResponse;
+  const partners = optional?.partner?.partnershipResponse;
 
   const tableFactory = new TableFactory("tableInfos");
   const tableGenerator = new TableGenerator(tableFactory);
@@ -538,8 +548,8 @@ const generateReportContentPF = (report, optional) => {
           formatDocumentNumber(registration.documentNumber),
           formatDate(registration.birthDate),
           registration.statusRegistration,
-          registration.address.city,
-          registration.address.state
+          registration.address?.city,
+          registration.address?.state
         ]
       ]
     ),
@@ -574,7 +584,7 @@ function generateDDPJ({ reports, optionalFeatures }) {
 }
 
 function generateDDPF({ reports, optionalFeatures }) {
-  // console.log("Dentro da função:\n", {reports, optionalFeatures});
+  console.log("Dentro da função:\n", {reports, optionalFeatures});
 
   return {
     background: createBackground,

@@ -10,7 +10,7 @@ function formatDocumentNumber(documentNumber) {
       "$1.$2.$3-$4"
     );
     return formattedCPF;
-  } else if (cleanNumber.length === 14) {
+  } else if (cleanNumber?.length === 14) {
     // CNPJ tem 14 dígitos
     const formattedCNPJ = cleanNumber.replace(
       /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
