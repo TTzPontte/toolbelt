@@ -97,7 +97,7 @@ const Partner = ({ partner, onReportDownload }) => {
     : "Create Report";
 
   return (
-    <tr>
+    <tr key={partnerData?.id || ""}>
       <td>{partnerData.id}</td>
       <td>{partnerData.documentNumber}</td>
       <td>{partnerData.participationPercentage}</td>
