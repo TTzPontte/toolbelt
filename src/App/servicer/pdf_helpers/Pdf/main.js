@@ -7,6 +7,7 @@ import {
   formatCurrency,
   formatDate,
   formatDateResume,
+  convertToPercentageWithTwoDecimals,
   formatDocumentNumber,
   removeAccents,
   styles
@@ -140,14 +141,14 @@ const createNotaryTable = (data, title) =>
     title,
     [
       (item) => removeAccents(item?.officeNumber || "-"),
-      (item) => formatCurrency(item?.amount || 0),
-      (item) => formatDate(item?.occurrenceDate || ""),
       (item) => item?.city,
       (item) => item?.federalUnit,
+      (item) => formatCurrency(item?.amount || 0),
+      (item) => formatDate(item?.occurrenceDate || ""),
       (item) => `Protestos (${item?.city} - ${getYear(item)})`
     ],
     data.summary.count > 0
-      ? ["Cartório", "Valor", "Data", "Cidade", "Estado", "Resumo"]
+      ? ["Cartório", "Cidade", "Estado", "Valor", "Data", "Resumo"]
       : []
   );
 
@@ -340,12 +341,6 @@ const generateReportContentPJ = (report, optional) => {
     },
     {
       style: "contentPDF",
-      fontSize: "12",
-      color: "#b81414",
-      text: "\n" + messageScore
-    },
-    {
-      style: "contentPDF",
       text: "\nDados de Negativação"
     },
     ...createNegativeTable(pefin, "PEFIN"),
@@ -390,16 +385,19 @@ const generateReportContentPJ = (report, optional) => {
 };
 const makePartners = (partners, tableGenerator) => {
   if (!partners) {
-    return [{
-      style: "contentPDF",
-      text: "\nParticipações Societárias"
-    },  {
-      style: "contentPDF",
-      text: "\nNão Possui Informações Societárias",
-      fontSize: "12",
-      color: "#b81414",
-
-    }];
+    return [
+        // {
+      // style: "contentPDF",
+      // text: "\nParticipações Societárias"
+    // },
+      // {
+      // style: "contentPDF",
+      // text: "\nNão Possui Informações Societárias",
+      // fontSize: "12",
+      // color: "#b81414",
+    //
+    // }
+  ];
   }
 
   // Check if any partner has a companyName or name
@@ -435,7 +433,7 @@ const makePartners = (partners, tableGenerator) => {
   );
 
   return [
-    {
+    table.length>0 &&{
       style: "contentPDF",
       text: "\nParticipações Societárias"
     },
@@ -518,7 +516,8 @@ const generateReportContentPF = (report, optional) => {
   const tableGenerator = new TableGenerator(tableFactory);
 
   const score = report.score.score || 0;
-  const probInadimplencia = convertToPercentage(report.score.defaultRate || 0);
+  // const probInadimplencia = convertToPercentage(report.score.defaultRate || 0);
+  const probInadimplencia = convertToPercentageWithTwoDecimals(report.score.defaultRate || 0)
   const messageScore = report.score.message || "";
 
   console.log({ registration, partners });
@@ -605,3 +604,4 @@ function createPDF(dd, nomeCliente) {
 }
 
 export { generateDDPJ, generateDDPF, createPDF };
+
