@@ -1,9 +1,9 @@
 import {API, Auth, Storage} from "aws-amplify";
 import Lambda from "aws-sdk/clients/lambda";
 import { DataStore } from "@aws-amplify/datastore";
-import {EntityType, ReportStatus, SerasaPartnerReport, SerasaReport} from "../../../../models";
-import {createSerasaPartnerReport, createSerasaReport, updateSerasaReport} from "../../../../graphql/mutations";
-import {getSerasaPartnerReport, getSerasaReport} from "../../../../graphql/queries";
+import {EntityType, ReportStatus, SerasaPartnerReport, SerasaReport} from "../../../../../models";
+import {createSerasaPartnerReport, createSerasaReport, updateSerasaReport} from "../../../../../graphql/mutations";
+import {getSerasaPartnerReport, getSerasaReport} from "../../../../../graphql/queries";
 
 export const personTypeOptions = [
   { label: "PF", value: "PF" },

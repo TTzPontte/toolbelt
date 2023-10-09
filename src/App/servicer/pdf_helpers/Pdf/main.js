@@ -341,12 +341,6 @@ const generateReportContentPJ = (report, optional) => {
     },
     {
       style: "contentPDF",
-      fontSize: "12",
-      color: "#b81414",
-      text: "\n" + messageScore
-    },
-    {
-      style: "contentPDF",
       text: "\nDados de Negativação"
     },
     ...createNegativeTable(pefin, "PEFIN"),

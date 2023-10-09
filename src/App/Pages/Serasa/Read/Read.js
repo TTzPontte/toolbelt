@@ -1,84 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Accordion, Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { Storage } from "@aws-amplify/storage";
 import {
   createPDF,
   generateDDPF,
   generateDDPJ
 } from "../../../servicer/pdf_helpers/Pdf/main";
 import Results from "../../../Containers/Searches/Result/Results";
-import {getPartnerReportById, getReportById} from "./hepers_gql";
+import { fetchJson, getItem } from "./newHelpers";
 import ReadPartnerReport from "./components/ReadPartnerReport";
 import { toast } from "react-toastify";
-// const getItem = async (id) => {
-//   try {
-//     let serasaData;
-//
-//     // Attempt to get the main SerasaReport
-//     const mainReport = await getReportById(id);
-//     serasaData = mainReport?.data?.getSerasaReport?.data;
-//
-//     // If the main SerasaReport is not available, try to get the partner report
-//     if (!serasaData) {
-//       const partnerReport = await getPartnerReportById(id);
-//       serasaData = partnerReport?.data?.getSerasaReport?.data;
-//     }
-//
-//     // If neither report is available, log an error and return null
-//     if (!serasaData) {
-//       console.error("SerasaReport not found for ID:", id);
-//       return null;
-//     }
-//
-//     // Construct the new object
-//     const newObj = {
-//       ...serasaData,
-//       serasaPartnerReports: serasaData.SerasaPartnerReports?.items || []
-//     };
-//
-//     console.log({ newObj });
-//     return newObj;
-//   } catch (error) {
-//     console.error("Error:", error);
-//     throw error;
-//   }
-// };
-
-const getItem = async (id) => {
-  try {
-    const {
-      data: { getSerasaReport: data }
-    } = await getReportById(id);
-    const { SerasaPartnerReports } = data;
-    console.log({ data });
-    if (!data) {
-      console.error("SerasaReport not found for ID:", id);
-      return null; // Return null if not found
-    }
-
-    const newObj = {
-      ...data,
-      serasaPartnerReports: data?.SerasaPartnerReports?.items
-    };
-    console.log({ newObj });
-    return newObj;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error;
-  }
-};
-const fetchJson = async (id) => {
-  const result = await Storage.get(`serasa/${id}.json`, {
-    download: true,
-    level: "public"
-  });
-
-  const blob = result.Body;
-  const text = await blob.text();
-  const jsonContent = JSON.parse(text);
-  return jsonContent;
-};
 
 const Read = () => {
   const { id } = useParams();
@@ -108,7 +39,8 @@ const Read = () => {
 
   const handleDownloadPDF = () => {
     const reportType = model.type === "PF" ? "consumer" : "company";
-    fileContent.reports[0].registration['documentNumber'] = model.documentNumber
+    fileContent.reports[0].registration["documentNumber"] =
+      model.documentNumber;
     // const _r = fileContent.reports[0].registration?.documentNumber
 
     const ddData =
@@ -141,29 +73,27 @@ const Read = () => {
             {reports.length > 0 && (
               <Card>
                 <Card.Body>
-
-                <Row>
-                  <Col>
-                    <Button onClick={handleDownloadPDF}>
-                      Baixar Relatório PDF
-                    </Button>
-                  </Col>
-                </Row>
-                {partners?.length > 0 ?(
-                  <ReadPartnerReport
-                    fileContent={fileContent}
-                    partners={partners}
-                    pfOuPj="PJ"
-                  />
-                ):(
-                <Row className={"btn btn-outline-danger"}>
-                  <Col>
-                    <h3>{"Não Possui Informações Societárias"}</h3>
-                  </Col>
-                </Row>
-                )}
+                  <Row>
+                    <Col>
+                      <Button onClick={handleDownloadPDF}>
+                        Baixar Relatório PDF
+                      </Button>
+                    </Col>
+                  </Row>
+                  {partners?.length > 0 ? (
+                    <ReadPartnerReport
+                      fileContent={fileContent}
+                      partners={partners}
+                      pfOuPj="PJ"
+                    />
+                  ) : (
+                    <Row className={"btn btn-outline-danger"}>
+                      <Col>
+                        <h3>{"Não Possui Informações Societárias"}</h3>
+                      </Col>
+                    </Row>
+                  )}
                 </Card.Body>
-
               </Card>
             )}
           </Container>

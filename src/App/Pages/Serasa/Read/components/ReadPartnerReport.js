@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { fetchReport, invokeLambda } from "../hepers";
+import { fetchReport, invokeLambda } from "../newHelpers";
 import {generateDDPF, generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/Pdf/main";
 
 import { Button, Card, Container, Table } from "react-bootstrap";
@@ -52,7 +52,6 @@ const Partner = ({ partner, onReportDownload }) => {
       // const jsonContent = await fetchReport(partner.id);
       const reportType = partner.type === "PF" ? "consumer" : "company";
       jsonContent.reports[0].registration['documentNumber'] = partner.documentNumber
-    debugger
       const ddData =
         reportType === "consumer"
           ? generateDDPF(jsonContent)

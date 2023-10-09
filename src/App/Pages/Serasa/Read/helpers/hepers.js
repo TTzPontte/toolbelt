@@ -1,8 +1,7 @@
 import { Auth, Storage } from "aws-amplify";
 import Lambda from "aws-sdk/clients/lambda";
 import { DataStore } from "@aws-amplify/datastore";
-import { SerasaPartnerReport, SerasaReport } from "../../../../models";
-
+import {EntityType, ReportStatus, SerasaPartnerReport, SerasaReport} from "../../../../../models";
 export const fetchReport = async (id) => {
   const fileKey = `serasa/${id}.json`;
   const response = await Storage.get(fileKey, {
@@ -18,7 +17,7 @@ export const getItem = async (id) => {
   const getAssociatedPartnerReports = async (serasaReportId) => {
     try {
       return await DataStore.query(SerasaPartnerReport, (report) =>
-        report.serasareportID.eq(serasaReportId)
+          report.serasareportID.eq(serasaReportId)
       );
     } catch (error) {
       console.error("Error fetching associated SerasaPartnerReports:", error);
