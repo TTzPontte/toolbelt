@@ -51,6 +51,8 @@ const Partner = ({ partner, onReportDownload }) => {
     try {
       // const jsonContent = await fetchReport(partner.id);
       const reportType = partner.type === "PF" ? "consumer" : "company";
+      jsonContent.reports[0].registration['documentNumber'] = partner.documentNumber
+    debugger
       const ddData =
         reportType === "consumer"
           ? generateDDPF(jsonContent)

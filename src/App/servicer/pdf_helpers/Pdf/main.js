@@ -7,6 +7,7 @@ import {
   formatCurrency,
   formatDate,
   formatDateResume,
+  convertToPercentageWithTwoDecimals,
   formatDocumentNumber,
   removeAccents,
   styles
@@ -518,7 +519,8 @@ const generateReportContentPF = (report, optional) => {
   const tableGenerator = new TableGenerator(tableFactory);
 
   const score = report.score.score || 0;
-  const probInadimplencia = convertToPercentage(report.score.defaultRate || 0);
+  // const probInadimplencia = convertToPercentage(report.score.defaultRate || 0);
+  const probInadimplencia = convertToPercentageWithTwoDecimals(report.score.defaultRate || 0)
   const messageScore = report.score.message || "";
 
   console.log({ registration, partners });
@@ -605,3 +607,4 @@ function createPDF(dd, nomeCliente) {
 }
 
 export { generateDDPJ, generateDDPF, createPDF };
+

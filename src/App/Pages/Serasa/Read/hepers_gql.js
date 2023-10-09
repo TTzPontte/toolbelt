@@ -85,6 +85,19 @@ export const getReportById = async (id) => {
         throw error;
     }
 };
+export const getPartnerReportById = async (id) => {
+    try {
+        // Get a specific item
+        const oneSerasaReport = await API.graphql({
+            query: getSerasaPartnerReport,
+            variables: { id: id }
+        });
+        return oneSerasaReport
+    } catch (error) {
+        console.error("Error fetching report by ID:", error);
+        throw error;
+    }
+};
 
 export const uploadToStorage = async (data, reportId, fileName) => {
   const filePath = `serasa/${reportId}.json`;

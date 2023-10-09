@@ -1,0 +1,98 @@
+{
+  "reports": [
+    {
+      "reportName": "COMBO_CONCESSAO_COM_SCORE_FINTECH",
+      "registration": {
+        "consumerName": "VERA RIEMER",
+        "motherName": "ELDA MULLING RIEMER",
+        "birthDate": "1982-03-12",
+        "statusRegistration": "REGULAR",
+        "statusDate": "2023-05-03"
+      },
+      "negativeData": {
+        "pefin": {
+          "pefinResponse": [],
+          "summary": {
+            "count": 0,
+            "balance": 0.0
+          }
+        },
+        "refin": {
+          "refinResponse": [],
+          "summary": {
+            "count": 0,
+            "balance": 0.0
+          }
+        },
+        "notary": {
+          "notaryResponse": [],
+          "summary": {
+            "count": 0,
+            "balance": 0.0
+          }
+        },
+        "check": {
+          "checkResponse": [],
+          "summary": {
+            "count": 0,
+            "balance": 0.0
+          }
+        }
+      },
+      "score": {
+        "score": 619,
+        "scoreModel": "HFIN",
+        "defaultRate": "0,0"
+      },
+      "facts": {
+        "inquiry": {
+          "inquiryResponse": [
+            {
+              "occurrenceDate": "2023-10-06",
+              "segmentDescription": "FINANCEIRAS",
+              "daysQuantity": 3
+            },
+            {
+              "occurrenceDate": "2023-09-25",
+              "segmentDescription": "FINANCEIRAS",
+              "daysQuantity": 3
+            },
+            {
+              "occurrenceDate": "2023-09-21",
+              "segmentDescription": "FINANCEIRAS",
+              "daysQuantity": 1
+            },
+            {
+              "occurrenceDate": "2023-09-15",
+              "segmentDescription": "FINANCEIRAS",
+              "daysQuantity": 7
+            },
+            {
+              "occurrenceDate": "2023-08-07",
+              "segmentDescription": "FINANCEIRAS",
+              "daysQuantity": 1
+            }
+          ],
+          "summary": {
+            "count": 5
+          }
+        },
+        "stolenDocuments": {
+          "stolenDocumentsResponse": [],
+          "summary": {
+            "count": 0,
+            "balance": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "optionalFeatures": {
+    "partner": {
+      "summary": {
+        "count": 0,
+        "balance": 0.0
+      }
+    }
+  }
+}

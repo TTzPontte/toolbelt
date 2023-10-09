@@ -8,9 +8,42 @@ import {
   generateDDPJ
 } from "../../../servicer/pdf_helpers/Pdf/main";
 import Results from "../../../Containers/Searches/Result/Results";
-import { getReportById } from "./hepers_gql";
+import {getPartnerReportById, getReportById} from "./hepers_gql";
 import ReadPartnerReport from "./components/ReadPartnerReport";
 import { toast } from "react-toastify";
+// const getItem = async (id) => {
+//   try {
+//     let serasaData;
+//
+//     // Attempt to get the main SerasaReport
+//     const mainReport = await getReportById(id);
+//     serasaData = mainReport?.data?.getSerasaReport?.data;
+//
+//     // If the main SerasaReport is not available, try to get the partner report
+//     if (!serasaData) {
+//       const partnerReport = await getPartnerReportById(id);
+//       serasaData = partnerReport?.data?.getSerasaReport?.data;
+//     }
+//
+//     // If neither report is available, log an error and return null
+//     if (!serasaData) {
+//       console.error("SerasaReport not found for ID:", id);
+//       return null;
+//     }
+//
+//     // Construct the new object
+//     const newObj = {
+//       ...serasaData,
+//       serasaPartnerReports: serasaData.SerasaPartnerReports?.items || []
+//     };
+//
+//     console.log({ newObj });
+//     return newObj;
+//   } catch (error) {
+//     console.error("Error:", error);
+//     throw error;
+//   }
+// };
 
 const getItem = async (id) => {
   try {
@@ -75,6 +108,9 @@ const Read = () => {
 
   const handleDownloadPDF = () => {
     const reportType = model.type === "PF" ? "consumer" : "company";
+    fileContent.reports[0].registration['documentNumber'] = model.documentNumber
+    // const _r = fileContent.reports[0].registration?.documentNumber
+
     const ddData =
       model.type === "PF"
         ? generateDDPF(fileContent)
