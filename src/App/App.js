@@ -5,8 +5,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./components/Layout";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { routes } from "./routes";
-import { DataStore } from "aws-amplify";
 import { useCallback, useEffect } from "react"; // Import useEffect to trigger the function
+import { Amplify, AuthModeStrategyType, DataStore } from "aws-amplify";
+import awsExports from "../aws-exports";
+
+Amplify.configure({
+  ...awsExports,
+  DataStore: {
+    authModeStrategyType: AuthModeStrategyType.MULTI_AUTH
+  }
+});
 
 function App(props) {
   const startDataStore = useCallback(async () => {

@@ -4,15 +4,6 @@ import "./index.css";
 import App from "./App/App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { Amplify, AuthModeStrategyType } from "aws-amplify";
-import awsExports from "./aws-exports";
-
-Amplify.configure({
-  ...awsExports,
-  DataStore: {
-    authModeStrategyType: AuthModeStrategyType.MULTI_AUTH
-  }
-});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
