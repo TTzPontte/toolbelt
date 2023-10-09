@@ -153,7 +153,7 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
     <Container>
       <Card>
         <Card.Header>
-          <h2>Partner Report</h2>
+          <h2>Participações Societárias</h2>
         </Card.Header>
         <Card.Body>
           <Table responsive striped bordered hover>
