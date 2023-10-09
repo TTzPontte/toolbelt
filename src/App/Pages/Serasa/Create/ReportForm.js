@@ -10,7 +10,7 @@ const DocumentInput = ({ control, documentType, error }) => {
 
   const validateDocument = (value) => {
     if (!value) {
-      return `${documentType} é obrigatório`;
+      return `${dType} é obrigatório`;
     }
     console.log({ documentType });
     const isValid =
