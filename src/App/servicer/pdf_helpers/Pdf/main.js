@@ -254,8 +254,12 @@ const generateReportContentPJ = (report, optional) => {
 
   const score = report.score.score || 0;
   const probInadimplencia = convertToPercentage(report.score.defaultRate || 0);
-  const messageScore = report.score.message || "";
-
+  let messageScore = report.score.message || "";
+  const isProbabilityMsg = messageScore.includes("PROBABILIDADE DE INADIMPLENCIA:")
+  if (isProbabilityMsg){
+    messageScore =""
+  }
+  console.log({isProbabilityMsg})
   return [
     {
       table: {
@@ -341,6 +345,12 @@ const generateReportContentPJ = (report, optional) => {
     },
     {
       style: "contentPDF",
+      fontSize: "12",
+      color: "#b81414",
+      text: "\n" + messageScore
+    },
+    {
+      style: "contentPDF",
       text: "\nDados de Negativação"
     },
     ...createNegativeTable(pefin, "PEFIN"),
@@ -384,20 +394,8 @@ const generateReportContentPJ = (report, optional) => {
   ].filter(Boolean);
 };
 const makePartners = (partners, tableGenerator) => {
-  if (!partners) {
-    return [
-        // {
-      // style: "contentPDF",
-      // text: "\nParticipações Societárias"
-    // },
-      // {
-      // style: "contentPDF",
-      // text: "\nNão Possui Informações Societárias",
-      // fontSize: "12",
-      // color: "#b81414",
-    //
-    // }
-  ];
+  if (!partners || partners.length === 0) {
+    return [];
   }
 
   // Check if any partner has a companyName or name
@@ -433,7 +431,7 @@ const makePartners = (partners, tableGenerator) => {
   );
 
   return [
-    table.length>0 &&{
+    {
       style: "contentPDF",
       text: "\nParticipações Societárias"
     },

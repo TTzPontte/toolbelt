@@ -160,9 +160,9 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>CNPJ</th>
+                <th>Nº Documento</th>
                 <th>% Participação</th>
-                <th>Status</th>
+                <th>Status Relatório</th>
                 <th>Ações</th>
               </tr>
             </thead>
