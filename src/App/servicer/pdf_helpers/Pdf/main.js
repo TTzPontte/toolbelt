@@ -7,6 +7,7 @@ import {
   formatCurrency,
   formatDate,
   formatDateResume,
+  convertToPercentageWithTwoDecimals,
   formatDocumentNumber,
   removeAccents,
   styles
@@ -140,14 +141,14 @@ const createNotaryTable = (data, title) =>
     title,
     [
       (item) => removeAccents(item?.officeNumber || "-"),
-      (item) => formatCurrency(item?.amount || 0),
-      (item) => formatDate(item?.occurrenceDate || ""),
       (item) => item?.city,
       (item) => item?.federalUnit,
+      (item) => formatCurrency(item?.amount || 0),
+      (item) => formatDate(item?.occurrenceDate || ""),
       (item) => `Protestos (${item?.city} - ${getYear(item)})`
     ],
     data.summary.count > 0
-      ? ["Cartório", "Valor", "Data", "Cidade", "Estado", "Resumo"]
+      ? ["Cartório", "Cidade", "Estado", "Valor", "Data", "Resumo"]
       : []
   );
 
@@ -188,6 +189,7 @@ function getYear({ occurrenceDate }) {
 }
 
 const makeRegistrationTable = (registration, tableGenerator) => {
+  console.log({registration})
   function getStatus(text) {
     const words = text.split(" ");
     if (text.includes(":")) {
@@ -215,8 +217,8 @@ const makeRegistrationTable = (registration, tableGenerator) => {
     formatDocumentNumber(registration.companyDocument),
     formatDate(registration.foundationDate),
     getStatus(registration.statusRegistration),
-    registration.address.city,
-    registration.address.state
+    registration.address?.city,
+    registration.address?.state
   ];
 
   // Utilize the createInfoTable method to generate the table
@@ -252,8 +254,12 @@ const generateReportContentPJ = (report, optional) => {
 
   const score = report.score.score || 0;
   const probInadimplencia = convertToPercentage(report.score.defaultRate || 0);
-  const messageScore = report.score.message || "";
-
+  let messageScore = report.score.message || "";
+  const isProbabilityMsg = messageScore.includes("PROBABILIDADE DE INADIMPLENCIA:")
+  if (isProbabilityMsg){
+    messageScore =""
+  }
+  console.log({isProbabilityMsg})
   return [
     {
       table: {
@@ -388,7 +394,7 @@ const generateReportContentPJ = (report, optional) => {
   ].filter(Boolean);
 };
 const makePartners = (partners, tableGenerator) => {
-  if (!partners) {
+  if (!partners || partners.length === 0) {
     return [];
   }
 
@@ -502,13 +508,14 @@ const makeScore = (score, probInadimplencia) => [
 const generateReportContentPF = (report, optional) => {
   const { registration, negativeData } = report;
   const { pefin, refin, check, notary } = negativeData;
-  const partners = optional.partner.partnershipResponse;
+  const partners = optional?.partner?.partnershipResponse;
 
   const tableFactory = new TableFactory("tableInfos");
   const tableGenerator = new TableGenerator(tableFactory);
 
   const score = report.score.score || 0;
-  const probInadimplencia = convertToPercentage(report.score.defaultRate || 0);
+  // const probInadimplencia = convertToPercentage(report.score.defaultRate || 0);
+  const probInadimplencia = convertToPercentageWithTwoDecimals(report.score.defaultRate || 0)
   const messageScore = report.score.message || "";
 
   console.log({ registration, partners });
@@ -538,8 +545,8 @@ const generateReportContentPF = (report, optional) => {
           formatDocumentNumber(registration.documentNumber),
           formatDate(registration.birthDate),
           registration.statusRegistration,
-          registration.address.city,
-          registration.address.state
+          registration.address?.city,
+          registration.address?.state
         ]
       ]
     ),
@@ -574,7 +581,7 @@ function generateDDPJ({ reports, optionalFeatures }) {
 }
 
 function generateDDPF({ reports, optionalFeatures }) {
-  // console.log("Dentro da função:\n", {reports, optionalFeatures});
+  console.log("Dentro da função:\n", {reports, optionalFeatures});
 
   return {
     background: createBackground,
@@ -595,3 +602,4 @@ function createPDF(dd, nomeCliente) {
 }
 
 export { generateDDPJ, generateDDPF, createPDF };
+

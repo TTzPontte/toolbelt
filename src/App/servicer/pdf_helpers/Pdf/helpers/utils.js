@@ -10,7 +10,7 @@ function formatDocumentNumber(documentNumber) {
       "$1.$2.$3-$4"
     );
     return formattedCPF;
-  } else if (cleanNumber.length === 14) {
+  } else if (cleanNumber?.length === 14) {
     // CNPJ tem 14 dígitos
     const formattedCNPJ = cleanNumber.replace(
       /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
@@ -18,7 +18,7 @@ function formatDocumentNumber(documentNumber) {
     );
     return formattedCNPJ;
   } else {
-    return "Número de documento inválido";
+    return documentNumber;
   }
 }
 
@@ -55,6 +55,18 @@ function formatCurrency(inputValue) {
 function convertToPercentage(inputValue) {
   const numericValue = parseFloat(inputValue) || 0;
   return (numericValue / 100).toFixed(2) + "%";
+}
+function convertToPercentageWithTwoDecimals(number) {
+  const _number = Number(number.replace(",", "."));
+  // Check if the input is a valid number
+  if (typeof _number === "number") {
+    // Convert the number to a percentage with two decimal places
+    const percentage = _number.toFixed(2);
+    return `${percentage}%`;
+  } else {
+    // If the input is not a number, return an error message
+    return number;
+  }
 }
 
 const styles = {
@@ -106,5 +118,6 @@ export {
   formatDate,
   createBackground,
   createRect,
-  createHeaderStack
+  createHeaderStack,
+  convertToPercentageWithTwoDecimals
 };

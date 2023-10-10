@@ -6,15 +6,17 @@ import Radio from "../../../components/Form/Radio";
 import { personTypeOptions } from "./hepers"; // Corrected the typo "hepers" to "helpers"
 
 const DocumentInput = ({ control, documentType, error }) => {
+  const dType = documentType === "PF"? "CPF" : "CNPJ"
+
   const validateDocument = (value) => {
     if (!value) {
-      return `${documentType} é obrigatório`;
+      return `${dType} é obrigatório`;
     }
     console.log({ documentType });
     const isValid =
       documentType === "PF" ? cpf.isValid(value) : cnpj.isValid(value);
     if (!isValid) {
-      return `${documentType} inválido`;
+      return `${dType} inválido`;
     }
 
     return true;
@@ -28,7 +30,7 @@ const DocumentInput = ({ control, documentType, error }) => {
         control={control}
         render={({ field }) => (
           <>
-            <Form.Control type="text" placeholder={documentType} {...field} />
+            <Form.Control type="text" placeholder={dType} {...field} />
             {error && <p className="text-danger">{error.message}</p>}
           </>
         )}

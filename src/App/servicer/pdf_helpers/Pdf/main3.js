@@ -583,3 +583,4 @@ function createPDF(dd, nomeCliente) {
 }
 
 export { generateDDPJ, generateDDPF, createPDF };
+
