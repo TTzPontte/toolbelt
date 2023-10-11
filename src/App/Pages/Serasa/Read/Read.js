@@ -19,7 +19,6 @@ import ReadPartnerReport from "./components/ReadPartnerReport";
 import { toast } from "react-toastify";
 import NewResults from "./NewResult/NewResults";
 
-
 const Read = () => {
   const { id } = useParams();
   const [model, setModel] = useState(null);
@@ -65,48 +64,35 @@ const Read = () => {
       {fileContent && (
         <Row>
           <Container>
-            <Accordion defaultActiveKey="" defaultChecked>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header> Relatório Serasa</Accordion.Header>
-                <Accordion.Body>
-                  <Col>
-                    <Card>
-                      <Card.Body>
-                        {reports?.length > 0 && (
-                          <NewResults reports={reports} />
-                        )}
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-            {reports.length > 0 && (
-              <Card>
-                <Card.Body>
-                  <Row>
-                    <Col>
-                      <Button onClick={handleDownloadPDF}>
-                        Baixar Relatório PDF
-                      </Button>
-                    </Col>
-                  </Row>
-                  {partners?.length > 0 ? (
-                    <ReadPartnerReport
-                      fileContent={fileContent}
-                      partners={partners}
-                      pfOuPj="PJ"
-                    />
-                  ) : (
-                    <Row className={"btn btn-outline-danger"}>
+            <Row>{reports?.length > 0 && <NewResults reports={reports} />}</Row>
+            <Row>
+              {reports.length > 0 && (
+                <Card>
+                  <Card.Body>
+                    <Row>
                       <Col>
-                        <h3>{"Não Possui Informações Societárias"}</h3>
+                        <Button onClick={handleDownloadPDF}>
+                          Baixar Relatório PDF
+                        </Button>
                       </Col>
                     </Row>
-                  )}
-                </Card.Body>
-              </Card>
-            )}
+                    {partners?.length > 0 ? (
+                      <ReadPartnerReport
+                        fileContent={fileContent}
+                        partners={partners}
+                        pfOuPj="PJ"
+                      />
+                    ) : (
+                      <Row className={"btn btn-outline-danger"}>
+                        <Col>
+                          <h3>{"Não Possui Informações Societárias"}</h3>
+                        </Col>
+                      </Row>
+                    )}
+                  </Card.Body>
+                </Card>
+              )}
+            </Row>
           </Container>
         </Row>
       )}
