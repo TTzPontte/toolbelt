@@ -1,4 +1,4 @@
-const { formatCurrency } =require( "../../../pdf_helpers/Pdf/helpers/utils");
+const { formatCurrency } =require( "./utils");
 
 class TableFactory {
   constructor(style) {

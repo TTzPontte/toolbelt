@@ -87,7 +87,6 @@ export const getItem = async (id) => {
     const {
       data: { getSerasaReport: data }
     } = await getReportById(id);
-    const { SerasaPartnerReports } = data;
     console.log({ data });
     if (!data) {
       console.error("SerasaReport not found for ID:", id);
