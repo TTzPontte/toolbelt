@@ -54,8 +54,8 @@ const Partner = ({ partner, onReportDownload }) => {
       jsonContent.reports[0].registration['documentNumber'] = partner.documentNumber
       const ddData =
         reportType === "consumer"
-          ? generateDDPF(jsonContent)
-          : generateDDPJ(jsonContent);
+          ? generateDDPF({ ...jsonContent, createdAt:partnerData.createdAt })
+          : generateDDPJ({ ...jsonContent, createdAt:partnerData.createdAt })
 
       createPDF(
         ddData,

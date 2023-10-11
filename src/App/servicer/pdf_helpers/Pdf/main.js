@@ -277,6 +277,15 @@ const makeRegistrationTable = (registration, tableGenerator) => {
 };
 
 // Usage within generateReportContentPF or generateReportContentPJ
+function formatTimestamp(timestamp) {
+  const date = new Date(timestamp);
+
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-based
+  const year = date.getFullYear();
+
+  return `${day}/${month}/${year}`;
+}
 
 const generateReportContentPJ = (report, optional, createdAt) => {
   const { registration, negativeData, facts } = report;
@@ -305,15 +314,6 @@ const generateReportContentPJ = (report, optional, createdAt) => {
     messageScore =""
   }
   console.log({createdAt})
-  function formatTimestamp(timestamp) {
-    const date = new Date(timestamp);
-
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-based
-    const year = date.getFullYear();
-
-    return `${day}/${month}/${year}`;
-  }
 
 
 
@@ -565,7 +565,7 @@ const makeScore = (score, probInadimplencia) => [
     ]
   }
 ];
-const generateReportContentPF = (report, optional) => {
+const generateReportContentPF = (report, optional, createdAt) => {
   const { registration, negativeData } = report;
   const { pefin, refin, check, notary } = negativeData;
   const partners = optional?.partner?.partnershipResponse;
@@ -582,16 +582,20 @@ const generateReportContentPF = (report, optional) => {
   return [
     {
       table: {
-        widths: ["*"],
+        widths: ["80%", '*'],
         body: [
           [
             {
               stack: [{ text: "Serasa", style: "header", fontSize: 16 }],
               fillColor: "#ADD8E6"
-            }
+            },{
+            stack: [{ text: formatTimestamp( createdAt), style: "header", fontSize: 12 }],
+            fillColor: "#ADD8E6"
+          }
           ]
         ]
       }
+
     },
     {
       style: "contentPDF",
@@ -640,12 +644,12 @@ function generateDDPJ({ reports, optionalFeatures,createdAt }) {
   };
 }
 
-function generateDDPF({ reports, optionalFeatures }) {
+function generateDDPF({ reports, optionalFeatures, createdAt }) {
   console.log("Dentro da função:\n", {reports, optionalFeatures});
 
   return {
     background: createBackground,
-    content: generateReportContentPF(reports[0], optionalFeatures),
+    content: generateReportContentPF(reports[0], optionalFeatures, createdAt),
     styles,
     pageSize: { width: 595.276, height: 841.89 },
     pageMargins: [0, 0, 0, 0]
