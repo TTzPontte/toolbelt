@@ -1,0 +1,295 @@
+{
+  "reports": [
+    {
+      "reportName": "PACOTE_BASICO_FINTECH",
+      "registration": {
+        "companyDocument": "79159430000100",
+        "companyName": "BOM PRATO INDUSTRIA E DISTRIBUICAO DE ALIMENTOS LTDA - ME",
+        "foundationDate": "1986-03-24",
+        "statusRegistration": "SITUAÇÃO DO CNPJ EM 11/07/2023 : ATIVA",
+        "address": {
+          "city": "MARIALVA",
+          "state": "PR"
+        }
+      },
+      "negativeData": {
+        "pefin": {
+          "pefinResponse": [
+            {
+              "occurrenceDate": "2022-07-13",
+              "legalNatureId": "DP",
+              "legalNature": "DUPLICATA",
+              "contractId": "1441001062201",
+              "creditorName": "COOPERATIVA DALIA ALIMENTOS",
+              "amount": 586.68,
+              "principal": true
+            },
+            {
+              "occurrenceDate": "2022-07-04",
+              "legalNatureId": "OO",
+              "legalNature": "OUTRAS OPER",
+              "contractId": "87305",
+              "creditorName": "CSD",
+              "amount": 858.36,
+              "principal": true
+            },
+            {
+              "occurrenceDate": "2022-07-04",
+              "legalNatureId": "OO",
+              "legalNature": "OUTRAS OPER",
+              "contractId": "1995",
+              "creditorName": "CSD",
+              "amount": 239.82,
+              "principal": true
+            },
+            {
+              "occurrenceDate": "2022-07-04",
+              "legalNatureId": "OO",
+              "legalNature": "OUTRAS OPER",
+              "contractId": "123250",
+              "creditorName": "CSD",
+              "amount": 262.67,
+              "principal": true
+            },
+            {
+              "occurrenceDate": "2022-07-04",
+              "legalNatureId": "OO",
+              "legalNature": "OUTRAS OPER",
+              "contractId": "2133",
+              "creditorName": "CSD",
+              "amount": 87.38,
+              "principal": true
+            }
+          ],
+          "summary": {
+            "firstOccurrence": "2022-03-12",
+            "lastOccurrence": "2022-07-13",
+            "count": 13,
+            "balance": 7165.24
+          }
+        },
+        "refin": {
+          "refinResponse": [
+            {
+              "occurrenceDate": "2023-03-15",
+              "legalNatureId": "EC",
+              "legalNature": "EMPRES CONTA",
+              "contractId": "00000000000493607168",
+              "creditorName": "BANCO DO BRASIL S/A",
+              "amount": 35568.37,
+              "principal": true
+            },
+            {
+              "occurrenceDate": "2023-03-15",
+              "legalNatureId": "EC",
+              "legalNature": "EMPRES CONTA",
+              "contractId": "00000000000493607167",
+              "creditorName": "BANCO DO BRASIL S/A",
+              "amount": 320177.78,
+              "principal": true
+            },
+            {
+              "occurrenceDate": "2022-07-22",
+              "legalNatureId": "OO",
+              "legalNature": "OUTRAS OPER",
+              "contractId": "PJZ22894.0",
+              "creditorName": "SICOOB METROPOLITANO",
+              "amount": 100,
+              "principal": true
+            },
+            {
+              "occurrenceDate": "2022-07-22",
+              "legalNatureId": "AD",
+              "legalNature": "ADIANT CONTA",
+              "contractId": "CCO1245325.0",
+              "creditorName": "SICOOB METROPOLITANO",
+              "amount": 136.97,
+              "principal": true
+            },
+            {
+              "occurrenceDate": "2022-07-11",
+              "legalNatureId": "FI",
+              "legalNature": "FINANCIAMENT",
+              "contractId": "EMP2767222.0",
+              "creditorName": "SICOOB METROPOLITANO",
+              "amount": 23890.32,
+              "principal": true
+            }
+          ],
+          "summary": {
+            "firstOccurrence": "2022-05-20",
+            "lastOccurrence": "2023-03-15",
+            "count": 7,
+            "balance": 386878.05
+          }
+        },
+        "collectionRecords": {
+          "collectionRecordsResponse": [
+            {
+              "occurrenceDate": "2023-03-03",
+              "legalNatureId": "DM",
+              "legalNature": "DUPLIC DE VENDA MERCANTIL",
+              "contractId": "40860",
+              "creditorName": "BANCO SICOOB",
+              "amount": 1032.63,
+              "city": "MARIALVA",
+              "federalUnit": "PR",
+              "principal": false
+            },
+            {
+              "occurrenceDate": "2022-08-23",
+              "legalNatureId": "DM",
+              "legalNature": "DUPLIC DE VENDA MERCANTIL",
+              "contractId": "15700047663",
+              "creditorName": "PESCADOS LONDRINA",
+              "amount": 820,
+              "city": "",
+              "federalUnit": "",
+              "principal": false
+            },
+            {
+              "occurrenceDate": "2022-08-17",
+              "legalNatureId": "DM",
+              "legalNature": "DUPLIC DE VENDA MERCANTIL",
+              "contractId": "15700047604",
+              "creditorName": "PESCADOS LONDRINA",
+              "amount": 941.34,
+              "city": "",
+              "federalUnit": "",
+              "principal": false
+            },
+            {
+              "occurrenceDate": "2022-08-10",
+              "legalNatureId": "DM",
+              "legalNature": "DUPLIC DE VENDA MERCANTIL",
+              "contractId": "15700047603",
+              "creditorName": "PESCADOS LONDRINA",
+              "amount": 941.34,
+              "city": "",
+              "federalUnit": "",
+              "principal": false
+            }
+          ],
+          "summary": {
+            "firstOccurrence": "2022-08-10",
+            "lastOccurrence": "2023-03-03",
+            "count": 4,
+            "balance": 3735.31
+          }
+        },
+        "check": {
+          "checkResponse": [
+            {
+              "occurrenceDate": "2023-04-25",
+              "alinea": 0,
+              "bankId": 237,
+              "bankName": "BANCO BRADESCO",
+              "bankAgencyId": 59,
+              "checkNumber": "CCF-BB",
+              "checkCount": 5,
+              "city": "MARIALVA",
+              "federalUnit": "PR"
+            }
+          ],
+          "summary": {
+            "firstOccurrence": "2023-04-25",
+            "lastOccurrence": "2023-04-25",
+            "count": 5,
+            "balance": 0
+          }
+        },
+        "notary": {
+          "notaryResponse": [
+            {
+              "occurrenceDate": "2023-08-03",
+              "amount": 996.02,
+              "officeNumber": "UN",
+              "city": "MARIALVA",
+              "federalUnit": "PR"
+            },
+            {
+              "occurrenceDate": "2023-05-24",
+              "amount": 381.7,
+              "officeNumber": "UN",
+              "city": "MARIALVA",
+              "federalUnit": "PR"
+            },
+            {
+              "occurrenceDate": "2023-05-20",
+              "amount": 4598.61,
+              "officeNumber": "UN",
+              "city": "MARIALVA",
+              "federalUnit": "PR"
+            },
+            {
+              "occurrenceDate": "2023-05-20",
+              "amount": 586.94,
+              "officeNumber": "UN",
+              "city": "MARIALVA",
+              "federalUnit": "PR"
+            },
+            {
+              "occurrenceDate": "2023-04-25",
+              "amount": 1679.5,
+              "officeNumber": "UN",
+              "city": "MARIALVA",
+              "federalUnit": "PR"
+            }
+          ],
+          "summary": {
+            "firstOccurrence": "2022-05-20",
+            "lastOccurrence": "2023-08-03",
+            "count": 21,
+            "balance": 30691.28
+          }
+        }
+      },
+      "facts": {
+        "judgementFilings": {
+          "summary": {
+            "count": 0,
+            "balance": 0
+          }
+        },
+        "bankrupts": {
+          "summary": {
+            "count": 0,
+            "balance": 0
+          }
+        }
+      },
+      "score": {
+        "score": 2,
+        "defaultRate": "10000",
+        "message": "DEFAULT - DIVIDA VENCIDA COM INSTITUICAO FINANCEIRA HA MAIS DE 90 DIAS"
+      }
+    }
+  ],
+  "optionalFeatures": {
+    "partner": {
+      "PartnerResponse": {
+        "results": [
+          {
+            "documentId": "04021255842",
+            "name": "VERA LUCIA ZANON DE SIQUEIRA DE PAULA",
+            "participationPercentage": 100,
+            "inconsistent": false,
+            "hasNegative": true
+          }
+        ]
+      }
+    },
+    "director": {
+      "DirectorResponse": {
+        "results": [
+          {
+            "documentId": "04021255842",
+            "name": "VERA LUCIA ZANON DE SIQUEIRA DE PAULA",
+            "role": "ADMINISTRADOR",
+            "hasNegative": true
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from "react";
-import {
-  Accordion,
-  Button,
-  Card,
-  Col,
-  Container,
-  Row,
-  Table
-} from "react-bootstrap";
+import { Accordion, Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import {
   createPDF,
   generateDDPF,
   generateDDPJ
 } from "../../../servicer/pdf_helpers/Pdf/main";
+import Results from "../../../Containers/Searches/Result/Results";
 import { fetchJson, getItem } from "./newHelpers";
 import ReadPartnerReport from "./components/ReadPartnerReport";
 import { toast } from "react-toastify";
-import NewResults from "./NewResult/NewResults";
-
 
 const Read = () => {
   const { id } = useParams();
@@ -54,8 +45,8 @@ const Read = () => {
 
     const ddData =
       model.type === "PF"
-        ? generateDDPF({ ...fileContent, createdAt: model.createdAt })
-        : generateDDPJ({ ...fileContent, createdAt: model.createdAt });
+        ? generateDDPF(fileContent)
+        : generateDDPJ(fileContent);
     const reportName = fileContent.reports[0].registration[reportType + "Name"];
     createPDF(ddData, reportName);
   };
@@ -72,9 +63,7 @@ const Read = () => {
                   <Col>
                     <Card>
                       <Card.Body>
-                        {reports?.length > 0 && (
-                          <NewResults reports={reports} />
-                        )}
+                        {reports?.length > 0 && <Results list={reports} />}
                       </Card.Body>
                     </Card>
                   </Col>

@@ -105,7 +105,7 @@ const data = {
       }
     }
   },
-  PF:{
+  PF: {
     reports: [
       {
         reportName: "COMBO_CONCESSAO_COM_SCORE_FINTECH",
@@ -235,7 +235,28 @@ const data = {
             ],
             summary: { count: 2, balance: 205420.2 }
           },
-          check: { checkResponse: [], summary: { count: 0, balance: 0.0 } }
+          check: {
+            checkResponse: [
+              {
+                occurrenceDate: "2023-04-25",
+                alinea: 0,
+                bankId: 237,
+                bankName: "BANCO BRADESCO",
+                bankAgencyId: 59,
+                checkNumber: "CCF-BB",
+                checkCount: 5,
+                city: "MARIALVA",
+                federalUnit: "PR"
+              }
+            ],
+            summary: {
+              firstOccurrence: "2023-04-25",
+              lastOccurrence: "2023-04-25",
+              count: 5,
+              balance: 0
+            }
+          },
+
         },
         score: { score: 262, scoreModel: "HFIN", defaultRate: "0,0" },
         facts: {
@@ -329,7 +350,27 @@ const data = {
           },
           refin: { summary: { count: 0, balance: 0.0 } },
           collectionRecords: { summary: { count: 0, balance: 0.0 } },
-          check: { summary: { count: 0, balance: 0.0 } },
+          check: {
+            checkResponse: [
+              {
+                occurrenceDate: "2023-04-25",
+                alinea: 0,
+                bankId: 237,
+                bankName: "BANCO BRADESCO",
+                bankAgencyId: 59,
+                checkNumber: "CCF-BB",
+                checkCount: 5,
+                city: "MARIALVA",
+                federalUnit: "PR"
+              }
+            ],
+            summary: {
+              firstOccurrence: "2023-04-25",
+              lastOccurrence: "2023-04-25",
+              count: 5,
+              balance: 0
+            }
+          },
           notary: {
             notaryResponse: [
               {

@@ -1,3 +1,4 @@
+const diacritics = require('diacritics')
 class TableFactory {
     constructor(style) {
         this.style = style;
@@ -59,7 +60,7 @@ class TableGenerator {
 }
 
 
-export {
+module.exports= {
     TableFactory, TableGenerator
 };
 
