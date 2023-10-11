@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
-import {
-  Accordion,
-  Button,
-  Card,
-  Col,
-  Container,
-  Row,
-  Table
-} from "react-bootstrap";
+import { Accordion, Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import {
   createPDF,
   generateDDPF,
   generateDDPJ
 } from "../../../servicer/pdf_helpers/Pdf/main";
+import Results from "../../../Containers/Searches/Result/Results";
 import { fetchJson, getItem } from "./newHelpers";
 import ReadPartnerReport from "./components/ReadPartnerReport";
 import { toast } from "react-toastify";
-import NewResults from "./NewResult/NewResults";
 
 const Read = () => {
   const { id } = useParams();
@@ -53,8 +45,8 @@ const Read = () => {
 
     const ddData =
       model.type === "PF"
-        ? generateDDPF({ ...fileContent, createdAt: model.createdAt })
-        : generateDDPJ({ ...fileContent, createdAt: model.createdAt });
+        ? generateDDPF(fileContent)
+        : generateDDPJ(fileContent);
     const reportName = fileContent.reports[0].registration[reportType + "Name"];
     createPDF(ddData, reportName);
   };
@@ -64,35 +56,46 @@ const Read = () => {
       {fileContent && (
         <Row>
           <Container>
-            <Row>{reports?.length > 0 && <NewResults reports={reports} />}</Row>
-            <Row>
-              {reports.length > 0 && (
-                <Card>
-                  <Card.Body>
-                    <Row>
+            <Accordion defaultActiveKey="" defaultChecked>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header> Relatório Serasa</Accordion.Header>
+                <Accordion.Body>
+                  <Col>
+                    <Card>
+                      <Card.Body>
+                        {reports?.length > 0 && <Results list={reports} />}
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+            {reports.length > 0 && (
+              <Card>
+                <Card.Body>
+                  <Row>
+                    <Col>
+                      <Button onClick={handleDownloadPDF}>
+                        Baixar Relatório PDF
+                      </Button>
+                    </Col>
+                  </Row>
+                  {partners?.length > 0 ? (
+                    <ReadPartnerReport
+                      fileContent={fileContent}
+                      partners={partners}
+                      pfOuPj="PJ"
+                    />
+                  ) : (
+                    <Row className={"btn btn-outline-danger"}>
                       <Col>
-                        <Button onClick={handleDownloadPDF}>
-                          Baixar Relatório PDF
-                        </Button>
+                        <h3>{"Não Possui Informações Societárias"}</h3>
                       </Col>
                     </Row>
-                    {partners?.length > 0 ? (
-                      <ReadPartnerReport
-                        fileContent={fileContent}
-                        partners={partners}
-                        pfOuPj="PJ"
-                      />
-                    ) : (
-                      <Row className={"btn btn-outline-danger"}>
-                        <Col>
-                          <h3>{"Não Possui Informações Societárias"}</h3>
-                        </Col>
-                      </Row>
-                    )}
-                  </Card.Body>
-                </Card>
-              )}
-            </Row>
+                  )}
+                </Card.Body>
+              </Card>
+            )}
           </Container>
         </Row>
       )}

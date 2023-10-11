@@ -88,6 +88,18 @@ function createBackground() {
 const createRect = () => {
   return { type: "rect", x: 0, y: 0, w: 595.276, h: 841.89, color: "#FFFFFF" };
 };
+function convertToPercentageWithTwoDecimals(number) {
+  const _number = Number(number.replace(",", "."));
+  // Check if the input is a valid number
+  if (typeof _number === "number") {
+    // Convert the number to a percentage with two decimal places
+    const percentage = _number.toFixed(2);
+    return `${percentage}%`;
+  } else {
+    // If the input is not a number, return an error message
+    return number;
+  }
+}
 
 const createHeaderStack = (text) => {
   return {
@@ -97,6 +109,7 @@ const createHeaderStack = (text) => {
 };
 
 module.exports= {
+  convertToPercentageWithTwoDecimals,
   formatDateResume,
   styles,
   formatCurrency,
