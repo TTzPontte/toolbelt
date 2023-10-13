@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row, Table } from "react-bootstrap";
+import {Button, Col, Container, Row, Table} from "react-bootstrap";
 import "./styles.scss"; // Import your custom CSS file
 
 const CustomTable = ({ data, headers, renderRow }) => (
@@ -58,33 +58,25 @@ const ScoreTable = ({ scoreData }) => {
   return (
     <Table striped bordered hover responsive>
       <tbody>
-        {score && (
+      {score && (
           <tr>
-            <td>
-              <strong>Score:</strong>
-            </td>
-            <td>{score}</td>
+              <td>
+                  <strong>Score:</strong>
+              </td>
+
+              <td>
+                  <h1 style={{ fontSize: '16px', fontWeight: 'bold' }}>{score}</h1>
+              </td>
           </tr>
-        )}
-        {scoreModel && (
-          <tr>
-            <td>
-              <strong>Score Model:</strong>
-            </td>
-            <td>{scoreModel}</td>
-          </tr>
-        )}
-        {message && (
-          <tr>
-            <td>{message}</td>
-          </tr>
-        )}
+      )}
+
+
       </tbody>
     </Table>
   );
 };
 
-const NewResults = ({ reports }) => {
+const NewResults = ({ reports , handleDownloadPDF}) => {
   const { registration, negativeData, score, facts, scoreModel, message } =
     reports[0];
   const name = registration?.companyName || registration.consumerName;
@@ -96,7 +88,16 @@ const NewResults = ({ reports }) => {
           <h3>{name}</h3>
         </h2>
       </Row>
+        {reports.length > 0 && (
 
+            <Row>
+                <Col>
+                    <Button onClick={handleDownloadPDF}>
+                        Baixar Relatório PDF
+                    </Button>
+                </Col>
+            </Row>
+        )}
       <Row>
         <div className="table-card">
           <h3 className="text-center">Apontamentos</h3>
