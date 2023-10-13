@@ -64,18 +64,12 @@ const Read = () => {
       {fileContent && (
         <Row>
           <Container>
-            <Row>{reports?.length > 0 && <NewResults reports={reports} />}</Row>
+
+            <Row>{reports?.length > 0 && <NewResults reports={reports} handleDownloadPDF={handleDownloadPDF} />}</Row>
             <Row>
               {reports.length > 0 && (
                 <Card>
                   <Card.Body>
-                    <Row>
-                      <Col>
-                        <Button onClick={handleDownloadPDF}>
-                          Baixar Relatório PDF
-                        </Button>
-                      </Col>
-                    </Row>
                     {partners?.length > 0 ? (
                       <ReadPartnerReport
                         fileContent={fileContent}
