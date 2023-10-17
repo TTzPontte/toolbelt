@@ -443,7 +443,7 @@ const generateReportContentPJ = (report, optional, createdAt) => {
       style: "contentPDF",
       text: "\nInformações de Diretoria"
     },
-    tableGenerator.createInfoTable(
+    directors && tableGenerator.createInfoTable(
         ["Número de Documento", "Nome", "Tem negativo?"],
         directors.map((director) => [
           formatDocumentNumber(director.documentId),
