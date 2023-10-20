@@ -1,9 +1,44 @@
 import React from "react";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
+import { cpf, cnpj } from "cpf-cnpj-validator";
 import Radio from "../../../components/Form/Radio";
-import { personTypeOptions } from "./hepers";
-import DocumentInput from "../../../components/Form/FormInputs/DocumentInput"; // Corrected the typo "hepers" to "helpers"
+import { personTypeOptions } from "./hepers"; // Corrected the typo "hepers" to "helpers"
+
+const DocumentInput = ({ control, documentType, error }) => {
+  const dType = documentType === "PF"? "CPF" : "CNPJ"
+
+  const validateDocument = (value) => {
+    if (!value) {
+      return `${dType} é obrigatório`;
+    }
+    console.log({ documentType });
+    const isValid =
+      documentType === "PF" ? cpf.isValid(value) : cnpj.isValid(value);
+    if (!isValid) {
+      return `${dType} inválido`;
+    }
+
+    return true;
+  };
+
+  return (
+    <FormGroup controlId="documentNumber">
+      <Form.Label>Número do Documento:</Form.Label>
+      <Controller
+        name="documentNumber"
+        control={control}
+        render={({ field }) => (
+          <>
+            <Form.Control type="text" placeholder={dType} {...field} />
+            {error && <p className="text-danger">{error.message}</p>}
+          </>
+        )}
+        rules={{ validate: validateDocument }}
+      />
+    </FormGroup>
+  );
+};
 
 const ReportForm = ({ onSubmit }) => {
   const methods = useForm();
