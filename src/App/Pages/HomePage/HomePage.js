@@ -14,9 +14,9 @@ const InternalToolSelection = () => {
             link: "/serasa/new", // Replace with the actual URL for Tool 2
         },
         {
-            title: "Qitec",
+            title: "Predictus",
             description: "Data Analysis Tool",
-            link: "/tool3", // Replace with the actual URL for Tool 3
+            link: "/predictus", // Replace with the actual URL for Tool 3
         },
     ];
 

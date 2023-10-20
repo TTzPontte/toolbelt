@@ -39,6 +39,8 @@ export { default as NavBarHeader2 } from "./NavBarHeader2";
 export { default as NavBarSide } from "./NavBarSide";
 export { default as NewForm1 } from "./NewForm1";
 export { default as NewReport } from "./NewReport";
+export { default as PredictusReportCreateForm } from "./PredictusReportCreateForm";
+export { default as PredictusReportUpdateForm } from "./PredictusReportUpdateForm";
 export { default as ProductCard } from "./ProductCard";
 export { default as ProductDetail } from "./ProductDetail";
 export { default as ProfileCard } from "./ProfileCard";

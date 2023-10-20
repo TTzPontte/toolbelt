@@ -1,6 +1,57 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreatePredictusReport = /* GraphQL */ `
+  subscription OnCreatePredictusReport(
+    $filter: ModelSubscriptionPredictusReportFilterInput
+  ) {
+    onCreatePredictusReport(filter: $filter) {
+      id
+      documentNumber
+      status
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdatePredictusReport = /* GraphQL */ `
+  subscription OnUpdatePredictusReport(
+    $filter: ModelSubscriptionPredictusReportFilterInput
+  ) {
+    onUpdatePredictusReport(filter: $filter) {
+      id
+      documentNumber
+      status
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeletePredictusReport = /* GraphQL */ `
+  subscription OnDeletePredictusReport(
+    $filter: ModelSubscriptionPredictusReportFilterInput
+  ) {
+    onDeletePredictusReport(filter: $filter) {
+      id
+      documentNumber
+      status
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
 export const onCreateSerasaPartnerReport = /* GraphQL */ `
   subscription OnCreateSerasaPartnerReport(
     $filter: ModelSubscriptionSerasaPartnerReportFilterInput

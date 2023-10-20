@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = () => {
   const location = useLocation();
-  const privateRoutes = ["orgs","internal", "serasa"]
+  const privateRoutes = ["orgs","internal", "serasa", "predictus"]
   const isPrivate =
     privateRoutes.includes(location.pathname.split("/")[1])
 

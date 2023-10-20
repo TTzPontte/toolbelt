@@ -1,4 +1,4 @@
-import {password, username} from "./config";
+import {password, username} from "./create/config";
 import axios from "axios";
 
 const authConfig = {
