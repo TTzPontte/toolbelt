@@ -16,6 +16,36 @@ export enum ReportStatus {
 
 
 
+type EagerPredictusReport = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<PredictusReport, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly documentNumber: string;
+  readonly status?: ReportStatus | keyof typeof ReportStatus | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyPredictusReport = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<PredictusReport, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly documentNumber: string;
+  readonly status?: ReportStatus | keyof typeof ReportStatus | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type PredictusReport = LazyLoading extends LazyLoadingDisabled ? EagerPredictusReport : LazyPredictusReport
+
+export declare const PredictusReport: (new (init: ModelInit<PredictusReport>) => PredictusReport) & {
+  copyOf(source: PredictusReport, mutator: (draft: MutableModel<PredictusReport>) => MutableModel<PredictusReport> | void): PredictusReport;
+}
+
 type EagerSerasaPartnerReport = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<SerasaPartnerReport, 'id'>;

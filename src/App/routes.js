@@ -1,15 +1,16 @@
 import HomePage from "./Pages/HomePage/HomePage";
 import Create from "./Pages/Serasa/Create/SerasaReportPage";
-import LambdaTeste from "./Pages/lambdaTeste/LambdaTeste";
 import Read from "./Pages/Serasa/Read/Read";
 import List from "./Pages/Serasa/List";
 import PdfPage from "./Pages/PdfPage";
+import Predictus from "./Pages/Predictus/create";
 
 export const routes = [{
     path: "/", element: <HomePage/>, name: "Home", fa: "home"
 },
     {path: "orgs/home", element: <HomePage/>, name: "Home", fa: "home"},
     {path: "pdf", element: <PdfPage/>, name: "Home", fa: "home"},
+    {path: "predictus", element: <Predictus/>, name: "predictus", fa: "home"},
 
     {
         path: "/serasa", element: <List/>
@@ -18,7 +19,6 @@ export const routes = [{
     }, {
         path: "serasa/:id", element: <Read/>, fa: "hand-holding-usd", clsx: "my-0"
     }, {
-        path: "lambdateste", element: <LambdaTeste/>
     }];
 // const navlinks = [];
 // routes.map((i) => {
