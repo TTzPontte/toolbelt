@@ -4,13 +4,15 @@ import Read from "./Pages/Serasa/Read/Read";
 import List from "./Pages/Serasa/List";
 import PdfPage from "./Pages/PdfPage";
 import Predictus from "./Pages/Predictus/create";
+import PredictusList from "./Pages/Predictus/List";
 
 export const routes = [{
     path: "/", element: <HomePage/>, name: "Home", fa: "home"
 },
     {path: "orgs/home", element: <HomePage/>, name: "Home", fa: "home"},
     {path: "pdf", element: <PdfPage/>, name: "Home", fa: "home"},
-    {path: "predictus", element: <Predictus/>, name: "predictus", fa: "home"},
+    {path: "predictus", element: <PredictusList/>, name: "predictus", fa: "home"},
+    {path: "predictus/new", element: <Predictus/>, name: "predictus", fa: "home"},
 
     {
         path: "/serasa", element: <List/>

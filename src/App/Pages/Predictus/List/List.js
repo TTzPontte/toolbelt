@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Badge, Button, Card, Col, Container, Row } from "react-bootstrap";
-import { SerasaReport } from "../../../../models";
+import { PredictusReport } from "../../../../models";
 import { useNavigate } from "react-router-dom";
 import { Collection } from "@aws-amplify/ui-react";
 import { FaEye } from "react-icons/fa"; // Importing icons
@@ -12,7 +12,7 @@ const Header = () => {
       <Container>
         <Row>
           <Card>
-            <h2 className="">Relatórios SERASA</h2>
+            <h2 className="">Relatórios PREDICTUS</h2>
           </Card>
         </Row>
       </Container>
@@ -69,7 +69,7 @@ const List = (props) => {
 
   const fetchData = async () => {
     try {
-      const fetchedModels = await DataStore.query(SerasaReport);
+      const fetchedModels = await DataStore.query(PredictusReport);
       setModels(fetchedModels);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -78,7 +78,7 @@ const List = (props) => {
 
   const handleDelete = async (id) => {
     try {
-      const modelToDelete = await DataStore.query(SerasaReport, id);
+      const modelToDelete = await DataStore.query(PredictusReport, id);
       await DataStore.delete(modelToDelete);
       fetchData(); // Refresh the list
     } catch (error) {
