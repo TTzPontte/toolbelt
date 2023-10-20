@@ -17,14 +17,14 @@ const environmentName = process.env.REACT_APP_ENV || process.env.AMPLIFY_ENV;
 console.log(`Current environment: ${environmentName}`);
 console.log(process.env)
 
-export const invokeLambda = async (documentNumber) => {
+export const invokeLambda = async (reportId) => {
   try {
     const credentials = await Auth.currentCredentials();
     const lambda = new Lambda({ region: "us-east-1", credentials });
     const response = await lambda
       .invoke({
         FunctionName: LAMBDA_FUNCTION_NAME,
-        Payload: JSON.stringify({ documentNumber, environment })
+        Payload: JSON.stringify({ reportId, environment })
       })
       .promise();
 
