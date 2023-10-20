@@ -27,7 +27,9 @@ const saveReport = async (documentNumber) => {
 const handleFormSubmission = async (data, reset, setResponseDocNumber, setLoading) => {
   try {
     setLoading(true);  // Start loading
-    const report = await saveReport(data.documentNumber);
+    const documentNumber = data.documentNumber.replace(/\D/g, "");
+
+    const report = await saveReport(documentNumber);
     const lambdaResponse = await invokeLambda(report.id);
 
     if (lambdaResponse.errorMessage || lambdaResponse.statusCode !== 200) {
