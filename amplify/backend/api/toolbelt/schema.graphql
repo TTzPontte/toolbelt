@@ -1,3 +1,9 @@
+type PredictusReport @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  documentNumber: String!
+  status: ReportStatus
+}
+
 type SerasaPartnerReport @model @auth(rules: [{allow: public}, {allow: owner}]) {
   id: ID!
   type: EntityType

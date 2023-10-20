@@ -2,6 +2,8 @@
 
 .Layout {
   &-wrapper {
+    padding: 0 !important;
+    height: 90vh !important;
     display: flex;
     background-color: $brand-pontte;
 

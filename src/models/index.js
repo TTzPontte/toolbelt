@@ -14,9 +14,10 @@ const ReportStatus = {
   "ERROR_PIPEFY": "ERROR_PIPEFY"
 };
 
-const { SerasaPartnerReport, SerasaReport } = initSchema(schema);
+const { PredictusReport, SerasaPartnerReport, SerasaReport } = initSchema(schema);
 
 export {
+  PredictusReport,
   SerasaPartnerReport,
   SerasaReport,
   EntityType,

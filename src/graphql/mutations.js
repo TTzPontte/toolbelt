@@ -1,6 +1,60 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createPredictusReport = /* GraphQL */ `
+  mutation CreatePredictusReport(
+    $input: CreatePredictusReportInput!
+    $condition: ModelPredictusReportConditionInput
+  ) {
+    createPredictusReport(input: $input, condition: $condition) {
+      id
+      documentNumber
+      status
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updatePredictusReport = /* GraphQL */ `
+  mutation UpdatePredictusReport(
+    $input: UpdatePredictusReportInput!
+    $condition: ModelPredictusReportConditionInput
+  ) {
+    updatePredictusReport(input: $input, condition: $condition) {
+      id
+      documentNumber
+      status
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deletePredictusReport = /* GraphQL */ `
+  mutation DeletePredictusReport(
+    $input: DeletePredictusReportInput!
+    $condition: ModelPredictusReportConditionInput
+  ) {
+    deletePredictusReport(input: $input, condition: $condition) {
+      id
+      documentNumber
+      status
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
 export const createSerasaPartnerReport = /* GraphQL */ `
   mutation CreateSerasaPartnerReport(
     $input: CreateSerasaPartnerReportInput!
