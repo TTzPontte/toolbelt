@@ -13,9 +13,17 @@ export const personTypeOptions = [
 export const LAMBDA_FUNCTION_NAME =
   "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238";
 export const environment = "staging";
-const environmentName = process.env.REACT_APP_ENV || process.env.AMPLIFY_ENV;
-console.log(`Current environment: ${environmentName}`);
-console.log(process.env)
+function determineEnvironment() {
+  const hostname = window.location.hostname;
+
+  if (hostname.includes("ferramentas") && !hostname.includes("playground")) {
+    return "prod";
+  }
+  return "staging"; // Default to staging for all other cases
+}
+
+// To use
+
 
 export const invokeLambda = async (reportId) => {
   try {
@@ -24,7 +32,7 @@ export const invokeLambda = async (reportId) => {
     const response = await lambda
       .invoke({
         FunctionName: LAMBDA_FUNCTION_NAME,
-        Payload: JSON.stringify({ reportId, environment })
+        Payload: JSON.stringify({ reportId, environment:  determineEnvironment() })
       })
       .promise();
 
