@@ -11,6 +11,7 @@ export const routes = [{
     {path: "orgs/home", element: <HomePage/>, name: "Home", fa: "home"},
     {path: "pdf", element: <PdfPage/>, name: "Home", fa: "home"},
     {path: "predictus", element: <Predictus/>, name: "predictus", fa: "home"},
+    {path: "predictus/new", element: <Predictus/>, name: "predictus", fa: "home"},
 
     {
         path: "/serasa", element: <List/>
