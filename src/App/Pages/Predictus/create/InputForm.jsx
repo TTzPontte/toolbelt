@@ -25,19 +25,26 @@ const saveReport = async (documentNumber) => {
 
 // Function to handle form submission logic
 const handleFormSubmission = async (data, reset, setResponseDocNumber, setLoading) => {
+  setLoading(true); // Start loading
+
   try {
-    setLoading(true);  // Start loading
     const documentNumber = data.documentNumber.replace(/\D/g, "");
 
     const report = await saveReport(documentNumber);
     const lambdaResponse = await invokeLambda(report.id);
 
-    if (lambdaResponse.errorMessage || lambdaResponse.statusCode !== 200) {
-      throw new Error(lambdaResponse.errorMessage);
+    console.log({ lambdaResponse });
+
+    if (lambdaResponse.statusCode === 204) {
+      throw new Error(lambdaResponse.body || "An unexpected error occurred.");
     }
 
-    const signedUrl = await downloadFromS3(report.id);
-    initiateFileDownload(signedUrl, `${report.id}.xlsx`);
+    if (lambdaResponse.statusCode !== 200) {
+      throw new Error(lambdaResponse.errorMessage || "An unexpected error occurred.");
+    }
+
+    const signedUrl = await downloadFromS3(`${report.id}/${documentNumber}.xlsx`);
+    initiateFileDownload(signedUrl, `${documentNumber}.xlsx`);
 
     setResponseDocNumber(data.documentNumber);
     reset();
@@ -46,7 +53,7 @@ const handleFormSubmission = async (data, reset, setResponseDocNumber, setLoadin
     console.error("Error:", err);
     toast.error(err.message || "An unexpected error occurred.");
   } finally {
-    setLoading(false);  // End loading
+    setLoading(false); // End loading
   }
 };
 

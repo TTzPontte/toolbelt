@@ -11,7 +11,8 @@ export const personTypeOptions = [
 ];
 
 export const LAMBDA_FUNCTION_NAME =
-  "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238";
+  // "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238";
+  "ToolbeltPredictus-staging";
 export const environment = "staging";
 function determineEnvironment() {
   const hostname = window.location.hostname;
@@ -45,7 +46,7 @@ export const invokeLambda = async (reportId) => {
 
 export const downloadFromS3 = async (fileName) => {
   try {
-    const fileKey = `predictus/${fileName}.xlsx`;
+    const fileKey = `predictus/${fileName}`;
     console.log({ fileKey });
     const signedUrl = await Storage.get(fileKey, {
       level: "public",
