@@ -46,7 +46,8 @@ const handleFormSubmission = async (data, reset, setResponseDocNumber, setLoadin
       "toolbelt3-CreateToolbeltReport-mKsSY1JGNPES",
       JSON.stringify(payload)
     );
-    const consumerName = result.response.reports[0].registration.consumerName
+
+    const name = result.response.reports[0].registration.consumerName ?? result.response.reports[0].registration.companyName
 
     if (lambdaResponse.statusCode === 204) {
       throw new Error(lambdaResponse.body || "An unexpected error occurred.");
@@ -57,7 +58,7 @@ const handleFormSubmission = async (data, reset, setResponseDocNumber, setLoadin
     }
 
     const signedUrl = await downloadFromS3(`${report.id}/${documentNumber}.xlsx`);
-    initiateFileDownload(signedUrl, `${consumerName.replace(/ /g, '_')}.xlsx`);
+    initiateFileDownload(signedUrl, `${name.replace(/ /g, '_')}.xlsx`);
 
     setResponseDocNumber(data.documentNumber);
     reset();
