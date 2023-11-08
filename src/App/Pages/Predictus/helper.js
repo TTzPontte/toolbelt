@@ -10,9 +10,6 @@ export const personTypeOptions = [
   { label: "PJ", value: "PJ" }
 ];
 
-export const LAMBDA_FUNCTION_NAME =
-  // "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238";
-  "ToolbeltPredictus-staging";
 export const environment = "staging";
 function determineEnvironment() {
   const hostname = window.location.hostname;
@@ -26,17 +23,17 @@ function determineEnvironment() {
 // To use
 
 
-export const invokeLambda = async (reportId) => {
+export const invokeLambda = async (reportId, lambdaName, payload) => {
   try {
     const credentials = await Auth.currentCredentials();
     const lambda = new Lambda({ region: "us-east-1", credentials });
     const response = await lambda
       .invoke({
-        FunctionName: LAMBDA_FUNCTION_NAME,
-        Payload: JSON.stringify({ reportId, environment:  determineEnvironment() })
+        FunctionName: lambdaName,
+        Payload: payload ?? JSON.stringify({ reportId, environment:  determineEnvironment() })
       })
       .promise();
-
+      
     return JSON.parse(response.Payload);
   } catch (error) {
     console.error("Error invoking lambda:", error);
@@ -50,8 +47,9 @@ export const downloadFromS3 = async (fileName) => {
     console.log({ fileKey });
     const signedUrl = await Storage.get(fileKey, {
       level: "public",
-      download: false
+      download: false,
     });
+  
     return signedUrl;
   } catch (error) {
     console.error(`Failed to download ${fileName} from S3:`, error);
@@ -60,10 +58,17 @@ export const downloadFromS3 = async (fileName) => {
 };
 
 export const initiateFileDownload = (url, fileName) => {
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = fileName;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  fetch(url, {
+    method: 'GET',
+  })
+  .then(response => response.blob())
+  .then(blob => {
+    const url = window.URL.createObjectURL(new Blob([blob]));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+  });
 };
