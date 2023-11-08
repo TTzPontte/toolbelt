@@ -31,9 +31,22 @@ const handleFormSubmission = async (data, reset, setResponseDocNumber, setLoadin
     const documentNumber = data.documentNumber.replace(/\D/g, "");
 
     const report = await saveReport(documentNumber);
-    const lambdaResponse = await invokeLambda(report.id);
+    const lambdaResponse = await invokeLambda(report.id, 'ToolbeltPredictus-staging');
 
     console.log({ lambdaResponse });
+
+    const payload =  {
+      documentNumber: documentNumber,
+      type: data.type,
+      ambiente: "prod",
+      environment: "prod"
+    }
+
+    const result = await invokeLambda(report.id, 
+      "toolbelt3-CreateToolbeltReport-mKsSY1JGNPES",
+      JSON.stringify(payload)
+    );
+    const consumerName = result.response.reports[0].registration.consumerName
 
     if (lambdaResponse.statusCode === 204) {
       throw new Error(lambdaResponse.body || "An unexpected error occurred.");
@@ -44,7 +57,7 @@ const handleFormSubmission = async (data, reset, setResponseDocNumber, setLoadin
     }
 
     const signedUrl = await downloadFromS3(`${report.id}/${documentNumber}.xlsx`);
-    initiateFileDownload(signedUrl, `${documentNumber}.xlsx`);
+    initiateFileDownload(signedUrl, `${consumerName.replace(/ /g, '_')}.xlsx`);
 
     setResponseDocNumber(data.documentNumber);
     reset();
