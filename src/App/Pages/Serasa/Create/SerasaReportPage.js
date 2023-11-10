@@ -12,6 +12,7 @@ import {
 import Radio from "../../../components/Form/Radio";
 import { getEnvironment, invokeLambda, personTypeOptions } from "./hepers";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import ReportForm from "./ReportForm";
 
 const CreateReportPage = () => {
@@ -38,10 +39,32 @@ const CreateReportPage = () => {
         "toolbelt3-CreateToolbeltReport-mKsSY1JGNPES",
         payload
       );
-      const { reportId } = JSON.parse(result.Payload);
-      setLoading(false);
-      navigate("/serasa/" + reportId, { replace: true });
+      
+      const parsedResultData = JSON.parse(result.Payload)
+
+      if(parsedResultData.statusCode === 500)
+        throw new Error(parsedResultData.message)
+
+        const {
+          reportId,
+          response: {
+            reports: [
+              {
+                score: { message },
+              },
+            ],
+          },
+        } = parsedResultData;
+        
+        if(message){
+          toast.error(message);
+          setLoading(false);
+          return
+        }
+        navigate("/serasa/" + reportId, { replace: true });
+      
     } catch (error) {
+      toast.error(error.message);
       setLoading(false);
     }
   };

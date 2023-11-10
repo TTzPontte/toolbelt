@@ -46,7 +46,7 @@ const handleFormSubmission = async (data, reset, setResponseDocNumber, setLoadin
       "toolbelt3-CreateToolbeltReport-mKsSY1JGNPES",
       JSON.stringify(payload)
     );
-
+    
     const name = result.response.reports[0].registration.consumerName ?? result.response.reports[0].registration.companyName
 
     if (lambdaResponse.statusCode === 204) {
