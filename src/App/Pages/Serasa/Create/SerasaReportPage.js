@@ -54,17 +54,20 @@ const CreateReportPage = () => {
           response: {
             reports: [
               {
-                score: { message },
+                score: { message, codeMessage },
               },
             ],
           },
         } = parsedResultData;
         
-        if(message){
+        if(message && codeMessage !== 43){
           toast.error(message);
           setLoading(false);
-          return
         }
+
+        if(codeMessage === 43)
+          toast.warn(message)
+
         navigate("/serasa/" + reportId, { replace: true });
       
     } catch (error) {
