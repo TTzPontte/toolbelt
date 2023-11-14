@@ -42,8 +42,12 @@ const CreateReportPage = () => {
       
       const parsedResultData = JSON.parse(result.Payload)
 
-      if(parsedResultData.statusCode === 500)
+      if(parsedResultData.statusCode === 500){
+        if(parsedResultData.error.includes("Internal Server Error")){
+          throw new Error("Cliente não existente no Serasa")
+        }
         throw new Error(parsedResultData.message)
+      }
 
         const {
           reportId,
