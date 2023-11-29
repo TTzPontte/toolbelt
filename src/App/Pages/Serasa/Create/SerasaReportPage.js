@@ -1,24 +1,17 @@
 import React, { useState } from "react";
-import { Controller, FormProvider, useForm } from "react-hook-form";
 import {
-  Button,
   Card,
   Col,
   Container,
-  Form,
-  FormGroup,
   Row
 } from "react-bootstrap";
-import Radio from "../../../components/Form/Radio";
-import { getEnvironment, invokeLambda, personTypeOptions } from "./hepers";
+import { getEnvironment, invokeLambda } from "./hepers";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import ReportForm from "./ReportForm";
 
 const CreateReportPage = () => {
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState([]);
-  const [personType, setPersonType] = useState("");
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
@@ -28,8 +21,8 @@ const CreateReportPage = () => {
       documentNumber: data.documentNumber,
       type: data.type,
       pipefyId: data.pipefyId,
-      ambiente: "prod",
-      environment: "prod"
+      ambiente: ambiente,
+      environment: ambiente
     };
 
     setLoading(true);
@@ -48,6 +41,8 @@ const CreateReportPage = () => {
         }
         throw new Error(parsedResultData.message)
       }
+      if(parsedResultData.errorMessage)
+      throw new Error(parsedResultData.errorMessage)
 
         const {
           reportId,
