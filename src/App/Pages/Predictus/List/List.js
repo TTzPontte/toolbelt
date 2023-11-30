@@ -5,14 +5,17 @@ import { PredictusReport } from "../../../../models";
 import { useNavigate } from "react-router-dom";
 import { Collection } from "@aws-amplify/ui-react";
 import { FaEye } from "react-icons/fa"; // Importing icons
+import RecordCounter from "../../../components/RecordCounter";
+import './style.scss'
 
 const Header = () => {
   return (
     <header className="py-4">
       <Container>
         <Row>
-          <Card>
+          <Card className="card">
             <h2 className="">Relatórios PREDICTUS</h2>
+            <RecordCounter/>
           </Card>
         </Row>
       </Container>
@@ -89,7 +92,6 @@ const List = (props) => {
   return (
     <div>
       <Header />
-
       <main>
         <Container>
           <Card>
