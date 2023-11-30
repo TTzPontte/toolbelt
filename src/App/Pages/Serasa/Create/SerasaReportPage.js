@@ -8,7 +8,7 @@ import {
 import { getEnvironment, invokeLambda } from "./hepers";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { CONFIG } from "../../../../App/config/config";
+// import { CONFIG } from "../../../../App/config/config";
 import ReportForm from "./ReportForm";
 
 const CreateReportPage = () => {
@@ -21,11 +21,11 @@ const CreateReportPage = () => {
       documentNumber: data.documentNumber,
       type: data.type,
       pipefyId: data.pipefyId,
-      ambiente: CONFIG.ENVIROMENT,
-      environment: CONFIG.ENVIROMENT
+      ambiente: process.env.REACT_APP_STAGE,
+      environment: process.env.REACT_APP_STAGE
     };
 
-    console.log(CONFIG.ENVIROMENT)
+    console.log(process.env.REACT_APP_STAGE)
 
     setLoading(true);
 
