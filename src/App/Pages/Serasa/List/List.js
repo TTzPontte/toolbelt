@@ -24,7 +24,7 @@ const ListHeader = () => {
   return (
     <Row className="border-top border-bottom py-3 bg-light text-uppercase font-weight-bold">
       <Col>#</Col>
-      <Col>Created At</Col>
+      <Col>Data de criação</Col>
       <Col>Document Number</Col>
       <Col>Type</Col>
       <Col>Status</Col>
@@ -38,7 +38,6 @@ const ListItem = ({ model, index, handleDelete, navigate }) => {
     <Row className="border-bottom py-2">
       <Col>{index + 1}</Col>
       <Col>{new Date(model.createdAt).toJSON().slice(0, 10)}</Col>
-
       <Col>{model.documentNumber}</Col>
       <Col>{model.type}</Col>
       <Col>
