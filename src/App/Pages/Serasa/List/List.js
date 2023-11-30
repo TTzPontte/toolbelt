@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DataStore } from "@aws-amplify/datastore";
+import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
 import { Badge, Button, Card, Col, Container, Row } from "react-bootstrap";
 import { SerasaReport } from "../../../../models";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +24,7 @@ const ListHeader = () => {
   return (
     <Row className="border-top border-bottom py-3 bg-light text-uppercase font-weight-bold">
       <Col>#</Col>
+      <Col>Created At</Col>
       <Col>Document Number</Col>
       <Col>Type</Col>
       <Col>Status</Col>
@@ -36,6 +37,8 @@ const ListItem = ({ model, index, handleDelete, navigate }) => {
   return (
     <Row className="border-bottom py-2">
       <Col>{index + 1}</Col>
+      <Col>{new Date(model.createdAt).toJSON().slice(0, 10)}</Col>
+
       <Col>{model.documentNumber}</Col>
       <Col>{model.type}</Col>
       <Col>
@@ -69,7 +72,10 @@ const List = (props) => {
 
   const fetchData = async () => {
     try {
-      const fetchedModels = await DataStore.query(SerasaReport);
+      const fetchedModels = await DataStore.query(SerasaReport, Predicates.ALL,  {
+        sort: (s) => s.createdAt(SortDirection.DESCENDING)
+      });
+
       setModels(fetchedModels);
     } catch (error) {
       console.error("Error fetching data:", error);
