@@ -16,14 +16,15 @@ const CreateReportPage = () => {
 
   const onSubmit = async (data) => {
     data.documentNumber = data.documentNumber.replace(/\D/g, "");
-    const ambiente = getEnvironment();
     const payload = {
       documentNumber: data.documentNumber,
       type: data.type,
       pipefyId: data.pipefyId,
-      ambiente: ambiente,
-      environment: ambiente
+      ambiente: process.env.USER_BRANCH,
+      environment: process.env.USER_BRANCH
     };
+
+    console.log(process.env.USER_BRANCH)
 
     setLoading(true);
 
