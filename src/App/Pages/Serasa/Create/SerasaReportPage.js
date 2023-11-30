@@ -5,10 +5,9 @@ import {
   Container,
   Row
 } from "react-bootstrap";
-import { getEnvironment, invokeLambda } from "./hepers";
+import { invokeLambda } from "./hepers";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import { CONFIG } from "../../../../App/config/config";
 import ReportForm from "./ReportForm";
 
 const CreateReportPage = () => {
