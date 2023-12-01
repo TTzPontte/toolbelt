@@ -31,38 +31,44 @@ const handleFormSubmission = async (data, reset, setResponseDocNumber, setLoadin
     const documentNumber = data.documentNumber.replace(/\D/g, "");
 
     const report = await saveReport(documentNumber);
-    const lambdaResponse = await invokeLambda(report.id, 'ToolbeltPredictus-staging');
+    
+    console.log(process.env.REACT_APP_STAGE)
 
-    console.log({ lambdaResponse });
+    if(process.env.REACT_APP_STAGE === "dev") {
+      const lambdaResponse = await invokeLambda(report.id, 'ToolbeltPredictus-staging');
+      console.log({ lambdaResponse });
+      if (lambdaResponse.statusCode === 204) {
+        throw new Error(lambdaResponse.body || "An unexpected error occurred.");
+      }
+  
+      if (lambdaResponse.statusCode !== 200) {
+        throw new Error(lambdaResponse.errorMessage || "An unexpected error occurred.");
+      }
 
-    const payload =  {
-      documentNumber: documentNumber,
-      type: data.type,
-      ambiente: "prod",
-      environment: "prod"
+      const signedUrl = await downloadFromS3(`${report.id}/${documentNumber}.xlsx`);
+      initiateFileDownload(signedUrl, `${documentNumber}.xlsx`);
+      toast.success(`File for Document Number ${data.documentNumber} is downloading...`);
+    }else{
+      const payload =  {
+        documentNumber: documentNumber,
+        type: data.type,
+        ambiente: "prod",
+        environment: "prod"
+      }
+      
+      const result = await invokeLambda(report.id, 
+        "toolbelt3-CreateToolbeltReport-mKsSY1JGNPES",
+        JSON.stringify(payload)
+      );
+
+      const name = result.response.reports[0].registration.consumerName ?? result.response.reports[0].registration.companyName
+      const signedUrl = await downloadFromS3(`${report.id}/${documentNumber}.xlsx`);
+      initiateFileDownload(signedUrl, `${name.replace(/ /g, '_')}.xlsx`);
+      toast.success(`File for Document Number ${data.name} is downloading...`);
     }
-
-    const result = await invokeLambda(report.id, 
-      "toolbelt3-CreateToolbeltReport-mKsSY1JGNPES",
-      JSON.stringify(payload)
-    );
-
-    const name = result.response.reports[0].registration.consumerName ?? result.response.reports[0].registration.companyName
-
-    if (lambdaResponse.statusCode === 204) {
-      throw new Error(lambdaResponse.body || "An unexpected error occurred.");
-    }
-
-    if (lambdaResponse.statusCode !== 200) {
-      throw new Error(lambdaResponse.errorMessage || "An unexpected error occurred.");
-    }
-
-    const signedUrl = await downloadFromS3(`${report.id}/${documentNumber}.xlsx`);
-    initiateFileDownload(signedUrl, `${name.replace(/ /g, '_')}.xlsx`);
-
+    
     setResponseDocNumber(data.documentNumber);
     reset();
-    toast.success(`File for Document Number ${data.documentNumber} is downloading...`);
   } catch (err) {
     console.error("Error:", err);
     toast.error(err.message || "An unexpected error occurred.");
