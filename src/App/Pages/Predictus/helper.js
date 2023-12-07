@@ -22,7 +22,6 @@ function determineEnvironment() {
 
 // To use
 
-
 export const invokeLambda = async (reportId, lambdaName, payload) => {
   try {
     const credentials = await Auth.currentCredentials();
@@ -72,3 +71,10 @@ export const initiateFileDownload = (url, fileName) => {
     window.URL.revokeObjectURL(url);
   });
 };
+
+export const getNameFromPredictusReport = (data, type, documentNumber) => {
+  const processData = data.find((process) => process.partes && process.partes.some((parte) => type === "PF" ? parte.cpf === documentNumber && parte.nome : parte.cnpj === documentNumber && parte.nome ))
+  const processDataParts = processData.partes.find((part) => type === "PF" ? part.cpf === documentNumber && part.nome : part.cnpj === documentNumber && part.nome );
+  
+  return processDataParts.nome.replace(/ /g, '_')
+}
