@@ -22,13 +22,12 @@ const CreateReportPage = () => {
 
   const onSubmit = async (data) => {
     data.documentNumber = data.documentNumber.replace(/\D/g, "");
-    const ambiente = getEnvironment();
     const payload = {
       documentNumber: data.documentNumber,
       type: data.type,
       pipefyId: data.pipefyId,
-      ambiente: "prod",
-      environment: "prod"
+      ambiente: process.env.REACT_APP_STAGE,
+      environment: process.env.REACT_APP_STAGE
     };
 
     setLoading(true);
