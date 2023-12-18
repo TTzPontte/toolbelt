@@ -74,7 +74,8 @@ const createPartnerReport = async (payload, model) => {
 
 const fetchSerasaDataAndHandleResponse = async (payload, reportId) => {
   try {
-    const result = await invokeLambda("CreateSerasaReport-staging", payload);
+    const lambda = process.env.REACT_APP_STAGE === "prod" ? "CreateSerasaReport-staging" : "pontte-toolbelt-backend-serasa-CreatePartnerReportFn-staging";
+    const result = await invokeLambda(lambda, payload);
     const response = JSON.parse(result.Payload);
     if (response.statusCode === 200) {
       await updateReport(reportId, ReportStatus.SUCCESS);
