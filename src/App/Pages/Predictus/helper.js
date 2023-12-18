@@ -5,9 +5,9 @@ export const getEnvironment = () => window.location.hostname === "localhost" ? "
 
 
 export const personTypeOptions = [{label: "PF", value: "PF"}, {label: "PJ", value: "PJ"}];
+// "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238"; 
 
-export const LAMBDA_FUNCTION_NAME = // "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238";
-    "ToolbeltPredictus-staging";
+export const LAMBDA_FUNCTION_NAME = process.env.REACT_APP_STAGE === "prod" ? "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238" : "pontte-toolbelt-backend-predictus-CreateReportFn-staging";
 
 function determineEnvironment() {
     const hostname = window.location.hostname;
