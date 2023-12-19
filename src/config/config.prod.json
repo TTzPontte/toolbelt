@@ -1,0 +1,5 @@
+{
+  "SerasaReport": "pontte-toolbelt-backend-serasa-CreateReportFn-prod",
+  "SerasaPartnerReport": "pontte-toolbelt-backend-serasa-CreatePartnerReportFn-prod",
+  "PredictusReport": "pontte-toolbelt-backend-predictus-CreateReportFn-prod"
+}

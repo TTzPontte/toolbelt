@@ -1,6 +1,6 @@
 import {Auth, Storage} from "aws-amplify";
 import Lambda from "aws-sdk/clients/lambda";
-import env from "../../../config/env";
+import { getEnvConfig } from "../../../config/config";
 
 export const getEnvironment = () => window.location.hostname === "localhost" ? "dev" : "prod";
 
@@ -8,7 +8,9 @@ export const getEnvironment = () => window.location.hostname === "localhost" ? "
 export const personTypeOptions = [{label: "PF", value: "PF"}, {label: "PJ", value: "PJ"}];
 // "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238"; 
 
-export const LAMBDA_FUNCTION_NAME = env.PREDICTUS_REPORT_LAMBDA
+const config = await getEnvConfig()
+
+export const LAMBDA_FUNCTION_NAME = config.PredictusReport
 
 function determineEnvironment() {
     const hostname = window.location.hostname;
@@ -28,7 +30,7 @@ export const invokeLambda = async (reportId) => {
         const lambda = new Lambda({region: "us-east-1", credentials});
         const response = await lambda
             .invoke({
-                FunctionName: LAMBDA_FUNCTION_NAME,
+                FunctionName: config.PredictusReport,
                 Payload: JSON.stringify({reportId, environment: determineEnvironment()})
             })
             .promise();
