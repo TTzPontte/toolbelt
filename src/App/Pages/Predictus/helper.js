@@ -1,5 +1,6 @@
 import {Auth, Storage} from "aws-amplify";
 import Lambda from "aws-sdk/clients/lambda";
+import env from "../../../config/env";
 
 export const getEnvironment = () => window.location.hostname === "localhost" ? "dev" : "prod";
 
@@ -7,7 +8,7 @@ export const getEnvironment = () => window.location.hostname === "localhost" ? "
 export const personTypeOptions = [{label: "PF", value: "PF"}, {label: "PJ", value: "PJ"}];
 // "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238"; 
 
-export const LAMBDA_FUNCTION_NAME = process.env.REACT_APP_STAGE === "prod" ? "toolbelt3Predictus-ToolbeltPredictus-nQCMgHG9Y238" : "pontte-toolbelt-backend-predictus-CreateReportFn-staging";
+export const LAMBDA_FUNCTION_NAME = env.PREDICTUS_REPORT_LAMBDA
 
 function determineEnvironment() {
     const hostname = window.location.hostname;

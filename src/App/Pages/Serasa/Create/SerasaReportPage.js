@@ -1,23 +1,16 @@
 import React, { useState } from "react";
-import { Controller, FormProvider, useForm } from "react-hook-form";
 import {
-  Button,
   Card,
   Col,
   Container,
-  Form,
-  FormGroup,
   Row
 } from "react-bootstrap";
-import Radio from "../../../components/Form/Radio";
-import { getEnvironment, invokeLambda, personTypeOptions } from "./hepers";
 import { useNavigate } from "react-router-dom";
 import ReportForm from "./ReportForm";
-
+import env from "../../../../config/env";
+import { invokeLambda } from "./hepers";
 const CreateReportPage = () => {
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState([]);
-  const [personType, setPersonType] = useState("");
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
@@ -29,12 +22,12 @@ const CreateReportPage = () => {
       ambiente: process.env.REACT_APP_STAGE,
       environment: process.env.REACT_APP_STAGE
     };
-
+    
     setLoading(true);
 
     try {
       const result = await invokeLambda(
-        process.env.REACT_APP_STAGE === "prod" ? "toolbelt3-CreateToolbeltReport-mKsSY1JGNPES" : "pontte-toolbelt-backend-serasa-CreateReportFn-staging",
+        env.SERASA_REPORT_LAMBDA,
         payload
       );
       const { reportId } = JSON.parse(result.Payload);
