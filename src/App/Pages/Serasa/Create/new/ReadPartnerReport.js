@@ -8,7 +8,7 @@ import {
   getEnvironment, invokeLambda
 } from "../hepers";
 import { ReportStatus } from "../../../../../models";
-import env from "../../../../../config/env";
+import { getEnvConfig } from "../../../../../config/config";
 
 const PartnerRow = ({ partner, control, index }) => {
   return (
@@ -29,6 +29,8 @@ const PartnerRow = ({ partner, control, index }) => {
       </tr>
   );
 };
+
+const config = await getEnvConfig()
 
 const ReadPartnerReport = ({ partners }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -70,7 +72,7 @@ const ReadPartnerReport = ({ partners }) => {
           console.log({ reportId });
 
           const result = await invokeLambda(
-              env.SERASA_PARTNER_REPORT_LAMBDA,
+              config.SerasaPartnerReport,
               payload
           );
           const requestSerasa = JSON.parse(result.Payload);

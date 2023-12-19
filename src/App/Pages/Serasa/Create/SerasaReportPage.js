@@ -7,28 +7,31 @@ import {
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ReportForm from "./ReportForm";
-import env from "../../../../config/env";
 import { invokeLambda } from "./hepers";
+import { getEnvConfig } from "../../../../config/config";
+
 const CreateReportPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
   const onSubmit = async (data) => {
+  const config = await getEnvConfig()
+
+    console.log(config)
     data.documentNumber = data.documentNumber.replace(/\D/g, "");
-    const ambiente = getEnvironment();
+    // const ambiente = getEnvironment();
     const payload = {
       documentNumber: data.documentNumber,
       type: data.type,
       pipefyId: data.pipefyId,
-      ambiente: "prod",
-      environment: "prod"
+      ambiente: process.env.REACT_APP_STAGE,
+      environment: process.env.REACT_APP_STAGE
     };
     
     setLoading(true);
 
     try {
       const result = await invokeLambda(
-        env.SERASA_REPORT_LAMBDA,
+        config.SerasaReportLambda,
         payload
       );
       const { reportId } = JSON.parse(result.Payload);
