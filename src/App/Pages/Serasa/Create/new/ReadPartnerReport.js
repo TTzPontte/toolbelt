@@ -8,6 +8,7 @@ import {
   getEnvironment, invokeLambda
 } from "../hepers";
 import { ReportStatus } from "../../../../../models";
+import env from "../../../../../config/env";
 
 const PartnerRow = ({ partner, control, index }) => {
   return (
@@ -69,7 +70,7 @@ const ReadPartnerReport = ({ partners }) => {
           console.log({ reportId });
 
           const result = await invokeLambda(
-              "CreateSerasaReport-staging",
+              env.SERASA_PARTNER_REPORT_LAMBDA,
               payload
           );
           const requestSerasa = JSON.parse(result.Payload);
