@@ -16,8 +16,7 @@ const CreateReportPage = () => {
   const onSubmit = async (data) => {
   const config = await getEnvConfig()
 
-    console.log(config)
-    data.documentNumber = data.documentNumber.replace(/\D/g, "");
+  data.documentNumber = data.documentNumber.replace(/\D/g, "");
     // const ambiente = getEnvironment();
     const payload = {
       documentNumber: data.documentNumber,
@@ -26,12 +25,10 @@ const CreateReportPage = () => {
       ambiente: process.env.REACT_APP_STAGE,
       environment: process.env.REACT_APP_STAGE
     };
-    
     setLoading(true);
-
     try {
       const result = await invokeLambda(
-        config.SerasaReportLambda,
+        config.SerasaReport,
         payload
       );
       const { reportId } = JSON.parse(result.Payload);
