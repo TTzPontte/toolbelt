@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ReportForm from "./ReportForm";
 import { invokeLambda } from "./hepers";
 import { getEnvConfig } from "../../../../config/config";
+import { toast } from "react-toastify";
 
 const CreateReportPage = () => {
   const [loading, setLoading] = useState(false);
@@ -31,10 +32,42 @@ const CreateReportPage = () => {
         config.SerasaReport,
         payload
       );
-      const { reportId } = JSON.parse(result.Payload);
+      const parsedResultData = JSON.parse(result.Payload)
+
+      if(parsedResultData.statusCode === 500){
+        if(parsedResultData.error.includes("Internal Server Error")){
+          toast.error("Cliente não existente no Serasa")
+        }
+        toast.error(parsedResultData.message)
+      }
+      if(parsedResultData.errorMessage)
+      toast.error(parsedResultData.errorMessage)
+
+        const {
+          reportId,
+          response: {
+            reports: [
+              {
+                score: { message, codeMessage },
+              },
+            ],
+          },
+        } = parsedResultData;
+        
+        if(message && codeMessage !== 43){
+          toast.error(message);
+          setLoading(false);
+        }
+
+        if(codeMessage === 43)
+          toast.warn(message)
+
+        navigate("/serasa/" + reportId, { replace: true });
+
       setLoading(false);
       navigate("/serasa/" + reportId, { replace: true });
     } catch (error) {
+      toast.error(error)
       setLoading(false);
     }
   };
