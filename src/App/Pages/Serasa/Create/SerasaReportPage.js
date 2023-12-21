@@ -1,27 +1,24 @@
 import React, { useState } from "react";
-import { Controller, FormProvider, useForm } from "react-hook-form";
 import {
-  Button,
   Card,
   Col,
   Container,
-  Form,
-  FormGroup,
   Row
 } from "react-bootstrap";
-import Radio from "../../../components/Form/Radio";
-import { getEnvironment, invokeLambda, personTypeOptions } from "./hepers";
 import { useNavigate } from "react-router-dom";
 import ReportForm from "./ReportForm";
+import { invokeLambda } from "./hepers";
+import { getEnvConfig } from "../../../../config/config";
 
 const CreateReportPage = () => {
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState([]);
-  const [personType, setPersonType] = useState("");
   const navigate = useNavigate();
-
   const onSubmit = async (data) => {
+  const config = await getEnvConfig()
+
+    console.log(config)
     data.documentNumber = data.documentNumber.replace(/\D/g, "");
+    // const ambiente = getEnvironment();
     const payload = {
       documentNumber: data.documentNumber,
       type: data.type,
@@ -29,12 +26,12 @@ const CreateReportPage = () => {
       ambiente: process.env.REACT_APP_STAGE,
       environment: process.env.REACT_APP_STAGE
     };
-
+    
     setLoading(true);
 
     try {
       const result = await invokeLambda(
-        process.env.REACT_APP_STAGE === "prod" ? "toolbelt3-CreateToolbeltReport-mKsSY1JGNPES" : "pontte-toolbelt-backend-serasa-CreateReportFn-staging",
+        config.SerasaReportLambda,
         payload
       );
       const { reportId } = JSON.parse(result.Payload);
