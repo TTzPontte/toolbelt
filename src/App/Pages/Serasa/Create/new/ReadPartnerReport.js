@@ -58,12 +58,11 @@ const ReadPartnerReport = ({ partners }) => {
     for (const partner of selectedPartners) {
       const { documentNumber, type } = partner;
       if (documentNumber) {
-        const ambiente = getEnvironment();
         const payload = {
           numDocument: documentNumber.replace(/\D/g, ""),
           tipoPessoa: data.personType, // Assuming you have 'personType' in your form data
           idPipefy: data.idPipefy, // Assuming you have 'idPipefy' in your form data
-          ambiente,
+          ambiente: process.env.REACT_APP_STAGE,
         };
 
         try {

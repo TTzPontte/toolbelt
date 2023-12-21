@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { fetchReport, invokeLambda } from "../newHelpers";
 import {generateDDPF, generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/Pdf/main";
+import { getEnvConfig } from "../../../../../config/config";
 
 import { Button, Card, Container, Table } from "react-bootstrap";
+const config = await getEnvConfig()
 
 const useLoading = () => {
   const [loading, setLoading] = useState(false);
@@ -14,8 +16,9 @@ const useLoading = () => {
 
 const fetchReportForPartner = async (partner, handleViewReport) => {
   try {
+    partner.ambiente = process.env.REACT_APP_STAGE
     const { Payload } = await invokeLambda(
-      "toolbelt3-CreateToolbeltPartnerReport-TpyYkJZlmEPi",
+      config.SerasaPartnerReport,
       partner
     );
     const { response } = JSON.parse(Payload);

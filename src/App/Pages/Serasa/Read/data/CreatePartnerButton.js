@@ -11,6 +11,9 @@ import {
   uploadToStorage
 } from "./hepers";
 import { DataStore } from "@aws-amplify/datastore";
+import { getEnvConfig } from "../../../../../config/config";
+
+const config = await getEnvConfig()
 
 const formatDocumentNumber = documentNumber => documentNumber.replace(/\D/g, "");
 
@@ -74,8 +77,7 @@ const createPartnerReport = async (payload, model) => {
 
 const fetchSerasaDataAndHandleResponse = async (payload, reportId) => {
   try {
-    const lambda = process.env.REACT_APP_STAGE === "prod" ? "CreateSerasaReport-staging" : "pontte-toolbelt-backend-serasa-CreatePartnerReportFn-staging";
-    const result = await invokeLambda(lambda, payload);
+    const result = await invokeLambda(config.SerasaPartnerReport, payload);
     const response = JSON.parse(result.Payload);
     if (response.statusCode === 200) {
       await updateReport(reportId, ReportStatus.SUCCESS);
