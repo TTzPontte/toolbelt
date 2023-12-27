@@ -57,16 +57,19 @@ function convertToPercentage(inputValue) {
   return (numericValue / 100).toFixed(2) + "%";
 }
 function convertToPercentageWithTwoDecimals(number) {
-  const _number = Number(number.replace(",", "."));
   // Check if the input is a valid number
-  if (typeof _number === "number") {
+  if (typeof number === "number") {
     // Convert the number to a percentage with two decimal places
-    const percentage = _number.toFixed(2);
+    const percentage = number.toFixed(2);
     return `${percentage}%`;
-  } else {
+  } else if (typeof number === "string") {
+    const stringNumber = Number(number.replace(",", "."));
+    const percentage = stringNumber.toFixed(2);
+    return `${percentage}%`;
     // If the input is not a number, return an error message
-    return number;
   }
+  
+  return number;
 }
 
 const styles = {

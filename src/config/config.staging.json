@@ -1,0 +1,5 @@
+{
+  "SerasaReport": "pontte-toolbelt-backend-serasa-CreateReportFn-staging",
+  "SerasaPartnerReport": "pontte-toolbelt-backend-serasa-CreatePartnerReportFn-staging",
+  "PredictusReport": "pontte-toolbelt-backend-predictus-CreateReportFn-staging"
+}

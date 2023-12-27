@@ -8,6 +8,7 @@ import {
   getEnvironment, invokeLambda
 } from "../hepers";
 import { ReportStatus } from "../../../../../models";
+import { getEnvConfig } from "../../../../../config/config";
 
 const PartnerRow = ({ partner, control, index }) => {
   return (
@@ -28,6 +29,8 @@ const PartnerRow = ({ partner, control, index }) => {
       </tr>
   );
 };
+
+const config = await getEnvConfig()
 
 const ReadPartnerReport = ({ partners }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -55,12 +58,11 @@ const ReadPartnerReport = ({ partners }) => {
     for (const partner of selectedPartners) {
       const { documentNumber, type } = partner;
       if (documentNumber) {
-        const ambiente = getEnvironment();
         const payload = {
           numDocument: documentNumber.replace(/\D/g, ""),
           tipoPessoa: data.personType, // Assuming you have 'personType' in your form data
           idPipefy: data.idPipefy, // Assuming you have 'idPipefy' in your form data
-          ambiente,
+          ambiente: process.env.REACT_APP_STAGE,
         };
 
         try {
@@ -69,7 +71,7 @@ const ReadPartnerReport = ({ partners }) => {
           console.log({ reportId });
 
           const result = await invokeLambda(
-              "CreateSerasaReport-staging",
+              config.SerasaPartnerReport,
               payload
           );
           const requestSerasa = JSON.parse(result.Payload);
