@@ -1,38 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import { Kanban } from './components/Kanban';
+import { invokeLambda } from "./components/utils";
 
 const Cards = () => {
-  // Define dados de exemplo para colunas e cards
-  const columns = [
-    { title: "Simulação", id: 1 },
-    { title: "Cadastro", id: 2 },
-  ];
+  const [simulationCards, setSimulationCards] = useState([]);
+  const [signUpCards, setSignUpCards] = useState([]);
+  const [sortedSimulationCards, setSortedSimulationCards] = useState([]);
+  const [sortedSignUpCards, setSortedSignUpCards] = useState([]);
 
-  const cards = [
-    { title: "Tarefa 1", description: "Descrição da tarefa 1", column: 1, status: "Em andamento" },
-    { title: "Tarefa 1", description: "Descrição da tarefa 1", column: 1, status: "Em andamento" },
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const fetchedCards = await invokeLambda();
+        setSimulationCards(fetchedCards.simulation);
+        setSignUpCards(fetchedCards.signup);
+      } catch (error) {
+        console.error("Error fetching cards:", error);
+      }
+    };
 
-    { title: "Tarefa 1", description: "Descrição da tarefa 1", column: 1, status: "Em andamento" },
+    if (!simulationCards.length && !signUpCards.length) {
+      fetchCards();
+    }
 
-    { title: "Tarefa 1", description: "Descrição da tarefa 1", column: 1, status: "Em andamento" },
-    { title: "Tarefa 1", description: "Descrição da tarefa 1", column: 1, status: "Em andamento" },
-    { title: "Tarefa 1", description: "Descrição da tarefa 1", column: 1, status: "Em andamento" },
-    { title: "Tarefa 1", description: "Descrição da tarefa 1", column: 1, status: "Em andamento" },
-    { title: "Tarefa 1", description: "Descrição da tarefa 1", column: 1, status: "Em andamento" },
+    const sortAndSetCards = (cards, setSortedCards) => {
+      if (Array.isArray(cards)) {
+        const filteredAndSortedCards = cards.sort((a, b) => {
+          const dateA = new Date(a._source.createdAt);
+          const dateB = new Date(b._source.createdAt);
+          return dateB - dateA;
+        });
 
-    { title: "Tarefa 2", description: "Descrição da tarefa 2", column: 2, status: "Concluída" },
-  ];
+        setSortedCards(filteredAndSortedCards);
+      }
+    };
 
-  const onSubmit = async ({ data }) => {
-    // Utilize os dados submetidos aqui, se necessário
-    console.log({ data });
-  };
+    sortAndSetCards(simulationCards, setSortedSimulationCards);
+    sortAndSetCards(signUpCards, setSortedSignUpCards);
+  }, [simulationCards, signUpCards]);
+
+  const isLoading = simulationCards.length === 0 && signUpCards.length === 0;
 
   return (
     <Container>
       <Row>
-      <Kanban columns={columns} cards={cards} /> {/* Renderize o componente Kanban */}
+        {isLoading ? (
+          <p>Carregando ...</p>
+        ) : (
+          <>
+            <Kanban columns={'Simulação'} cards={sortedSimulationCards} />
+            <Kanban columns={'Cadastro'} cards={sortedSignUpCards} />
+          </>
+        )}
       </Row>
     </Container>
   );
