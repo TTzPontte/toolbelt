@@ -72,12 +72,12 @@ const InputForm = () => {
 
   // Render the form component
   return (
-      <Container className="mt-5">
+      <Container className="mt-5" fluid >
         <Card className="shadow">
           <Card.Header className="bg-primary text-white">
             Document Input
           </Card.Header>
-          <Card.Body>
+          <Card.Body className="mt-3 h-100">
             <FormProvider {...{ control, handleSubmit, watch, reset, errors }}>
               <Form
                   onSubmit={handleSubmit((data) => {

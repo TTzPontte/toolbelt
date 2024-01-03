@@ -1,12 +1,13 @@
-.container {
+.container-serasa {
   margin-top: 2rem;
 }
 
-.card {
+.card-style {
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .form-group {
   margin-bottom: 1.5rem;
@@ -21,4 +22,8 @@
   &:hover {
     background-color: #0056b3;
   }
+}
+
+.header-consulta{
+  text-align: center;
 }

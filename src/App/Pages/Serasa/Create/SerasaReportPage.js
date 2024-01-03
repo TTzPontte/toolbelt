@@ -1,23 +1,19 @@
 import React, { useState } from "react";
-import {
-  Card,
-  Col,
-  Container,
-  Row
-} from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ReportForm from "./ReportForm";
 import { invokeLambda } from "./hepers";
 import { getEnvConfig } from "../../../../config/config";
 import { toast } from "react-toastify";
+import "./style.scss";
 
 const CreateReportPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const onSubmit = async (data) => {
-  const config = await getEnvConfig()
+    const config = await getEnvConfig();
 
-  data.documentNumber = data.documentNumber.replace(/\D/g, "");
+    data.documentNumber = data.documentNumber.replace(/\D/g, "");
     // const ambiente = getEnvironment();
     const payload = {
       documentNumber: data.documentNumber,
@@ -28,56 +24,54 @@ const CreateReportPage = () => {
     };
     setLoading(true);
     try {
-      const result = await invokeLambda(
-        config.SerasaReport,
-        payload
-      );
-      const parsedResultData = JSON.parse(result.Payload)
+      const result = await invokeLambda(config.SerasaReport, payload);
+      const parsedResultData = JSON.parse(result.Payload);
 
-      if(parsedResultData.statusCode === 500){
-        if(parsedResultData.error.includes("Internal Server Error")){
-          toast.error("Cliente não existente no Serasa")
+      if (parsedResultData.statusCode === 500) {
+        if (parsedResultData.error.includes("Internal Server Error")) {
+          toast.error("Cliente não existente no Serasa");
         }
-        toast.error(parsedResultData.message)
+        toast.error(parsedResultData.message);
       }
-      if(parsedResultData.errorMessage)
-      toast.error(parsedResultData.errorMessage)
+      if (parsedResultData.errorMessage)
+        toast.error(parsedResultData.errorMessage);
 
-        const {
-          reportId,
-          response: {
-            reports: [
-              {
-                score: { message, codeMessage },
-              },
-            ],
-          },
-        } = parsedResultData;
-        
-        if(message && codeMessage !== 43){
-          toast.error(message);
-          setLoading(false);
+      const {
+        reportId,
+        response: {
+          reports: [
+            {
+              score: { message, codeMessage }
+            }
+          ]
         }
+      } = parsedResultData;
 
-        if(codeMessage === 43)
-          toast.warn(message)
+      if (message && codeMessage !== 43) {
+        toast.error(message);
+        setLoading(false);
+      }
 
-        navigate("/serasa/" + reportId, { replace: true });
+      if (codeMessage === 43) toast.warn(message);
+
+      navigate("/serasa/" + reportId, { replace: true });
 
       setLoading(false);
       navigate("/serasa/" + reportId, { replace: true });
     } catch (error) {
-      toast.error(error)
+      toast.error(error);
       setLoading(false);
     }
   };
 
   return (
-    <Container>
-      <h1>Consulta Serasa</h1>
+    <Container className="container-serasa">
       <Row className={"d-flex justify-content-center"}>
-        <Col sm={6}>
-          <Card>
+      <div className="header-consulta">
+        <h1>Consulta Serasa</h1>
+      </div>
+        <Col sm={7} >
+          <Card className="card-style">
             <Card.Body>
               <ReportForm onSubmit={onSubmit} />
             </Card.Body>
