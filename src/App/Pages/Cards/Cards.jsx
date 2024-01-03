@@ -43,7 +43,7 @@ const Cards = () => {
   const isLoading = simulationCards.length === 0 && signUpCards.length === 0;
 
   return (
-    <Container>
+    <Container className={"Cards-Page"}>
       <Row>
         {isLoading ? (
           <p>Carregando ...</p>
