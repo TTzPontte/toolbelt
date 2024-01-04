@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
-import { Kanban } from './components/Kanban';
 import { invokeLambda } from "./components/utils";
-
+import KanbanBoard from "./components/KanbanBoard";
+import "./components/styles.scss";
 const Cards = () => {
   const [simulationCards, setSimulationCards] = useState([]);
   const [signUpCards, setSignUpCards] = useState([]);
@@ -40,7 +40,8 @@ const Cards = () => {
     sortAndSetCards(signUpCards, setSortedSignUpCards);
   }, [simulationCards, signUpCards]);
 
-  const isLoading = simulationCards.length === 0 && signUpCards.length === 0;
+  const isLoading =
+    sortedSimulationCards.length === 0 && sortedSignUpCards.length === 0;
 
   return (
     <Container className={"Cards-Page"}>
@@ -49,8 +50,10 @@ const Cards = () => {
           <p>Carregando ...</p>
         ) : (
           <>
-            <Kanban columns={'Simulação'} cards={sortedSimulationCards} />
-            <Kanban columns={'Cadastro'} cards={sortedSignUpCards} />
+            <KanbanBoard
+              simulationColumnData={sortedSimulationCards}
+              signUpColumnData={sortedSignUpCards}
+            ></KanbanBoard>
           </>
         )}
       </Row>

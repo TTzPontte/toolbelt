@@ -5,7 +5,7 @@
   color: #03033a;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   height: fit-content;
 }
@@ -14,8 +14,12 @@
   border-radius: 10px;
   margin: 5px;
   padding: 15px 10px;
-  align-items: center;
-  width: 350px;
+  width: 750px;
+
+  .col{
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .column-header {
@@ -79,6 +83,7 @@
 }
 
 .column-content {
+  width: 300px;
   margin-bottom: 8px;
   padding-bottom: 8px;
   background-color: #ffff;
