@@ -3,25 +3,52 @@ import Create from "./Pages/Serasa/Create/SerasaReportPage";
 import Read from "./Pages/Serasa/Read/Read";
 import List from "./Pages/Serasa/List";
 import PdfPage from "./Pages/PdfPage";
+import Cards from "./Pages/Cards/Cards";
+
 import Predictus from "./Pages/Predictus/create";
 import PredictusList from "./Pages/Predictus/List";
 
-export const routes = [{
-    path: "/", element: <HomePage/>, name: "Home", fa: "home"
-},
-    {path: "orgs/home", element: <HomePage/>, name: "Home", fa: "home"},
-    {path: "pdf", element: <PdfPage/>, name: "Home", fa: "home"},
-    {path: "predictus", element: <PredictusList/>, name: "predictus", fa: "home"},
-    {path: "predictus/new", element: <Predictus/>, name: "predictus", fa: "home"},
+export const routes = [
+  {
+    path: "/",
+    element: <HomePage />,
+    name: "Home",
+    fa: "home"
+  },
+  { path: "orgs/home", element: <HomePage />, name: "Home", fa: "home" },
+  { path: "pdf", element: <PdfPage />, name: "Home", fa: "home" },
+  { path: "/cards", element: <Cards />, name: "Cards"},
+  {
+    path: "predictus",
+    element: <PredictusList />,
+    name: "predictus",
+    fa: "home"
+  },
+  {
+    path: "predictus/new",
+    element: <Predictus />,
+    name: "predictus",
+    fa: "home"
+  },
 
-    {
-        path: "/serasa", element: <List/>
-    }, {
-        path: "serasa/new", element: <Create/>, fa: "hand-holding-usd", clsx: "my-0"
-    }, {
-        path: "serasa/:id", element: <Read/>, fa: "hand-holding-usd", clsx: "my-0"
-    }, {
-    }];
+  {
+    path: "/serasa",
+    element: <List />
+  },
+  {
+    path: "serasa/new",
+    element: <Create />,
+    fa: "hand-holding-usd",
+    clsx: "my-0"
+  },
+  {
+    path: "serasa/:id",
+    element: <Read />,
+    fa: "hand-holding-usd",
+    clsx: "my-0"
+  },
+  {}
+];
 // const navlinks = [];
 // routes.map((i) => {
 //   const paths = i.path.split("/");

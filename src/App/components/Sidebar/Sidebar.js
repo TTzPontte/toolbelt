@@ -97,6 +97,17 @@ const navlinks = [
         fa: "hand-holding-usd"
       }
     ]
+  },
+  {
+    title: "Cards",
+    links: [
+      {
+        link: "/cards",
+        name: "Ver cards",
+        fa: "landmark",
+        clsx: "my-0"
+      }
+    ]
   }
 ];
 

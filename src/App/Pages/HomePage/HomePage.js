@@ -18,6 +18,11 @@ const InternalToolSelection = () => {
             description: "Data Analysis Tool",
             link: "/predictus", // Replace with the actual URL for Tool 3
         },
+        {
+            title: "Cards",
+            description: "Cards from Torre de Controle",
+            link: "/cards", // Replace with the actual URL for Tool 3
+        },
     ];
 
     const cardHeader = (title) => (
