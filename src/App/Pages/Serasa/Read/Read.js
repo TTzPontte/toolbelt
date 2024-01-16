@@ -46,7 +46,6 @@ const Read = () => {
   }, [id]);
 
   const handleDownloadPDF = () => {
-    downloadJson(id)
     const reportType = model.type === "PF" ? "consumer" : "company";
     fileContent.reports[0].registration["documentNumber"] =
       model.documentNumber;
@@ -58,6 +57,8 @@ const Read = () => {
         : generateDDPJ({ ...fileContent, createdAt: model.createdAt });
     const reportName = fileContent.reports[0].registration[reportType + "Name"];
     createPDF(ddData, reportName);
+    downloadJson(id)
+
   };
 
   return (
