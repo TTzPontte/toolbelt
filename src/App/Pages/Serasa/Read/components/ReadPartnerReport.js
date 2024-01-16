@@ -74,8 +74,6 @@ const Partner = ({ partner, onReportDownload }) => {
   const handleClick = async () => {
     console.log("handleClick");
     console.log({ result });
-    downloadJson(partner.id)
-
     if (partner?.filePath || result?.reports?.length > 0) {
       console.log("partner.filePath || result?.report?.length>0");
       handleViewReport(result);
@@ -90,6 +88,7 @@ const Partner = ({ partner, onReportDownload }) => {
           status: "SUCCESS",
           filePath: `serasa/${partner.id}`
         });
+        downloadJson(partner.id)
       }
     }
     stopLoading();
