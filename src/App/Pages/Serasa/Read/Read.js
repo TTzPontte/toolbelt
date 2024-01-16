@@ -58,7 +58,6 @@ const Read = () => {
     const reportName = fileContent.reports[0].registration[reportType + "Name"];
     createPDF(ddData, reportName);
     downloadJson(id)
-
   };
 
   return (
