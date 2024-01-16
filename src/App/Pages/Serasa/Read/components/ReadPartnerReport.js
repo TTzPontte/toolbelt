@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { fetchReport, invokeLambda } from "../newHelpers";
+import { downloadJson, fetchReport, invokeLambda } from "../newHelpers";
 import {generateDDPF, generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/Pdf/main";
 import { getEnvConfig } from "../../../../../config/config";
 
@@ -74,6 +74,8 @@ const Partner = ({ partner, onReportDownload }) => {
   const handleClick = async () => {
     console.log("handleClick");
     console.log({ result });
+    downloadJson(partner.id)
+
     if (partner?.filePath || result?.reports?.length > 0) {
       console.log("partner.filePath || result?.report?.length>0");
       handleViewReport(result);
@@ -153,7 +155,7 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
   const mergedPartners = mergeAllPartners(partners, partnerList);
 
   return (
-    <Container>
+    <Container>   
       <Card>
         <Card.Header>
           <h2>Participações Societárias</h2>
