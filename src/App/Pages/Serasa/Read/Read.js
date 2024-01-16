@@ -14,7 +14,7 @@ import {
   generateDDPF,
   generateDDPJ
 } from "../../../servicer/pdf_helpers/Pdf/main";
-import { fetchJson, getItem } from "./newHelpers";
+import { downloadJson, fetchJson, getItem } from "./newHelpers";
 import ReadPartnerReport from "./components/ReadPartnerReport";
 import { toast } from "react-toastify";
 import NewResults from "./NewResult/NewResults";
@@ -46,6 +46,7 @@ const Read = () => {
   }, [id]);
 
   const handleDownloadPDF = () => {
+    downloadJson(id)
     const reportType = model.type === "PF" ? "consumer" : "company";
     fileContent.reports[0].registration["documentNumber"] =
       model.documentNumber;

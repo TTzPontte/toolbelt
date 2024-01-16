@@ -114,7 +114,25 @@ export const fetchJson = async (id) => {
   const text = await blob.text();
   const jsonContent = JSON.parse(text);
   return jsonContent;
+}
+
+export const downloadJson = async (id) => {
+  const result = await Storage.get(`serasa/${id}.json`, {
+    level: "public",
+    download: false
+  });
+  initiateFileDownload(result)
+  return result;
+}
+
+export const initiateFileDownload = (url) => {
+  const a = document.createElement("a");
+  a.href = url;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 };
+
 export const fetchReport = async (id) => {
   const fileKey = `serasa/${id}.json`;
   const response = await Storage.get(fileKey, {
