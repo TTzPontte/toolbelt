@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { fetchReport, invokeLambda } from "../newHelpers";
+import { downloadJson, fetchReport, invokeLambda } from "../newHelpers";
 import {generateDDPF, generateDDPJ, createPDF} from "../../../../servicer/pdf_helpers/Pdf/main";
 import { getEnvConfig } from "../../../../../config/config";
 
@@ -88,6 +88,7 @@ const Partner = ({ partner, onReportDownload }) => {
           status: "SUCCESS",
           filePath: `serasa/${partner.id}`
         });
+        downloadJson(partner.id)
       }
     }
     stopLoading();
@@ -153,7 +154,7 @@ const ReadPartnerReport = ({ partners, fileContent }) => {
   const mergedPartners = mergeAllPartners(partners, partnerList);
 
   return (
-    <Container>
+    <Container>   
       <Card>
         <Card.Header>
           <h2>Participações Societárias</h2>

@@ -14,7 +14,7 @@ import {
   generateDDPF,
   generateDDPJ
 } from "../../../servicer/pdf_helpers/Pdf/main";
-import { fetchJson, getItem } from "./newHelpers";
+import { downloadJson, fetchJson, getItem } from "./newHelpers";
 import ReadPartnerReport from "./components/ReadPartnerReport";
 import { toast } from "react-toastify";
 import NewResults from "./NewResult/NewResults";
@@ -57,6 +57,7 @@ const Read = () => {
         : generateDDPJ({ ...fileContent, createdAt: model.createdAt });
     const reportName = fileContent.reports[0].registration[reportType + "Name"];
     createPDF(ddData, reportName);
+    downloadJson(id)
   };
 
   return (
